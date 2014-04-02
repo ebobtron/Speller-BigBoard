@@ -2,17 +2,17 @@
 <div class="lnk">
 
 <p class="img" style="display: inline;">
-<a id="menu" href="submit.php">&nbsp;Submit Your Program&nbsp;</a></p>
+<a class="menu" href="submit.php">&nbsp;Submit Your Program&nbsp;</a></p>
 
 &middot;
 
 <p class="img" style="display: inline;">
-<a id="menu" href="criteria.php">&nbsp;Test Criteria&nbsp;</a></p>
+<a class="menu" href="criteria.php">&nbsp;Test Criteria&nbsp;</a></p>
 
 &middot;
 
 <p class="img" style="display: inline;">
-<a id="menu" href="download.php">&nbsp;Download "test"&nbsp;</a></p>
+<a class="menu" href="download.php">&nbsp;Download "test"&nbsp;</a></p>
 </div>
 
 <div class="div-table">
