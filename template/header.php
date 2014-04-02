@@ -18,7 +18,8 @@
   <body>
 
 		<div class="div-head">
-			<h3 class="head"> speller.c Leader Board &middot; &middot; LaunchCode Edition
+			<h3 class="head">speller Leader Board 
+			&nbsp;&middot;&nbsp;&nbsp;&middot;&nbsp;&nbsp;LaunchCode St. Louis Edition
 			 <br>
      			Harvard College's CS50x from <a href="http://edx.org">edX.org</a>
      			winter 2014 with <a href="http://launchcodestl.com">LaunchCodeSTL.com</a>
