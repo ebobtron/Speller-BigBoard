@@ -21,8 +21,11 @@
 			<h3 class="head">speller Leader Board 
 			&nbsp;&middot;&nbsp;&nbsp;&middot;&nbsp;&nbsp;LaunchCode St. Louis Edition
 			 <br>
-     			Harvard College's CS50x from <a href="http://edx.org">edX.org</a>
-     			winter 2014 with <a href="http://launchcodestl.com">LaunchCodeSTL.com</a>
+     			Harvard College's CS50x from
+					<a href="http://edx.org" class="legal-links">edX.org</a>
+     			winter 2014 with
+					<a href="http://launchcodestl.com" class="legal-links">
+					LaunchCodeSTL.com</a>
 		 </h3>
 		</div>
 

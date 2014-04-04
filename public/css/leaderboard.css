@@ -1,17 +1,21 @@
 body{
-	background-color:fdf5f5;
+	background-color:#fdf5f5;
 }
 
 .input{
 
   height: 40px;
 	width: 260px;
-	font-size: 18;
+	font-size: 18px;
 	border-radius: 5px;
 	padding: 4px
 
 } 
-
+.td-th {
+  border:0px solid blue;
+	width:9%;
+  
+  }
 .head{
   font-family:sans-serif;
   }
@@ -29,27 +33,45 @@ body{
   border:0px solid red;
   width:90%;
   margin: auto;
-  height:55%;
-  overflow-x: hidden;
-  /*overflow-y: auto;*/
   text-align: center;
-  font-family:Arial,Helvetica,sans-serif;
+  font-family:sans-serif;
   }
-
 
 .row{
 	background-color:#e0e8ff;
   }
 	
 .table{
-
-	width:85%;
+	width:95%;
 	border:0px solid black;
 	margin: auto;
 	border-spacing:0px;
   }
 
-td {text-align:center; vertical-align:center;}
+.tablefoot{
+	width:85%;
+	border:0px solid black;
+	margin: auto;
+  }	
+
+.tbody{
+  height:300px;
+  overflow-y: auto;
+	padding-right:10px;
+  }
+
+.thead{
+  display:block;
+	width:98%;
+	text-align: center;
+	 
+}
+
+.ldbd-tbody{
+  display:block;
+	width:100%;
+  text-align: center;
+}	
 
 .lnk{
 	margin: 5px;
@@ -58,8 +80,7 @@ td {text-align:center; vertical-align:center;}
 	text-align:center;
   }
 
-.menu {
-  
+.menu{
 	text-decoration: none;
 	color:blue;
   }
@@ -76,7 +97,7 @@ td {text-align:center; vertical-align:center;}
 
 .subtable{
 	font-family:sans-serif;
-	font-size: 18;
+	font-size: 18px;
 	width: 80%;
 	border-spacing: 10px;
   }
