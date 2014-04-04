@@ -5,7 +5,7 @@
 	<head>
 	
   	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-	  <link href="../public/css/leaderboard.css" rel="stylesheet">
+		<link href="../public/css/leaderboard.css" rel="stylesheet">
 		<style type="text/css">
 		</style>
 		<?php if (isset($title)): ?>
@@ -22,9 +22,9 @@
 			&nbsp;&middot;&nbsp;&nbsp;&middot;&nbsp;&nbsp;LaunchCode St. Louis Edition
 			 <br>
      			Harvard College's CS50x from
-					<a href="http://edx.org" class="legal-links">edX.org</a>
+					<a href="http://edx.org" class="head-links">edX.org</a>
      			winter 2014 with
-					<a href="http://launchcodestl.com" class="legal-links">
+					<a href="http://launchcodestl.com" class="head-links">
 					LaunchCodeSTL.com</a>
 		 </h3>
 		</div>

@@ -3,7 +3,6 @@ body{
 }
 
 .input{
-
   height: 40px;
 	width: 260px;
 	font-size: 18px;
@@ -14,8 +13,8 @@ body{
 .td-th {
   border:0px solid blue;
 	width:9%;
-  
   }
+	
 .head{
   font-family:sans-serif;
   }
@@ -23,9 +22,16 @@ body{
 .div-head{
   text-align:center;
   }
+	
+.head-links{
+  text-decoration:none;
+	color: blue;
+  }	
 
 .legal-links{
 	text-decoration:none;
+	font-family:sans-serif;
+	font-size:12;
 	color: blue;
  }
  
