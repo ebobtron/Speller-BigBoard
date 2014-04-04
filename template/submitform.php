@@ -1,31 +1,11 @@
 
 <div>
 
-<blockquote style="font-size:22">
+<blockquote style="font-size:20">
 <h2> file submission </h2>
 <?php 
-  if ($_POST['majword'] != "launchcode")
-	{
-		echo "
-  	<form action='submit.php' method='post'>
-  	<p>
-    	Please provide the magic word:
-			<input type='text' name='majword'>
-  	</p>
-  	<p>
-		  If your resubmitting or adding a second add your id to your name.<br> 
-    	Your name or reddit ID in one word \"TerryLF\" or \"DonJones2010\":
-    	<input type type='text' name='name'>
-  	</p>
-		<p>
-    	Your email address if I have trouble with your file: 
-    	<input type type='text' name='email'>
-  	</p>
-  	<input type='submit' value='continue'>
-  	</form> ";
-	}
-	if ($_POST['majword'] == "launchcode")
-	{
+
+
 		echo " submiters name: ",$_POST['name'],"<br>"; 
 		echo " submiters email: ",$_POST['email']; 
 	
@@ -39,8 +19,8 @@
 		<input type='hidden' name='email' value='",$_POST['email'],"'>
  	 	<input type='submit' value='submit'>
   	</form>";
-	}
-	/* print_r($_POST); */
+	
+	  /* print_r($_POST); */
 ?>
 
 </blockquote>

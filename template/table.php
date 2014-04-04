@@ -2,7 +2,7 @@
 <div class="lnk">
 
 <p class="img" style="display: inline;">
-<a class="menu" href="submit.php">&nbsp;Submit Your Program&nbsp;</a></p>
+<a class="menu" href="getspeller.php">&nbsp;Submit Your Program&nbsp;</a></p>
 
 &middot;
 
