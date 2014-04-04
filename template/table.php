@@ -17,19 +17,16 @@
 
 <div class="div-table">
 
-
 <h3 style="margin:0px">all times in seconds</h3>
 
-
-
-<table summary="leader board" class="table">
+<table class="table">
 
 <tr>
 	<th>id</th><th>name</th><th>total time</th><th>load time</th>
 	<th>check time</th><th>size time</th><th>unload time</th>
 	<th>memory</th> 
 </tr>
-
+  <tbody>
 <?php
 
 	while($row = mysql_fetch_array($result))
@@ -57,6 +54,8 @@
 	}
 
  ?>
+  </tbody> 
  </table>
-</div><br>
+ </div>
+<br>
  
