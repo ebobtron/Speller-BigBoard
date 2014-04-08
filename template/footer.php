@@ -1,12 +1,12 @@
 
 <table class="tablefoot">
-  <tr><td>
-	 <a href="http://validator.w3.org/check?uri=referer">
-	   <img src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01
-	     Transitional" height="15" width="44"></a>
-		
-<a href="http://jigsaw.w3.org/css-validator/check/referer">
-    <img style="border:0;width:44px;height:15px"
+  <tr><td>	
+	<a href="http://validator.w3.org/check?uri=http%3A%2F%2Fspeller-leaderboard.freehostia.com%2Fpublic%2Fshow.php">
+  <img src="../public/img/HTML5.png" alt="HTML 5"
+	       style="border:0;width:24px"></a>	
+  
+	<a href="http://jigsaw.w3.org/css-validator/check/referer">
+    <img style="border:0;width:66px;height:24px"
         src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
         alt="Valid CSS!"></a>
 	 	
@@ -24,7 +24,7 @@
    </td>
 	</tr>
 </table>
-
+  <div class="gentext">brought to you by me.</div>
 </body>
 </html>
 

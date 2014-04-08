@@ -6,8 +6,8 @@
 	<div class="gentext">
   <?php 
 
-	echo " submiters name: ",$_POST['name'],"<br>"; 
-	echo " submiters email: ",$_POST['email']; 
+	echo " submitters name: ",$_POST['name'],"<br>"; 
+	echo " submitters email: ",$_POST['email']; 
 	
 	echo "
   	<form enctype='multipart/form-data' action='getfile.php' method='POST'>
