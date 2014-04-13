@@ -4,12 +4,8 @@
 
 	require_once "../include/helfun.php";
 	
-	// comment time
-	$dbh = opentable();
-	$loop = 0;	
-	$result = mysql_query("SELECT * FROM leader_board ORDER BY total ASC");
-	if ($dbh)
-	  mysql_close($dbh);	 
+	// get table rows from display
+	$rows = rows();
 
 	$template = "table.php";
 	     
@@ -21,7 +17,5 @@
 
             // render footer
             require("../template/footer.php");
-						
-						
 ?>
 

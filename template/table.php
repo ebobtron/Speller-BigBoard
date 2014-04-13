@@ -31,7 +31,7 @@
 <tbody class="tbody ldbd-tbody">
 <?php
 
-	while($row = mysql_fetch_array($result))
+	foreach($rows as $row)
 	{ 
 		
 		if ($loop % 2 == 0)

@@ -1,7 +1,6 @@
 <?php
 
-		/*          Pear Mail             */
-
+		/********       Pear Mail      **********/
 require_once "Mail.php";
 
 function sendMail($to, $cc, $subject, $body)
@@ -27,8 +26,7 @@ function sendMail($to, $cc, $subject, $body)
 										'auth' => true,
 										'username' => $username,
 										'password' => $pwd);
-										
-								 
+														 
 		$smtp = Mail::factory('smtp', $params);
  
 		$mail = $smtp->send($recipients, $headers, $body);
@@ -48,13 +46,12 @@ function sendMail($to, $cc, $subject, $body)
 
 function opentable()
 {
-  require_once "config.php";
+	require_once "config.php";
 	
 	$dbh = mysql_connect($dbpath, $dbuser, $dbpass);
 		
-	if(!$dbh || !mysql_select_db($dbuser))
+	if(!$dbh || !mysql_select_db($dbuser) )
 	{
-		
 		echo "<p style='background-color: yellow;'>";
 		echo "mysql_connect failed -- or -- <br>";
 		echo "mysql_select_db failed<br>";
@@ -62,8 +59,82 @@ function opentable()
 	else
 	{
 		return $dbh;
-	}
-	
+	}           
+}
+
+
+function PDOconnect()
+{
+    require_once "config.php";
+
+  	$dsn = 'mysql:host='.$dbpath.';dbname='.$dbuser;
+	  $options = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'); 
+
+    try
+	  {
+	  		$dbhan = new PDO($dsn, $dbuser, $dbpass, $options);
+	  		$dbhan->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  	}
+		catch(PDOException $e)
+		{
+    		echo 'ERROR: ' . $e->getMessage();
+  	}
+    return $dbhan;
+}
+
+
+function rows()
+{
+		$rowdata;
+		
+		$dbhandle = PDOconnect();
+		
+		$sql = "SELECT * FROM leader_board ORDER BY total ASC";
+		
+		try
+		{   
+    		$stmt = $dbhandle->prepare($sql);
+    		$stmt->execute();
+
+    		while( $row = $stmt->fetch() ){
+						
+						$rowdata [] = $row;
+				}
+		}
+		catch(PDOException $e)
+		{
+    		echo 'Leader Board ERROR: ' . $e->getMessage();
+		}
+		
+		// close database connection and return data
+		$dbhandle = null;
+		return $rowdata;		 
+}
+
+function nextID()
+{	
+		$dbhandle = PDOconnect();
+		
+		$sql = "SELECT MAX(id) FROM leader_board";
+		
+		try
+		{   
+    		$stmt = $dbhandle->prepare($sql);
+    		$stmt->execute();
+
+    		$row = $stmt->fetch(); 
+				//print_r($row);
+		}
+		catch(PDOException $e)
+		{
+    		echo 'Leader Board ERROR: ' . $e->getMessage();
+		}
+		
+		$nextId = (floor($row["MAX(id)"] / 10) * 10) + 10;
+		
+		// close database connection and return data
+		$dbhandle = null;
+		return $nextId;
 }
 			
 ?>
