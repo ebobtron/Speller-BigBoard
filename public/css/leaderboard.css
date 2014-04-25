@@ -1,8 +1,31 @@
-body{
-	background-color:#f9f5f5;
-	font-family:sans-serif;
+@font-face {
+     font-family: Geosanslight;
+     src: url('GeosansLight.ttf');
 }
 
+@font-face {
+     font-family: Existence-Light;
+     src: url('Existence-Light.ttf');
+}
+
+@font-face {
+     font-family: Trebuchet_MS;
+     src: url('trebuc.ttf');
+}
+
+@font-face {
+     font-family: Cardiff_Italic;
+     src: url('CARDIF_I.TTF');
+}
+
+body{
+	background-color:#EBEBF5;
+	font-family:Trebuchet_MS;
+}
+
+a:hover{
+  background-color: white;
+}
 .input{
   height: 40px;
 	width: 260px;
@@ -14,11 +37,12 @@ body{
 .td-th {
   border:0px solid blue;
 	width:9%;
+	font-family: Trebuchet_MS;
   }
-/*	
+	
 .head{
-  font-family:sans-serif;
-  }*/
+  font-family: Cardiff_Italic;
+}
 
 .div-head{
   text-align:center;
@@ -27,6 +51,7 @@ body{
 .head-links{
   text-decoration:none;
 	color: blue;
+	font-family:Geosanslight;
   }	
 
 .legal-links{
@@ -44,7 +69,7 @@ body{
   }
 
 .row{
-	background-color:#e0e8ff;
+	background-color:#fefefe;
   }
 	
 .table{
@@ -58,6 +83,8 @@ body{
 	width:85%;
 	border:0px solid black;
 	margin: auto;
+	font-family: Existence-Light;
+	font-size: 16px;
   }	
 
 .tbody{
@@ -81,7 +108,7 @@ body{
 
 .lnk{
 	margin: 5px;
-	font-size:140%;
+	font-size:160%;
 	color: blue;
 	text-align:center;
   }
@@ -106,3 +133,5 @@ body{
 	border-spacing: 10px;
   }
 
+	
+	

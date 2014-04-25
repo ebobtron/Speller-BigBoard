@@ -43,13 +43,12 @@ function sendMail($to, $cc, $subject, $body)
 			return true;
 		}	 
 }
-
+/*       DEPRECIATED FUNCTION                               
+**********************************************************
 function opentable()
 {
 	require_once "config.php";
-	
 	$dbh = mysql_connect($dbpath, $dbuser, $dbpass);
-		
 	if(!$dbh || !mysql_select_db($dbuser) )
 	{
 		echo "<p style='background-color: yellow;'>";
@@ -61,7 +60,7 @@ function opentable()
 		return $dbh;
 	}           
 }
-
+*************************************************************/
 
 function PDOconnect()
 {
@@ -83,19 +82,19 @@ function PDOconnect()
 }
 
 
-function rows()
+function get($what)
 {
-		$rowdata;
+	$dbhandle = PDOconnect();
+	
+	if($what == "rows") {
 		
-		$dbhandle = PDOconnect();
-		
+		$rowdata;		
 		$sql = "SELECT * FROM leader_board ORDER BY total ASC";
 		
 		try
 		{   
     		$stmt = $dbhandle->prepare($sql);
     		$stmt->execute();
-
     		while( $row = $stmt->fetch() ){
 						
 						$rowdata [] = $row;
@@ -105,25 +104,20 @@ function rows()
 		{
     		echo 'Leader Board ERROR: ' . $e->getMessage();
 		}
-		
 		// close database connection and return data
 		$dbhandle = null;
-		return $rowdata;		 
-}
+		return $rowdata;
+	}		 
 
-function nextID()
-{	
-		$dbhandle = PDOconnect();
-		
+	if($what == "nextID") {
+
 		$sql = "SELECT MAX(id) FROM leader_board";
 		
 		try
 		{   
     		$stmt = $dbhandle->prepare($sql);
     		$stmt->execute();
-
     		$row = $stmt->fetch(); 
-				//print_r($row);
 		}
 		catch(PDOException $e)
 		{
@@ -135,6 +129,7 @@ function nextID()
 		// close database connection and return data
 		$dbhandle = null;
 		return $nextId;
+	}	
 }
 			
 ?>

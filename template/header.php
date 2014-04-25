@@ -19,7 +19,7 @@
 
 		<div class="div-head">
 			<h3 class="head">speller Leader Board 
-			&nbsp;&middot;&nbsp;&nbsp;&middot;&nbsp;&nbsp;LaunchCode St. Louis Edition
+			&nbsp;-&nbsp;&nbsp;-&nbsp;&nbsp;LaunchCode St. Louis Edition
 			 <br>
      			Harvard College's CS50x from
 					<a href="http://edx.org" class="head-links">edX.org</a>

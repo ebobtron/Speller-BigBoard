@@ -5,7 +5,7 @@
 	require_once "../include/helfun.php";
 	
 	// get table rows from display
-	$rows = rows();
+	$rows = get("rows");
 
 	$template = "table.php";
 	     
@@ -17,5 +17,7 @@
 
             // render footer
             require("../template/footer.php");
+						
+						
 ?>
 

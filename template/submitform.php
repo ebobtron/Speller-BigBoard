@@ -10,7 +10,7 @@
 	echo " submitters email: ",$_POST['email']; 
 	
 	echo "
-  	<form enctype='multipart/form-data' action='getfile.php' method='POST'>
+  	<form enctype='multipart/form-data' action='uploadfile.php' method='POST'>
   	  <input type='hidden' name='MAX_FILE_SIZE' value='25000'>
 		  <p>Please send <h3> \"speller\"</h3> not speller.c, thank you.<br><br>
     	   Select File to Upload: <input type='file' name='uploadedfile'>

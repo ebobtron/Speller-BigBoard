@@ -12,7 +12,7 @@
 &middot;
 
 <p class="img" style="display: inline;">
-<a class="menu" href="download.php">&nbsp;Download "test"&nbsp;</a></p>
+<a class="menu hover" href="download.php">&nbsp;Download "test"&nbsp;</a></p>
 </div>
 
 <div class="div-table">
