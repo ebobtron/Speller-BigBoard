@@ -20,21 +20,50 @@
 	}
 	else
 	{
+	 
 		
 		// good magicword continue submission
+		$name = $_POST['name'];		  
+
 		
-		// get nextID
-		$nextID = get("nextID");
+		// create new entry in DB and return ids or errors
+		$newId = get("nameId",$name);
 		
-		echo $nextID;
-				  
+		if(is_array($newId)) {
+			
+			if ($newId['lastId'] == null) { 
+	     
+			 	$id = $newId['nextId'];
+				//echo "new user ".$name." get new Id of ".$newId['nextId']."<br>";
+			 	createSubStat($newId['nextId'], $name, "email");
+			}
+			else {
+			
+		   	$id = $newId['lastId'] + 1;
+			 	//echo $name." gets new Id of ".$id."<br>";
+				createSubStat($id, $name, "email");
+			}	
+		}
+		else {
+		
+			$error = true;
+		}	  
 		$template = "submitform.php";
 	     
 		        // render header
             require("../template/header.php");
-
-            // render template
-            require("../template/$template");
+             
+						if($error) { 
+						   
+							 echo "<br><br><br><br><br><br>";
+							 echo " &nbsp; &nbsp; &nbsp; ".$newId;
+							 echo "<br><br><br><br><br><br>";
+						}
+						else {
+						
+						  //render template
+              require("../template/$template");
+						}
 
             // render footer
             require("../template/footer.php");	

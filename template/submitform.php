@@ -6,7 +6,8 @@
 	<div class="gentext">
   <?php 
 
-	echo " submitters name: ",$_POST['name'],"<br>"; 
+	echo " submitters name: ",$name,"<br>";
+	echo " this submissions id: ",$id,"<br>"; 
 	echo " submitters email: ",$_POST['email']; 
 	
 	echo "
@@ -15,8 +16,9 @@
 		  <p>Please send <h3> \"speller\"</h3> not speller.c, thank you.<br><br>
     	   Select File to Upload: <input type='file' name='uploadedfile'>
 		  </p>
-  	  <input type='hidden' name='name' value='",$_POST['name'],"'>
+  	  <input type='hidden' name='name' value='",$name,"'>
 		  <input type='hidden' name='email' value='",$_POST['email'],"'>
+			<input type='hidden' name='id' value='",$id,"'>
  	 	  <input type='submit' value='submit' style='font-size:20px'>
   	</form>";
   ?>

@@ -76,60 +76,129 @@ function PDOconnect()
   	}
 		catch(PDOException $e)
 		{
-    		echo 'ERROR: ' . $e->getMessage();
+    		echo 'SLB - ERROR: ' . $e->getMessage();
   	}
     return $dbhan;
 }
 
 
-function get($what)
+function get($what, $data)
 {
-	$dbhandle = PDOconnect();
 	
+	if(!$dbhandle)
+		$dbhandle = PDOconnect();
+	
+		/*****  GET ROWS   ********/
+		/**************************/
 	if($what == "rows") {
-		
-		$rowdata;		
-		$sql = "SELECT * FROM leader_board ORDER BY total ASC";
+				
+		$sql =
+		  "SELECT * FROM leader_board WHERE total IS NOT NULL ORDER BY total ASC";
 		
 		try
 		{   
     		$stmt = $dbhandle->prepare($sql);
-    		$stmt->execute();
-    		while( $row = $stmt->fetch() ){
-						
-						$rowdata [] = $row;
+    		$results = $stmt->execute();
+				if ($results !== false)
+				{
+				   $rowdata = $stmt->fetchAll(PDO::FETCH_ASSOC);
+				}
+				else
+				{
+				   $rowdata = null;
 				}
 		}
 		catch(PDOException $e)
 		{
-    		echo 'Leader Board ERROR: ' . $e->getMessage();
+    		echo 'Leader Board GET 1 ERROR: ' . $e->getMessage();
 		}
-		// close database connection and return data
-		$dbhandle = null;
+		// return data
 		return $rowdata;
 	}		 
-
-	if($what == "nextID") {
+	
+     /*****     GET ID FROM NAME  ADD TO DATABASE  ***********/
+		 /********************************************************/
+	if($what == "nameId") {
 
 		$sql = "SELECT MAX(id) FROM leader_board";
 		
-		try
-		{   
-    		$stmt = $dbhandle->prepare($sql);
-    		$stmt->execute();
-    		$row = $stmt->fetch(); 
+		try {
+		   
+    	$stmt = $dbhandle->prepare($sql);
+    	$stmt->execute();
+    	$iddata = $stmt->fetchAll(PDO::FETCH_ASSOC); 
 		}
-		catch(PDOException $e)
-		{
-    		echo 'Leader Board ERROR: ' . $e->getMessage();
+		catch(PDOException $e) {
+		
+    	echo 'Leader Board GET 2 ERROR: ' . $e->getMessage();
 		}
 		
-		$nextId = (floor($row["MAX(id)"] / 10) * 10) + 10;
+		$nextId = (floor($iddata[0]["MAX(id)"] / 10) * 10) + 10;
 		
-		// close database connection and return data
-		$dbhandle = null;
-		return $nextId;
-	}	
+		$sql = "SELECT MAX(id) FROM leader_board WHERE name = :name";
+		
+		try {
+
+		  $stmt = $dbhandle->prepare($sql);		  
+			$stmt->bindParam(":name", $data); 
+    	$stmt->execute();
+			$rowdata = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			
+		}
+		catch(PDOException $e) {
+
+    		echo 'Leader Board GET 3 ERROR: ' . $e->getMessage()."</br>";
+		}
+					
+		$results = array( "nextId" => $nextId,
+								      "lastId" => $rowdata[0]['MAX(id)']);
+		
+		$sql = "INSERT INTO leader_board (id, name) VALUES(:id, :name)";
+		
+		if($results['lastId'] != null) {
+			
+			$id = $results['lastId'] + 1;
+			if($id%10 == 0)
+			  return "Maximum submissions of 10 has been reached for \" ".$data." \", sorry!";
+		}
+		else {
+			
+			$id = $results['nextId'] ;
+		}
+		
+		//echo "<br>".$id."  ".$data."<br>";
+		try {
+		   
+    	$stmt = $dbhandle->prepare($sql);
+			$stmt->bindParam(":id", $id);
+			$stmt->bindParam(":name", $data);
+    	$stmt->execute();
+    	# Affected Rows?
+      //echo $stmt->rowCount(); // 1
+			 
+		}
+		catch(PDOException $e) {
+		
+    	echo 'Leader Board GET 4 ERROR: ' . $e->getMessage();
+		}									
+		
+		// return data
+		return $results;
+	}
+	return;
 }
+	
+function	createSubStat($name, $id, $email) {
+		
+	$outFileName = "../uploading/subStat.txt";
+  $outFileHandle = fopen($outFileName, 'a') or die("can't open file");
+  $outString = $name.",".$id.",".$email."\n";
+	if($outFileHandle) {
+	
+		fwrite($outFileHandle, $outString); 
+		fclose($outFileHandle);
+	}
+}
+
 			
 ?>

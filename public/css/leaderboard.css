@@ -1,21 +1,21 @@
 @font-face {
      font-family: Geosanslight;
-     src: url('GeosansLight.ttf');
+     src: url('font/GeosansLight.ttf');
 }
 
 @font-face {
      font-family: Existence-Light;
-     src: url('Existence-Light.ttf');
+     src: url('font/Existence-Light.ttf');
 }
 
 @font-face {
      font-family: Trebuchet_MS;
-     src: url('trebuc.ttf');
+     src: url('font/trebuc.ttf');
 }
 
 @font-face {
      font-family: Cardiff_Italic;
-     src: url('CARDIF_I.TTF');
+     src: url('font/CARDIF_I.TTF');
 }
 
 body{
@@ -25,18 +25,17 @@ body{
 
 a:hover{
   background-color: white;
-}
-.input{
-  height: 40px;
-	width: 260px;
-	font-size: 18px;
-	border-radius: 5px;
-	padding: 4px
-
 } 
-.td-th {
+
+.th {
   border:0px solid blue;
-	width:9%;
+	width:11em;
+	font-family: Trebuchet_MS;
+  }
+	
+.td {
+  border:0px solid blue;
+	width:10em;
 	font-family: Trebuchet_MS;
   }
 	
@@ -51,7 +50,7 @@ a:hover{
 .head-links{
   text-decoration:none;
 	color: blue;
-	font-family:Geosanslight;
+	font-family:Cardiff_Italic;
   }	
 
 .legal-links{
@@ -73,7 +72,7 @@ a:hover{
   }
 	
 .table{
-	width:95%;
+	width:99%;
 	border:0px solid black;
 	margin: auto;
 	border-spacing:0px;
@@ -88,7 +87,8 @@ a:hover{
   }	
 
 .tbody{
-  height:300px;
+	border:0px solid black;
+  height:285px;
   overflow-y: auto;
 	padding-right:10px;
   }
@@ -102,13 +102,13 @@ a:hover{
 
 .ldbd-tbody{
   display:block;
-	width:100%;
+	width:98%;
   text-align: center;
 }	
 
 .lnk{
 	margin: 5px;
-	font-size:160%;
+	font-size:140%;
 	color: blue;
 	text-align:center;
   }
@@ -128,10 +128,37 @@ a:hover{
   }	
 
 .subtable{
+  border:0px solid black;
 	font-size: 18px;
-	width: 80%;
+	width: 90%;
 	border-spacing: 10px;
   }
 
-	
-	
+input{
+    font-family: Trebuchet_MS;
+}
+
+input::-webkit-input-placeholder {
+    font-family: Cardiff_Italic;
+		color: gray;
+}
+input:-moz-placeholder {
+    font-family: Cardiff_Italic;
+		font-color: blue;
+}
+input::-moz-placeholder {
+    font-family: Cardiff_Italic;
+		font-color: blue;
+}
+input:-ms-input-placeholder {
+    font-family: Cardiff_Italic;
+		font-color: blue;
+}
+
+.input{
+  border:1px solid black;
+	font-size: 18px;
+	border-radius: 4px;
+	padding: 4px;
+
+}

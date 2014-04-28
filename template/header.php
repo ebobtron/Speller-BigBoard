@@ -18,11 +18,13 @@
   <body>
 
 		<div class="div-head">
-			<h3 class="head">speller Leader Board 
+			<h3 class="head">
+			<a class="head-links" href="http://speller-leaderboard.freehostia.com">
+			speller Leader Board</a>
 			&nbsp;-&nbsp;&nbsp;-&nbsp;&nbsp;LaunchCode St. Louis Edition
 			 <br>
      			Harvard College's CS50x from
-					<a href="http://edx.org" class="head-links">edX.org</a>
+					<a class="head-links" href="http://edx.org" >edX.org</a>
      			winter 2014 with
 					<a href="http://launchcodestl.com" class="head-links">
 					LaunchCodeSTL.com</a>

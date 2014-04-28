@@ -5,7 +5,7 @@
 	require_once "../include/helfun.php";
 	
 	// get table rows from display
-	$rows = get("rows");
+	$rows = get("rows","");
 
 	$template = "table.php";
 	     
