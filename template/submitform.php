@@ -18,7 +18,7 @@
 		  </p>
   	  <input type='hidden' name='name' value='",$name,"'>
 		  <input type='hidden' name='email' value='",$_POST['email'],"'>
-			<input type='hidden' name='id' value='",$id,"'>
+		  <input type='hidden' name='id' value='",$id,"'>
  	 	  <input type='submit' value='submit' style='font-size:20px'>
   	</form>";
   ?>

@@ -162,3 +162,14 @@ input:-ms-input-placeholder {
 	padding: 4px;
 
 }
+
+.admin {
+  border:0px solid white;
+	font-size: 18px;
+  margin:auto;
+	width: 90%;
+  height:275px;
+  overflow-y: auto;
+  font-family: Trebuchet_MS;
+}
+

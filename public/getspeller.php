@@ -24,7 +24,7 @@
 		
 		// good magicword continue submission
 		$name = $_POST['name'];		  
-
+		$email = $_POST['email'];
 		
 		// create new entry in DB and return ids or errors
 		$newId = get("nameId",$name);
@@ -35,13 +35,13 @@
 	     
 			 	$id = $newId['nextId'];
 				//echo "new user ".$name." get new Id of ".$newId['nextId']."<br>";
-			 	createSubStat($newId['nextId'], $name, "email");
+			 	createSubStat($newId['nextId'], $name, $email);
 			}
 			else {
 			
 		   	$id = $newId['lastId'] + 1;
 			 	//echo $name." gets new Id of ".$id."<br>";
-				createSubStat($id, $name, "email");
+				createSubStat($id, $name, $email);
 			}	
 		}
 		else {

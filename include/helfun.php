@@ -140,9 +140,9 @@ function get($what, $data)
 		try {
 
 		  $stmt = $dbhandle->prepare($sql);		  
-			$stmt->bindParam(":name", $data); 
-    	$stmt->execute();
-			$rowdata = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		  $stmt->bindParam(":name", $data); 
+      $stmt->execute();
+		  $rowdata = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			
 		}
 		catch(PDOException $e) {
@@ -188,9 +188,9 @@ function get($what, $data)
 	return;
 }
 	
-function	createSubStat($name, $id, $email) {
+function createSubStat($name, $id, $email) {
 		
-	$outFileName = "../uploading/subStat.txt";
+	$outFileName = "../uploading/subStats.txt";
   $outFileHandle = fopen($outFileName, 'a') or die("can't open file");
   $outString = $name.",".$id.",".$email."\n";
 	if($outFileHandle) {
@@ -200,5 +200,46 @@ function	createSubStat($name, $id, $email) {
 	}
 }
 
-			
+function updateData($what) {
+  
+  if(!$dbhandle)
+		$dbhandle = PDOconnect();
+  
+  $sql = "INSERT INTO `leader_board` VALUES(:id, :name, :total, :dload,
+           :tcheck, :size, :unload, :mem)";
+           
+	$inFileName = "../minis/newsubdata.txt";
+  $inFileHandle = fopen($inFileName, 'r') or die("can't open file");
+  try {
+
+    $stmt = $dbhandle->prepare($sql);
+  
+  while(!feof($inFileHandle)) {
+  
+    fscanf($inFileHandle,"%u%s%f%f%f%f%f%f",$a,$b,$c,$d,$e,$f,$g,$h);
+    printf("adding submission %04u for \" %s \" total time: %04f \n",$a,$b,$c);
+    echo"<br>";
+    
+    $stmt->bindParam(":id", $a);
+	  $stmt->bindParam(":name", $b);
+    $stmt->bindParam(":total", $c);
+    $stmt->bindParam(":dload", $d);
+    $stmt->bindParam(":tcheck", $e);
+    $stmt->bindParam(":size", $f);
+    $stmt->bindParam(":unload", $g);
+    $stmt->bindParam(":mem", $h);
+    $stmt->execute();
+  }
+			 
+	}
+	catch(PDOException $e) {
+		
+    echo 'Leader Board admin 4 ERROR: ' . $e->getMessage();
+	}
+
+    
+  return;
+
+}			
 ?>
+
