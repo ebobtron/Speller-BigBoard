@@ -9,8 +9,10 @@
     <img style="border:0;width:66px;height:24px"
         src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
         alt="Valid CSS!"></a>
-	 	
-     &nbsp;&nbsp;&copy; 2014 Robert Clark <br>
+	</td>
+  <td> 
+     &copy; 2014 Robert Clark, aka ebobtron<br>
+     brought to you by me.
   </td>
   <td> 
  	 <a class="legal-links"
@@ -24,7 +26,7 @@
    </td>
 	</tr>
 </table>
-  <div class="gentext">brought to you by me.</div>
+  
 </body>
 </html>
 

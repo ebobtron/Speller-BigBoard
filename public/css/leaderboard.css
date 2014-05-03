@@ -57,6 +57,7 @@ a:hover{
 	text-decoration:none;
 	font-size:12px;
 	color: blue;
+  font-family: Trebuchet_MS;
  }
  
 .div-table{
@@ -83,7 +84,7 @@ a:hover{
 	border:0px solid black;
 	margin: auto;
 	font-family: Existence-Light;
-	font-size: 16px;
+	font-size: 13px;
   }	
 
 .tbody{
@@ -123,8 +124,9 @@ a:hover{
 	}
 	
 .gentext{
-	width:60%;
+	width:65%;
 	margin:auto;
+  font-size:90%;
   }	
 
 .subtable{
