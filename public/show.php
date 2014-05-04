@@ -2,14 +2,14 @@
 
 <?php
 
-	require_once "../include/helfun.php";
-	
-	// get table rows from display
-	$rows = get("rows","");
+    require_once "../include/helfun.php";
 
-	$template = "table.php";
-	     
-		        // render header
+    // get table rows from display
+    $rows = getPut("rows","");
+
+    $template = "table.php";
+
+            // render header
             require("../template/header.php");
 
             // render template
@@ -17,7 +17,7 @@
 
             // render footer
             require("../template/footer.php");
-						
-						
+
+
 ?>
 
