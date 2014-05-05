@@ -8,7 +8,7 @@
 *   CS50x final project   winter/spring 2014  with Launch Code
 *
 *************************************************************/
-    
+
     require_once "../include/helfun.php";
 
     $error = false;
@@ -45,14 +45,10 @@
             if($newId['lastId'] == null) {
             
                 $id = $newId['nextId'];
-                //echo "new user ".$name." get new Id of ".$newId['nextId']."<br>";
-                createSubInfo($newId['nextId'], $name, $email);
             }
             else {
 
                 $id = $newId['lastId'] + 1;
-                //echo $name." gets new Id of ".$id."<br>";
-                createSubInfo($id, $name, $email);
             }
         }
         else {  

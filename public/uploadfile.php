@@ -3,7 +3,7 @@
 /***
 *
 *   uploadfile.php  manage the uploaded file
-* 
+*
 *   Robert Clark, aka ebobtron
 *   CS50x final project   winter/spring 2014  with Launch Code
 *
@@ -13,7 +13,7 @@
     require "../include/config.php";
     require "../include/helfun.php";
      
-    error_reporting(E_ALL);
+    //error_reporting(E_ALL);
     
     // build the target path string and some useful others
     $submissionNameId = $_POST['name'] . $_POST['id'];
@@ -29,6 +29,7 @@
     if($success) {
 
         // build message and email strings
+        createSubInfo($_POST['name'], $_POST['id'], $_POST['email']);
         $message = "The file \" " . basename($_FILES['uploadedfile']['name']);
         $message = $message . " \" has been uploaded for submitter: \" ";
         $message = $message . $_POST['name'] . " \" - id: " . $_POST['id'] . "<br>";
@@ -65,10 +66,10 @@
 
     // render body
     require("../template/uploadResults.php");
-   
+
     // render footer
     require("../template/footer.php");
-    
+
     //echo memory_get_peak_usage();
 
 ?>
