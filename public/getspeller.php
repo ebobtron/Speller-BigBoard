@@ -1,9 +1,22 @@
 
-
 <?php
+/***
+*
+*   getspeller.php  user interfaces to upload file
+* 
+*   Robert Clark, aka ebobtron
+*   CS50x final project   winter/spring 2014  with Launch Code
+*
+*************************************************************/
     
     require_once "../include/helfun.php";
 
+    $error = false;
+    
+    if(!array_key_exists('magword', $_POST)) {
+        $_POST = array('magword' => null);
+    }    
+        
     if($_POST['magword'] != "launchcode") {
 
         // if not magicword stay on the getspeller form
@@ -46,8 +59,8 @@
 
             $error = true;
         }
-        // TODO:  fix this 
-        $template = "construction.php";
+  
+        $template = "submitform.php";
 
         // render header
         require("../template/header.php");

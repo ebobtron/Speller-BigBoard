@@ -1,9 +1,23 @@
+<!-- 
+/***
+*
+*   tabel.php  Display table of submissions and links
+* 
+*   Robert Clark, aka ebobtron
+*   CS50x final project   winter/spring 2014  with Launch Code
+*
+*************************************************************/
+ -->
+
 
 <div class="lnk">
 
 <p style="display: inline;">
-<a class="menu" href="getspeller.php">&nbsp;Submit Your Program&nbsp;</a></p>
 
+<a class="menu" href="getspeller.php">&nbsp;Submit Your Program&nbsp;</a></p>
+<!--
+<a class="menu" href="../template/construction.php">&nbsp;Submit Your Program&nbsp;</a></p>
+-->
 &middot;
 
 <p style="display: inline;">
