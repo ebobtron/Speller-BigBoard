@@ -89,13 +89,12 @@ function PDOconnect() {
 
 
 function getPut($what, $data) {
-
-    
+ 
     $dbhandle = PDOconnect();
     
 
-/*****  GET ROWS   ********/
-/**************************/
+    /*****  GET ROWS   ********/
+    /**************************/
     if($what == "rows") {
 
         $sql = "SELECT * FROM leader_board WHERE total IS NOT NULL ORDER BY total ASC";
@@ -120,8 +119,8 @@ function getPut($what, $data) {
         return $rowdata;
     }
 
-/*****     GET ID FROM NAME AND NEXT ID  ***********/
-/********************************************************/
+  /*****     GET ID FROM NAME AND NEXT ID  ***********/
+  /********************************************************/
 	if($what == "nameId") {
     
     // get the boards highest id number
@@ -174,8 +173,8 @@ function getPut($what, $data) {
     return $results;
   }  
 
-/*******   ADD SUBMISSION ID AND NAME TO DATABASE TO HOLD ID   ************/
-/**************************************************************************/
+  /*******   ADD SUBMISSION ID AND NAME TO DATABASE TO HOLD ID   ************/
+  /**************************************************************************/
   if($what == "addSub") {	
     
     $msg = 'record added';
@@ -224,44 +223,41 @@ function createSubInfo($name, $id, $email) {
 }
 
 function updateData($what) {
-  
-  if(!$dbhandle)
-		$dbhandle = PDOconnect();
-  
-  $sql = "REPLACE INTO `leader_board` VALUES(:id, :name, :total, :dload,
-           :tcheck, :size, :unload, :mem)";
-           
-	$inFileName = "../minis/newsubdata.txt";
-  $inFileHandle = fopen($inFileName, 'r') or die("can't open file");
-  try {
 
-    $stmt = $dbhandle->prepare($sql);
-  	fscanf($inFileHandle,"%u%s%f%f%f%f%f%f",$a,$b,$c,$d,$e,$f,$g,$h);
-    
-  while(!feof($inFileHandle)) {
-    
-    $stmt->bindParam(":id", $a);
-    $stmt->bindParam(":name", $b);
-    $stmt->bindParam(":total", $c);
-    $stmt->bindParam(":dload", $d);
-    $stmt->bindParam(":tcheck", $e);
-    $stmt->bindParam(":size", $f);
-    $stmt->bindParam(":unload", $g);
-    $stmt->bindParam(":mem", $h);
-    $stmt->execute();
-    
-    fscanf($inFileHandle,"%u%s%f%f%f%f%f%f",$a,$b,$c,$d,$e,$f,$g,$h);
-    printf("adding submission %04u for \" %s \" total time: %04f \n",$a,$b,$c);
-    echo"<br>";
-  }
+    $dbhandle = PDOconnect();
 
-  }
-  catch(PDOException $e) {
+    $sql = "REPLACE INTO `leader_board` VALUES(:id, :name, :total, :dload,";
+    $sql = $sql . " :tcheck, :size, :unload, :mem)";
 
-    echo 'Leader Board admin 4 ERROR: ' . $e->getMessage();
-  }
+    $inFileName = "../minis/newsubdata.txt";
+    $inFileHandle = fopen($inFileName, 'r') or die("can't open file");
 
-  return;
+    try {
+
+        $stmt = $dbhandle->prepare($sql);
+
+        while(($data = fgetcsv($inFileHandle, 1000, ",")) !== FALSE) {
+            
+            printf("adding submission %04u for \" %s \" total time: %04f <br>",
+                    $data[0], $data[1], $data[2]);
+
+            $stmt->bindParam(":id", $data[0]);
+            $stmt->bindParam(":name", $data[1]);
+            $stmt->bindParam(":total", $data[2]);
+            $stmt->bindParam(":dload", $data[3]);
+            $stmt->bindParam(":tcheck", $data[4]);
+            $stmt->bindParam(":size", $data[5]);
+            $stmt->bindParam(":unload", $data[6]);
+            $stmt->bindParam(":mem", $data[7]);
+            $stmt->execute();
+        }
+    }
+    catch(PDOException $e) {
+
+        echo 'Leader Board updateData ERROR: ' . $e->getMessage();
+    }
+
+    return;
 
 }
 ?>
