@@ -29,8 +29,9 @@ a:hover{
 
 .th {
   border:0px solid blue;
-	width:11em;
+	width:12.5em;
 	font-family: Trebuchet_MS;
+  font-size: 75%
   }
 	
 .td {
@@ -65,7 +66,6 @@ a:hover{
   width:90%;
   margin: auto;
   text-align: center;
-
   }
 
 .row{
@@ -76,7 +76,8 @@ a:hover{
 	width:99%;
 	border:0px solid black;
 	margin: auto;
-	border-spacing:0px;
+  border-spacing: 0;
+  border-collapse: collapse;
   }
 
 .tablefoot{
@@ -85,20 +86,22 @@ a:hover{
 	margin: auto;
 	font-family: Existence-Light;
 	font-size: 13px;
+  bottom:5%;
+  left:8%;
   }	
 
 .tbody{
 	border:0px solid black;
   height:285px;
   overflow-y: auto;
-	padding-right:10px;
+	padding-right:5px;
+  -webkit-overflow-scrolling: touch;
   }
 
 .thead{
   display:block;
 	width:98%;
 	text-align: center;
-	 
 }
 
 .ldbd-tbody{
@@ -121,6 +124,7 @@ a:hover{
 
 .right{
 	text-align:right;
+  padding: 0 2px;
 	}
 	
 .gentext{

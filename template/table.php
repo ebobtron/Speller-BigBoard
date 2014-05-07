@@ -36,14 +36,14 @@
 <table class="table">
  <thead class="thead">
   <tr>
-	 <th class="th">&nbsp;id&nbsp;</th>
+	 <th class="th" style='width:8em'>&nbsp;id&nbsp;</th>
 	 <th class="th">name</th>
 	 <th class="th">total time</th>
 	 <th class="th">load time</th>
 	 <th class="th">check time</th>
 	 <th class="th">size time</th>
 	 <th class="th">unload time</th>
-	 <th class="th">&nbsp;&nbsp;memory</th> 
+	 <th class="th">heap used</th> 
   </tr>
 </thead>
 <tbody class="tbody ldbd-tbody">
@@ -56,7 +56,7 @@
 		else
 		  echo " <tr> ";	
 
-		$id = sprintf("%04d", $row[id]);
+		$id = sprintf("%04d", $row['id']);
 		$to = sprintf("%0.4f", $row[total]);
 		$ld = sprintf("%0.4f", $row[dload]);
 		$ck = sprintf("%0.4f", $row[tcheck]);
@@ -64,7 +64,7 @@
 		$ul = sprintf("%0.4f", $row[unload]);
 		$mm = sprintf("%0.4f MB", $row[mem]);
 		echo"
-    <td class='td'>",$id,"</td>
+    <td class='td' style='width:8em'>",$id,"</td>
 		<td class='td'>",$row['name'],"</td>
 		<td class='td'>",$to,"</td>
 		<td class='td'>",$ld,"</td>
