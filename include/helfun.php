@@ -251,6 +251,8 @@ function updateData($what) {
 
         while(($data = fgetcsv($inFileHandle, 1000, ",")) !== FALSE) {
 
+            if(!$data[0])
+                break;
             printf("adding submission %04u for \" %s \" total time: %04f <br>",
                     $data[0], $data[1], $data[2]);
 
