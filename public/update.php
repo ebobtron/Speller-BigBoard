@@ -6,24 +6,30 @@
 		
     // render header
     require("../template/header.php");
+    
+    {
 
-    echo"<div class='admin'><h2>admin: update submission data</h2>";
+        echo"<div class='admin'><h2>admin: update submission data</h2>";
     
-    // .php?data=yes
+        // .php?data=yes
     
-    if(!array_key_exists('data', $_GET)) {
+        if(!array_key_exists('data', $_GET)) {
         
-        $_GET = array('data' => null);
-    }
+            $_GET = array('data' => null);
+        }
     
-    if($_GET['data'] == "yes") {
+        if($_GET['data'] == "yes") {
     
-        updateData("");
-    }
-    else { echo "No Data!"; }        
+            updateData("");
+            sendemailNotifications("test");
+        }
+        else { 
+            echo "No Data!";
+        }
+                
 
 
- 
+    }
     //sendMail("ebobtron@aol.com", "erobclark@att.net", "CS50x Submission", $body);
   
     echo"</div>";

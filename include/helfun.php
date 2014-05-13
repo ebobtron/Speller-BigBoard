@@ -41,6 +41,8 @@ function sendMail($to, $cc, $subject, $body) {
 
     if(PEAR::isError($mail)) {
     
+    // TODO: fix this error mess
+    
         $mes = "<br><br>Nothing to worry about, someone is not going to get an email";
         $mes = $mes . "<br>" . $mail->getMessage();
         
@@ -279,21 +281,30 @@ function updateData($what) {
 }
 
 
-/*   TODO:   
+//   TODO:   
 function sendemailNotifications($mode) {
 
-    $inFileName = "../minis/newsubdata.txt";
+    $inFileName = "../minis/emailNot.txt";
     $inFileHandle = fopen($inFileName, 'r') or die("can't open file");
 
-
-
-
-
-
-
-
+    while(true) {
+        
+        $lineOne = fgetcsv($inFileHandle, 500, ",");
+        $lineTwo = fgets($inFileHandle, 500);
+     
+        if(feof($inFileHandle))
+            break;
+        
+        $result = sendMail($lineOne[0], "ebobtron@aol.com", $lineOne[2], $lineTwo);
+        
+        echo substr($result, 0, 35).".";
+         
+        // echo "to: ".$lineOne[0]." subject: ".$lineOne[2]."<br>";
+        // echo "message: ".$lineTwo."<br><br>";
+    
+    }
 }
-*****************************************/
+
 
 /**
 *  replace white spaces from names D Doug becomes D_Doug
@@ -303,5 +314,6 @@ function validName($name) {
    $newName = preg_replace('/\s+/', '_',$name);
    return $newName;
 }
+
 ?>
 
