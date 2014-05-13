@@ -13,6 +13,8 @@
 
     $error = false;
     
+    $name = validName($_POST['name']);
+    
     if(!array_key_exists('magword', $_POST)) {
         $_POST = array('magword' => null);
     }    
@@ -34,7 +36,7 @@
     else {
 
         // good magicword continue submission
-        $name = $_POST['name'];
+        
         $email = $_POST['email'];
 
         // return id from the submisson name or the next id

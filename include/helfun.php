@@ -277,5 +277,31 @@ function updateData($what) {
 
     return;
 }
+
+
+/*   TODO:   
+function sendemailNotifications($mode) {
+
+    $inFileName = "../minis/newsubdata.txt";
+    $inFileHandle = fopen($inFileName, 'r') or die("can't open file");
+
+
+
+
+
+
+
+
+}
+*****************************************/
+
+/**
+*  replace white spaces from names D Doug becomes D_Doug
+****************************************************/
+function validName($name) {
+   
+   $newName = preg_replace('/\s+/', '_',$name);
+   return $newName;
+}
 ?>
 
