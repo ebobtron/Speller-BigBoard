@@ -14,8 +14,8 @@
 }
 
 @font-face {
-     font-family: Cardiff_Italic;
-     src: url('font/CARDIF_I.TTF');
+     font-family: Arapey_Italic;
+     src: url('font/Arapey-Italic.ttf');
 }
 
 body{
@@ -41,7 +41,7 @@ a:hover{
   }
 	
 .head{
-  font-family: Cardiff_Italic;
+  font-family: Arapey_Italic;
 }
 
 .div-head{
@@ -51,7 +51,7 @@ a:hover{
 .head-links{
   text-decoration:none;
 	color: blue;
-	font-family:Cardiff_Italic;
+	font-family:Arapey_Italic;
   }	
 
 .legal-links{
@@ -145,20 +145,20 @@ input{
 }
 
 input::-webkit-input-placeholder {
-    font-family: Cardiff_Italic;
-		color: gray;
+    font-family: Arapey_Italic;
+		color: blue;
 }
 input:-moz-placeholder {
-    font-family: Cardiff_Italic;
-		font-color: blue;
+    font-family: Arapey_Italic;
+		color: blue;
 }
 input::-moz-placeholder {
-    font-family: Cardiff_Italic;
-		font-color: blue;
+    font-family: Arapey_Italic;
+		color: blue;
 }
 input:-ms-input-placeholder {
-    font-family: Cardiff_Italic;
-		font-color: blue;
+    font-family: Arapey_Italic;
+		color: blue;
 }
 
 .input{

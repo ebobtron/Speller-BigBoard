@@ -1,7 +1,8 @@
 
 <table class="tablefoot">
-  <tr><td>	
-	<a href="http://validator.w3.org/check?uri=http%3A%2F%2Fspeller-leaderboard.freehostia.com%2Fpublic%2Fshow.php">
+  <tr><td>
+   	
+	<a href="http://validator.w3.org/check/referer">
   <img src="../public/img/HTML5.png" alt="HTML 5"
 	       style="border:0;width:24px"></a>	
   

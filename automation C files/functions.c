@@ -117,6 +117,7 @@ bool parseVal(void)
     system("rm -f vdump.txt");
     
     if(word[3][0] == '0') {
+        sprintf(valMemory,"%f",memory);
         sprintf(valResults, "memory = %f", memory);
         return true;
     }
@@ -174,8 +175,7 @@ bool spelling(void){
         fclose(infile);
         
     if(wordcount && dictionary && spell) {
-        sprintf(spellerResults, "can spell -> spelling: %i, dictionary: %i, word count: %i",
-                                spell, dictionary, wordcount);
+        sprintf(spellerResults, "can spell");
         return true;
     }
     else {

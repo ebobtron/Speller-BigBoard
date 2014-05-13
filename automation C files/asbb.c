@@ -23,12 +23,22 @@ unsigned short int MYIDSIZE = 4;
 
 int main(int argc, char* argv[])
 {
+    // option arg one = -sl
+    
+    char testVersion[8];
+    strcpy(testVersion, "test");
+    
+    if(argc > 1) 
+        
+        if(!strcmp(argv[1], "-sl")) {
+        
+            strcpy(testVersion, "testsl");
+            printf(".......testversion %s\n\n", testVersion);
+        }
+   
+   
     // variable and structure defines
     char stringBuf[255];
-
-    // TODO remove
-    //char nameBuf[50];   
-    
     
     // splash the screen start the program
     splash();
@@ -80,6 +90,7 @@ int main(int argc, char* argv[])
     
     checkDownloaded();
     
+    bool valid[SUBDATA.gl_pathc];
     char file[SUBDATA.gl_pathc][MYSTRINGSIZE + 1];
     char id[SUBDATA.gl_pathc][MYIDSIZE + 1];
     char name[SUBDATA.gl_pathc][MYSTRINGSIZE + 1];
@@ -131,6 +142,8 @@ int main(int argc, char* argv[])
         printf("\n....    Starting memory error and leak test with Valgrind\n");
     }
     
+    system("rm -f runasbbtest.sh");
+    
     for(int i = 0; i < SUBDATA.gl_pathc; i++) {
         
         // get submission name  TODO  remove
@@ -158,21 +171,26 @@ int main(int argc, char* argv[])
         // then print and store results of test
         if(parseVal()) {            
             
-            printf("        %s passed Valgrind testing -> reports %s\n", id[i], valResults);
+            printf("        %s passed Valgrind testing -> reports %s MBytes\n", \
+                               id[i], valResults);
             
             sprintf(stringBuf, "%s, %s\n", name[i], valResults);
             fwrite(stringBuf, strlen(stringBuf), 1, outfilePass);
-            
+            valid[i] = true;
             outfile = outfilePass;
+            
             if(outfileFail) {
                 fclose(outfileFail);
             }
         }
         else {
+        
             printf("        %s failed Valgrind testing reports %s\n", id[i], valResults);
+            
             sprintf(stringBuf, "%s, failed valgrind: %s \n", name[i], valResults);
             fwrite(stringBuf, strlen(stringBuf), 1, outfileFail);
             outfile = outfileFail;
+            valid[i] = false;
             
             if(outfilePass) {
                 fclose(outfilePass);
@@ -180,16 +198,23 @@ int main(int argc, char* argv[])
         }
 
         if(spelling()) {
+        
             sprintf(stringBuf, "        %s -> %s\n", id[i], spellerResults);
             printf("%s", stringBuf);
-            fwrite(stringBuf, strlen(stringBuf), 1, outfile);  
+            fwrite(stringBuf, strlen(stringBuf), 1, outfile);
+            sprintf(stringBuf,"mv downloaded/%s pass", file[i]);
+            system(stringBuf);  
             }
             else {
+            
                 sprintf(stringBuf, "        %s -> %s\n", id[i], spellerResults);
                 printf("%s", stringBuf);
-                fwrite(stringBuf, strlen(stringBuf), 1, outfile);  
+                fwrite(stringBuf, strlen(stringBuf), 1, outfile);
+                valid[i] = false;
+                sprintf(stringBuf,"mv downloaded/%s failed", file[i]);
+                system(stringBuf);
             }
-
+        // create email notifacations
         if(outfile == outfilePass) {
             
             fprintf(outfileNote,"%s,%s,%s\n",email[i], "from", "Leader Board");
@@ -204,7 +229,25 @@ int main(int argc, char* argv[])
                "Sorry, your submission failed valgind and/or a spelling check", \
                 valResults, spellerResults);
             }
-            
+        
+        // prepare bash script for testing.
+        FILE* bashHan = fopen("runasbbtest.sh", "a");
+        
+        if(i == 0) {
+            fprintf(bashHan,"#!/bin/bash\n\n");
+            }
+        
+        fprintf(bashHan,"counter=$1\nwhile [ $counter -gt 0 ]\ndo\n\n");
+        fprintf(bashHan,"./%s ./pass/%s %s %s %s\n\n", \
+                             testVersion, file[i], id[i], name[i], valMemory);
+        fprintf(bashHan,"counter=$(( $counter - 1 ))\ndone\necho done testing %s\n\n", id[i]);
+        
+        if(i == SUBDATA.gl_pathc - 1) {
+            fprintf(bashHan,"\n./parSub");
+        }
+        
+        
+        fclose(bashHan);
         
         
         if(outfile) {
@@ -218,19 +261,51 @@ int main(int argc, char* argv[])
         // TODO cleanup dump result files for next test.
     }
     
-     // remove files and downloaded directory
+     // set permission remove files and downloaded directory
+    system("chmod 711 *.sh"); 
     system("rm -f downloaded/*");
     system("rmdir downloaded");
                                                            
     if(&SUBDATA)
         globfree(&SUBDATA);
     
-    //
-    //generateEmailNotifications();                                          
-    printf("\n....    done, bye!\n\n");
-    return 0;
+    int numberofTests = 0;
     
+    if(argc > 1) {
+        
+        numberofTests = atoi(argv[1]);
+    
+        if(!strcmp(argv[1], "-sl")) {
+        
+            printf("\n....    done, bye!\n \
+                 \n....    You need to run runasbbtest.sh manually to complete testing \
+                 \n*********************************************************************\
+                 \n\n\n");
+            return 0;     
+                
+        }
+    }
+    
+    if(numberofTests < 1) {
+        numberofTests = 1;
+    }
+    
+    char comString[26];
+    sprintf(comString,"./runasbbtest.sh %i", numberofTests);
+    system(comString);
+    
+    printf("\n....   testing...   done, bye!\n\n");
+    
+    return 0;
+
 }
+                                             
+    
+    
+    
+    
+    
+
 
 
 

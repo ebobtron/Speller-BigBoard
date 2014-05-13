@@ -16,6 +16,7 @@
 /**
 *  global variables
 **************************/
+char valMemory[12];
 char valResults[256];
 char spellerResults[256];
 
