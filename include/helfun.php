@@ -281,11 +281,18 @@ function updateData($what) {
 }
 
 
-//   TODO:   
+/***   SEND NOTIFICATIONS FROM AN UPLOADED FILE   ***/
+/****************************************************/   
 function sendemailNotifications($mode) {
 
     $inFileName = "../minis/emailNot.txt";
     $inFileHandle = fopen($inFileName, 'r') or die("can't open file");
+    
+    if(!$inFileHandle) {
+        
+        echo "No email notification file";
+        return;
+    }
 
     while(true) {
         
@@ -303,6 +310,7 @@ function sendemailNotifications($mode) {
         // echo "message: ".$lineTwo."<br><br>";
     
     }
+    return;
 }
 
 

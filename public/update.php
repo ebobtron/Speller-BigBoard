@@ -1,14 +1,14 @@
 
 
 <?php
-    error_reporting(E_ALL);
+    //error_reporting(E_ALL);
     require_once "../include/helfun.php";
 		
     // render header
     require("../template/header.php");
     
+    // the body of the page
     {
-
         echo"<div class='admin'><h2>admin: update submission data</h2>";
     
         // .php?data=yes
@@ -24,15 +24,12 @@
             sendemailNotifications("test");
         }
         else { 
+            
             echo "No Data!";
         }
-                
-
-
+        
+        echo"</div>";
     }
-    //sendMail("ebobtron@aol.com", "erobclark@att.net", "CS50x Submission", $body);
-  
-    echo"</div>";
 	
   	// render footer
     require("../template/footer.php");

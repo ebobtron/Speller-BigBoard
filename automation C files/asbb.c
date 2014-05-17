@@ -14,7 +14,7 @@
 #include <stdbool.h>
 #include <unistd.h>
 
-
+#include "hidden.h"
 #include "functions.h"
 
 // some globals
@@ -35,8 +35,7 @@ int main(int argc, char* argv[])
             strcpy(testVersion, "testsl");
             printf(".......testversion %s\n\n", testVersion);
         }
-   
-   
+  
     // variable and structure defines
     char stringBuf[255];
     
@@ -91,6 +90,7 @@ int main(int argc, char* argv[])
     checkDownloaded();
     
     bool valid[SUBDATA.gl_pathc];
+    bool canSpell[SUBDATA.gl_pathc];
     char file[SUBDATA.gl_pathc][MYSTRINGSIZE + 1];
     char id[SUBDATA.gl_pathc][MYIDSIZE + 1];
     char name[SUBDATA.gl_pathc][MYSTRINGSIZE + 1];
@@ -146,9 +146,6 @@ int main(int argc, char* argv[])
     
     for(int i = 0; i < SUBDATA.gl_pathc; i++) {
         
-        // get submission name  TODO  remove
-        //subName(nameBuf, SUBDATA.gl_pathv[i]);
-        
         // create valgrind command string
         sprintf(stringBuf,"valgrind --log-file=vdump.txt ./downloaded/%s \
                        dracula.txt > sresults.txt", file[i]);
@@ -202,20 +199,23 @@ int main(int argc, char* argv[])
             sprintf(stringBuf, "        %s -> %s\n", id[i], spellerResults);
             printf("%s", stringBuf);
             fwrite(stringBuf, strlen(stringBuf), 1, outfile);
+            canSpell[i] = true;
             sprintf(stringBuf,"mv downloaded/%s pass", file[i]);
-            system(stringBuf);  
+            system(stringBuf);
+              
             }
             else {
             
                 sprintf(stringBuf, "        %s -> %s\n", id[i], spellerResults);
                 printf("%s", stringBuf);
                 fwrite(stringBuf, strlen(stringBuf), 1, outfile);
-                valid[i] = false;
+                canSpell[i] = false;
                 sprintf(stringBuf,"mv downloaded/%s failed", file[i]);
                 system(stringBuf);
             }
+            
         // create email notifacations
-        if(outfile == outfilePass) {
+        if(valid[i] && canSpell[i]) {
             
             fprintf(outfileNote,"%s,%s,%s\n",email[i], "from", "Leader Board");
             fprintf(outfileNote,"  %s, id: %s, %s\n", name[i], id[i], \
@@ -237,10 +237,13 @@ int main(int argc, char* argv[])
             fprintf(bashHan,"#!/bin/bash\n\n");
             }
         
-        fprintf(bashHan,"counter=$1\nwhile [ $counter -gt 0 ]\ndo\n\n");
-        fprintf(bashHan,"./%s ./pass/%s %s %s %s\n\n", \
+        if(valid[i] && canSpell[i]) {
+            
+            fprintf(bashHan,"counter=$1\nwhile [ $counter -gt 0 ]\ndo\n\n");
+            fprintf(bashHan,"./%s ./pass/%s %s %s %s\n\n", \
                              testVersion, file[i], id[i], name[i], valMemory);
-        fprintf(bashHan,"counter=$(( $counter - 1 ))\ndone\necho done testing %s\n\n", id[i]);
+            fprintf(bashHan,"counter=$(( $counter - 1 ))\ndone\necho done testing %s\n\n", id[i]);
+        }
         
         if(i == SUBDATA.gl_pathc - 1) {
             fprintf(bashHan,"\n./parSub");
@@ -291,8 +294,12 @@ int main(int argc, char* argv[])
     }
     
     char comString[26];
+    
+    printf("\n....    Starting benchmark tests.....\n");
+    
     sprintf(comString,"./runasbbtest.sh %i", numberofTests);
     system(comString);
+    
     
     printf("\n....   testing...   done, bye!\n\n");
     
