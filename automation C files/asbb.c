@@ -23,7 +23,9 @@ unsigned short int MYIDSIZE = 4;
 
 int main(int argc, char* argv[])
 {
-    // option arg one = -sl
+    // options:    argv one = number of test runs
+    // or if
+    // options:     arg one = -sl  no local test runs.
     
     char testVersion[8];
     strcpy(testVersion, "test");
@@ -136,20 +138,15 @@ int main(int argc, char* argv[])
         printf("        .x files = %i Submission Text = %i\n", SUBDATA.gl_pathc, subcount);
         return 1;
     }
-    
-    /*/clean up
-       system("rmdir downloaded");                                              
-       if(&SUBDATA)
-           globfree(&SUBDATA);
-    
-       return 2;               **********/
 
-    
+
+    // if things are good announce     
     if(SUBDATA.gl_pathc) {
         
         printf("\n....    Starting memory error and leak test with Valgrind\n");
     }
     
+    // prepare for new benchmark script
     system("rm -f runasbbtest.sh");
     
     for(int i = 0; i < SUBDATA.gl_pathc; i++) {
@@ -171,12 +168,11 @@ int main(int argc, char* argv[])
         // temporary file handle holder
         FILE* outfile = NULL;
                 
-        
         // parse the valgrind dump for erorrs and memory usage
         // then print and store results of test
         if(parseVal()) {            
             
-            printf("        %s passed Valgrind testing -> reports %s MBytes\n", \
+            printf("  |-    %s passed Valgrind testing -> reports %s MBytes\n", \
                                id[i], valResults);
             
             sprintf(stringBuf, "%s, %s\n", name[i], valResults);
@@ -190,7 +186,7 @@ int main(int argc, char* argv[])
         }
         else {
         
-            printf("        %s failed Valgrind testing reports %s\n", id[i], valResults);
+            printf("  |-    %s failed Valgrind testing reports %s\n", id[i], valResults);
             
             sprintf(stringBuf, "%s, failed valgrind: %s \n", name[i], valResults);
             fwrite(stringBuf, strlen(stringBuf), 1, outfileFail);
@@ -204,7 +200,7 @@ int main(int argc, char* argv[])
 
         if(spelling()) {
         
-            sprintf(stringBuf, "        %s -> %s\n", id[i], spellerResults);
+            sprintf(stringBuf, "  |-    %s -> %s\n", id[i], spellerResults);
             printf("%s", stringBuf);
             fwrite(stringBuf, strlen(stringBuf), 1, outfile);
             canSpell[i] = true;
@@ -214,7 +210,7 @@ int main(int argc, char* argv[])
             }
             else {
             
-                sprintf(stringBuf, "        %s -> %s\n", id[i], spellerResults);
+                sprintf(stringBuf, "  |-    %s -> %s\n", id[i], spellerResults);
                 printf("%s", stringBuf);
                 fwrite(stringBuf, strlen(stringBuf), 1, outfile);
                 canSpell[i] = false;
@@ -227,7 +223,7 @@ int main(int argc, char* argv[])
             
             fprintf(outfileNote,"%s,%s,%s\n",email[i], "from", "Leader Board");
             fprintf(outfileNote,"  %s, id: %s, %s\n", name[i], id[i], \
-                        "Welcome to the Leader Board,");
+                                  "Welcome to the Leader Board,");
             
             }
             else {
@@ -257,19 +253,19 @@ int main(int argc, char* argv[])
             fprintf(bashHan,"\n./parSub");
         }
         
-        
-        fclose(bashHan);
+        // close the bash script
+        if(bashHan) {
+            fclose(bashHan);
+        }
         
         
         if(outfile) {
             fclose(outfile);
             }
+        
         if(outfileNote) {
             fclose(outfileNote);
             }    
-        
-        
-        // TODO cleanup dump result files for next test.
     }
     
      // set permission remove files and downloaded directory

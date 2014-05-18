@@ -283,6 +283,8 @@ function updateData($what) {
         echo 'Leader Board updateData ERROR: ' . $e->getMessage();
     }
     
+    unlink($inFileName);
+    
     if($dbhandle)
         $dbhandle = null;
 
@@ -327,6 +329,7 @@ function sendemailNotifications($mode) {
         // echo "message: ".$lineTwo."<br><br>";
     
     }
+    unlink($inFileName);
     return;
 }
 
@@ -337,6 +340,34 @@ function validName($name) {
    
     return preg_replace('/\s+/', '_',$name);
 
+}
+
+
+/****  CLEAN SUBMISSIONS UPLOADING  ****/
+/***************************************/
+function dumpSubmissions() {
+    
+    if(file_exists("../uploading/subInfo.txt")) {
+        
+        unlink("../uploading/subInfo.txt");
+    }
+    
+    $files = glob("../uploading/*");
+    $newfileName = null;
+    
+    foreach($files as $file) {
+          
+        $newfileName = "../dump/".basename($file);
+        
+        if(is_file($file)) {
+            
+            copy($file, $newfileName);
+            echo "<br>  moved to the dump, the file: ".$newfileName;
+            unlink($file);
+        }
+    }
+    
+    return;
 }
 
 ?>

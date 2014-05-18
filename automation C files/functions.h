@@ -8,7 +8,8 @@
  *  
  *  automate the testing and posting of submissions to the Leader Board
  *
- ******/
+ ***********************************************************************/
+
 
 #include <glob.h>
 
@@ -34,7 +35,6 @@ int checkDownloaded(void);
 int stringToInt(char* string);
 bool parseVal(void);
 bool spelling(void);
-//int subName(char* name, char* file);
-//int generateEmailNotifications(void);
+
 
  

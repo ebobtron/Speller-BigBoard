@@ -18,7 +18,6 @@
 #include "functions.h"
 
 
-
 int splash(void) {
 
     printf("\033[2J\033[1;0H");
@@ -30,6 +29,7 @@ int splash(void) {
     
     return 0;
 }
+
 
 /*  
 int createConfig(void) {
@@ -93,8 +93,10 @@ bool parseVal(void)
     fgets(valResults,sizeof(valResults),infile);
 
     while(!feof(infile)) {
+        
         sscanf(valResults,"%s%s%s%s%s%s%s%s%s",
                   word[0],word[1],word[2],word[3],word[4],word[5],word[6],word[7],word[8]);
+        
         if(word[8][0]) {           
             // get leak
             if(!strcmp(word[7],"in")) {            
@@ -151,6 +153,7 @@ bool spelling(void){
     fseek(infile, -224, SEEK_END);
     
     while(!feof(infile)) {
+        
         sscanf(line,"%s%s%s%s%s", word[0], word[1], word[2], word[3], word[4]);
         
         if(!strcmp(word[1], "MISSPELLED:")) {
@@ -171,8 +174,10 @@ bool spelling(void){
         
         fgets(line, sizeof(line), infile);
     }
-    if(infile)
+    
+    if(infile) {
         fclose(infile);
+    }
         
     if(wordcount && dictionary && spell) {
         sprintf(spellerResults, "can spell");
@@ -183,52 +188,11 @@ bool spelling(void){
                                 spell, dictionary, wordcount);
         return false;
     }
+    
     return false;
-
 }
 
-/*
-int subName(char* name, char* file) {
-    
-    char* path = "downloaded/";
-    char fname[100];
-    
-    short int fcount = 0;
-    for(int j = strlen(path); j < strlen(file); j++)
-    {
-       fname[fcount] = file[j];
-       fname[fcount+1] ='\0';
-       fcount++;
-    }  
-    fname[strlen(fname) - strlen("speller.x")] = '\0';
-    //printf( "%s  %s\n", file , fname );
-    strcpy(name, fname);
-    
-    return 0;
-}             **************/
-
-
-/*
-int generateEmailNotifications() {
-
-    printf("......   GENERATING EMAIL NOTIFICATIONS   .......");
-
-    
-    char name[255];
-    char id[6];
-    char email[255];
-    
-    FILE* outfile = fopen("email.txt", "w");
-    
-    FILE* infileInfo = fopen("downloaded/subInfo.txt","r");
-
-   
-    
-    
-    
-
-    return 0;
-}*/ 
+ 
 
 
 
