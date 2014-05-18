@@ -28,58 +28,59 @@ int main(void) {
     char oldttime[255];
     
     FILE* infile = fopen("submis.txt","r");
-    if(!infile) {
-        printf("\n....    nothing to crunch sending notifications");
-        goto SEND;
-    }
-       
-    FILE* outfile = fopen("newsubdata.txt", "w");
-    
-    while(true) {
+    if(infile) {
+           
+        FILE* outfile = fopen("newsubdata.txt", "w");
         
-        fgets(stringBuf,sizeof(stringBuf),infile);
-        sscanf(stringBuf,"%[^,],%[^,],%[^,],", id, name, ttime);
-        
-        if(atoi(id) == atoi(oldid)) {
+        while(true) {
             
-            if(atof(oldttime) > atof(ttime)) {
+            fgets(stringBuf,sizeof(stringBuf),infile);
+            sscanf(stringBuf,"%[^,],%[^,],%[^,],", id, name, ttime);
+            
+            if(atoi(id) == atoi(oldid)) {
+                
+                if(atof(oldttime) > atof(ttime)) {
+                    
+                    strcpy(lowBuf, stringBuf);
+                    strcpy(oldttime, ttime);
+                }
+                
+            }
+            else {
+                
+                if(atoi(oldid)) {
+                    
+                    fprintf(outfile, "%s", lowBuf);
+                }
                 
                 strcpy(lowBuf, stringBuf);
-                strcpy(oldttime, ttime);
-            }
-            
-        }
-        else {
-            
-            if(atoi(oldid)) {
+                strcpy(oldid, id);
+                strcpy(oldttime, ttime);            
+            }   
                 
-                fprintf(outfile, "%s", lowBuf);
+            if(feof(infile)) {
+                break;
             }
             
-            strcpy(lowBuf, stringBuf);
-            strcpy(oldid, id);
-            strcpy(oldttime, ttime);            
-        }   
-            
-        if(feof(infile)) {
-            break;
         }
         
-    }
-    
-    fprintf(outfile,  "%s", lowBuf);
+        fprintf(outfile,  "%s", lowBuf);
 
-    if(infile) {
-        fclose(infile);
-    }
-    if(outfile) {
-        fclose(outfile);
-    }
+        if(infile) {
+            fclose(infile);
+        }
+        if(outfile) {
+            fclose(outfile);
+        }
 
-    printf("/n....    selection of best times complete\n");
-    
-    // jump or goto point, for notifacations without valid submissions.
-    SEND:;
+        printf("/n....    selection of best times complete\n");
+        
+    }
+    else
+    {
+        // infile==NULL; for notifications without valid submissions.
+        printf("\n....    nothing to crunch; sending notifications");
+    }
     sleep(2);
     
     printf("\n....    sending new submission info to server\n");
