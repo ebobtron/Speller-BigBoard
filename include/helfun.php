@@ -9,6 +9,7 @@
 
 
     /********       Pear Mail      **********/
+    /****************************************/
 function sendMail($to, $cc, $subject, $body) {
 
     require_once "Mail.php";
@@ -25,9 +26,10 @@ function sendMail($to, $cc, $subject, $body) {
                       'Subject' => $subject);
 
 
-        /*  Blind Carbon Copy left from $headers to make it blind
-        *   'Bcc' => $bcc,
-        ********************************/
+        /*  FOR Blind Carbon Copy
+        /*  leave from $headers to make it blind
+        /*  'Bcc' => $bcc,
+        /***************************************/
 
     $params = array('host' => $host,
                     'port' => $port, 
@@ -215,11 +217,9 @@ function getPut($what, $data) {
 }
 
 
-/**
-*  creates submission info file with data for testing the submissions
-*  and returning the info to the submitters
-*
-*********************************************************************/
+
+/****  creates submission info file with data for testing the submissions  ****/
+/*********************************************************************************/
 
 function createSubInfo($name, $id, $email) {
 
@@ -235,18 +235,27 @@ function createSubInfo($name, $id, $email) {
     }
 }
 
-
+/****   LOAD SUBMISSION TIMES AND DATA INTO DATABASE   ****/
+/**********************************************************/
 
 function updateData($what) {
-
+    
+    $inFileName = "../minis/newsubdata.txt";
+    
+    if(!file_exists($inFileName)) {
+        
+        echo "&nbsp;&nbsp;&nbsp;no submission data, no file \" newsubdata.txt \"<br>";
+        $dbhandle = null;
+        return;        
+    } 
+        
     $dbhandle = PDOconnect();
 
     $sql = "REPLACE INTO `leader_board` VALUES(:id, :name, :total, :dload,";
-    $sql = $sql . " :tcheck, :size, :unload, :mem)";
-
-    $inFileName = "../minis/newsubdata.txt";
+    $sql = $sql . " :tcheck, :size, :unload, :mem)";    
+    
     $inFileHandle = fopen($inFileName, 'r') or die("can't open file");
-
+    
     try {
 
         $stmt = $dbhandle->prepare($sql);
@@ -286,11 +295,19 @@ function updateData($what) {
 function sendemailNotifications($mode) {
 
     $inFileName = "../minis/emailNot.txt";
+    
+    if(!file_exists($inFileName)) {
+        
+        echo "<br>&nbsp;&nbsp;&nbsp;no email notification, no file \" emailNot.txt \"";
+        return;        
+    }
+    
+    $inFileName = "../minis/emailNot.txt";
     $inFileHandle = fopen($inFileName, 'r') or die("can't open file");
     
-    if(!$inFileHandle) {
+    if($inFileHandle == 0) {
         
-        echo "No email notification file";
+        echo "No email notification file emailNot.txt";
         return;
     }
 
@@ -314,13 +331,12 @@ function sendemailNotifications($mode) {
 }
 
 
-/**
-*  replace white spaces from names D Doug becomes D_Doug
-****************************************************/
+/****  replace white spaces from names D Doug becomes D_Doug  ****/
+/*****************************************************************/
 function validName($name) {
    
-   $newName = preg_replace('/\s+/', '_',$name);
-   return $newName;
+    return preg_replace('/\s+/', '_',$name);
+
 }
 
 ?>

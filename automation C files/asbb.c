@@ -28,12 +28,16 @@ int main(int argc, char* argv[])
     char testVersion[8];
     strcpy(testVersion, "test");
     
+    system("rm -f emailNot.txt");
+    system("rm -f newsubdata.txt");
+    system("rm -f submis.txt");
+    
     if(argc > 1) 
         
         if(!strcmp(argv[1], "-sl")) {
         
             strcpy(testVersion, "testsl");
-            printf(".......testversion %s\n\n", testVersion);
+            printf(".......testversion    %s\n\n", testVersion);
         }
   
     // variable and structure defines
@@ -87,7 +91,11 @@ int main(int argc, char* argv[])
     
     sleep(2);
     
-    checkDownloaded();
+    if(checkDownloaded()) {
+    
+        printf ("....    nothing to do, job done, bye...\n\n");
+        return 1;
+    }
     
     bool valid[SUBDATA.gl_pathc];
     bool canSpell[SUBDATA.gl_pathc];

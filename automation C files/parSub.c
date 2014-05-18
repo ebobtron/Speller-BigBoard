@@ -67,7 +67,7 @@ int main(void) {
         
     }
     
-   fprintf(outfile,  "%s", lowBuf);
+    fprintf(outfile,  "%s", lowBuf);
 
     if(infile) {
         fclose(infile);
@@ -78,6 +78,7 @@ int main(void) {
 
     printf("/n....    selection of best times complete\n");
     
+    // jump or goto point, for notifacations without valid submissions.
     SEND:;
     sleep(2);
     
@@ -86,9 +87,7 @@ int main(void) {
     sprintf(name,"./ftp.sh %i", PWRD);
     system(name);
     sleep(2);
-    system("rm -f emailNot.txt");
-    system("rm -f newsubdata.txt");
-    system("rm -f submis.txt");
+
     printf("\n....    invoking webpage update.php\n");
     
     system("xdg-open http://speller-leaderboard.freehostia.com/public/update.php?data=yes");

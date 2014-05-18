@@ -62,7 +62,7 @@ int checkDownloaded(void) {
             printf( "Reading error\n" );
             return 1;
       case GLOB_NOMATCH:
-            printf( "\033[1A....    No submission files found, bye!\n\n" );
+            printf( "\033[1A....    No submission files found.\n\n" );
             
             // clean up
             system("rm -f downloaded/*");
