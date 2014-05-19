@@ -7,26 +7,54 @@
 *   Robert Clark, aka ebobtron
 *   CS50x final project   winter/spring 2014  with Launch Code
 *
-*************************************************************/
+***************************************************************/
 
     require_once "../include/helfun.php";
 
     $error = false;
     
+    
+    $email = validEmail(($_POST['email']));
     $name = validName($_POST['name']);
+     
+    
+    $validSubMsg = null;
     
     if(!array_key_exists('magword', $_POST)) {
-        $_POST = array('magword' => null);
-    }    
         
-    if($_POST['magword'] != "launchcode") {
+        $_POST = array('magword' => null, 'submit' => null);
+    }
+    else {
+        $magWrd = $_POST['magword'];
+        $submit = $_POST['submit'];
+    }
 
+    if($magWrd != "launchcode" || !$name || !$email) {
+
+        if(!$email && $submit) {
+            
+            $validSubMsg = "alert('Submission needs an email address: ')";
+        }        
+
+        if(!$name && $submit) {
+        
+            $validSubMsg = "alert('Submission needs a name: ')";
+        }
+                
+        if($magWrd != "launchcode" && $submit) {
+        
+            $validSubMsg = "alert('You must use a magicword')";
+                                   
+        }
+        
         // if not magicword stay on the getspeller form
         $template = "getspellerform.html";
 
             // render header
             require("../template/header.php");
-
+        
+        echo "<script type='text/javascript'>",$validSubMsg,"</script>";
+    
             // render template
             require("../template/$template");
 

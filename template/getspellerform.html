@@ -1,46 +1,60 @@
+<?php  
+/**
+*   getspeller.php  user interfaces to upload file
+* 
+*   Robert Clark, aka ebobtron
+*   CS50x final project   winter/spring 2014  with Launch Code
+*
+********************************************************************/
+?>
 <div>
 <blockquote style="font-size:22px">
 <h2> file submission </h2>
 
   <form action='../public/getspeller.php' method='post'>
-		<table class="table subtable">
-		 <tbody>
-  		<tr>
-				<td class="right">
-    			Please provide the magic word:
-				</td>
-				<td>
-					<input class="input" autofocus placeholder="magic word" type='text' name='magword'>
-  			</td>
-			</tr>
-  		<tr>
-				<td class="right">
-		  		Please use your Reddit User Id or your name in one word.&nbsp; Examples
-					"TerryLF" or "DonJones2010", please no spaces. &nbsp; Your id is
-					automatic up to '10' please use the same name for additional
-					submission. Thanks.
-				</td>
-				<td> 
-					<input class="input" placeholder="reddit id or your name" type='text' name='name'>
-  			</td>
-			</tr>
-			<tr>
-				<td class="right">
-    			an email address in the event of trouble
-				</td>
-				<td> 
-    			<input class="input" placeholder="email address" type='text' name='email'>
-  			</td>
-			</tr>
-			<tr>
-				<td>
-				</td>
-				<td>
-  				<input class="input" type='submit' value='continue'>
-				</td>
-			</tr>
-		 </tbody>	
-		</table>
-	</form>
+
+    <table class="table subtable">
+    <tbody>
+    <tr>
+    <td class="right">
+        Please provide the magic word:
+    </td>
+    <td>
+        <input class="input" autofocus placeholder="magic word" type='text' name='magword'>
+    </td>
+    </tr>
+    <tr>
+    <td class="right">
+        Please use your Reddit User Id or your name in one word.&nbsp; Examples
+        "TerryLF" or "DonJones2010", please no spaces. &nbsp; Your id is
+        automatic up to '10' please use the same name for additional
+        submission. Thanks.
+    </td>
+    <td> 
+        <input class="input" placeholder="reddit id or your name" type='text' name='name'>
+    </td>
+    </tr>
+    <tr>
+    <td class="right">
+        an email address in the event of trouble
+    </td>
+    <td> 
+        <input class="input" placeholder="email address" type='text' name='email'>
+    </td>
+    </tr>
+    <tr>
+    <td>
+    </td>
+    <td>
+        <br>
+        <input type="hidden" name="submit" value="true">
+        <input class="input" type='submit' value='continue'>
+    </td>
+    </tr>
+    </tbody>	
+    </table>
+
+</form>
+
 </blockquote>
 </div>

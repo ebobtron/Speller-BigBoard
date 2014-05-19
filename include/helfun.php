@@ -342,6 +342,23 @@ function validName($name) {
 
 }
 
+/****  validate email address  ****/
+/**********************************/
+function validEmail($email) {
+    
+    $regex = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/'; 
+
+    if(preg_match($regex, $email)) {
+     
+        return $email;
+    }
+    else {
+        
+        return null;
+    }
+    
+}
+
 
 /****  CLEAN SUBMISSIONS UPLOADING  ****/
 /***************************************/
