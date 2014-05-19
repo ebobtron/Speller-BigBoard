@@ -28,6 +28,7 @@ int main(void) {
     char oldttime[255];
     
     FILE* infile = fopen("submis.txt","r");
+    
     if(infile) {
            
         FILE* outfile = fopen("newsubdata.txt", "w");
@@ -73,7 +74,7 @@ int main(void) {
             fclose(outfile);
         }
 
-        printf("/n....    selection of best times complete\n");
+        printf("\n\n....    selection of best times complete\n");
         
     }
     else
@@ -81,6 +82,7 @@ int main(void) {
         // infile==NULL; for notifications without valid submissions.
         printf("\n....    nothing to crunch; sending notifications");
     }
+    
     sleep(2);
     
     printf("\n....    sending new submission info to server\n");
