@@ -97,12 +97,16 @@ function PDOconnect() {
 }
 
 
+/****    DATABASE IO FUNCTIONS NO ON THE FLY SQL STATEMENTS    ****/
+/******************************************************************/
+
 function getPut($what, $data) {
  
     $dbhandle = PDOconnect();
     
-    #           GET ROWS   
-    #------------------------------------
+  
+  /*****           GET ROWS              *****/   
+  /*******************************************/
     
     if($what == "rows") {
 
@@ -130,8 +134,8 @@ function getPut($what, $data) {
         return $rowdata;
     }
 
-    #       GET ID FROM NAME AND NEXT ID  
-    #-----------------------------------------------
+  /*****       GET ID FROM NAME AND NEXT ID      *****/  
+  /***************************************************/
 
     if($what == "nameId") {
 
@@ -185,9 +189,11 @@ function getPut($what, $data) {
         // return data
         return $results;
     }
-
-    #         ADD SUBMISSION ID AND NAME TO DATABASE TO HOLD ID   
-    #-------------------------------------------------------------------
+  
+  // TODO: add group to data submission 
+  
+  /*****   ADD SUBMISSION ID AND NAME TO DATABASE TO HOLD ID   *****/   
+  /*****************************************************************/
     
     if($what == "addSub") {	
     
@@ -199,6 +205,7 @@ function getPut($what, $data) {
 
             $stmt = $dbhandle->prepare($sql);
             $stmt->bindParam(":id", $data['id']);
+            // add group here
             $stmt->bindParam(":name", $data['name']);
             $stmt->execute();
 
