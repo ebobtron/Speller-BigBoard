@@ -9,7 +9,7 @@
     require("../template/header.php");
     
     // the body of the page
-    {
+    
         echo"<div class='admin'><h2>admin: update submission data</h2>";
     
         // .php?data=yes
@@ -21,8 +21,11 @@
     
         if($_GET['data'] == "yes") {
     
-            updateData("");
-            sendemailNotifications("test");
+            if(updateData("")) {
+                
+                sendemailNotifications("test");
+                dumpSubmissions();
+            }
         }
         else { 
             
@@ -30,7 +33,7 @@
         }
         
         echo"</div>";
-    }
+    
 	
   	// render footer
     require("../template/footer.php");
