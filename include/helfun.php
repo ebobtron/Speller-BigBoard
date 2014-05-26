@@ -247,6 +247,7 @@ function createSubInfo($name, $id, $email) {
 
 function updateData($what) {
     
+    $success = false;
     $inFileName = "../minis/newsubdata.txt";
     
     if(!file_exists($inFileName)) {
@@ -275,6 +276,7 @@ function updateData($what) {
                     $data[0], $data[1], $data[2]);
 
             $stmt->bindParam(":id", $data[0]);
+            $stmt->bindParam(":grp", "");
             $stmt->bindParam(":name", $data[1]);
             $stmt->bindParam(":total", $data[2]);
             $stmt->bindParam(":dload", $data[3]);
@@ -282,11 +284,13 @@ function updateData($what) {
             $stmt->bindParam(":size", $data[5]);
             $stmt->bindParam(":unload", $data[6]);
             $stmt->bindParam(":mem", $data[7]);
+            
             $stmt->execute();
         }
     }
     catch(PDOException $e) {
-
+        
+        $success = false;
         echo 'Leader Board updateData ERROR: ' . $e->getMessage();
     }
     
@@ -295,7 +299,7 @@ function updateData($what) {
     if($dbhandle)
         $dbhandle = null;
 
-    return;
+    return $success;
 }
 
 
