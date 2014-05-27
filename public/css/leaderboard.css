@@ -179,3 +179,84 @@ input:-ms-input-placeholder {
   font-family: Trebuchet_MS;
 }
 
+.grpselect {
+  width:90%;
+  margin: auto;
+}
+
+#grpTable {
+  width: 98%;
+  border:0px solid black;
+  
+}
+
+.grptd {
+   border: 0px solid black;
+   width: 40%;
+}
+
+#edx {
+  background-image:url('../img/front-hero-bg-s.jpg');
+  background-color: white;
+  width:301px; height:94px;
+}
+
+#edxgrp {
+   border:0; 
+   background: transparent;
+   width: 100%; height: 100%;  
+}
+
+#edximg {
+  width: 33%; height: 33%;
+}
+
+#cs50img {
+  width: 60%; height: 60%;
+}
+
+#lcode {
+  background-color: black;
+  width:301px; height:94px;
+}
+
+#lcodeimg {
+  width: 55%; height: 55%;
+}
+
+#lcodegrp {
+  border:0; 
+  color: white;
+  font-size: 1em;
+  background: transparent;
+  width: 100%; height: 100%;
+}
+
+#coderg {
+  background-color: black;
+  width:301px; height:94px;
+}
+
+#coderggrp {
+  border:0; 
+  color: white;
+  font-size: 1em;
+  background: transparent;
+  width: 100%; height: 100%;  
+}
+
+#codergimg {
+   width: 65%; height: 65%;
+}
+
+#edx button:hover {
+  border: 2px solid red;
+}
+
+#lcode button:hover {
+  border: 2px solid red;
+}
+
+#coderg button:hover {
+  border: 2px solid red;
+}
