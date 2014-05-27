@@ -148,6 +148,7 @@ int main(int argc, char* argv[])
     
     // prepare for new benchmark script
     system("rm -f runasbbtest.sh");
+    bool benchMark = false;
     
     for(int i = 0; i < SUBDATA.gl_pathc; i++) {
         
@@ -243,6 +244,7 @@ int main(int argc, char* argv[])
         
         if(valid[i] && canSpell[i]) {
             
+            benchMark = true;
             fprintf(bashHan,"counter=$1\nwhile [ $counter -gt 0 ]\ndo\n\n");
             fprintf(bashHan,"./%s ./pass/%s %s %s %s\n\n", \
                              testVersion, file[i], id[i], name[i], valMemory);
@@ -258,7 +260,6 @@ int main(int argc, char* argv[])
             fclose(bashHan);
         }
         
-        
         if(outfile) {
             fclose(outfile);
             }
@@ -267,12 +268,14 @@ int main(int argc, char* argv[])
             fclose(outfileNote);
             }    
     }
+    /*          END  VALIDATION LOOP         */
     
      // set permission remove files and downloaded directory
     system("chmod 711 *.sh"); 
     system("rm -f downloaded/*");
     system("rmdir downloaded");
-                                                           
+    
+    // free glob resourses                                                       
     if(&SUBDATA)
         globfree(&SUBDATA);
     
@@ -281,8 +284,9 @@ int main(int argc, char* argv[])
     if(argc > 1) {
         
         numberofTests = atoi(argv[1]);
+        
     
-        if(!strcmp(argv[1], "-sl")) {
+        if(!strcmp(argv[1], "-sl") && benchMark) {
         
             printf("\n....    done, bye!\n \
                  \n....    You need to run runasbbtest.sh manually to complete testing \
@@ -299,24 +303,27 @@ int main(int argc, char* argv[])
     
     char comString[26];
     
-    printf("\n....    Starting benchmark tests.....\n");
+    if(benchMark) {
+
+        printf("\n....    Starting benchmark tests.....\n");
     
-    sprintf(comString,"./runasbbtest.sh %i", numberofTests);
-    system(comString);
-    
-    
-    printf("\n....   testing...   done, bye!\n\n");
+        sprintf(comString,"./runasbbtest.sh %i", numberofTests);
+        
+        system(comString);
+        
+        printf("\n....   testing...   done, bye!\n\n");
+    }
+    else {
+
+        printf("\n....    no benchmarks to do, sending email notifications");
+        
+        sprintf(comString,"./parSub");
+        
+        system(comString);
+        
+    }
     
     return 0;
-
 }
                                              
     
-    
-    
-    
-    
-
-
-
-
