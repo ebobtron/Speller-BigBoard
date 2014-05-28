@@ -53,6 +53,7 @@ a:hover{
 	color: blue;
 	font-family:Arapey_Italic;
   }	
+  
 
 .legal-links{
 	text-decoration:none;
@@ -126,6 +127,12 @@ a:hover{
 	text-align:right;
   padding: 0 2px;
 	}
+  
+.subright{
+	text-align:right;
+  padding: 0 4px;
+  height: 60px;
+}  
 	
 .gentext{
 	width:65%;
