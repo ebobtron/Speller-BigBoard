@@ -3,9 +3,16 @@
 <?php
 
     require_once "../include/helfun.php";
+    
+    // TODO:
+    // add session / cookie code here to direct viewer to last
+    // group viewed or redirect to group selection page.
+    
+    // TODO: assign group from cookie
+    $group = null;
 
     // get table rows from display
-    $rows = getPut("rows","");
+    $rows = getPut("rows", $group);
 
     $template = "table.php";
 
