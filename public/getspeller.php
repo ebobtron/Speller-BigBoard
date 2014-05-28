@@ -93,9 +93,9 @@
              
         if($error) { 
 
-            echo "<br><br><br><br><br><br>";
+            echo "<br/><br/><br/><br/><br/><br/>";
             echo " &nbsp; &nbsp; &nbsp; ".$newId;
-            echo "<br><br><br><br><br><br>";
+            echo "<br/><br/><br/><br/><br/><br/>";
         }
         else {
 
