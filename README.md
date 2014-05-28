@@ -5,7 +5,7 @@ Speller-BigBoard
 
 http://speller-leaderboard.freehostia.com
 
-a CS50x Problem set 6 speller.c proformance leader board
+a CS50x Problem set 6 speller.c performance leader board
 
 written by Robert Clark aka ebobtron
 
