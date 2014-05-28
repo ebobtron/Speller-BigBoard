@@ -10,6 +10,9 @@
     
     // TODO: assign group from cookie
     $group = null;
+    
+    // tell the user which group they are looking at
+    $title = $group;
 
     // get table rows from display
     $rows = getPut("rows", $group);
