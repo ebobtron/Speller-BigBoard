@@ -23,16 +23,20 @@
         <a class="head-links" href="http://speller-leaderboard.freehostia.com">
           speller Leader Board</a>
           
-          &nbsp;-&nbsp;&nbsp;-&nbsp;&nbsp;LaunchCode St. Louis Edition<br />
+          <?php if(isset($head)): ?>
+            <? echo $head; ?>
+          <?php else: ?>    
+            <br />
+          <?php endif ?>
+           
           Harvard College's CS50x from
           
           <a class="head-links" href="http://edx.org">edX.org</a>
           
-          <?php if (isset($title)): ?>
-            <?= htmlspecialchars($title) ?>
+          <?php if(isset($link)): ?>
+            <? echo $link; ?>
           <?php else: ?>
-            winter 2014 with <a href="http://launchcodestl.com" class="head-links">
-            LaunchCodeSTL.com</a>
+            
           <?php endif ?>
       
       </h3>

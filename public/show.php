@@ -11,6 +11,7 @@
 *
 ***************************************************************/
 
+    require "../include/groupstrings.php";
     require "../include/helfun.php";
 
     // TODO:
@@ -18,10 +19,14 @@
     // group viewed or redirect to group selection page.
     
     // TODO: assign group from cookie
-    $group = null;
+    $group = 1;
     
     // tell the user which group they are looking at
-    $title = $group;
+    
+    $title = $titleString[$group];
+    $head = $headString[$group];
+    $link = $linkString[$group];
+    
 
     // get table rows from display
     $rows = getPut("rows", $group);
