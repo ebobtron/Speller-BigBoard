@@ -4,7 +4,7 @@
 *
 *   getspeller.php  user interfaces to upload file
 * 
-*   Robert Clark, aka ebobtron
+*   Robert Clark, aka ebobtron et al.
 *   CS50x final project   winter/spring 2014  with Launch Code
 *
 ***************************************************************/
@@ -106,7 +106,6 @@
         // render footer
         require("../template/footer.php");	
     }
-
 
 ?>
 
