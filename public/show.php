@@ -1,9 +1,18 @@
 
-
 <?php
+/***
+*
+*   show.php  leader board table view controler 
+* 
+*   Robert Clark, aka ebobtron et al.
+*   
+*   The expansion of my 
+*   CS50x final project   winter/spring 2014 with Launch Code
+*
+***************************************************************/
 
-    require_once "../include/helfun.php";
-    
+    require "../include/helfun.php";
+
     // TODO:
     // add session / cookie code here to direct viewer to last
     // group viewed or redirect to group selection page.
