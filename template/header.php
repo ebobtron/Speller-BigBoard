@@ -11,7 +11,7 @@
     <?php if(isset($title)): ?>
       <title>LeaderBoard: <?= htmlspecialchars($title) ?></title>
     <?php else: ?>
-      <title>LeaderBoard: LaunchCode winter 2014</title>
+      <title>LeaderBoard</title>
     <?php endif ?>
   
   </head>
