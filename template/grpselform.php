@@ -2,8 +2,10 @@
 
 <div class="grpselect">
 
-  <blockquote style="font-size:20">
-    <h3> select your study group </h3>
+  <blockquote style='border:1px solid black'>
+    <b> Greeting Head </b><br />
+      Greeting Text. Gernally not many words to describe what we are doing. Most visiters
+      will know why they are here.   Notices the group less title above.
   </blockquote>
   
   &nbsp;&nbsp;click the group you belong to<br>
@@ -20,7 +22,7 @@
         </button>
       </div>
     </td>
-    <td>Hello Coder Girl STL</td>
+    <td>If you are studying with groups accsosiated with Coder Girl STL</td>
   </tr>
   <tr>
     <td class="grptd">
@@ -31,7 +33,7 @@
         </button>
       </div>
     </td>
-    <td>Hello Launch Code STL</td>
+    <td>LaunchCode STL winter 2014</td>
   </tr> 
   <tr>
     <td class="grptd">
@@ -42,10 +44,13 @@
         </button>
       </div>
     </td>
-    <td>Hello edx.org</td>
+    <td>If your studying CS50x on your own with edX.org. If you have a group not shown here please contacted the <a href="mailto:ebobtron@aol.com" class="head-links">Leader Board Administrator.</a></td>
   </tr>
   </table>
   
   </form>
+
+  <br />
   
 </div>
+

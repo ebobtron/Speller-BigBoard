@@ -11,11 +11,14 @@
         setcookie($cookie_name, $cookie_value, $cookie_time, '/');                
     }
     
+    
+    /* // diagnostic code
     if(isset($_COOKIE[$cookie_name])) {
         
         echo $_COOKIE[$cookie_name]."<br>";
         print_r($_COOKIE);
     }
+    ********************************/
             
     $template = "grpselform.php";
     
