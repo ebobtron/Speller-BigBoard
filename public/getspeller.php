@@ -2,10 +2,10 @@
 <?php
 /***
 *
-*   getspeller.php  user interfaces to upload file
+*   getspeller.php  submission controller for uploading file
 * 
 *   Robert Clark, aka ebobtron et al.
-
+*
 *   CS50x final project   winter/spring 2014  with Launch Code
 *
 ***************************************************************/
@@ -14,11 +14,11 @@
 
     $error = false;
     
+    $title = $titleString[1];
     
     $email = validEmail(($_POST['email']));
     $name = validName($_POST['name']);
      
-    
     $validSubMsg = null;
     
     if(!array_key_exists('magword', $_POST)) {
@@ -26,6 +26,7 @@
         $_POST = array('magword' => null, 'submit' => null);
     }
     else {
+        
         $magWrd = $_POST['magword'];
         $submit = $_POST['submit'];
     }
@@ -64,7 +65,7 @@
     }
     else {
 
-        // good magicword continue submission
+        // good magicword and valid email address continue submission
         
         $email = $_POST['email'];
 
@@ -94,9 +95,9 @@
              
         if($error) { 
 
-            echo "<br/><br/><br/><br/><br/><br/>";
+            echo "<br /><br /><br /><br /><br /><br />";
             echo " &nbsp; &nbsp; &nbsp; ".$newId;
-            echo "<br/><br/><br/><br/><br/><br/>";
+            echo "<br /><br /><br /><br /><br /><br />";
         }
         else {
 
