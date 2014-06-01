@@ -7,6 +7,7 @@
 *
 *************************************************************/
 
+require "groupstrings.php";
 
     /********       Pear Mail      **********/
     /****************************************/
@@ -190,22 +191,30 @@ function getPut($what, $data) {
         return $results;
     }
   
-  // TODO: add group to data submission 
+// TODO: add group to data submission 
   
-  /*****   ADD SUBMISSION ID AND NAME TO DATABASE TO HOLD ID   *****/   
-  /*****************************************************************/
+    /**
+      *   ADD SUBMISSION ID AND NAME TO DATABASE TO RESERVE ID  
+      *****************************************************/
     
     if($what == "addSub") {	
     
         $msg = 'record added';
-        $sql = "INSERT INTO leader_board (id, name) VALUES(:id, :name)";
-
+        
+        $sql = "INSERT INTO leader_board (id, grp, name) VALUES(:id, :grp, :name)";
+        
+        $tempGroupNum = 1;
+        
         //echo "<br>".$id."  ".$data."<br>";
         try {
 
             $stmt = $dbhandle->prepare($sql);
             $stmt->bindParam(":id", $data['id']);
-            // add group here
+            
+// TODO:    this should us $data['grp']
+//          $data comes from  
+            $stmt->bindParam(":grp", $tempGroupNum);
+            
             $stmt->bindParam(":name", $data['name']);
             $stmt->execute();
 
@@ -222,8 +231,6 @@ function getPut($what, $data) {
 
     return $msg;
 }
-
-
 
 /****  creates submission info file with data for testing the submissions  ****/
 /*********************************************************************************/
@@ -247,7 +254,7 @@ function createSubInfo($name, $id, $email) {
 
 function updateData($what) {
     
-    $success = false;
+    $success = true;
     $inFileName = "../minis/newsubdata.txt";
     
     if(!file_exists($inFileName)) {
@@ -259,7 +266,7 @@ function updateData($what) {
         
     $dbhandle = PDOconnect();
 
-    $sql = "REPLACE INTO `leader_board` VALUES(:id, :name, :total, :dload,";
+    $sql = "REPLACE INTO `leader_board` VALUES(:id, :grp, :name, :total, :dload,";
     $sql = $sql . " :tcheck, :size, :unload, :mem)";    
     
     $inFileHandle = fopen($inFileName, 'r') or die("can't open file");
@@ -267,7 +274,8 @@ function updateData($what) {
     try {
 
         $stmt = $dbhandle->prepare($sql);
-
+        $tempGroup = 1;
+        
         while(($data = fgetcsv($inFileHandle, 1000, ",")) !== FALSE) {
 
             if(!$data[0])
@@ -276,7 +284,11 @@ function updateData($what) {
                     $data[0], $data[1], $data[2]);
 
             $stmt->bindParam(":id", $data[0]);
-            $stmt->bindParam(":grp", "");
+            
+// TODO:    this needs to change to $data[1]
+//          and the others need to advamce one 
+            $stmt->bindParam(":grp", $tempGroup);
+            
             $stmt->bindParam(":name", $data[1]);
             $stmt->bindParam(":total", $data[2]);
             $stmt->bindParam(":dload", $data[3]);
