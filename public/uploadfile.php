@@ -13,7 +13,7 @@
     require "../include/config.php";
     require "../include/helfun.php";
      
-    //error_reporting(E_ALL);
+    #error_reporting(E_ALL);
     
     // build the target path string and some useful others
     $submissionNameId = $_POST['name'] . $_POST['id'];
