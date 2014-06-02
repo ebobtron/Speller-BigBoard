@@ -9,8 +9,11 @@ a CS50x Problem set 6 speller.c performance leader board
 
 written by Robert Clark aka ebobtron
 
-contributors:  	Brian theB264,
-		Pablo pablq_,
+nod to Pablo for suggesting the automation
+
+contributors:  	Brian theB264, Pablo, Josh joshfischer1108, Chris h-chris
+
+
 
 
 
