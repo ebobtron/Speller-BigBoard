@@ -18,6 +18,12 @@
     
     $email = validEmail(($_POST['email']));
     $name = validName($_POST['name']);
+
+//  TODO:
+//  need some cookie code here to set $grp
+//  cookie_name will be 'leaderboard_cookie'
+
+    #$grp = the value of cookie; 
      
     $validSubMsg = null;
     
@@ -70,6 +76,10 @@
         $email = $_POST['email'];
 
         // return id from the submisson name or the next id
+
+// TODO:  we need to pass getPut the grp number and the name
+//        $data = array('name'=> $name, 'grp' => $grp
+                
         $newId = getPut("nameId",$name);
         
         if(is_array($newId)) {
