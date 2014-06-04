@@ -3,8 +3,9 @@
 *
 *   tabel.php  Display table of submissions and links
 * 
-*   Robert Clark, aka ebobtron
-*   CS50x final project   winter/spring 2014  with Launch Code
+*   Robert Clark, aka ebobtron et al.
+*
+*   extension of my CS50x final project   winter/spring 2014  with Launch Code
 *
 *************************************************************/
  -->
