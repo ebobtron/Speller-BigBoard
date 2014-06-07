@@ -23,7 +23,13 @@
 //  need some cookie code here to set $grp
 //  cookie_name will be 'leaderboard_cookie'
 
-    #$grp = the value of cookie; 
+    // current group hard coded replace with
+    #$group = the value of cookie;
+    $group = 1;
+    
+    $title = $titleString[$group];
+    $head = $headString[$group];
+    $link = $linkString[$group]; 
      
     $validSubMsg = null;
     
@@ -61,7 +67,7 @@
             // render header
             require("../template/header.php");
         
-        echo "<script type='text/javascript'>",$validSubMsg,"</script>";
+            echo "<script type='text/javascript'>",$validSubMsg,"</script>";
     
             // render template
             require("../template/$template");
@@ -77,27 +83,24 @@
 
         // return id from the submisson name or the next id
 
-// TODO:  we need to pass getPut the grp number and the name
-//        $data = array('name'=> $name, 'grp' => $grp
                 
+
+// all the code between here and ******************* is moot
+// this will be gone in new verson
         $newId = getPut("nameId",$name);
-        
         if(is_array($newId)) {
-        
             if($newId['lastId'] == null) {
-            
                 $id = $newId['nextId'];
             }
             else {
-
                 $id = $newId['lastId'] + 1;
             }
         }
         else {  
-
             $error = true;
         }
-  
+//********************************************************  
+
         $template = "submitform.php";
 
         // render header
