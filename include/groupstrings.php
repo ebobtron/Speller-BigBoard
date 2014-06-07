@@ -3,14 +3,18 @@
 
     $titleString = array(
            "",
-           "LaunchCode winter 2014"
+           "LaunchCodeSTL winter 2014",
+           "Coder Girl STL 2014",
+           "edX.org 2014"
            );
     
     
     
     $headString = array(
            "<br />", 
-           "&nbsp;-&nbsp;&nbsp;-&nbsp;&nbsp;LaunchCode St. Louis Edition<br />"
+           "&nbsp;-&nbsp;&nbsp;-&nbsp;&nbsp;LaunchCode St. Louis Edition<br />",
+           "&nbsp;-&nbsp;&nbsp;-&nbsp;&nbsp;Coder Girl Edition<br />",
+           "&nbsp;-&nbsp;&nbsp;-&nbsp;&nbsp;edX Edition<br />"
            );
     
     
@@ -18,7 +22,10 @@
     $linkString = array(
            "",
            "winter 2014 with <a href='http://launchcodestl.com' class='head-links'>". 
-                      "LaunchCodeSTL.com</a>"
+                      "LaunchCodeSTL.com</a>",
+           "2014 with <a href='http://launchcodestl.com' class='head-links'>". 
+                      "LaunchCodeSTL.com</a>",
+           ""
            );
                       
     //echo $linkString[1];                  
