@@ -414,7 +414,7 @@ function dumpSubmissions() {
 /****************************/
 function getGroupNumber($grpName){
     // set filename and attempt to open
-    $filename = "grps.json";
+    $filename = "../grps.json";
 
     if (file_exists($filename)) {
         $file = fopen($filename, "r");
