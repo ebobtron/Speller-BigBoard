@@ -1,6 +1,6 @@
 
 <?php
-/***
+/***$_POST['group']
 *
 *   uploadfile.php  manage the uploaded file
 *
@@ -9,17 +9,22 @@
 *
 *************************************************************/
 
-    
     require "../include/config.php";
     require "../include/helfun.php";
+    
+    $group = $_POST['group'];
+    
+    $title = $titleString[$group];
+    $head = $headString[$group];
+    $link = $linkString[$group];
      
     #error_reporting(E_ALL);
     
-    // build the target path string and some useful others
-    $submissionNameId = $_POST['name'] . $_POST['id'];
+    // build the target path string and some useful other strings
+    $submissionNameGp = $_POST['name'] . $_POST['group'];
     $fileName = basename($_FILES['uploadedfile']['name']);
     
-    $target_path = "../uploading/" . $submissionNameId;
+    $target_path = "../uploading/" . $submissionNameGp;
     $target_path = $target_path . $fileName . ".x"; 
     
     // if file is is up move to defined folder
@@ -29,10 +34,10 @@
     if($success) {
 
         // build message and email strings
-        createSubInfo($_POST['name'], $_POST['id'], $_POST['email']);
+        createSubInfo($_POST['name'], $_POST['group'], $_POST['email']);
         $message = "The file \" " . basename($_FILES['uploadedfile']['name']);
-        $message = $message . " \" has been uploaded for submitter: \" ";
-        $message = $message . $_POST['name'] . " \" - id: " . $_POST['id'] . "<br>";
+        $message = $message . " \" has been uploaded <br> for submitter: \" ";
+        $message = $message . $_POST['name'] . " \" - group: " . $title . "<br>";
         $message = $message . "Submission may take several hours before posting.<br><br>";
         $message = $message . "for questions contact the administrator <a href=\"";
         $message = $message . "mailto:ebobtron@aol.com\">mailto:ebobtron@aol.com</a><br>";
@@ -40,8 +45,10 @@
         $emailBody = "Received a submission from:  " . $_POST['name'] . " @ ";
         $emailBody = $emailBody . $_POST['email'];
         
+        // id will be issue upon uploading of valid submissions
+        // no longer needed   
         // log submission to database
-        $result = getPut("addSub",$_POST);
+        #$result = getPut("addSub",$_POST);
         
         // and results to message and email
         $message = $message . "<br>" . $result;
@@ -69,8 +76,6 @@
 
     // render footer
     require("../template/footer.php");
-
-    //echo memory_get_peak_usage();
 
 ?>
 
