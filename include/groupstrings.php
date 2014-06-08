@@ -12,9 +12,11 @@
     
     $headString = array(
            "<br />", 
-           "&nbsp;-&nbsp;&nbsp;-&nbsp;&nbsp;LaunchCode St. Louis Edition<br />",
-           "&nbsp;-&nbsp;&nbsp;-&nbsp;&nbsp;Coder Girl Edition<br />",
-           "&nbsp;-&nbsp;&nbsp;-&nbsp;&nbsp;edX Edition<br />"
+           "&nbsp;-&nbsp;&nbsp;-&nbsp;&nbsp;LaunchCode St. Louis Edition<br>",
+           "&nbsp;-&nbsp;&nbsp;-&nbsp;&nbsp;".
+              "<a href='mailto:codergirl@launchcode.org' class='head-links'>".
+              "Coder Girl STL Edition</a><br>",
+           "&nbsp;-&nbsp;&nbsp;-&nbsp;&nbsp;edX Edition<br>"
            );
     
     
