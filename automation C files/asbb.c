@@ -1,9 +1,9 @@
 /******
  *
  *  asbb.c 
- *  Robert Clark, ebobtron
+ *  Robert Clark, aka ebobtron et al.
  *  
- *   CS50x  winter/spring 2014 with launchcode
+ *  CS50x  winter/spring 2014 with launchcode
  *  
  *  automate the testing and posting of submissions to the Leader Board
  *
@@ -102,7 +102,7 @@ int main(int argc, char* argv[])
     bool valid[SUBDATA.gl_pathc];
     bool canSpell[SUBDATA.gl_pathc];
     char file[SUBDATA.gl_pathc][MYSTRINGSIZE + 1];
-    char id[SUBDATA.gl_pathc][MYIDSIZE + 1];
+    char group[SUBDATA.gl_pathc][MYIDSIZE + 1];
     char name[SUBDATA.gl_pathc][MYSTRINGSIZE + 1];
     char email[SUBDATA.gl_pathc][MYSTRINGSIZE + 1];
     
@@ -115,20 +115,21 @@ int main(int argc, char* argv[])
         
         //reference use %[^,], for csv files
         
-        sscanf(sbuf,"%[^,],%[^,],%[^,],%[^,]", file[i], id[i], name[i], email[i]);
+        sscanf(sbuf,"%[^,],%[^,],%[^,],%[^,]", file[i], group[i], name[i], email[i]);
         email[i][strlen(email[i]) - 1] = '\0';
         
-        printf("....    Submission Id: %s  Name: %s  \n", id[i], name[i]);
+        printf("....    Submission Group: %s  Name: %s  \n", group[i], name[i]);
         
         subcount ++;
         
         fgets(sbuf ,sizeof(sbuf), infile);
-    
     }
     
-    fclose(infile);
-    if(SUBDATA.gl_pathc == subcount) {
+    if(infile) {
+        fclose(infile);
+    }
     
+    if(SUBDATA.gl_pathc == subcount) {
     
         // set submission file permissions
         system("chmod 711 downloaded/*");
@@ -174,7 +175,7 @@ int main(int argc, char* argv[])
         if(parseVal()) {            
             
             printf("  |-    %s passed Valgrind testing -> reports %s MBytes\n", \
-                               id[i], valResults);
+                               group[i], valResults);
             
             sprintf(stringBuf, "%s, %s\n", name[i], valResults);
             fwrite(stringBuf, strlen(stringBuf), 1, outfilePass);
@@ -187,7 +188,7 @@ int main(int argc, char* argv[])
         }
         else {
         
-            printf("  |-    %s failed Valgrind testing reports %s\n", id[i], valResults);
+            printf("  |-    %s failed Valgrind testing reports %s\n", group[i], valResults);
             
             sprintf(stringBuf, "%s, failed valgrind: %s \n", name[i], valResults);
             fwrite(stringBuf, strlen(stringBuf), 1, outfileFail);
@@ -201,7 +202,7 @@ int main(int argc, char* argv[])
 
         if(spelling()) {
         
-            sprintf(stringBuf, "  |-    %s -> %s\n", id[i], spellerResults);
+            sprintf(stringBuf, "  |-    %s -> %s\n", group[i], spellerResults);
             printf("%s", stringBuf);
             fwrite(stringBuf, strlen(stringBuf), 1, outfile);
             canSpell[i] = true;
@@ -211,7 +212,7 @@ int main(int argc, char* argv[])
             }
             else {
             
-                sprintf(stringBuf, "  |-    %s -> %s\n", id[i], spellerResults);
+                sprintf(stringBuf, "  |-    %s -> %s\n", group[i], spellerResults);
                 printf("%s", stringBuf);
                 fwrite(stringBuf, strlen(stringBuf), 1, outfile);
                 canSpell[i] = false;
@@ -223,7 +224,7 @@ int main(int argc, char* argv[])
         if(valid[i] && canSpell[i]) {
             
             fprintf(outfileNote,"%s,%s,%s\n",email[i], "from", "Leader Board");
-            fprintf(outfileNote,"  %s, id: %s, %s\n", name[i], id[i], \
+            fprintf(outfileNote,"  %s, Group: %s, %s\n", name[i], group[i], \
                                   "Welcome to the Leader Board,");
             
             }
@@ -247,8 +248,8 @@ int main(int argc, char* argv[])
             benchMark = true;
             fprintf(bashHan,"counter=$1\nwhile [ $counter -gt 0 ]\ndo\n\n");
             fprintf(bashHan,"./%s ./pass/%s %s %s %s\n\n", \
-                             testVersion, file[i], id[i], name[i], valMemory);
-            fprintf(bashHan,"counter=$(( $counter - 1 ))\ndone\necho done testing %s\n\n", id[i]);
+                             testVersion, file[i], group[i], name[i], valMemory);
+            fprintf(bashHan,"counter=$(( $counter - 1 ))\ndone\necho done testing %s\n\n", group[i]);
         }
         
         if(i == SUBDATA.gl_pathc - 1) {

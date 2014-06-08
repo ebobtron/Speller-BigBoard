@@ -1,11 +1,11 @@
 /******
  *
  *  functions.c 
- *  Robert Clark, ebobtron
+ *  Robert Clark, aka ebobtron
  *  
  *  CS50x  winter/spring 2014 with launchcode
  *  
- *  functions to help asbb.c
+ *  functions to help asbb.c  et al.
  *  automate the testing and posting of submissions to the Leader Board
  *
  ******/
@@ -29,24 +29,6 @@ int splash(void) {
     
     return 0;
 }
-
-
-/*  
-int createConfig(void) {
-
-    FILE* outfile = fopen("config.txt","w");
-    
-    fprintf(outfile, "dir_prefix=downloaded\n");      *****/
-    //fprintf(outfile, "input=ftp://XXXXXX.freehostia.com:21/speller-leaderboard.freehostia.com/uploading/*\n");
-    /*
-    fprintf(outfile, "login=XXXXXXX\n");
-    fprintf(outfile, "password=XXXXXXX\n");
-    // /ftp.avsfilmcutter.com:21/
-    if(outfile)
-        fclose(outfile);
-    
-    return 0;
-}*/
 
 
 int checkDownloaded(void) {
