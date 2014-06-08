@@ -5,7 +5,7 @@
   <br />
   <br />
 
-    <?php echo $message; ?>
+    <?=$message?>
   
   <br />
   <br />

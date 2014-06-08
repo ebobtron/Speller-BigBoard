@@ -1,23 +1,24 @@
 <!-- 
-/***
+***
 *
 *   tabel.php  Display table of submissions and links
 * 
-*   Robert Clark, aka ebobtron
-*   CS50x final project   winter/spring 2014  with Launch Code
+*   Robert Clark, aka ebobtron et al.
 *
-*************************************************************/
- -->
-
+*   extension of my CS50x final project   winter/spring 2014  with Launch Code
+*
+*************************************************************   -->
 
 <div class="lnk">
 
 <p style="display: inline;">
 
 <a class="menu" href="getspeller.php">&nbsp;Submit Your Program&nbsp;</a></p>
-<!--
+
+<!--   THIS IS HANDY WHEN WORKING OR SUBMISSION PAGES
 <a class="menu" href="../template/construction.php">&nbsp;Submit Your Program&nbsp;</a></p>
 -->
+
 &middot;
 
 <p style="display: inline;">
@@ -27,6 +28,15 @@
 
 <p style="display: inline;">
 <a class="menu hover" href="download.php">&nbsp;Download "test"&nbsp;</a></p>
+
+&middot;
+
+<p style="display: inline;">&nbsp;Groups
+<!--
+<a class="menu hover" href="">&nbsp;Download "test"&nbsp;</a>
+-->
+</p>
+
 </div>
 
 <div class="div-table">
@@ -36,7 +46,7 @@
 <table class="table">
  <thead class="thead">
   <tr>
-	 <th class="th" style='width:8em'>&nbsp;id&nbsp;</th>
+	 <th class="th" style='width:8em'>&nbsp;&nbsp;id</th>
 	 <th class="th">name</th>
 	 <th class="th">total time</th>
 	 <th class="th">load time</th>
@@ -47,6 +57,7 @@
   </tr>
 </thead>
 <tbody class="tbody ldbd-tbody">
+
 <?php
 
 	foreach($rows as $row)

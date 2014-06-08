@@ -11,7 +11,6 @@
 *
 ***************************************************************/
 
-    require "../include/groupstrings.php";
     require "../include/helfun.php";
 
     // Check if cookie contains group value
@@ -31,7 +30,7 @@
     
 
     // get table rows from display
-    $rows = getPut("rows", $group);
+    $rows = getPut("rows", getGroupNumber($group));
 
     $template = "table.php";
 

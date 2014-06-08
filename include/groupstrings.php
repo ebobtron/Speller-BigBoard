@@ -7,24 +7,30 @@
      */
 
     $titleString = array(
-           "codergirlstl2014" => "",
-           "lcstlw2014" => "LaunchCode winter 2014",
-           "edx2014" => ""
+           "none" => "",
+           "lcstlw2014" => "LaunchCodeSTL winter 2014",
+           "codergirlstl2014" => "Coder Girl STL 2014",
+           "edx2014" => "edX.org 2014"
            );
     
     
     
     $headString = array(
-           "codergirlstl2014" => "<br />", 
-           "lcstlw2014" => "&nbsp;-&nbsp;&nbsp;-&nbsp;&nbsp;LaunchCode St. Louis Edition<br />",
-           "edx2014" => "<br />"
+           "none" => "<br />", 
+           "lcstlw2014" => "&nbsp;-&nbsp;&nbsp;-&nbsp;&nbsp;LaunchCode St. Louis Edition<br>",
+           "codergirlstl2014" => "&nbsp;-&nbsp;&nbsp;-&nbsp;&nbsp;".
+              "<a href='mailto:codergirl@launchcode.org' class='head-links'>".
+              "Coder Girl STL Edition</a><br>",
+           "edx2014" => "&nbsp;-&nbsp;&nbsp;-&nbsp;&nbsp;edX Edition<br>"
            );
     
     
     
     $linkString = array(
-           "codergirlstl2014" => "",
+           "none" => "",
            "lcstlw2014" => "winter 2014 with <a href='http://launchcodestl.com' class='head-links'>". 
+                      "LaunchCodeSTL.com</a>",
+           "codergirlstl2014" => "2014 with <a href='http://launchcodestl.com' class='head-links'>". 
                       "LaunchCodeSTL.com</a>",
            "edx2014" => ""
            );

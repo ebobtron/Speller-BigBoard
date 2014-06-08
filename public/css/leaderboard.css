@@ -18,6 +18,12 @@
      src: url('font/Arapey-Italic.ttf');
 }
 
+/* diagnoitic code gives all <div>s a green border
+div {
+  border:1px solid green;
+}
+*/
+
 body{
 	background-color:#EBEBF5;
 	font-family:Trebuchet_MS;
@@ -137,8 +143,15 @@ a:hover{
 .gentext{
 	width:65%;
 	margin:auto;
+  font-size:95%;
+}
+
+.subtext{
+	width:85%;
+	margin:auto;
   font-size:90%;
-  }	
+}
+	
 
 .subtable{
   border:0px solid black;
@@ -199,7 +212,7 @@ input:-ms-input-placeholder {
 
 .grptd {
    border: 0px solid black;
-   width: 40%;
+   width: 37%;
 }
 
 #edx {
