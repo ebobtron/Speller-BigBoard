@@ -86,7 +86,7 @@
                 
 
 // all the code between here and ******************* is moot
-// this will be gone in new verson
+/* this will be gone in new verson
         $newId = getPut("nameId",$name);
         if(is_array($newId)) {
             if($newId['lastId'] == null) {
@@ -99,7 +99,7 @@
         else {  
             $error = true;
         }
-//********************************************************  
+//********************************************************/
 
         $template = "submitform.php";
 
