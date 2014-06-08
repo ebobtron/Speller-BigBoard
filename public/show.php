@@ -10,10 +10,7 @@
 *   CS50x final project   winter/spring 2014 with Launch Code
 *
 ***************************************************************/
-    
-    // goupstrings.php is includeing in helfun.php
-    #require "../include/groupstrings.php";
-    
+
     require "../include/helfun.php";
 
     // TODO:
