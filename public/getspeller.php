@@ -19,22 +19,12 @@
     $email = validEmail(($_POST['email']));
     $name = validName($_POST['name']);
 
-<<<<<<< HEAD
     // set grp number based on last group user chose
-    $grp = getGroupNumber($_COOKIE['leaderboard_cookie']);
-=======
-//  TODO:
-//  need some cookie code here to set $grp
-//  cookie_name will be 'leaderboard_cookie'
-
-    // current group hard coded replace with
-    #$group = the value of cookie;
-    $group = 1;
+    $group = $_COOKIE['leaderboard_cookie'];
     
     $title = $titleString[$group];
     $head = $headString[$group];
     $link = $linkString[$group]; 
->>>>>>> master
      
     $validSubMsg = null;
     
@@ -87,12 +77,6 @@
         $email = $_POST['email'];
 
         // return id from the submisson name or the next id
-
-<<<<<<< HEAD
-// TODO:  we need to pass getPut the grp number and the name
-//        $data = array('name'=> $name, 'grp' => $grp);
-=======
->>>>>>> master
                 
 
 // all the code between here and ******************* is moot
