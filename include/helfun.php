@@ -1,16 +1,24 @@
 <?php
-/***
+/**
 *
 *   helfun.php  or helper functions for leader board 
-*   Robert Clark, aka ebobtron
-*   CS50x final project   winter/spring 2014  with Launch Code
+*   Robert Clark, aka ebobtron et al.
+*   
+*   extension of my CS50x final project   winter/spring 2014  with Launch Code
 *
 *************************************************************/
 
 require "groupstrings.php";
 
-    /********       Pear Mail      **********/
-    /****************************************/
+/*
+ *   Pear Mail    http://pear.php.net/package/Mail
+ *
+ *   the regular PHP email functions don't allow for authentication
+ *
+ *   att.net and  some other incoming mail servers require that 
+ *   the sending client authenticate the sender, i.e. user id and password
+ *           
+ ****************************************/
 function sendMail($to, $cc, $subject, $body) {
 
     require_once "Mail.php";
@@ -53,29 +61,16 @@ function sendMail($to, $cc, $subject, $body) {
     }
     else {
         
-        return "<br>A message was successfully sent to the administrator about this                 submission!";
+        return "<br>A message was successfully sent to the leader board administrator".
+               " about this submission!";
     }
 }
 
-
-/*       DEPRECIATED FUNCTION                               
-**********************************************************
-function opentable()
-{
-  require_once "config.php";
-  $dbh = mysql_connect($dbpath, $dbuser, $dbpass);
-  if(!$dbh || !mysql_select_db($dbuser) )
-  {
-    echo "<p style='background-color: yellow;'>";
-    echo "mysql_connect failed -- or -- <br>";
-    echo "mysql_select_db failed<br>";
-  }
-  else
-  {
-    return $dbh;
-  }           
-}
-*************************************************************/
+/*
+ *  PDOconnect()
+ *
+ *  returns a handle to our connection to the MySql database table
+ *****************************************************************/
 
 function PDOconnect() {
     
@@ -98,16 +93,104 @@ function PDOconnect() {
 }
 
 
-/****    DATABASE IO FUNCTIONS NO ON THE FLY SQL STATEMENTS    ****/
-/******************************************************************/
+/*  
+ *  GETPUT()
+ *
+ *  DATABASE FUNCTIONS  NO ON THE FLY SQL STATEMENTS        
+ *********************************************************/
 
+function getPut($what, $data) {
+ 
+    //  connect to the database
+    $dbhandle = PDOconnect();
+    
+    // set some common variables
+    $stmt = null;
+    $results = null;
+    $errorMessage = null;
+    
+    //--  GET ROWS   
+    //--  if $data = group number, returns group number and group zero("0") Staff
+    //--  if $data = null, returns all groups
+    //--  confine $data to "null" or numeric symbols 0, 1, 2 etc.
+    if($what == "rows") {
+        
+        $sql = "SELECT * FROM leader_board WHERE total IS NOT NULL ";
+        
+        if($data !== null) {
+            $sql = $sql . "AND grp = :grp OR grp = 0 ORDER BY total ASC";
+        }
+        else {   
+            $sql = $sql . "ORDER BY total ASC";
+        }
+        $stmt = $dbhandle->prepare($sql);
+        $stmt->bindParam(":grp", $data);
+    }
+    
+    //--  GET NEXT ID
+    if($what == "nextId") {
+    
+        $sql = "SELECT MAX(id) FROM leader_board WHERE grp = :grp";        
+        $stmt = $dbhandle->prepare($sql);
+        $stmt->bindParam(":grp", $data);
+    }
+    
+    if($stmt === null) {
+    
+        return " GETPUT parameter 1 invalid";
+    
+    }
+       
+    //--  COMMON TRY CATCH  ----
+    try {     
+        
+        if($stmt->execute() !== false) {
+        
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+    }
+    catch(PDOException $error) {
+
+        $errorMessage = $error->getMessage();
+    }
+        
+    //--  return data "rows"
+    if($what == "rows"){
+    
+        if($errorMessage === null) {
+        
+            return $results;
+        }
+        else {
+        
+            return ' GETPUT"rows" - ERROR:..&nbsp;&nbsp; ' . $errorMessage;
+        }    
+    }
+    
+    //--  return data "nextId"
+    if($what == "nextId") {
+    
+        if($errorMessage === null) {
+        
+            return array("nextId" => $results[0]['MAX(id)']+1);
+        }
+        else {
+        
+            return ' GETPUT"nameId" - ERROR:..&nbsp;&nbsp; ' . $errorMessage;
+        }
+    }   
+}
+
+
+
+/*   DEPRECIATED VERSION
 function getPut($what, $data) {
  
     $dbhandle = PDOconnect();
     
   
-  /*****           GET ROWS              *****/   
-  /*******************************************/
+  //*****           GET ROWS              *****   
+  //*******************************************
     
     if($what == "rows") {
 
@@ -135,8 +218,8 @@ function getPut($what, $data) {
         return $rowdata;
     }
 
-  /*****       GET ID FROM NAME AND NEXT ID      *****/  
-  /***************************************************/
+  //*****       GET ID FROM NAME AND NEXT ID      *****  
+  //***************************************************
 
     if($what == "nameId") {
 
@@ -193,9 +276,9 @@ function getPut($what, $data) {
   
 // TODO: add group to data submission 
   
-    /**
-      *   ADD SUBMISSION ID AND NAME TO DATABASE TO RESERVE ID  
-      *****************************************************/
+    //  **
+    //  *   ADD SUBMISSION ID AND NAME TO DATABASE TO RESERVE ID  
+    //  *****************************************************
     
     if($what == "addSub") {	
     
@@ -231,9 +314,14 @@ function getPut($what, $data) {
 
     return $msg;
 }
+/******   END GETPUT()  **********/  
 
-/****  creates submission info file with data for testing the submissions  ****/
-/*********************************************************************************/
+
+/*
+ *  createSubInfo()
+ *
+ *  creates submission info file with data for testing the submissions  
+ ***********************************************************************/
 
 function createSubInfo($name, $id, $email) {
 
@@ -249,10 +337,14 @@ function createSubInfo($name, $id, $email) {
     }
 }
 
-/****   LOAD SUBMISSION TIMES AND DATA INTO DATABASE   ****/
-/**********************************************************/
 
-function updateData($what) {
+/*
+ *   updateData()
+ 
+ *   LOAD SUBMISSION TIMES AND DATA INTO DATABASE   
+ **********************************************************/
+
+function updateData($what) { 
     
     $success = true;
     $inFileName = "../minis/newsubdata.txt";
@@ -315,8 +407,10 @@ function updateData($what) {
 }
 
 
-/***   SEND NOTIFICATIONS FROM AN UPLOADED FILE   ***/
-/****************************************************/   
+/*
+ *   sendemailNotifications()
+ *   SEND NOTIFICATIONS FROM AN UPLOADED FILE
+ ****************************************************/   
 function sendemailNotifications($mode) {
 
     $inFileName = "../minis/emailNot.txt";
@@ -357,16 +451,20 @@ function sendemailNotifications($mode) {
 }
 
 
-/****  replace white spaces from names D Doug becomes D_Doug  ****/
-/*****************************************************************/
+/*
+ *  validName()
+ *  replace white spaces from names D Doug becomes D_Doug
+ *****************************************************************/
 function validName($name) {
    
     return preg_replace('/\s+/', '_',$name);
 
 }
 
-/****  validate email address  ****/
-/**********************************/
+/*
+ *  validEmail()
+ *  validate email address
+ **********************************/
 function validEmail($email) {
     
     $regex = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/'; 
