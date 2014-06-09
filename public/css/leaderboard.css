@@ -44,21 +44,22 @@ a:hover{
   border:0px solid blue;
 	width:10em;
 	font-family: Trebuchet_MS;
-  }
+}
 	
 .head{
   font-family: Arapey_Italic;
 }
 
 .div-head{
+  margin-top:20px;
   text-align:center;
-  }
+}
 	
 .head-links{
   text-decoration:none;
 	color: blue;
 	font-family:Arapey_Italic;
-  }	
+}	
   
 
 .legal-links{
