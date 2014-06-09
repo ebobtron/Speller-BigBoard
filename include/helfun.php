@@ -294,7 +294,7 @@ function getPut($what, $data) {
             $stmt = $dbhandle->prepare($sql);
             $stmt->bindParam(":id", $data['id']);
             
-// TODO:    this should us $data['grp']
+// TODO:    this should use $data['grp']
 //          $data comes from  
             $stmt->bindParam(":grp", $tempGroupNum);
             
@@ -378,7 +378,7 @@ function updateData($what) {
             $stmt->bindParam(":id", $data[0]);
             
 // TODO:    this needs to change to $data[1]
-//          and the others need to advamce one 
+//          and the others need to advance one 
             $stmt->bindParam(":grp", $tempGroup);
             
             $stmt->bindParam(":name", $data[1]);
@@ -506,6 +506,32 @@ function dumpSubmissions() {
     }
     
     return;
+}
+
+/****  GET GROUP NUMBER  ****/
+/****************************/
+function getGroupNumber($grpName){
+    // set filename and attempt to open
+    $filename = "../grps.json";
+
+    if (file_exists($filename)) {
+        $file = fopen($filename, "r");
+    }
+
+    // error check
+    if $file {
+        // set group number from data
+        $json = json_decode(fread($file, filesize($filename)), true);
+        $grp = $json[$grpName];
+
+        fclose($file);
+    }
+    else {
+        // default
+        $grp = null;
+    }
+    
+    return $grp;
 }
 
 ?>

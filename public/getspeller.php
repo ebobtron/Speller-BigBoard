@@ -19,13 +19,8 @@
     $email = validEmail(($_POST['email']));
     $name = validName($_POST['name']);
 
-//  TODO:
-//  need some cookie code here to set $grp
-//  cookie_name will be 'leaderboard_cookie'
-
-    // current group hard coded replace with
-    #$group = the value of cookie;
-    $group = 1;
+    // set grp number based on last group user chose
+    $group = $_COOKIE['leaderboard_cookie'];
     
     $title = $titleString[$group];
     $head = $headString[$group];
@@ -82,7 +77,6 @@
         $email = $_POST['email'];
 
         // return id from the submisson name or the next id
-
                 
 
 // all the code between here and ******************* is moot
