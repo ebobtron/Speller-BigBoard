@@ -12,12 +12,12 @@
 <div class="lnk">
 
 <p style="display: inline;">
-
-<a class="menu" href="getspeller.php">&nbsp;Submit Your Program&nbsp;</a></p>
-
 <!--   THIS IS HANDY WHEN WORKING OR SUBMISSION PAGES
-<a class="menu" href="../template/construction.php">&nbsp;Submit Your Program&nbsp;</a></p>
+<a class="menu" href="getspeller.php">&nbsp;Submit Your Program&nbsp;</a></p>
 -->
+
+<a class="menu" href="../public/grpsel.php">&nbsp;Submit Your Program&nbsp;</a></p>
+
 
 &middot;
 
