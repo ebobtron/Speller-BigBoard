@@ -8,7 +8,9 @@
     if(isset($_POST['group'])) {
         
         $cookie_value = $_POST['group'];
-        setcookie($cookie_name, $cookie_value, $cookie_time, '/');                
+        setcookie($cookie_name, $cookie_value, $cookie_time, '/');
+        header("Location:".
+        "http://".$_SERVER["HTTP_HOST"].dirname($_SERVER["PHP_SELF"])."/getspeller.php");                
     }
     
     
