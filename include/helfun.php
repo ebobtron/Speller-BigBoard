@@ -183,140 +183,6 @@ function getPut($what, $data) {
 
 
 
-/*   DEPRECIATED VERSION
-function getPut($what, $data) {
- 
-    $dbhandle = PDOconnect();
-    
-  
-  //*****           GET ROWS              *****   
-  //*******************************************
-    
-    if($what == "rows") {
-
-        $sql = "SELECT * FROM leader_board WHERE total IS NOT NULL ORDER BY total ASC";
-
-        try {   
-            
-            $stmt = $dbhandle->prepare($sql);
-            $results = $stmt->execute();
-            if ($results !== false) {
-
-                $rowdata = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            }
-            else {
-
-                $rowdata = null;
-            }
-        }
-        catch(PDOException $e) {
-
-            echo 'Leader Board GET ROWS ERROR: ' . $e->getMessage();
-        }
-        
-        // return data
-        return $rowdata;
-    }
-
-  //*****       GET ID FROM NAME AND NEXT ID      *****  
-  //***************************************************
-
-    if($what == "nameId") {
-
-        // get the boards highest id number
-        $sql = "SELECT MAX(id) FROM leader_board";
-
-        try {
-
-            $stmt = $dbhandle->prepare($sql);
-            $stmt->execute();
-            $iddata = $stmt->fetchAll(PDO::FETCH_ASSOC); 
-        }
-        catch(PDOException $e) {
-
-            echo 'Leader Board GET MAX(ID) ERROR: ' . $e->getMessage();
-        }
-
-        // calculate next Id number
-        $nextId = (floor($iddata[0]["MAX(id)"] / 10) * 10) + 10;
-
-        // in user name in database get names max(id)
-        $sql = "SELECT MAX(id) FROM leader_board WHERE name = :name";
-
-        try {
-
-            $stmt = $dbhandle->prepare($sql);		  
-            $stmt->bindParam(":name", $data); 
-            $stmt->execute();
-            $rowdata = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        }
-        catch(PDOException $e) {
-
-            echo 'Leader Board GET NAME MAX(ID) ERROR: ' . $e->getMessage()."</br>";
-        }
-
-        $results = array( "nextId" => $nextId, "lastId" => $rowdata[0]['MAX(id)']);
-    
-        if($results['lastId'] != null) {
-
-            $id = $results['lastId'] + 1;
-
-            if($id%10 == 0) {
-
-                $results = "Maximum submissions of 10 has been reached for \" ";
-                $results = $results.$data." \", sorry!";
-        
-            }   
-        }
-
-        // return data
-        return $results;
-    }
-  
-// TODO: add group to data submission 
-  
-    //  **
-    //  *   ADD SUBMISSION ID AND NAME TO DATABASE TO RESERVE ID  
-    //  *****************************************************
-    
-    if($what == "addSub") {	
-    
-        $msg = 'record added';
-        
-        $sql = "INSERT INTO leader_board (id, grp, name) VALUES(:id, :grp, :name)";
-        
-        $tempGroupNum = 1;
-        
-        //echo "<br>".$id."  ".$data."<br>";
-        try {
-
-            $stmt = $dbhandle->prepare($sql);
-            $stmt->bindParam(":id", $data['id']);
-            
-// TODO:    this should use $data['grp']
-//          $data comes from  
-            $stmt->bindParam(":grp", $tempGroupNum);
-            
-            $stmt->bindParam(":name", $data['name']);
-            $stmt->execute();
-
-        }
-        catch(PDOException $e) {
-
-            // echo 'Leader Board ADDSUB ERROR: ' . $e->getMessage();
-            $msg = 'Data Base error contact Administrator: ' . $e->getMessage();
-      }
-    }
-  
-    if($dbhandle)
-        $dbhandle = null;
-
-    return $msg;
-}
-/******   END GETPUT()  **********/  
-
-
 /*
  *  createSubInfo()
  *
@@ -340,20 +206,18 @@ function createSubInfo($name, $id, $email) {
 
 /*
  *   updateData()
- 
- *   LOAD SUBMISSION TIMES AND DATA INTO DATABASE   
- **********************************************************/
+ *   LOAD SUBMISSION DATA INTO DATABASE  
+ *********************************************************/
 
-function updateData($what) { 
+function updateData() {
     
     $success = true;
     $inFileName = "../minis/newsubdata.txt";
     
     if(!file_exists($inFileName)) {
         
-        echo "&nbsp;&nbsp;&nbsp;no submission data, no file \" newsubdata.txt \"<br>";
         $dbhandle = null;
-        return;        
+        return "&nbsp;...no submission data: file \"" . $inFileName . "\" not found<br />";        
     } 
         
     $dbhandle = PDOconnect();
@@ -372,15 +236,15 @@ function updateData($what) {
 
             if(!$data[0])
                 break;
-            printf("adding submission %04u for \" %s \" total time: %04f <br>",
-                    $data[0], $data[1], $data[2]);
-
-            $stmt->bindParam(":id", $data[0]);
             
-// TODO:    this needs to change to $data[1]
-//          and the others need to advance one 
-            $stmt->bindParam(":grp", $tempGroup);
+           
+            $return = getPut("nextId", $data[0]);
             
+            if(is_array($return)) {
+                
+                $stmt->bindParam(":id", $return['nextId']);
+            }
+            $stmt->bindParam(":grp", $data[0]);
             $stmt->bindParam(":name", $data[1]);
             $stmt->bindParam(":total", $data[2]);
             $stmt->bindParam(":dload", $data[3]);
@@ -390,6 +254,8 @@ function updateData($what) {
             $stmt->bindParam(":mem", $data[7]);
             
             $stmt->execute();
+            printf("adding %04u for group %u name: \" %s \" total time: %04f <br>",
+                    $return['nextId'], $data[0], $data[1], $data[2]);
         }
     }
     catch(PDOException $e) {
@@ -405,7 +271,6 @@ function updateData($what) {
 
     return $success;
 }
-
 
 /*
  *   sendemailNotifications()
@@ -481,8 +346,10 @@ function validEmail($email) {
 }
 
 
-/****  CLEAN SUBMISSIONS UPLOADING  ****/
-/***************************************/
+/*
+ *  dumpSubmissions()
+ *  CLEAN SUBMISSIONS UPLOADING 
+ ********************************/
 function dumpSubmissions() {
     
     if(file_exists("../uploading/subInfo.txt")) {
@@ -508,18 +375,26 @@ function dumpSubmissions() {
     return;
 }
 
-/****  GET GROUP NUMBER  ****/
-/****************************/
+/*
+ *  getGroupNumber()   by  h-chris
+ *  GET GROUP NUMBER    
+ ****************************/
 function getGroupNumber($grpName){
+    
     // set filename and attempt to open
-    $filename = "../grps.json";
+    $filename = "../include/grps.json";
 
-    if (file_exists($filename)) {
+    if(file_exists($filename)) {
+        
         $file = fopen($filename, "r");
     }
-
+    else {
+        
+        echo "...Error: could not open :" . $filename . "<br>";
+    }
+    
     // error check
-    if $file {
+    if($file) {
         // set group number from data
         $json = json_decode(fread($file, filesize($filename)), true);
         $grp = $json[$grpName];
@@ -530,7 +405,7 @@ function getGroupNumber($grpName){
         // default
         $grp = null;
     }
-    
+
     return $grp;
 }
 
