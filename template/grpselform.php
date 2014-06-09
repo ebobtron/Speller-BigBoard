@@ -2,13 +2,11 @@
 
 <div class="grpselect">
 
-  <blockquote style='border:1px solid black'>
-    <b> Greeting Head </b><br />
-      Greeting Text. Gernally not many words to describe what we are doing. Most visiters
-      will know why they are here.   Notices the group less title above.
-  </blockquote>
-  
-  &nbsp;&nbsp;click the group you belong to<br>
+
+    <h3> Group Selection </h3>
+        Please click the image below that best describes your circumstances, thank you.<br>
+  <br>
+  &nbsp;&nbsp;please click the group you belong to
   
   <form action="grpsel.php" method="post">
   
