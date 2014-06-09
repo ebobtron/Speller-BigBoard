@@ -21,7 +21,7 @@
     #error_reporting(E_ALL);
     
     // build the target path string and some useful other strings
-    $submissionNameGp = $_POST['name'] . $_POST['group'];
+    $submissionNameGp = $_POST['name'] . getGroupNumber($group);
     $fileName = basename($_FILES['uploadedfile']['name']);
     
     $target_path = "../uploading/" . $submissionNameGp;
@@ -33,8 +33,10 @@
     // if successful and if not
     if($success) {
 
+        // create subinfo file for automation
+        createSubInfo($_POST['name'], getGroupNumber($group), $_POST['email']);
+        
         // build message and email strings
-        createSubInfo($_POST['name'], $_POST['group'], $_POST['email']);
         $message = "The file \" " . basename($_FILES['uploadedfile']['name']);
         $message = $message . " \" has been uploaded <br> for submitter: \" ";
         $message = $message . $_POST['name'] . " \" - group: " . $title . "<br>";
