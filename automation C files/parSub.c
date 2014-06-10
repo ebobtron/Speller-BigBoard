@@ -21,8 +21,8 @@ int main(void) {
     char stringBuf[550];
     char lowBuf[550];
     char id[255];
-    char oldid[255];
-    oldid[0] = '\0';
+    char oldname[255];
+    oldname[0] = '\0';
     char name[255];
     char ttime[255];
     char oldttime[255];
@@ -38,7 +38,7 @@ int main(void) {
             fgets(stringBuf,sizeof(stringBuf),infile);
             sscanf(stringBuf,"%[^,],%[^,],%[^,],", id, name, ttime);
             
-            if(atoi(id) == atoi(oldid)) {
+            if(!strcmp(name,oldname)) {
                 
                 if(atof(oldttime) > atof(ttime)) {
                     
@@ -49,13 +49,13 @@ int main(void) {
             }
             else {
                 
-                if(atoi(oldid)) {
+                if(oldname[0]) {
                     
                     fprintf(outfile, "%s", lowBuf);
                 }
                 
                 strcpy(lowBuf, stringBuf);
-                strcpy(oldid, id);
+                strcpy(oldname, name);
                 strcpy(oldttime, ttime);            
             }   
                 
