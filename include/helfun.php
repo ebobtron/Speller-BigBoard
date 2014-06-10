@@ -277,40 +277,61 @@ function updateData() {
  *   SEND NOTIFICATIONS FROM AN UPLOADED FILE
  ****************************************************/   
 function sendemailNotifications($mode) {
-
+    
+    include("groupstrings.php");
+     
+    
+    // submission data uploaded from submission testing
     $inFileName = "../minis/emailNot.txt";
     
+    // in no email notification file complain and then return
     if(!file_exists($inFileName)) {
         
         echo "<br>&nbsp;&nbsp;&nbsp;no email notification, no file \" emailNot.txt \"";
         return;        
     }
     
-    $inFileName = "../minis/emailNot.txt";
+    // this is a duplicate can go away
+    #$inFileName = "../minis/emailNot.txt";
+    
+    // open submisson notification file or die
     $inFileHandle = fopen($inFileName, 'r') or die("can't open file");
     
+    // on error complain and return
     if($inFileHandle == 0) {
         
         echo "No email notification file emailNot.txt";
         return;
     }
-
+    
+    // get array keys by position number
+    $keys = array_keys($titleString);
+    
+    // loop through submisson notification file until end
     while(true) {
         
         $lineOne = fgetcsv($inFileHandle, 500, ",");
-        $lineTwo = fgets($inFileHandle, 500);
-     
+        $lineTwo = fgetcsv($inFileHandle, 500, ",");
+        
+        // if end of file break from loop
         if(feof($inFileHandle))
             break;
         
-        $result = sendMail($lineOne[0], "ebobtron@aol.com", $lineOne[2], $lineTwo);
+        // get group string for email notification
+        $group = $titleString[ $keys[$lineTwo[1]]];
         
+        // insert group title string into email body
+        $body =  $lineTwo[0] . " from " . $group . ", " . $lineTwo[2];
+     
+        
+        // email "to, cc, subject, body"
+        $result = sendMail($lineOne[0], "ebobtron@aol.com", $lineOne[2], $body);
+        
+        // display part of message
         echo substr($result, 0, 35).".";
-         
-        // echo "to: ".$lineOne[0]." subject: ".$lineOne[2]."<br>";
-        // echo "message: ".$lineTwo."<br><br>";
     
     }
+
     unlink($inFileName);
     return;
 }
