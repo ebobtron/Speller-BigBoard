@@ -175,7 +175,7 @@ int main(int argc, char* argv[])
         if(parseVal()) {            
             
             printf("  |-    %s passed Valgrind testing -> reports %s MBytes\n", \
-                               group[i], valResults);
+                               name[i], valResults);
             
             sprintf(stringBuf, "%s, %s\n", name[i], valResults);
             fwrite(stringBuf, strlen(stringBuf), 1, outfilePass);
@@ -188,7 +188,7 @@ int main(int argc, char* argv[])
         }
         else {
         
-            printf("  |-    %s failed Valgrind testing reports %s\n", group[i], valResults);
+            printf("  |-    %s failed Valgrind testing reports %s\n", name[i], valResults);
             
             sprintf(stringBuf, "%s, failed valgrind: %s \n", name[i], valResults);
             fwrite(stringBuf, strlen(stringBuf), 1, outfileFail);
@@ -202,7 +202,7 @@ int main(int argc, char* argv[])
 
         if(spelling()) {
         
-            sprintf(stringBuf, "  |-    %s -> %s\n", group[i], spellerResults);
+            sprintf(stringBuf, "  |-    %s -> %s\n", name[i], spellerResults);
             printf("%s", stringBuf);
             fwrite(stringBuf, strlen(stringBuf), 1, outfile);
             canSpell[i] = true;
@@ -212,7 +212,7 @@ int main(int argc, char* argv[])
             }
             else {
             
-                sprintf(stringBuf, "  |-    %s -> %s\n", group[i], spellerResults);
+                sprintf(stringBuf, "  |-    %s -> %s\n", name[i], spellerResults);
                 printf("%s", stringBuf);
                 fwrite(stringBuf, strlen(stringBuf), 1, outfile);
                 canSpell[i] = false;
@@ -224,8 +224,8 @@ int main(int argc, char* argv[])
         if(valid[i] && canSpell[i]) {
             
             fprintf(outfileNote,"%s,%s,%s\n",email[i], "from", "Leader Board");
-            fprintf(outfileNote,"  %s, Group: %s, %s\n", name[i], group[i], \
-                                  "Welcome to the Leader Board,");
+            fprintf(outfileNote,"  %s,%s, %s\n", name[i], group[i], \
+                                  "Welcome to the Leader Board");
             
             }
             else {
@@ -249,7 +249,7 @@ int main(int argc, char* argv[])
             fprintf(bashHan,"counter=$1\nwhile [ $counter -gt 0 ]\ndo\n\n");
             fprintf(bashHan,"./%s ./pass/%s %s %s %s\n\n", \
                              testVersion, file[i], group[i], name[i], valMemory);
-            fprintf(bashHan,"counter=$(( $counter - 1 ))\ndone\necho done testing %s\n\n", group[i]);
+            fprintf(bashHan,"counter=$(( $counter - 1 ))\ndone\necho done testing %s\n\n", name[i]);
         }
         
         if(i == SUBDATA.gl_pathc - 1) {
