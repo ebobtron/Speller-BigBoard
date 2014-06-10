@@ -8,9 +8,10 @@
     // render header
     require("../template/header.php");
     
+    
     // the body of the page
     
-        echo"<div class='admin'><h2>admin: update submission data</h2>";
+        echo"<div class='admin'><h3>admin: update submission data</h3>";
     
         // .php?data=yes
     
