@@ -280,7 +280,6 @@ function sendemailNotifications($mode) {
     
     include("groupstrings.php");
      
-    
     // submission data uploaded from submission testing
     $inFileName = "../minis/emailNot.txt";
     
@@ -290,9 +289,6 @@ function sendemailNotifications($mode) {
         echo "<br>&nbsp;&nbsp;&nbsp;no email notification, no file \" emailNot.txt \"";
         return;        
     }
-    
-    // this is a duplicate can go away
-    #$inFileName = "../minis/emailNot.txt";
     
     // open submisson notification file or die
     $inFileHandle = fopen($inFileName, 'r') or die("can't open file");
@@ -401,7 +397,7 @@ function dumpSubmissions() {
  *  GET GROUP NUMBER    
  ****************************/
 function getGroupNumber($grpName){
-    
+
     // set filename and attempt to open
     $filename = "../include/grps.json";
 
