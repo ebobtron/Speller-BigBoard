@@ -10,9 +10,10 @@
 *   CS50x final project   winter/spring 2014 with Launch Code
 *
 ***************************************************************/
-
+    #error_reporting(E_ALL);
+    
     require "../include/helfun.php";
-
+    
     // Check if cookie contains group value
     // if cookie exist, set group var based on cookie data
     if (isset($_COOKIE['leaderboard_cookie'])) {
@@ -22,8 +23,8 @@
     // else, redirect to group selection page
     else {
         
-        // temp default group
-        $group = "lcstlw2014";
+        // temp default group "lcstlw2014"   
+        $group = null;
         
         #header("Location:".
         #"http://".$_SERVER["HTTP_HOST"].dirname($_SERVER["PHP_SELF"])."/grpsel.php");
