@@ -47,10 +47,6 @@
         $emailBody = "Received a submission from:  " . $_POST['name'] . " @ ";
         $emailBody = $emailBody . $_POST['email'];
         
-        // id will be issue upon uploading of valid submissions
-        // no longer needed   
-        // log submission to database
-        #$result = getPut("addSub",$_POST);
         
         // and results to message and email
         $message = $message . "<br>" . $result;
@@ -60,8 +56,9 @@
     else {
 
         $message = "There was an error uploading the file, please try again, later.<br>";
-        $message = $message . "for questions contact the administrator <a href=\"";
-        $message = $message . "mailto:ebobtron@aol.com\">mailto:ebobtron@aol.com</a><br>";
+        $message = $message . "for questions contact the <a href=\"";
+        $message = $message . "mailto:ebobtron@aol.com\">Leader Board Administrator</a><br>";
+        
         $emailBody = "a submission failed to upload from:  ";
         $emailBody = $emailBody . $_POST['name'] . " @ " . $_POST['email'];
     }
