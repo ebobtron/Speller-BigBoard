@@ -59,21 +59,21 @@
 <tbody class="tbody ldbd-tbody">
 
 <?php
-
+  $loop = 0;
 	foreach($rows as $row)
 	{
-		if ($loop % 2 == 0)
+		if($loop % 2 == 0)
 		  echo " <tr class='row'> ";
 		else
 		  echo " <tr> ";	
 
 		$id = sprintf("%04d", $row['id']);
-		$to = sprintf("%0.4f", $row[total]);
-		$ld = sprintf("%0.4f", $row[dload]);
-		$ck = sprintf("%0.4f", $row[tcheck]);
-		$sz = sprintf("%0.4f", $row[size]);
-		$ul = sprintf("%0.4f", $row[unload]);
-		$mm = sprintf("%0.4f MB", $row[mem]);
+		$to = sprintf("%0.4f", $row['total']);
+		$ld = sprintf("%0.4f", $row['dload']);
+		$ck = sprintf("%0.4f", $row['tcheck']);
+		$sz = sprintf("%0.4f", $row['size']);
+		$ul = sprintf("%0.4f", $row['unload']);
+		$mm = sprintf("%0.4f MB", $row['mem']);
 		echo"
     <td class='td' style='width:8em'>",$id,"</td>
 		<td class='td'>",$row['name'],"</td>
