@@ -92,7 +92,6 @@ function PDOconnect() {
     return $dbhan;
 }
 
-
 /*  
  *  GETPUT()
  *
