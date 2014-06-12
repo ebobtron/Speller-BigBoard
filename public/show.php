@@ -10,7 +10,7 @@
 *   CS50x final project   winter/spring 2014 with Launch Code
 *
 ***************************************************************/
-    #error_reporting(E_ALL);
+    error_reporting(E_ALL);
     
     require "../include/helfun.php";
     
@@ -19,26 +19,30 @@
     if (isset($_COOKIE['leaderboard_cookie'])) {
         
         $group = $_COOKIE['leaderboard_cookie'];
+        $template = "table.php";
     }
     // else, redirect to group selection page
     else {
-        
-        // temp default group "lcstlw2014"   
+           
         $group = null;
+        $template = "table_all.php";
         
         #header("Location:".
         #"http://".$_SERVER["HTTP_HOST"].dirname($_SERVER["PHP_SELF"])."/grpsel.php");
     }
     
     // tell the user which group they are looking at
-    $title = $titleString[$group];
-    $head = $headString[$group];
-    $link = $linkString[$group];
+    if($group !== null) {
+        
+        $title = $titleString[$group];
+        $head = $headString[$group];
+        $link = $linkString[$group];
+    }
+    
+    $keys = array_keys($titleString);
     
     // get table rows from display
     $rows = getPut("rows", getGroupNumber($group));
-
-    $template = "table.php";
 
             // render header
             require("../template/header.php");
