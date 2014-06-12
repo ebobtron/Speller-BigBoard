@@ -396,7 +396,14 @@ function dumpSubmissions() {
  *  GET GROUP NUMBER    
  ****************************/
 function getGroupNumber($grpName){
-
+    
+    $grpNum = null;
+    
+    if($grpName === null) {
+        
+        return $grpNum;
+    }
+    
     // set filename and attempt to open
     $filename = "../include/grps.json";
 
@@ -411,18 +418,23 @@ function getGroupNumber($grpName){
     
     // error check
     if($file) {
+        
         // set group number from data
         $json = json_decode(fread($file, filesize($filename)), true);
-        $grp = $json[$grpName];
+        if(isset($json[$grpName])) {
+            
+            $grpNum = $json[$grpName];
+        }
 
         fclose($file);
     }
-    else {
+    // removed,  $grpNum initialized to null above
+    #else {
         // default
-        $grp = null;
-    }
+    #    $grpNum = null;
+    #}
 
-    return $grp;
+    return $grpNum;
 }
 
 ?>
