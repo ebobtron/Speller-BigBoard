@@ -22,7 +22,7 @@
            "codergirlstl2014" => "&nbsp;-&nbsp;&nbsp;-&nbsp;&nbsp;".
                "<a href='mailto:codergirl@launchcode.org' class='head-links'>".
                "Coder Girl STL Edition</a><br>",
-           "edx2014" => "&nbsp;-&nbsp;&nbsp;-&nbsp;&nbsp;edX Edition<br>"
+           "edx2014" => "&nbsp;-&nbsp;&nbsp;-&nbsp;&nbsp;edX.org Edition<br>"
            );
     
     
