@@ -12,11 +12,10 @@
 <div class="lnk">
 
 <p style="display: inline;">
-<!--   THIS IS HANDY WHEN WORKING OR SUBMISSION PAGES
-<a class="menu" href="getspeller.php">&nbsp;Submit Your Program&nbsp;</a></p>
--->
 
-<a class="menu" href="../public/grpsel.php">&nbsp;Submit Your Program&nbsp;</a></p>
+  <!-- $_GET  ? r = gt means a group table -->
+  <a class="menu" href="../public/grpsel.php?r=gt" title="click to submit your speller">
+        Submit Your Program&nbsp;</a></p>
 
 
 &middot;
