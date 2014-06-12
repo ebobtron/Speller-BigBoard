@@ -1,6 +1,15 @@
 
-
-<?php 
+<?php
+/**
+*
+*
+* 
+***************************************/
+    
+    #if($_GET['r'] == 'gt') {
+    #
+    #   header("Location:"."getspeller.php");
+    #}
     
     $cookie_name = 'leaderboard_cookie';
     $cookie_time = time() + (24 * 60 * 60 * 365); // about a year
