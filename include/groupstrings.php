@@ -7,7 +7,7 @@
      */
 
     $titleString = array(
-           "cs50staff" => "",
+           "cs50staff" => "CS50 Staff Solution",
            "lcstlw2014" => "LaunchCodeSTL winter 2014",
            "codergirlstl2014" => "Coder Girl STL 2014",
            "edx2014" => "edX.org 2014"
@@ -16,7 +16,7 @@
     
     
     $headString = array(
-           "cs50staff" => "<br />", 
+           "cs50staff" => "<br>", 
            "lcstlw2014" => "&nbsp;-&nbsp;&nbsp;-&nbsp;&nbsp;".
                "LaunchCode St. Louis Edition<br>",
            "codergirlstl2014" => "&nbsp;-&nbsp;&nbsp;-&nbsp;&nbsp;".
