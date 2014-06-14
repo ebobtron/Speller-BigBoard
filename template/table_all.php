@@ -45,9 +45,10 @@
 <table class="table">
  <thead class="thead">
   <tr>
-	 <th class="th" style='width:45%'>&nbsp;&nbsp;group</th>
+	 <th class="th"></th>
 	 <th class="th">name</th>
 	 <th class="th">total time</th>
+   <th class="th" style='width:40%'>group</th>
 
  
   </tr>
@@ -72,10 +73,10 @@
 
 
 		echo"
-    <td class='td' style='width:20em'>",$grp,"</td>
+    <td class='td'></td>
 		<td class='td'>",$row['name'],"</td>
 		<td class='td'>",$to,"</td>
-    <td class='td'></td>
+    <td class='td' style='width:30%;font-family:Arapey_Italic;font-size:14pt'>",$grp,"</td>
     <td class='td'></td>
 
 		</tr>";
