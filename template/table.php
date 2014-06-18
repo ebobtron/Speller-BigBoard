@@ -30,11 +30,11 @@
 
 &middot;
 
-<p style="display: inline;">&nbsp;Groups
-<!--
-<a class="menu hover" href="">&nbsp;Download "test"&nbsp;</a>
--->
-</p>
+  <p style="display: inline;">
+
+    <a class="menu hover" href="grpsel.php">&nbsp;Groups</a>
+
+  </p>
 
 </div>
 
