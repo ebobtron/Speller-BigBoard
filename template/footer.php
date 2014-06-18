@@ -12,7 +12,7 @@
         alt="Valid CSS!"></a>
 	</td>
   <td> 
-     &copy; 2014 Robert Clark, aka ebobtron<br>
+     &copy; 2014 ebobtron, et al.<br>
      brought to you by me.
   </td>
   <td> 
