@@ -2,14 +2,24 @@
 <?php
 /**
 *
-*
+*   grpsel.php  group selection controler 
+* 
+*   Robert Clark, aka ebobtron et al.
+*   
+*   An expansion of my 
+*   CS50x final project   winter/spring 2014 with Launch Code
 * 
 ***************************************/
     
-    #if($_GET['r'] == 'gt') {
-    #
-    #   header("Location:"."getspeller.php");
-    #}
+    error_reporting(E_ALL);
+    
+    if(isset($_GET['r'])) {
+        
+        if($_GET['r'] == 'gt') {
+    
+            header("Location:"."getspeller.php");
+        }
+    }
     
     $cookie_name = 'leaderboard_cookie';
     $cookie_time = time() + (24 * 60 * 60 * 365); // about a year
@@ -30,6 +40,13 @@
         print_r($_COOKIE);
     }
     ********************************/
+    
+    if(isset($_GET['grouplink'])) {
+        
+        
+    
+    
+    }
             
     $template = "grpselform.php";
     
