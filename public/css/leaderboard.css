@@ -71,6 +71,7 @@ a:hover {
   
 .head {
   font-family: Arapey_Italic;
+  margin:0 0 6px 0;
   }
 
 .lilmar {
@@ -167,6 +168,7 @@ a:hover {
 
 .lnk {
 	margin: 5px;
+	margin-top:20px;
 	font-size:140%;
 	color: blue;
 	text-align:center;
@@ -234,6 +236,10 @@ input:-ms-input-placeholder {
   margin: auto;
   overflow-y: auto;
   }
+	
+ul li {
+  margin-top: 10px;
+  }  
 
 #grpTable {
   width: 98%;
@@ -310,4 +316,3 @@ input:-ms-input-placeholder {
 #coderg button:hover {
   border: 2px solid white;
   }
-
