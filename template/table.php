@@ -14,7 +14,7 @@
 <p style="display: inline;">
 
   <!-- $_GET  ? r = gt means a group table -->
-  <a class="menu" href="../public/grpsel.php?r=gt" title="click to submit your speller">
+  <a class="menu" href="../public/grpsel.php" title="click to submit your speller">
         Submit Your Program&nbsp;</a></p>
 
 
@@ -32,7 +32,7 @@
 
   <p style="display: inline;">
 
-    <a class="menu hover" href="grpsel.php">&nbsp;Groups</a>
+    <a class="menu hover" href="grpInfo.php">&nbsp;Groups</a>
 
   </p>
 
