@@ -18,7 +18,7 @@
   <td> 
  	 <a class="legal-links"
 	     href="http://trademark.harvard.edu/pages/trademark-notice">
-       "Harvard" Copyright &copy; 2014 The President and Fellows of Harvard
+       "Harvard" is &copy; 2014 The President and Fellows of Harvard
 			  College</a><br>
    <a class="legal-links" href="http://edx.org">"edX.org" is &copy; 2014
 	     edX.org</a>&nbsp;&nbsp;
