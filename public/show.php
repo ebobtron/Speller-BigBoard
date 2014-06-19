@@ -14,21 +14,37 @@
     
     require "../include/helfun.php";
     
-    // Check if cookie contains group value
-    // if cookie exist, set group var based on cookie data
-    if (isset($_COOKIE['leaderboard_cookie'])) {
-        
-        $group = $_COOKIE['leaderboard_cookie'];
-        $template = "table.php";
+    // set default table
+    $template = "table.php";   
+    
+    if(isset($_GET['grp'])) {
+    
+        if($_GET['grp'] == 0) {
+            
+            $group = null;
+            $template = "table_all.php";            
+        }
+        else {
+            
+            $keys = array_keys($titleString);
+            $group = $keys[$_GET['grp']];
+        }
     }
-    // else, redirect to group selection page
     else {
-           
-        $group = null;
-        $template = "table_all.php";
         
-        #header("Location:".
-        #"http://".$_SERVER["HTTP_HOST"].dirname($_SERVER["PHP_SELF"])."/grpsel.php");
+        // Check if cookie contains group value
+        // if cookie exist, set group var based on cookie data
+        if(isset($_COOKIE['leaderboard_cookie'])) {
+            
+            $group = $_COOKIE['leaderboard_cookie'];
+        }
+        // else, redirect to group selection page
+        else {
+           
+            $group = null;
+            $template = "table_all.php";
+        
+        }
     }
     
     // tell the user which group they are looking at
