@@ -9,63 +9,74 @@
 *
 *************************************************************/
 
-    require "../include/config.php";
+    #require "../include/config.php";
     require "../include/helfun.php";
     
-    $group = $_POST['group'];
     
-    $title = $titleString[$group];
-    $head = $headString[$group];
-    $link = $linkString[$group];
-     
-    #error_reporting(E_ALL);
-    
-    // build the target path string and some useful other strings
-    $submissionNameGp = $_POST['name'] . getGroupNumber($group);
-    $fileName = basename($_FILES['uploadedfile']['name']);
-    
-    $target_path = "../uploading/" . $submissionNameGp;
-    $target_path = $target_path . $fileName . ".x"; 
-    
-    // if file is is up move to defined folder
-    $success = move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path);
-    
-    // if successful and if not
-    if($success) {
-
-        // create subinfo file for automation
-        createSubInfo($_POST['name'], getGroupNumber($group), $_POST['email']);
-        
-        // build message and email strings
-        $message = "The file \" " . basename($_FILES['uploadedfile']['name']);
-        $message = $message . " \" has been uploaded <br> for submitter: \" ";
-        $message = $message . $_POST['name'] . " \" - group: " . $title . "<br>";
-        $message = $message . "Submission may take several hours before posting.<br><br>";
-        $message = $message . "for questions contact the administrator <a href=\"";
-        $message = $message . "mailto:ebobtron@aol.com\">mailto:ebobtron@aol.com</a><br>";
-        
-        $emailBody = "Received a submission from:  " . $_POST['name'] . " @ ";
-        $emailBody = $emailBody . $_POST['email'];
-        
-        
-        // and results to message and email
-        $message = $message . "<br>" . $result;
-        $emailBody = $emailBody . "\r\n" . $result;
-        
+    if(strcmp($_FILES['uploadedfile']['name'],"speller") != 0) {
+       
+       $message = "bogus or corupted file submission \"".
+                  $_FILES['uploadedfile']['name'].
+                  "\" plesse submit the file \"speller\" again.";
+       $message = $message . "<br><br><b>No file submission.</b>";          
     }
     else {
+    
+        $group = $_POST['group'];
+    
+        $title = $titleString[$group];
+        $head = $headString[$group];
+        $link = $linkString[$group];
+     
+        #error_reporting(E_ALL);
+    
+        // build the target path string and some useful other strings
+        $submissionNameGp = $_POST['name'] . getGroupNumber($group);
+        $fileName = basename($_FILES['uploadedfile']['name']);
+    
+        $target_path = "../uploading/" . $submissionNameGp;
+        $target_path = $target_path . $fileName . ".x"; 
+    
+        // if file is is up move to defined folder
+        $success = move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path);
+    
+        // if successful and if not
+        if($success) {
 
-        $message = "There was an error uploading the file, please try again, later.<br>";
-        $message = $message . "for questions contact the <a href=\"";
-        $message = $message . "mailto:ebobtron@aol.com\">Leader Board Administrator</a><br>";
+            // create subinfo file for automation
+            createSubInfo($_POST['name'], getGroupNumber($group), $_POST['email']);
         
-        $emailBody = "a submission failed to upload from:  ";
-        $emailBody = $emailBody . $_POST['name'] . " @ " . $_POST['email'];
-    }
+            // build message and email strings
+            $message = "The file \" " . basename($_FILES['uploadedfile']['name']);
+            $message = $message . " \" has been uploaded <br> for submitter: \" ";
+            $message = $message . $_POST['name'] . " \" - group: " . $title . "<br>";
+            $message = $message . "<br><b>Submission may take several hours before posting.</b><br><br>";
+            $message = $message . "for questions contact the administrator <a href=\"";
+            $message = $message . "mailto:ebobtron@aol.com\">mailto:ebobtron@aol.com</a><br>";
+        
+            $emailBody = "Received a submission from:  " . $_POST['name'] . " @ ";
+            $emailBody = $emailBody . $_POST['email'];
+        
+        
+            // and results to message and email
+            $message = $message . "<br>" . $result;
+            $emailBody = $emailBody . "\r\n" . $result;
+        
+        }
+        else {
 
-    $mr = sendMail("ebobtron@aol.com", "erobclark@att.net",
+            $message = "There was an error uploading the file, please try again, later.<br>";
+            $message = $message . "for questions contact the <a href=\"";
+            $message = $message . "mailto:ebobtron@aol.com\">Leader Board Administrator</a><br>";
+        
+            $emailBody = "a submission failed to upload from:  ";
+            $emailBody = $emailBody . $_POST['name'] . " @ " . $_POST['email'];
+        }
+
+        $mr = sendMail("ebobtron@aol.com", "erobclark@att.net",
                         "Leader Board Submission", $emailBody);
-    $message = $message . $mr;
+        $message = $message . $mr;
+    }
 
     // render header
     require("../template/header.php");
@@ -77,4 +88,3 @@
     require("../template/footer.php");
 
 ?>
-
