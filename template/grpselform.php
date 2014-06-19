@@ -1,5 +1,4 @@
 
-
 <div class="gentext lilmar" style='width:80%'>
 
   <h3 class="head lilmar"> Group Selection </h3>
@@ -8,12 +7,12 @@
     If you have a group not shown here please contact the
     <a href="mailto:ebobtron@aol.com" class="head-links" style='font-size:19px'>
     Leader Board Administrator.</a>&nbsp;
-    We can add your group.
+    We can add your group.</ul>
 </div>
 
 <div class="grpSelect">  
 <form action="grpsel.php" method="post">
-  
+
   <table id="grpTable">
   <tr>
     <td class='grptd'>
@@ -58,7 +57,7 @@
    </td>
   </tr>
 </table>
-  
+
 </form>
 
 </div><br>
