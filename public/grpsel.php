@@ -13,6 +13,7 @@
 
     error_reporting(E_ALL);
     
+    $target = "sub";
     $cookie_name = 'leaderboard_cookie';
     $cookie_time = time() + (24 * 60 * 60 * 365); // about a year
     
@@ -24,6 +25,13 @@
             header("Location:"."getspeller.php");
         }
     }
+    else {
+        
+        if(strcmp($_GET['chg'],"default") == 0){
+            
+            $target = "chggrp";
+        }
+    }
 
     if(isset($_POST['group'])) {
 
@@ -32,6 +40,15 @@
         header("Location:".
         "http://".$_SERVER["HTTP_HOST"].dirname($_SERVER["PHP_SELF"])."/getspeller.php");
     }
+    
+    if(isset($_POST['target'])) {
+        
+        if(strcmp($_POST['target'],"chggrp") == 0) {
+            
+            header("Location:"."show.php");
+        }
+    }
+    
 
 
     /* // diagnostic code
