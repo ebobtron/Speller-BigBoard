@@ -11,6 +11,7 @@
 </div>
 
 <div class="grpSelect">  
+
 <form action="grpsel.php" method="post">
 
   <table id="grpTable">
@@ -57,7 +58,7 @@
    </td>
   </tr>
 </table>
-
+  <input type="hidden" name="target" value="<?=$target?>">
 </form>
 
 </div><br>
