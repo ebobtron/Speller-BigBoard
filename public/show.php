@@ -62,6 +62,9 @@
 
             // render header
             require("../template/header.php");
+            
+            // render links
+            require("../template/links.php");
 
             // render template
             require("../template/$template");
