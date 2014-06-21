@@ -227,14 +227,14 @@ int main(int argc, char* argv[])
             fprintf(outfileNote,"  %s,%s, %s\n", name[i], group[i], \
                                   "Welcome to the Leader Board");
             
-            }
-            else {
+        }
+        else {
             
             fprintf(outfileNote,"%s,%s,%s\n",email[i], "from", "Leader Board");
-            fprintf(outfileNote,"%s - %s -%s\n", \
-               "Sorry, your submission failed valgind and/or a spelling check", \
+            fprintf(outfileNote,"%s,%s, %s %s %s\n", name[i], group[i], \
+               "Your submission failed valgind and/or a spelling check ", \
                 valResults, spellerResults);
-            }
+        }
         
         // prepare bash script for testing.
         FILE* bashHan = fopen("runasbbtest.sh", "a");
