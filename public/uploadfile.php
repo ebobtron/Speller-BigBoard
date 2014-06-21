@@ -9,9 +9,14 @@
 *
 *************************************************************/
 
-    #require "../include/config.php";
     require "../include/helfun.php";
     
+    $dirString = "../uploading/";
+    
+    if(file_exists("../minis/alt_load.txt")) {
+        
+        $dirString = "../uploading_alt/";
+    }
     
     if(strcmp($_FILES['uploadedfile']['name'],"speller") != 0) {
        
@@ -34,7 +39,7 @@
         $submissionNameGp = $_POST['name'] . getGroupNumber($group);
         $fileName = basename($_FILES['uploadedfile']['name']);
     
-        $target_path = "../uploading/" . $submissionNameGp;
+        $target_path = $dirString . $submissionNameGp;
         $target_path = $target_path . $fileName . ".x"; 
     
         // if file is is up move to defined folder
@@ -44,15 +49,18 @@
         if($success) {
 
             // create subinfo file for automation
-            createSubInfo($_POST['name'], getGroupNumber($group), $_POST['email']);
+            createSubInfo($_POST['name'], getGroupNumber($group), $_POST['email'],
+                               $dirString);
         
             // build message and email strings
             $message = "The file \" " . basename($_FILES['uploadedfile']['name']);
             $message = $message . " \" has been uploaded <br> for submitter: \" ";
             $message = $message . $_POST['name'] . " \" - group: " . $title . "<br>";
-            $message = $message . "<br><b>Submission may take several hours before posting.</b><br><br>";
+            $message = $message . "<br><b>Submission may take several hours before ".
+                                  "posting.</b><br><br>";
             $message = $message . "for questions contact the administrator <a href=\"";
-            $message = $message . "mailto:ebobtron@aol.com\">mailto:ebobtron@aol.com</a><br>";
+            $message = $message . "mailto:ebobtron@aol.com\">mailto:ebobtron@aol.com</a>".
+                                  "<br>";
         
             $emailBody = "Received a submission from:  " . $_POST['name'] . " @ ";
             $emailBody = $emailBody . $_POST['email'];
@@ -67,7 +75,8 @@
 
             $message = "There was an error uploading the file, please try again, later.<br>";
             $message = $message . "for questions contact the <a href=\"";
-            $message = $message . "mailto:ebobtron@aol.com\">Leader Board Administrator</a><br>";
+            $message = $message . "mailto:ebobtron@aol.com\">".
+                                  "Leader Board Administrator</a><br>";
         
             $emailBody = "a submission failed to upload from:  ";
             $emailBody = $emailBody . $_POST['name'] . " @ " . $_POST['email'];

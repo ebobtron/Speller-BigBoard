@@ -180,28 +180,26 @@ function getPut($what, $data) {
     }   
 }
 
-
-
 /*
  *  createSubInfo()
  *
  *  creates submission info file with data for testing the submissions  
  ***********************************************************************/
 
-function createSubInfo($name, $id, $email) {
+function createSubInfo($name, $id, $email, $dir) {
 
-    $outFileName = "../uploading/subInfo.txt";
+    $outFileName = $dir . "subInfo.txt";
     $outFileHandle = fopen($outFileName, 'a') or die("can't open file");
     
     $outString = $name . $id . "speller.x,";
     $outString = $outString . $id . "," . $name. "," . $email . "\n";
 
     if($outFileHandle) {
+        
         fwrite($outFileHandle, $outString); 
         fclose($outFileHandle);
     }
 }
-
 
 /*
  *   updateData()
@@ -367,7 +365,6 @@ function validEmail($email) {
     }
     
 }
-
 
 /*
  *  dumpSubmissions()
