@@ -25,7 +25,6 @@
             if(updateData("")) {
                 
                 sendemailNotifications("test");
-                dumpSubmissions();
             }
         }
         else { 

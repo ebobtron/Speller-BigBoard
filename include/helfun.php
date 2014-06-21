@@ -255,6 +255,12 @@ function updateData() {
             $stmt->execute();
             printf("adding %04u for group %u name: \" %s \" total time: %04f <br>",
                     $return['nextId'], $data[0], $data[1], $data[2]);
+            
+            $oldFileName = $data[1] . $data[0] . "speller.x";
+            $newFileName = $return['nextId'] . $oldFileName;
+            
+            dumpSubmissions($oldFileName, $newFileName);
+                    
         }
     }
     catch(PDOException $e) {
@@ -264,6 +270,7 @@ function updateData() {
     }
     
     unlink($inFileName);
+    dumpSubmissions(0,0);
     
     if($dbhandle)
         $dbhandle = null;
@@ -316,7 +323,7 @@ function sendemailNotifications($mode) {
         $group = $titleString[ $keys[$lineTwo[1]]];
         
         // insert group title string into email body
-        $body =  $lineTwo[0] . " from " . $group . ", " . $lineTwo[2];
+        $body =  $lineTwo[0] . " of " . $group . ", " . $lineTwo[2];
      
         
         // email "to, cc, subject, body"
@@ -366,11 +373,16 @@ function validEmail($email) {
  *  dumpSubmissions()
  *  CLEAN SUBMISSIONS UPLOADING 
  ********************************/
-function dumpSubmissions() {
+function dumpSubmissions($old, $new) {
     
-    if(file_exists("../uploading/subInfo.txt")) {
+    if($old && $new) {
         
-        unlink("../uploading/subInfo.txt");
+        $old = "../uploading/".$old;
+        $new = "../dump/".$new;
+        copy($old, $new);
+        echo "moved to the dump, the file: " . $old . "<br>";
+        unlink($old);
+        return;
     }
     
     $files = glob("../uploading/*");
@@ -383,7 +395,7 @@ function dumpSubmissions() {
         if(is_file($file)) {
             
             copy($file, $newfileName);
-            echo "<br>  moved to the dump, the file: ".$newfileName;
+            echo "moved to the dump, the file: ".$newfileName . "<br>";
             unlink($file);
         }
     }
