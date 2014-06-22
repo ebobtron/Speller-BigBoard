@@ -19,7 +19,7 @@
         
             $_GET = array('data' => null);
         }
-    
+
         if($_GET['data'] == "yes") {
     
             if(updateData("")) {
