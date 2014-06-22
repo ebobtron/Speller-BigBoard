@@ -231,8 +231,10 @@ function updateData() {
         
         while(($data = fgetcsv($inFileHandle, 1000, ",")) !== FALSE) {
 
-            if(!$data[0])
+            if(!$data[0]) {
+                
                 break;
+            }
             
            
             $return = getPut("nextId", $data[0]);
@@ -266,9 +268,10 @@ function updateData() {
         $success = false;
         echo 'Leader Board updateData ERROR: ' . $e->getMessage();
     }
-    
+    // clean up files
     unlink($inFileName);
     dumpSubmissions(0,0);
+    moveSubmissions();
     
     if($dbhandle)
         $dbhandle = null;
@@ -278,7 +281,7 @@ function updateData() {
 
 /*
  *   sendemailNotifications()
- *   SEND NOTIFICATIONS FROM AN UPLOADED FILE
+ *   NOTIFICATIONS FROM AN UPLOADED FILE
  ****************************************************/   
 function sendemailNotifications($mode) {
     
@@ -336,7 +339,6 @@ function sendemailNotifications($mode) {
     return;
 }
 
-
 /*
  *  validName()
  *  replace white spaces from names D Doug becomes D_Doug
@@ -368,8 +370,8 @@ function validEmail($email) {
 
 /*
  *  dumpSubmissions()
- *  CLEAN SUBMISSIONS UPLOADING 
- ********************************/
+ *  MOVE SUBMISSIONS FROM UPLOADING TO DUMP
+ ******************************************/
 function dumpSubmissions($old, $new) {
     
     if($old && $new) {
@@ -401,6 +403,36 @@ function dumpSubmissions($old, $new) {
 }
 
 /*
+ *  MOVE SUBMISSIONS FROM Alternate Directory
+ *
+ *********************************************/
+function moveSubmissions() {
+
+    $files = glob("../uploading_alt/*");
+    
+    foreach($files as $file) {
+          
+        $newfileName = "../uploading/".basename($file);
+        
+        if(is_file($file)) {
+            
+            copy($file, $newfileName);
+            echo "found new submissin file: ".$newfileName . "<br>";
+            unlink($file);
+        }
+    }
+    
+    // ends submission redirect
+    if(file_exists("../minis/alt_load.txt")) {
+        
+        unlink("../minis/alt_load.txt");
+    }    
+    return; 
+
+}
+
+ 
+/*
  *  getGroupNumber()   by  h-chris
  *  GET GROUP NUMBER    
  ****************************/
@@ -430,6 +462,7 @@ function getGroupNumber($grpName){
         
         // set group number from data
         $json = json_decode(fread($file, filesize($filename)), true);
+        
         if(isset($json[$grpName])) {
             
             $grpNum = $json[$grpName];
@@ -437,11 +470,6 @@ function getGroupNumber($grpName){
 
         fclose($file);
     }
-    // removed,  $grpNum initialized to null above
-    #else {
-        // default
-    #    $grpNum = null;
-    #}
 
     return $grpNum;
 }
