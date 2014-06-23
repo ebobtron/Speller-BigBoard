@@ -20,7 +20,7 @@
             $_GET = array('data' => null);
         }
     
-        if($_GET['data'] == "yes") {
+        if($_GET['data'] === "yes") {
     
             if($results = updateData("")) {
                 
