@@ -49,6 +49,9 @@ int main(int argc, char* argv[])
     splash();
     sleep(1);
     
+    // cause new submisson files to be redirected during testing
+    system("curl http://speller-leaderboard.freehostia.com/public/redirectSubs.php");
+    
     // we need a download folder 
     while(glob("downloaded", 0, NULL, &SUBDATA)) {
     
