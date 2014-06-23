@@ -8,6 +8,7 @@
 *
 *************************************************************/
 
+require "config.php";
 require "groupstrings.php";
 
 /*
