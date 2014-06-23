@@ -27,7 +27,7 @@
     }
     else {
         
-        if(strcmp($_GET['chg'],"default") == 0){
+        if($_GET['chg'] === "default") {
             
             $target = "chggrp";
         }
@@ -43,18 +43,16 @@
     
     if(isset($_POST['target'])) {
         
-        if(strcmp($_POST['target'],"chggrp") == 0) {
+        if($_POST['target'] === "chggrp") {
             
             header("Location:"."show.php");
         }
     }
     
-
-
     /* // diagnostic code
     if(isset($_COOKIE[$cookie_name])) {    
-        echo $_COOKIE[$cookie_name]."<br>";
-        print_r($_COOKIE);
+    echo $_COOKIE[$cookie_name]."<br>";
+    print_r($_COOKIE);
     }
     ********************************/
 
