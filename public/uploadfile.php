@@ -4,7 +4,9 @@
 *
 *   uploadfile.php  manage the uploaded file
 *
-*   Robert Clark, aka ebobtron
+*   Robert Clark, aka ebobtron et al.
+*
+*   An expansion of my 
 *   CS50x final project   winter/spring 2014  with Launch Code
 *
 *************************************************************/
@@ -18,7 +20,7 @@
         $dirString = "../uploading_alt/";
     }
     
-    if(strcmp($_FILES['uploadedfile']['name'],"speller") != 0) {
+    if($_FILES['uploadedfile']['name'] !== "speller") {
        
        $message = "bogus or corupted file submission \"".
                   $_FILES['uploadedfile']['name'].
