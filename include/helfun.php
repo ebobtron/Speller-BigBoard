@@ -214,6 +214,8 @@ function updateData() {
     if(!file_exists($inFileName)) {
         
         $dbhandle = null;
+        dumpSubmissions(0,0);
+        moveSubmissions();
         return "&nbsp;...no submission data: file \"" . $inFileName . "\" not found<br />";        
     } 
         
