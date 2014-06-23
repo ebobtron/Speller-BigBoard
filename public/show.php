@@ -10,13 +10,19 @@
 *   CS50x final project   winter/spring 2014 with Launch Code
 *
 ***************************************************************/
-    error_reporting(E_ALL);
+
+    error_reporting(0);  // E_ALL | E_STRICT
     
     require "../include/helfun.php";
     
     // set default table
-    $template = "table.php";   
+    $template = "table.php";
+       
+    // get array of keys for titleString array
+    // keys to array elements are numeric
+    $keys = array_keys($titleString);
     
+    // check if group to display is pasted in the url
     if(isset($_GET['grp'])) {
     
         if($_GET['grp'] == 0) {
@@ -25,20 +31,18 @@
             $template = "table_all.php";            
         }
         else {
-            
-            $keys = array_keys($titleString);
+             
             $group = $keys[$_GET['grp']];
         }
     }
     else {
-        
-        // Check if cookie contains group value
-        // if cookie exist, set group var based on cookie data
+        // if group not pasted in url check cookie 
+        // if cookie exist, set group based on cookie data
         if(isset($_COOKIE['leaderboard_cookie'])) {
             
             $group = $_COOKIE['leaderboard_cookie'];
         }
-        // else, redirect to group selection page
+        // else, redirect to table showing all groups times
         else {
            
             $group = null;
@@ -53,9 +57,7 @@
         $title = $titleString[$group];
         $head = $headString[$group];
         $link = $linkString[$group];
-    }
-    
-    $keys = array_keys($titleString);
+    } 
     
     // get table rows from display
     $rows = getPut("rows", getGroupNumber($group));
