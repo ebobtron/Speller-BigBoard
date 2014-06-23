@@ -28,12 +28,12 @@
 
         Please upload <h3> "speller" </h3> not speller.c, thank you.<br>
         <br>
-        Click Browse to Select File to Upload: <input type='file' name='uploadedfile'><br>
+        <big><b>Click Browse to Select File to Upload:</b></big>
+            <input type='file' name='uploadedfile'><br>
         <br>
 
         <input type='hidden' name='name' value='<?=$name?>'>
         <input type='hidden' name='group' value='<?=$group?>'>
-   <!-- <input type='hidden' name='id' value='",$id,"'>     -->
         <input type='hidden' name='email' value='<?=$_POST['email']?>'>
         
         <input type='submit' value='submit' style='font-size:20px'>
