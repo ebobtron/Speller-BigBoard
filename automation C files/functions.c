@@ -17,6 +17,10 @@
 
 #include "functions.h"
 
+char* boolToYesNo(bool word) {
+    
+    return (word == true) ? "Passed" : "Failed";
+} 
 
 int splash(void) {
 
@@ -166,8 +170,12 @@ bool spelling(void){
         return true;
     }
     else {
-        sprintf(spellerResults, "failed one or more -> spelling: %i dictionary: %i word count: %i",
-                                spell, dictionary, wordcount);
+        sprintf(spellerResults, \
+         "failed one or more -> WORDS MISSPELLED: %s; WORDS IN DICTIONARY: %s; WORDS IN TEXT: %s;", \
+          boolToYesNo(spell), \
+          boolToYesNo(dictionary), \
+          boolToYesNo(wordcount));
+        
         return false;
     }
     

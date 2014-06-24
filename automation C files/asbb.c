@@ -209,6 +209,7 @@ int main(int argc, char* argv[])
             printf("%s", stringBuf);
             fwrite(stringBuf, strlen(stringBuf), 1, outfile);
             canSpell[i] = true;
+            // move file
             sprintf(stringBuf,"mv downloaded/%s pass", file[i]);
             system(stringBuf);
               
@@ -219,6 +220,7 @@ int main(int argc, char* argv[])
                 printf("%s", stringBuf);
                 fwrite(stringBuf, strlen(stringBuf), 1, outfile);
                 canSpell[i] = false;
+                // move file
                 sprintf(stringBuf,"mv downloaded/%s failed", file[i]);
                 system(stringBuf);
             }
@@ -319,7 +321,7 @@ int main(int argc, char* argv[])
     }
     else {
 
-        printf("\n....    no benchmarks to do, sending email notifications");
+        printf("\n....    no benchmarks to do, sending email notifications\n");
         
         sprintf(comString,"./parSub");
         
