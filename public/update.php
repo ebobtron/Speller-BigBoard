@@ -24,7 +24,10 @@
     
             if($results = updateData("")) {
                 
-                echo $results;
+                if($results !== true) {
+                    
+                    echo $results;
+                }
                 sendemailNotifications("test");
             }
         }
@@ -35,9 +38,9 @@
         
         echo"</div>";
     
-	
+
   	// render footer
     require("../template/footer.php");
- 
+
 ?>
 
