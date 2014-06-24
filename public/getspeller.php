@@ -14,7 +14,7 @@
 
     $error = false;
     
-    $title = $titleString[1];
+    #$title = $titleString[1];
     
     $email = validEmail(($_POST['email']));
     $name = validName($_POST['name']);
@@ -38,24 +38,34 @@
         $submit = $_POST['submit'];
     }
 
+    // now this is a little nutty  
+    if($magWrd === $magicword_2) {
+        
+        $magWrd = $magicword;
+    }
+
     if($magWrd !== $magicword || !$name || !$email) {
 
         if(!$email && $submit) {
             
-            $validSubMsg = "alert('Submission needs an email address: ')";
+            $validSubMsg = "alert('Submission needs an email address: ');" .
+                           "javascript:history.go(-1);";
         }        
 
         if(!$name && $submit) {
         
-            $validSubMsg = "alert('Submission needs a name: ')";
+            $validSubMsg = "alert('Submission needs a name: ');" .
+                           "javascript:history.go(-1);";
         }
                 
         if($magWrd != "launchcode" && $submit) {
         
-            $validSubMsg = "alert('You must use a magicword')";
+            $validSubMsg = "alert('You must use a Magic Word. Check the referring web" .
+                           "page for the correct Magic Word.');" .
+                           "javascript:history.go(-1);";
                                    
         }
-        
+
         // if no magicword stay on the getspeller form
         $template = "getspellerform.html";
 
