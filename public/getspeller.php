@@ -22,7 +22,7 @@
     // set grp number based on last group user chose
     $group = $_COOKIE['leaderboard_cookie'];
     
-    if $group === NULL {
+    if ($group === null) {
 		//redirect to group selection
         require("/public/grpsel.php");
 	}
