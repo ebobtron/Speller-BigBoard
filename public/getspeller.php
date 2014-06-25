@@ -22,81 +22,86 @@
     // set grp number based on last group user chose
     $group = $_COOKIE['leaderboard_cookie'];
     
-    $title = $titleString[$group];
-    $head = $headString[$group];
-    $link = $linkString[$group]; 
-     
-    $validSubMsg = null;
-    
-    if(!array_key_exists('magword', $_POST)) {
-        
-        $_POST = array('magword' => null, 'submit' => null);
-    }
+    if ($group === null) {
+		//redirect to group selection
+        require("/public/grpsel.php");
+	}
     else {
-        
-        $magWrd = $_POST['magword'];
-        $submit = $_POST['submit'];
-    }
+		$title = $titleString[$group];
+		$head = $headString[$group];
+		$link = $linkString[$group]; 
+		 
+		$validSubMsg = null;
+		
+		if(!array_key_exists('magword', $_POST)) {
+			
+			$_POST = array('magword' => null, 'submit' => null);
+		}
+		else {
+			
+			$magWrd = $_POST['magword'];
+			$submit = $_POST['submit'];
+		}
 
-    // now this is a little nutty  
-    if($magWrd === $magicword_2) {
-        
-        $magWrd = $magicword;
-    }
+		// now this is a little nutty  
+		if($magWrd === $magicword_2) {
+			
+			$magWrd = $magicword;
+		}
 
-    if($magWrd !== $magicword || !$name || !$email) {
+		if($magWrd !== $magicword || !$name || !$email) {
 
-        if(!$email && $submit) {
-            
-            $validSubMsg = "alert('Submission needs an email address: ');" .
-                           "javascript:history.go(-1);";
-        }        
+			if(!$email && $submit) {
+				
+				$validSubMsg = "alert('Submission needs an email address: ');" .
+							   "javascript:history.go(-1);";
+			}        
 
-        if(!$name && $submit) {
-        
-            $validSubMsg = "alert('Submission needs a name: ');" .
-                           "javascript:history.go(-1);";
-        }
-                
-        if($magWrd != "launchcode" && $submit) {
-        
-            $validSubMsg = "alert('You must use a Magic Word. Check the referring web" .
-                           "page for the correct Magic Word.');" .
-                           "javascript:history.go(-1);";
-                                   
-        }
+			if(!$name && $submit) {
+			
+				$validSubMsg = "alert('Submission needs a name: ');" .
+							   "javascript:history.go(-1);";
+			}
+					
+			if($magWrd != "launchcode" && $submit) {
+			
+				$validSubMsg = "alert('You must use a Magic Word. Check the referring web" .
+							   "page for the correct Magic Word.');" .
+							   "javascript:history.go(-1);";
+									   
+			}
 
-        // if no magicword stay on the getspeller form
-        $template = "getspellerform.html";
+			// if no magicword stay on the getspeller form
+			$template = "getspellerform.html";
 
-            // render header
-            require("../template/header.php");
-        
-            echo "<script type='text/javascript'>",$validSubMsg,"</script>";
-    
-            // render template
-            require("../template/$template");
+				// render header
+				require("../template/header.php");
+			
+				echo "<script type='text/javascript'>",$validSubMsg,"</script>";
+		
+				// render template
+				require("../template/$template");
 
-            // render footer
-            require("../template/footer.php");
-    }
-    else {
+				// render footer
+				require("../template/footer.php");
+		}
+		else {
 
-        // good magicword and valid email address and name continue submission
-        
-        $email = $_POST['email'];
+			// good magicword and valid email address and name continue submission
+			
+			$email = $_POST['email'];
 
-        $template = "submitform.php";
+			$template = "submitform.php";
 
-        // render header
-        require("../template/header.php");
-             
-        // render template
-        require("../template/$template");
+			// render header
+			require("../template/header.php");
+				 
+			// render template
+			require("../template/$template");
 
-        // render footer
-        require("../template/footer.php");	
-    }
-
+			// render footer
+			require("../template/footer.php");	
+		}
+	}
 ?>
 
