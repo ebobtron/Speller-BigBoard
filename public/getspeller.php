@@ -14,7 +14,7 @@
 
     $error = false;
     
-    $title = $titleString[1];
+    #$title = $titleString[1];
     
     $email = validEmail(($_POST['email']));
     $name = validName($_POST['name']);
@@ -38,25 +38,35 @@
         $submit = $_POST['submit'];
     }
 
-    if($magWrd != "launchcode" || !$name || !$email) {
+    // now this is a little nutty  
+    if($magWrd === $magicword_2) {
+        
+        $magWrd = $magicword;
+    }
+
+    if($magWrd !== $magicword || !$name || !$email) {
 
         if(!$email && $submit) {
             
-            $validSubMsg = "alert('Submission needs an email address: ')";
+            $validSubMsg = "alert('Submission needs an email address: ');" .
+                           "javascript:history.go(-1);";
         }        
 
         if(!$name && $submit) {
         
-            $validSubMsg = "alert('Submission needs a name: ')";
+            $validSubMsg = "alert('Submission needs a name: ');" .
+                           "javascript:history.go(-1);";
         }
                 
         if($magWrd != "launchcode" && $submit) {
         
-            $validSubMsg = "alert('You must use a magicword')";
+            $validSubMsg = "alert('You must use a Magic Word. Check the referring web" .
+                           "page for the correct Magic Word.');" .
+                           "javascript:history.go(-1);";
                                    
         }
-        
-        // if not magicword stay on the getspeller form
+
+        // if no magicword stay on the getspeller form
         $template = "getspellerform.html";
 
             // render header
@@ -72,45 +82,17 @@
     }
     else {
 
-        // good magicword and valid email address continue submission
+        // good magicword and valid email address and name continue submission
         
         $email = $_POST['email'];
-
-        // return id from the submisson name or the next id
-                
-
-// all the code between here and ******************* is moot
-/* this will be gone in new verson
-        $newId = getPut("nameId",$name);
-        if(is_array($newId)) {
-            if($newId['lastId'] == null) {
-                $id = $newId['nextId'];
-            }
-            else {
-                $id = $newId['lastId'] + 1;
-            }
-        }
-        else {  
-            $error = true;
-        }
-/********************************************************/
 
         $template = "submitform.php";
 
         // render header
         require("../template/header.php");
              
-        if($error) { 
-
-            echo "<br /><br /><br /><br /><br /><br />";
-            echo " &nbsp; &nbsp; &nbsp; ".$newId;
-            echo "<br /><br /><br /><br /><br /><br />";
-        }
-        else {
-
-            // render template
-            require("../template/$template");
-        }
+        // render template
+        require("../template/$template");
 
         // render footer
         require("../template/footer.php");	

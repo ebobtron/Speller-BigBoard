@@ -5,6 +5,9 @@
 
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
     <link href="../public/css/leaderboard.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
     <style type="text/css"></style>
 
     <?php if(isset($title)): ?>

@@ -8,6 +8,7 @@
 *
 *************************************************************/
 
+require "config.php";
 require "groupstrings.php";
 
 /*
@@ -180,28 +181,26 @@ function getPut($what, $data) {
     }   
 }
 
-
-
 /*
  *  createSubInfo()
  *
  *  creates submission info file with data for testing the submissions  
  ***********************************************************************/
 
-function createSubInfo($name, $id, $email) {
+function createSubInfo($name, $id, $email, $dir) {
 
-    $outFileName = "../uploading/subInfo.txt";
+    $outFileName = $dir . "subInfo.txt";
     $outFileHandle = fopen($outFileName, 'a') or die("can't open file");
     
     $outString = $name . $id . "speller.x,";
     $outString = $outString . $id . "," . $name. "," . $email . "\n";
 
     if($outFileHandle) {
+        
         fwrite($outFileHandle, $outString); 
         fclose($outFileHandle);
     }
 }
-
 
 /*
  *   updateData()
@@ -216,6 +215,8 @@ function updateData() {
     if(!file_exists($inFileName)) {
         
         $dbhandle = null;
+        dumpSubmissions(0,0);
+        moveSubmissions();
         return "&nbsp;...no submission data: file \"" . $inFileName . "\" not found<br />";        
     } 
         
@@ -233,8 +234,10 @@ function updateData() {
         
         while(($data = fgetcsv($inFileHandle, 1000, ",")) !== FALSE) {
 
-            if(!$data[0])
+            if(!$data[0]) {
+                
                 break;
+            }
             
            
             $return = getPut("nextId", $data[0]);
@@ -255,6 +258,12 @@ function updateData() {
             $stmt->execute();
             printf("adding %04u for group %u name: \" %s \" total time: %04f <br>",
                     $return['nextId'], $data[0], $data[1], $data[2]);
+            
+            $oldFileName = $data[1] . $data[0] . "speller.x";
+            $newFileName = $return['nextId'] . $oldFileName;
+            
+            dumpSubmissions($oldFileName, $newFileName);
+                    
         }
     }
     catch(PDOException $e) {
@@ -262,8 +271,10 @@ function updateData() {
         $success = false;
         echo 'Leader Board updateData ERROR: ' . $e->getMessage();
     }
-    
+    // clean up files
     unlink($inFileName);
+    dumpSubmissions(0,0);
+    moveSubmissions();
     
     if($dbhandle)
         $dbhandle = null;
@@ -273,7 +284,7 @@ function updateData() {
 
 /*
  *   sendemailNotifications()
- *   SEND NOTIFICATIONS FROM AN UPLOADED FILE
+ *   NOTIFICATIONS FROM AN UPLOADED FILE
  ****************************************************/   
 function sendemailNotifications($mode) {
     
@@ -316,7 +327,7 @@ function sendemailNotifications($mode) {
         $group = $titleString[ $keys[$lineTwo[1]]];
         
         // insert group title string into email body
-        $body =  $lineTwo[0] . " from " . $group . ", " . $lineTwo[2];
+        $body =  $lineTwo[0] . " of " . $group . ", " . $lineTwo[2];
      
         
         // email "to, cc, subject, body"
@@ -330,7 +341,6 @@ function sendemailNotifications($mode) {
     unlink($inFileName);
     return;
 }
-
 
 /*
  *  validName()
@@ -361,16 +371,20 @@ function validEmail($email) {
     
 }
 
-
 /*
  *  dumpSubmissions()
- *  CLEAN SUBMISSIONS UPLOADING 
- ********************************/
-function dumpSubmissions() {
+ *  MOVE SUBMISSIONS FROM UPLOADING TO DUMP
+ ******************************************/
+function dumpSubmissions($old, $new) {
     
-    if(file_exists("../uploading/subInfo.txt")) {
+    if($old && $new) {
         
-        unlink("../uploading/subInfo.txt");
+        $old = "../uploading/".$old;
+        $new = "../dump/".$new;
+        copy($old, $new);
+        echo "moved to the dump, the file: " . $old . "<br>";
+        unlink($old);
+        return;
     }
     
     $files = glob("../uploading/*");
@@ -383,7 +397,7 @@ function dumpSubmissions() {
         if(is_file($file)) {
             
             copy($file, $newfileName);
-            echo "<br>  moved to the dump, the file: ".$newfileName;
+            echo "moved to the dump, the file: ".$newfileName . "<br>";
             unlink($file);
         }
     }
@@ -391,6 +405,36 @@ function dumpSubmissions() {
     return;
 }
 
+/*
+ *  MOVE SUBMISSIONS FROM Alternate Directory
+ *
+ *********************************************/
+function moveSubmissions() {
+
+    $files = glob("../uploading_alt/*");
+    
+    foreach($files as $file) {
+          
+        $newfileName = "../uploading/".basename($file);
+        
+        if(is_file($file)) {
+            
+            copy($file, $newfileName);
+            echo "found new submissin file: ".$newfileName . "<br>";
+            unlink($file);
+        }
+    }
+    
+    // ends submission redirect
+    if(file_exists("../minis/alt_load.txt")) {
+        
+        unlink("../minis/alt_load.txt");
+    }    
+    return; 
+
+}
+
+ 
 /*
  *  getGroupNumber()   by  h-chris
  *  GET GROUP NUMBER    
@@ -421,6 +465,7 @@ function getGroupNumber($grpName){
         
         // set group number from data
         $json = json_decode(fread($file, filesize($filename)), true);
+        
         if(isset($json[$grpName])) {
             
             $grpNum = $json[$grpName];
@@ -428,11 +473,6 @@ function getGroupNumber($grpName){
 
         fclose($file);
     }
-    // removed,  $grpNum initialized to null above
-    #else {
-        // default
-    #    $grpNum = null;
-    #}
 
     return $grpNum;
 }

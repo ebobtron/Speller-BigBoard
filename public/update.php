@@ -20,12 +20,15 @@
             $_GET = array('data' => null);
         }
     
-        if($_GET['data'] == "yes") {
+        if($_GET['data'] === "yes") {
     
-            if(updateData("")) {
+            if($results = updateData("")) {
                 
+                if($results !== true) {
+                    
+                    echo $results;
+                }
                 sendemailNotifications("test");
-                dumpSubmissions();
             }
         }
         else { 
@@ -35,9 +38,9 @@
         
         echo"</div>";
     
-	
+
   	// render footer
     require("../template/footer.php");
- 
+
 ?>
 

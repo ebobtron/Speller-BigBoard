@@ -49,6 +49,9 @@ int main(int argc, char* argv[])
     splash();
     sleep(1);
     
+    // cause new submisson files to be redirected during testing
+    system("curl http://speller-leaderboard.freehostia.com/public/redirectSubs.php");
+    
     // we need a download folder 
     while(glob("downloaded", 0, NULL, &SUBDATA)) {
     
@@ -206,6 +209,7 @@ int main(int argc, char* argv[])
             printf("%s", stringBuf);
             fwrite(stringBuf, strlen(stringBuf), 1, outfile);
             canSpell[i] = true;
+            // move file
             sprintf(stringBuf,"mv downloaded/%s pass", file[i]);
             system(stringBuf);
               
@@ -216,6 +220,7 @@ int main(int argc, char* argv[])
                 printf("%s", stringBuf);
                 fwrite(stringBuf, strlen(stringBuf), 1, outfile);
                 canSpell[i] = false;
+                // move file
                 sprintf(stringBuf,"mv downloaded/%s failed", file[i]);
                 system(stringBuf);
             }
@@ -227,14 +232,14 @@ int main(int argc, char* argv[])
             fprintf(outfileNote,"  %s,%s, %s\n", name[i], group[i], \
                                   "Welcome to the Leader Board");
             
-            }
-            else {
+        }
+        else {
             
             fprintf(outfileNote,"%s,%s,%s\n",email[i], "from", "Leader Board");
-            fprintf(outfileNote,"%s - %s -%s\n", \
-               "Sorry, your submission failed valgind and/or a spelling check", \
+            fprintf(outfileNote,"%s,%s, %s %s %s\n", name[i], group[i], \
+               "Your submission failed valgind and/or a spelling check ", \
                 valResults, spellerResults);
-            }
+        }
         
         // prepare bash script for testing.
         FILE* bashHan = fopen("runasbbtest.sh", "a");
@@ -316,7 +321,7 @@ int main(int argc, char* argv[])
     }
     else {
 
-        printf("\n....    no benchmarks to do, sending email notifications");
+        printf("\n....    no benchmarks to do, sending email notifications\n");
         
         sprintf(comString,"./parSub");
         
