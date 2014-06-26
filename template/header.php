@@ -1,3 +1,5 @@
+<!-- written by Robert Clark, et al. see public/aboutus.php -->
+
 <!DOCTYPE HTML>
 <html>
 
@@ -7,6 +9,9 @@
     <link href="../public/css/leaderboard.css" rel="stylesheet" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta name="description" content="pset6, Mispellings, leader board for students
+    of CS50/CS50x. Supported by students of CS50x">
+    
     
     <style type="text/css"></style>
 
