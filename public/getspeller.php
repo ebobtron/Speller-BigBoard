@@ -1,26 +1,46 @@
 
 <?php
-/***
-*
-*   getspeller.php  submission controller for uploading file
-* 
-*   Robert Clark, aka ebobtron et al.
-*
-*   CS50x final project   winter/spring 2014  with Launch Code
-*
-***************************************************************/
+/**
+ *
+ *   getspeller.php  submission controller for uploading file
+ * 
+ *   Robert Clark, aka ebobtron et al.
+ *
+ *  an expension of my 
+ *  CS50x final project   winter/spring 2014  with Launch Code
+ *
+ ***************************************************************/
 
     require "../include/helfun.php";
 
     $error = false;
     
-    #$title = $titleString[1];
-    
+    $director = false;
+
     $email = validEmail(($_POST['email']));
     $name = validName($_POST['name']);
 
     // set grp number based on last group user chose
-    $group = $_COOKIE['leaderboard_cookie'];
+    if(isset($_COOKIE['leaderboard_cookie'])) {
+        
+        $group = $_COOKIE['leaderboard_cookie'];
+    }
+    else {
+        
+        if(isset($_GET['con']) || $_POST['director'] == true ) {
+            
+            $director = true;
+        }
+        else {
+            
+            header("Location:"."alert.php?gsnc=yes");
+        }
+    }
+        
+    if($group === null) {
+        
+        $group = $defaultString;
+    }
     
     $title = $titleString[$group];
     $head = $headString[$group];
@@ -63,7 +83,6 @@
             $validSubMsg = "alert('You must use a Magic Word. Check the referring web" .
                            "page for the correct Magic Word.');" .
                            "javascript:history.go(-1);";
-                                   
         }
 
         // if no magicword stay on the getspeller form
