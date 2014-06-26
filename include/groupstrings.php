@@ -5,7 +5,9 @@
      * changed to an associative array to improve readability for future and 
      * prevent need to call lookup function to get group number
      */
-
+    
+    $defaultString = "edx2014";
+    
     $titleString = array(
            "cs50staff" => "CS50 Staff Solution",
            "lcstlw2014" => "LaunchCodeSTL winter 2014",

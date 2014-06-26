@@ -1,16 +1,16 @@
 <?php  
 /**
-*   getspeller.php  user interfaces to upload file
-* 
-*   Robert Clark, aka ebobtron et al
-*   CS50x final project   winter/spring 2014  with Launch Code
-*
-********************************************************************/
+ *   getspeller.php  user interfaces to upload file
+ * 
+ *   Robert Clark, aka ebobtron et al
+ *   CS50x final project   winter/spring 2014  with Launch Code
+ *
+ ****************************************************************/
 ?>
 
 <div class='subtext'>
-<!--`
-<blockquote style="font-size:22px"> -->
+
+
 <h2> file submission <? echo $title; ?> </h2>
   &nbsp; &nbsp; if you need to change you group return to:
   <a href="grpsel.php?chg=yes" class="head-links" style='font-size:19px' >
@@ -55,6 +55,7 @@
     </td>
     <td>
       <br>
+      <input type="hidden" name="director" value="<?=$director?>" >
       <input type="hidden" name="submit" value="true">
       <input class="input" type='submit' value='continue'>
     </td>
@@ -63,7 +64,8 @@
   </table>
 
   </form>
-<!--
-</blockquote> -->
+
+<br>
+
 </div>
 
