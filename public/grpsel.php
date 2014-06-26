@@ -11,7 +11,7 @@
 *
 ***************************************/
 
-    error_reporting(E_ALL);
+    error_reporting(0);
     
     $target = "sub";
     $cookie_name = 'leaderboard_cookie';
