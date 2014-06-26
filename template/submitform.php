@@ -1,12 +1,13 @@
 <!--
-***
-*
-*   submitform.php  user interfaces to upload file
-*
-*   Robert Clark, aka ebobtron
-*   CS50x final project   winter/spring 2014  with Launch Code
-*
-*************************************************************    -->
+ **
+ *
+ *   submitform.php  user interfaces to upload file
+ *
+ *   Robert Clark, aka ebobtron el al.
+ *
+ *   CS50x final project   winter/spring 2014  with Launch Code
+ *
+ *************************************************************    -->
 
 <div class="gentext">
   
@@ -18,13 +19,8 @@
     <br>
     <br>
 
-<!--    
-// submission Id will be issued when valid data added to table
-    echo " this submissions id: ",$id,"<br />";  --> 
-    
-
     <form enctype='multipart/form-data' action='uploadfile.php' method='POST'>
-        <input type='hidden' name='MAX_FILE_SIZE' value='25000'>
+        <input type='hidden' name='MAX_FILE_SIZE' value='48000'>
 
         Please upload <h3> "speller" </h3> not speller.c, thank you.<br>
         <br>
