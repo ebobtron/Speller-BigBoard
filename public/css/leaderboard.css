@@ -183,6 +183,10 @@ a:hover {
 	text-align:right;
   padding: 0 2px;
 	}
+
+.center {
+  text-align:center;
+  }  
   
 .subright {
 	text-align:right;
