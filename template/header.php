@@ -7,11 +7,10 @@
 
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
     <link href="../public/css/leaderboard.css" rel="stylesheet" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <meta name="description" content="pset6, Mispellings, leader board for students
-    of CS50/CS50x. Supported by students of CS50x">
-    
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <meta name="description" content="Pset6 leader board for students
+    of CS50/CS50x. Supported by students of CS50x" />
     
     <style type="text/css"></style>
 

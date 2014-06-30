@@ -13,14 +13,14 @@
 	</td>
   <td>
      <a href="aboutus.php" title="click to learn about us" style="text-decoration: none;"> 
-     &copy; 2014 ebobtron, et al.<br>
+     &copy; 2014 ebobtron, et al.<br />
      brought to you by me.</a>
   </td>
   <td> 
  	 <a class="legal-links"
 	     href="http://trademark.harvard.edu/pages/trademark-notice">
        "Harvard" is &copy; 2014 The President and Fellows of Harvard
-			  College</a><br>
+			  College</a><br />
    <a class="legal-links" href="http://edx.org">"edX.org" is &copy; 2014
 	     edX.org</a>&nbsp;&nbsp;
 	 <a class="legal-links" href="http://launchcodestl.com">"LaunchCodeSTL" is

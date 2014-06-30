@@ -1,8 +1,8 @@
 
 <div class="gentext lilmar" style='width:80%'>
 
-  <h3 class="head lilmar">Study Group Info for CS50x Problem Set 6: Mispellings or Misspellings</h3><br>
-    Select a link below to view individual group results on the leader board.<br>
+  <h3 class="head lilmar">Study Group Info for CS50x Problem Set 6: Mispellings or Misspellings</h3><br />
+    Select a link below to view individual group results on the leader board.<br />
     <ul>
       <li>
         <a href="show.php?grp=1" class="head-links" style='font-size:19px'>

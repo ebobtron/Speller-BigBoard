@@ -1,12 +1,13 @@
-<?php  
+<!--  
 /**
  *   getspeller.php  user interfaces to upload file
  * 
  *   Robert Clark, aka ebobtron et al
+ *   
+ *   expantion of my
  *   CS50x final project   winter/spring 2014  with Launch Code
  *
- ****************************************************************/
-?>
+ ****************************************************************/  -->
 
 <div class='subtext'>
 
@@ -17,7 +18,7 @@
      Group Selection</a>&nbsp; If your not sure about submitting your speller
      file contact the
     <a href="mailto:ebobtron@aol.com" class="head-links" style='font-size:16px'>
-    Leader Board Administrator.</a>
+       Leader Board Administrator.</a>
  
   
   <form action='../public/getspeller.php' method='post'>
@@ -39,7 +40,7 @@
       additional submissions.&nbsp; You may submit to the board ten times.&nbsp; Thank you.
     </td>
     <td> 
-      <input class="input" placeholder="reddit id or your name" type='text' name='name'>
+      <input class="input" placeholder="reddit id or your name" type='text' name='name' />
     </td>
   </tr>
   <tr>
@@ -47,17 +48,17 @@
       Email address for problems with submission:
     </td>
     <td> 
-      <input class="input" placeholder="email address" type='text' name='email'>
+      <input class="input" placeholder="email address" type='text' name='email' />
     </td>
   </tr>
   <tr>
     <td>
     </td>
     <td>
-      <br>
-      <input type="hidden" name="director" value="<?=$director?>" >
-      <input type="hidden" name="submit" value="true">
-      <input class="input" type='submit' value='continue'>
+      <br />
+      <input type="hidden" name="director" value="<?=$director?>" />
+      <input type="hidden" name="submit" value="true" />
+      <input class="input" type='submit' value='continue' />
     </td>
   </tr>
   </tbody>	
@@ -65,7 +66,7 @@
 
   </form>
 
-<br>
+<br />
 
 </div>
 

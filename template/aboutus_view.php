@@ -5,10 +5,8 @@
     
     We are students of CS50x offered by edX.org. You did click the link.
     
-    <br>
-    <br>
-    <br>
-
-
+    <br />
+    <br />
+    <br />
 
 </div>

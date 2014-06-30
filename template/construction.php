@@ -7,7 +7,8 @@
   <br />
 
   <h2>
-        Sorry, come back tomorrow.
+        Sorry, submission pages are under construction.<br>
+        
   </h2>
   <br />
   <br />
