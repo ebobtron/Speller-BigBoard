@@ -11,7 +11,7 @@ written by Robert Clark aka ebobtron
 
 nod to Pablo for suggesting the automation
 
-contributors:  	Brian theB264, Pablo, Josh joshfischer1108, Chris h-chris
+contributors: Brian theB264, Chris h-chris, Josh joshfischer1108, Pablo
 
 
 
