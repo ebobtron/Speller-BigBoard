@@ -23,9 +23,10 @@
    echo "There was an error uploading the file, please try again!";
  }
  /**/
- echo  "<br>",$_POST['name'];
+ echo  "<br />",$_POST['name'];
  $body = "a submission from:  " . $_POST['name'] . " @ " . $_POST['email'];
  sendMail("ebobtron@aol.com", "erobclark@att.net", "CS50x Submission", $body);
+ 
 ?>
 </body>
 </html>
