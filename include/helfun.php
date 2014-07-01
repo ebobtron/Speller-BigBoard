@@ -284,7 +284,7 @@ function updateData() {
 
 /*
  *   sendemailNotifications()
- *   NOTIFICATIONS FROM AN UPLOADED FILE
+ *   SEND NOTIFICATIONS FRM AN UPLOADED FILE
  ****************************************************/   
 function sendemailNotifications($mode) {
     
@@ -348,8 +348,7 @@ function sendemailNotifications($mode) {
  *****************************************************************/
 function validName($name) {
    
-    return preg_replace('/\s+/', '_',$name);
-
+    return preg_replace("/\s+/", "_",$name);
 }
 
 /*
@@ -358,7 +357,7 @@ function validName($name) {
  **********************************/
 function validEmail($email) {
     
-    $regex = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/'; 
+    $regex = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/"; 
 
     if(preg_match($regex, $email)) {
      
@@ -368,9 +367,26 @@ function validEmail($email) {
         
         return null;
     }
-    
 }
 
+/*
+ *  sanTize()
+ *  sanitize it before we use it
+ *****************************************/
+function sanTize($words) {
+    
+    $regex = "/^[_0-9a-zA-Z]+$/";
+    
+    if(preg_match($regex, $words)) {
+     
+        return $words;
+    }
+    else {
+        
+        return null;
+    }
+} 
+ 
 /*
  *  dumpSubmissions()
  *  MOVE SUBMISSIONS FROM UPLOADING TO DUMP
