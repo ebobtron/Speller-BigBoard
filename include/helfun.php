@@ -118,21 +118,21 @@ function getPut($what, $data) {
         $sql = "SELECT * FROM leader_board WHERE total IS NOT NULL ";
         
         if($data !== null) {
-            $sql = $sql . "AND grp = :grp OR grp = 0 ORDER BY total ASC";
+            $sql = $sql . "AND grp = :grp0 OR grp = 0 ORDER BY total ASC";
         }
         else {   
             $sql = $sql . "ORDER BY total ASC";
         }
         $stmt = $dbhandle->prepare($sql);
-        $stmt->bindParam(":grp", $data);
+        $stmt->bindParam(":grp0", $data);
     }
     
     //--  GET NEXT ID
     if($what == "nextId") {
     
-        $sql = "SELECT MAX(id) FROM leader_board WHERE grp = :grp";        
+        $sql = "SELECT MAX(id) FROM leader_board WHERE grp = :grp1";        
         $stmt = $dbhandle->prepare($sql);
-        $stmt->bindParam(":grp", $data);
+        $stmt->bindParam(":grp1", $data);
     }
     
     if($stmt === null) {
@@ -222,7 +222,7 @@ function updateData() {
         
     $dbhandle = PDOconnect();
 
-    $sql = "REPLACE INTO `leader_board` VALUES(:id, :grp, :name, :total, :dload,";
+    $sql = "REPLACE INTO `leader_board` VALUES(:id, :grp2, :name, :total, :dload,";
     $sql = $sql . " :tcheck, :size, :unload, :mem)";    
     
     $inFileHandle = fopen($inFileName, 'r') or die("can't open file");
@@ -246,7 +246,7 @@ function updateData() {
                 
                 $stmt->bindParam(":id", $return['nextId']);
             }
-            $stmt->bindParam(":grp", $data[0]);
+            $stmt->bindParam(":grp2", $data[0]);
             $stmt->bindParam(":name", $data[1]);
             $stmt->bindParam(":total", $data[2]);
             $stmt->bindParam(":dload", $data[3]);
