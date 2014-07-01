@@ -16,7 +16,7 @@
     require "../include/helfun.php";
     
     // set default table
-    $template = "table.php";
+    $template = "table_all.php";
        
     // get array of keys for titleString array
     // keys to array elements are numeric
@@ -24,15 +24,25 @@
     
     // check if group to display is pasted in the url
     if(isset($_GET['grp'])) {
-    
-        if($_GET['grp'] == 0) {
+        
+        // assign get to $grpNumber for clarity
+        $grpNumber = saniTize($_GET['grp']);
+        
+        if($grpNumber == 0) {
             
             $group = null;
-            $template = "table_all.php";            
         }
         else {
-             
-            $group = $keys[$_GET['grp']];
+
+            // prevent bogus grpNumber
+            if(isset($keys[$grpNumber])) {
+                
+                $group = $keys[$grpNumber];
+            }
+            else {
+                
+                $group = null;
+            }
         }
     }
     else {
@@ -46,8 +56,6 @@
         else {
            
             $group = null;
-            $template = "table_all.php";
-        
         }
     }
     
@@ -57,6 +65,7 @@
         $title = $titleString[$group];
         $head = $headString[$group];
         $link = $linkString[$group];
+        $template = "table.php"; 
     } 
     
     // get table rows from display
