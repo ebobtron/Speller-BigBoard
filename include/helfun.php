@@ -370,12 +370,12 @@ function validEmail($email) {
 }
 
 /*
- *  sanTize()
+ *  saniTize()                     theB264
  *  sanitize it before we use it
  *****************************************/
-function sanTize($words) {
+function saniTize($words) {
     
-    $regex = "/^[_0-9a-zA-Z]+$/";
+    $regex = "/^[_0-9a-zA-Z]+$/";   // regular expression from "theB264"
     
     if(preg_match($regex, $words)) {
      
@@ -450,7 +450,6 @@ function moveSubmissions() {
 
 }
 
- 
 /*
  *  getGroupNumber()   by  h-chris
  *  GET GROUP NUMBER    
