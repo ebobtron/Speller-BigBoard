@@ -154,6 +154,10 @@ int main(int argc, char* argv[])
     system("rm -f runasbbtest.sh");
     bool benchMark = false;
     
+   /*
+    *   ***  VALGRIND AND SPELL TESTING  ***
+    *
+    ****************************************/    
     for(int i = 0; i < SUBDATA.gl_pathc; i++) {
         
         // create valgrind command string
@@ -210,8 +214,11 @@ int main(int argc, char* argv[])
             fwrite(stringBuf, strlen(stringBuf), 1, outfile);
             canSpell[i] = true;
             // move file
-            sprintf(stringBuf,"mv downloaded/%s pass", file[i]);
-            system(stringBuf);
+            if(valid[i] && canSpell[i]) {
+                
+                sprintf(stringBuf,"mv downloaded/%s pass", file[i]);
+                system(stringBuf);
+            }
               
             }
             else {
@@ -221,8 +228,11 @@ int main(int argc, char* argv[])
                 fwrite(stringBuf, strlen(stringBuf), 1, outfile);
                 canSpell[i] = false;
                 // move file
-                sprintf(stringBuf,"mv downloaded/%s failed", file[i]);
-                system(stringBuf);
+                if(!valid[i] || !canSpell[i]) {
+                
+                    sprintf(stringBuf,"mv downloaded/%s failed", file[i]);
+                    system(stringBuf);
+                }
             }
             
         // create email notifacations
@@ -291,7 +301,6 @@ int main(int argc, char* argv[])
         
         numberofTests = atoi(argv[1]);
         
-    
         if(!strcmp(argv[1], "-sl") && benchMark) {
         
             printf("\n....    done, bye!\n \
