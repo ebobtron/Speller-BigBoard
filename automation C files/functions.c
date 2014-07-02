@@ -80,21 +80,25 @@ bool parseVal(void)
     } 
    
     FILE* infile =  fopen("vdump.txt","r");
-    // load file to buffer
+    // load file to bufferq
+    
+    
+    if(!infile) {
+        
+        sprintf(valResults, "Valgrind failed to run");
+        return false;
+    }
+    
     fgets(valResults,sizeof(valResults),infile);
+    
+    printf("%s", valResults);
+
 
     while(!feof(infile)) {
         
         sscanf(valResults,"%s%s%s%s%s%s%s%s%s",
                   word[0],word[1],word[2],word[3],word[4],word[5],word[6],word[7],word[8]);
         
-        if(word[1][0]) {
-            
-            if(!strcmp(word[1],"failed")) {
-                valResults[strlen(valResults) - 1] = '\0';
-                return false;
-            }
-        }
         
         if(word[8][0]) {           
             // get leak
