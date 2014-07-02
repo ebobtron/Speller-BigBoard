@@ -3,6 +3,7 @@
 /**
  *  alert.php  leader board writen by Robert Clark et al. 2014
  *************************************************************/
+ 
     // message string
     $mesString = "no data";
     
