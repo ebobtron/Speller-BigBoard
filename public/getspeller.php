@@ -18,7 +18,7 @@
     $director = false;
 
     $email = validEmail(($_POST['email']));
-    $name = validName($_POST['name']);
+    $name = validName(saniTize($_POST['name']));
 
     // set grp number based on last group user chose
     if(isset($_COOKIE['leaderboard_cookie'])) {
@@ -27,7 +27,8 @@
     }
     else {
         
-        if(isset($_GET['con']) || $_POST['director'] == true ) {
+        // skip the alert the second time though
+        if(isset($_GET['con']) || saniTize($_POST['director']) == true ) {
             
             $director = true;
         }
@@ -54,8 +55,8 @@
     }
     else {
         
-        $magWrd = $_POST['magword'];
-        $submit = $_POST['submit'];
+        $magWrd = saniTize($_POST['magword']);
+        $submit = saniTize($_POST['submit']);
     }
 
     // now this is a little nutty  
