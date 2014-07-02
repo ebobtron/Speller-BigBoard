@@ -11,6 +11,8 @@
 *
 *************************************************************/
 
+    error_reporting(E_ALL); // E_ALL
+
     require "../include/helfun.php";
     
     $dirString = "../uploading/";
@@ -25,20 +27,23 @@
        $message = "bogus or corupted file submission \"".
                   $_FILES['uploadedfile']['name'].
                   "\" plesse submit the file \"speller\" again.";
-       $message = $message . "<br><br><b>No file submission.</b>";          
+       $message = $message . "<br /><br /><b>No file submission.</b>";          
     }
     else {
     
-        $group = $_POST['group'];
+        $group = saniTize($_POST['group']);
     
         $title = $titleString[$group];
         $head = $headString[$group];
         $link = $linkString[$group];
+        
+        $name = saniTize($_POST['name']);
+        $email = validEmail($_POST['email']);
      
         #error_reporting(E_ALL);
     
         // build the target path string and some useful other strings
-        $submissionNameGp = $_POST['name'] . getGroupNumber($group);
+        $submissionNameGp = $name . getGroupNumber($group);
         $fileName = basename($_FILES['uploadedfile']['name']);
     
         $target_path = $dirString . $submissionNameGp;
@@ -46,42 +51,38 @@
     
         // if file is is up move to defined folder
         $success = move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path);
-    
+        
+        
         // if successful and if not
         if($success) {
 
             // create subinfo file for automation
-            createSubInfo($_POST['name'], getGroupNumber($group), $_POST['email'],
-                               $dirString);
+            createSubInfo($name, getGroupNumber($group), $email, $dirString);
         
             // build message and email strings
             $message = "The file \" " . basename($_FILES['uploadedfile']['name']);
-            $message = $message . " \" has been uploaded <br> for submitter: \" ";
-            $message = $message . $_POST['name'] . " \" - group: " . $title . "<br>";
-            $message = $message . "<br><b>Submission may take several hours before ".
-                                  "posting.</b><br><br>";
+            $message = $message . " \" has been uploaded <br /> for submitter: \" ";
+            $message = $message . $name . " \" - group: " . $title . "<br />";
+            $message = $message . "<br /><b>Submission may take several hours before ".
+                                  "posting.</b><br /><br />";
             $message = $message . "for questions contact the administrator <a href=\"";
             $message = $message . "mailto:ebobtron@aol.com\">mailto:ebobtron@aol.com</a>".
-                                  "<br>";
+                                  "<br /><br />";
         
-            $emailBody = "Received a submission from:  " . $_POST['name'] . " @ ";
-            $emailBody = $emailBody . $_POST['email'];
-        
-        
-            // and results to message and email
-            $message = $message . "<br>" . $result;
-            $emailBody = $emailBody . "\r\n" . $result;
+            $emailBody = "Received a submission from:  " . $name .
+                         "  Group:  ". $title . "  Contact:  " . $email . "\r\n";
+
         
         }
         else {
 
-            $message = "There was an error uploading the file, please try again, later.<br>";
+            $message = "There was an error uploading the file, please try again, later.<br />";
             $message = $message . "for questions contact the <a href=\"";
             $message = $message . "mailto:ebobtron@aol.com\">".
-                                  "Leader Board Administrator</a><br>";
+                                  "Leader Board Administrator</a><br />";
         
             $emailBody = "a submission failed to upload from:  ";
-            $emailBody = $emailBody . $_POST['name'] . " @ " . $_POST['email'];
+            $emailBody = $emailBody . $name . " @ " . $email;
         }
 
         $mr = sendMail("ebobtron@aol.com", "erobclark@att.net",

@@ -1,15 +1,18 @@
 
-
 <?php
-    //error_reporting(E_ALL);
+/*
+ *  update.php  leader board writen by Robert Clark et al. 2014
+ *************************************************************/
+ // this is an administration file not seen buy the public.
+ 
+    error_reporting(0); // E_ALL
     
     require_once "../include/helfun.php";
 		
     // render header
     require("../template/header.php");
     
-    
-    // the body of the page
+        // the body of the page
     
         echo"<div class='admin'><h3>admin: update submission data</h3>";
     
@@ -20,7 +23,7 @@
             $_GET = array('data' => null);
         }
     
-        if($_GET['data'] === "yes") {
+        if(saniTize($_GET['data']) === "yes") {
     
             if($results = updateData("")) {
                 
@@ -38,9 +41,7 @@
         
         echo"</div>";
     
-
   	// render footer
     require("../template/footer.php");
 
 ?>
-
