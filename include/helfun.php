@@ -188,7 +188,7 @@ function getPut($what, $data) {
  ***********************************************************************/
 
 function createSubInfo($name, $id, $email, $dir) {
-
+    
     $outFileName = $dir . "subInfo.txt";
     $outFileHandle = fopen($outFileName, 'a') or die("can't open file");
     
