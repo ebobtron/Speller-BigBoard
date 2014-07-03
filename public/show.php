@@ -51,6 +51,11 @@
         if(isset($_COOKIE['leaderboard_cookie'])) {
             
             $group = $_COOKIE['leaderboard_cookie'];
+
+            if(!array_key_exists($group, $titleString)) {
+                $group = null;
+            } 
+            
         }
         // else, redirect to table showing all groups times
         else {

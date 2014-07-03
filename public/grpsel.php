@@ -22,8 +22,15 @@
     if(!isset($_GET['chg'])) {
 
         if(isset($_COOKIE[$cookie_name])) {
+            
+            if(array_key_exists($_COOKIE[$cookie_name], $titleString)) {    
                 
-            header("Location:"."getspeller.php");
+                header("Location:"."getspeller.php");
+            }
+            else {
+                
+                header("Location:"."alert.php");
+            }    
         }
     }
     else {
@@ -36,7 +43,7 @@
 
     if(isset($_POST['group'])) {
 
-        $cookie_value = saniTize($_POST['group']);
+        $cookie_value = saniTize($_POST['group']);  // $_POST['group']
         setcookie($cookie_name, $cookie_value, $cookie_time, '/');
         header("Location:".
         "http://".$_SERVER["HTTP_HOST"].dirname($_SERVER["PHP_SELF"])."/getspeller.php");
