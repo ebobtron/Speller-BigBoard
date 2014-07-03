@@ -27,8 +27,6 @@
                          "<a href=\"mailto:ebobtron@aol.com\" class=\"legal-links\" " .
                          "style=\"font-size:16px\">administrator.</a><br />";
             $contarget = "grpsel.php?chg=yes";
-
-        
         }          
     }
     
@@ -45,6 +43,23 @@
                      "style=\"font-size:16px\">administrator.</a><br />";
 
     }
+    
+    if(isset($_GET['dupSub'])) {
+    
+        $mesString = "<br /><br />" .
+                     "The Leader Board has a file as yet untested that matches your " .
+                     "current submission.&nbsp; The testing and benchmarking programs " .
+                     "are not fully automated and it may take several hours to see the " .
+                     "results on the board.&nbsp; Please hold all additional submissions " .
+                     "until your current submission reaches the board.<br />" .
+                     "<br />Thanks<br />" .
+                     "<br />Please direct any questions to the " .
+                     "<a href=\"mailto:ebobtron@aol.com\" class=\"legal-links\" " .
+                     "style=\"font-size:16px\">administrator.</a><br />";
+         
+        $contarget = null;            
+    }
+    
     
     // render the page
     

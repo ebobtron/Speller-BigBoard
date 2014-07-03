@@ -1,17 +1,17 @@
 
 <?php
-/***$_POST['group']
-*
-*   uploadfile.php  manage the uploaded file
-*
-*   Robert Clark, aka ebobtron et al.
-*
-*   An expansion of my 
-*   CS50x final project   winter/spring 2014  with Launch Code
-*
-*************************************************************/
+/*
+ *
+ *   uploadfile.php  manage the uploaded file
+ *
+ *   Robert Clark, aka ebobtron et al.
+ *
+ *   An expansion of my 
+ *   CS50x final project   winter/spring 2014  with Launch Code
+ *
+ ***************************************************************/
 
-    error_reporting(E_ALL); // E_ALL
+    error_reporting(0); // E_ALL
 
     require "../include/helfun.php";
     
@@ -40,15 +40,20 @@
         $name = saniTize($_POST['name']);
         $email = validEmail($_POST['email']);
      
-        #error_reporting(E_ALL);
-    
         // build the target path string and some useful other strings
         $submissionNameGp = $name . getGroupNumber($group);
         $fileName = basename($_FILES['uploadedfile']['name']);
     
         $target_path = $dirString . $submissionNameGp;
-        $target_path = $target_path . $fileName . ".x"; 
-    
+        $target_path = $target_path . $fileName . ".x";
+        
+        if(file_exists($target_path)){
+            
+            header("Location:"."alert.php?dupSub=yes");
+            exit;
+        }
+        
+        echo "what the ----- ";
         // if file is is up move to defined folder
         $success = move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path);
         
@@ -76,7 +81,8 @@
         }
         else {
 
-            $message = "There was an error uploading the file, please try again, later.<br />";
+            $message = "There was an error uploading the file, please try again, " .
+                       "later.<br />";
             $message = $message . "for questions contact the <a href=\"";
             $message = $message . "mailto:ebobtron@aol.com\">".
                                   "Leader Board Administrator</a><br />";
