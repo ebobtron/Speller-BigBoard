@@ -375,7 +375,7 @@ function validEmail($email) {
  *****************************************/
 function saniTize($words) {
     
-    $regex = "/^[_0-9a-zA-Z]+$/";   // regular expression from "theB264"
+    $regex = "/^[_0-9a-z A-Z]+$/";   // regular expression from "theB264"
     
     if(preg_match($regex, $words)) {
      
