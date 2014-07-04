@@ -53,7 +53,6 @@
             exit;
         }
         
-        echo "what the ----- ";
         // if file is is up move to defined folder
         $success = move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path);
         
