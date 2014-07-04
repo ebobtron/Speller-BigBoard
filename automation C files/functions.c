@@ -149,7 +149,7 @@ bool spelling(void){
     char line[150];
     
     FILE* infile = fopen("sresults.txt","r");
-    fseek(infile, -224, SEEK_END);
+    fseek(infile, -345, SEEK_END);
     
     while(!feof(infile)) {
         
