@@ -82,7 +82,6 @@ bool parseVal(void)
     FILE* infile =  fopen("vdump.txt","r");
     // load file to bufferq
     
-    
     if(!infile) {
         
         sprintf(valResults, "Valgrind failed to run");
@@ -90,9 +89,6 @@ bool parseVal(void)
     }
     
     fgets(valResults,sizeof(valResults),infile);
-    
-    printf("%s", valResults);
-
 
     while(!feof(infile)) {
         
