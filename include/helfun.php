@@ -223,7 +223,7 @@ function updateData() {
     $dbhandle = PDOconnect();
 
     $sql = "REPLACE INTO `leader_board` VALUES(:id, :grp2, :name, :total, :dload,";
-    $sql = $sql . " :tcheck, :size, :unload, :mem)";    
+    $sql = $sql . " :tcheck, :size, :unload, :mem, :typ)";    
     
     $inFileHandle = fopen($inFileName, 'r') or die("can't open file");
     
@@ -239,7 +239,7 @@ function updateData() {
                 break;
             }
             
-           
+            $tempdata = null;
             $return = getPut("nextId", $data[0]);
             
             if(is_array($return)) {
@@ -254,6 +254,7 @@ function updateData() {
             $stmt->bindParam(":size", $data[5]);
             $stmt->bindParam(":unload", $data[6]);
             $stmt->bindParam(":mem", $data[7]);
+            $stmt->bindParam(":typ", $tempdata);
             
             $stmt->execute();
             printf("adding %04u for group %u name: \" %s \" total time: %04f <br>",
