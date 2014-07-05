@@ -1,7 +1,12 @@
 
-<div class="gentext lilmar" style='width:80%'>
+<!-- leader board groupInfo.php -->
+<br />
 
-  <h3 class="head lilmar">Study Group Info for CS50x Problem Set 6: Mispellings or Misspellings</h3><br />
+<div class="gentext lilmar" style="width:80%">
+
+  <h3 class="head lilmar">Study Group Info for CS50x Problem Set 6: Mispellings or
+       Misspellings</h3>
+    <br />
     Select a link below to view individual group results on the leader board.<br />
     <ul>
       <li>
@@ -34,3 +39,4 @@
     Leader Board Administrator.</a>&nbsp;
     We can add your group.
 </div>
+<br />
