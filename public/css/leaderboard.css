@@ -1,322 +1,348 @@
+/*  fonts   */
+
 @font-face {
   font-family: Geosanslight;
-  src: url('font/GeosansLight.ttf');
-  }
+  src: url(font/GeosansLight.ttf);
+}
 
 @font-face {
   font-family: Existence-Light;
-  src: url('font/Existence-Light.ttf');
-  }
+  src: url(font/Existence-Light.ttf);
+}
 
 @font-face {
   font-family: Trebuchet_MS;
-  src: url('font/trebuc.ttf');
-  }
+  src: url(font/trebuc.ttf);
+}
 
 @font-face {
   font-family: Arapey_Italic;
-  src: url('font/Arapey-Italic.ttf');
-  }
-
-/* diagnoitic code gives all <div>s a green border
-div {
-  border:1px solid green;
+  src: url(font/Arapey-Italic.ttf);
 }
-*/
 
-body {
-	background-color:#EBEBF5;
-	font-family:Trebuchet_MS;
-  }
+/* all elements */
 
 a:hover {
   background-color: white;
-  }
+}
+
+body {
+  background-color:#ebebf5;
+  font-family:Trebuchet_MS;
+}
+
+input {
+  font-family: Trebuchet_MS;
+}
+  
+input:-moz-placeholder {
+  color: blue;
+  font-family: Arapey_Italic;
+}
+  
+input:-ms-input-placeholder {
+  color: blue;
+  font-family: Arapey_Italic;
+}
+
+input::-moz-placeholder {
+  color: blue;
+  font-family: Arapey_Italic;
+}
+
+input::-webkit-input-placeholder {
+  color: blue;
+  font-family: Arapey_Italic;
+}
+
+/* TODO: correct use li */	
+ul li {
+  margin-top: 10px;
+}
+
+/* classes */
 
 .admin {
   border:0px solid white;
-	font-size: 18px;
-  margin:auto;
-	width: 90%;
-  height:350px;
-  overflow-y: auto;
   font-family: Trebuchet_MS;
-  }   
-	
+  font-size: 18px;
+  height:350px;
+  margin:auto;
+  overflow-y: auto;
+  width: 90%;
+}
+
+.center {
+  text-align:center;
+}
+
+.div-head {
+  margin-top:20px;
+  text-align:center;
+}
+ 
+.div-table {
+  border:0px solid Green;
+  margin: auto;
+  text-align: center;
+  width:90%;
+}
+
+.gentext {
+  border:0px solid pink;
+  font-size:95%;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:0;
+  width:65%; 
+}
+
+.grpSelect {
+  height: 296px;
+  margin: auto;
+  overflow-y: auto;
+  width: 90%;
+}
+
+.grptd {
+   border: 0px solid black;
+   width: 37%;
+}
+  
+.head {
+  font-family: Arapey_Italic;
+  margin: 0 0 6px 0;
+}
+
+.head-links {
+  color: blue;
+  font-family:Arapey_Italic;
+  text-decoration:none;
+}
+
+.input{
+  border: 1px solid black;
+  border-radius: 4px;
+  font-size: 18px;
+  padding: 4px;
+}
+
+.ldbd-tbody {
+  display:block;
+  text-align: center;
+  width:98%;
+}
+
+.left {
+  padding-left:4px;
+  text-align: left;
+}
+  
+.legal-links {
+  color: blue;
+  font-family: Trebuchet_MS;
+  font-size:12px;
+  text-decoration:none;
+}
+
+.lilmar {
+  margin-bottom:5px;
+}
+
+.lnk {
+  color: blue;
+  font-size:140%;
+  margin: 5px;
+  margin-top:20px;
+  text-align:center;
+}
+
+.menu {
+  color:blue;
+  text-decoration: none;
+}
+
+.name {
+  color: blue;
+  font-family:Arapey_Italic;
+  font-size: 14pt;
+  text-decoration:none;      
+}
+
+.right {
+  padding: 0 2px;
+  text-align:right;
+}
+
+.row {
+  background-color:#fefefe;
+}
+  
+.subright {
+  height: 60px;
+  padding: 0 4px;
+  text-align:right;
+}
+
+.subtable {
+  border:0px solid black;
+  border-spacing: 10px;
+  font-size: 18px;
+  width: 90%;
+}
+
+.subtext {
+  font-size:90%;
+  margin:auto;
+  width:85%;
+}
+
+.table {
+  border:0px solid red;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: auto;
+  table-layout:fixed;
+  width:99%;
+}
+  
+.table-all {
+  border:0px solid red;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: auto;
+  width:80%;
+}
+  
+.table-foot {
+  border:0px solid black;
+  bottom:5%;
+  left:8%;
+  font-family: Existence-Light;
+  font-size: 13px;
+  margin: auto;
+  width:85%;
+}
+
+.tbody {
+  border:0px solid black;
+  height:285px;
+  overflow-y: auto;
+  padding-right:2px;
+  -webkit-overflow-scrolling: touch;
+}
+
 .td {
   border:0px solid blue;
-	width:10em;
-	font-family: Trebuchet_MS;
-  }
+  font-family: Trebuchet_MS;
+  width:10em;
+}
 
 .td-all {
   border:0px solid blue;
-	width:10%;
-	font-family: Trebuchet_MS;
-  }
+  font-family: Trebuchet_MS;
+  width:10%;
+}
 
 .td-allgrp {
   border:0px solid blue;
   width: 30%;
   font-family: Arapey_Italic;
-  font-size: 14pt;
-  }  
+  font-size: 110%;
+}  
   
 .th {
   border:0px solid blue;
-	width:12.5em;
-	font-family: Trebuchet_MS;
-  font-size: 75%
-  }  	
-  
-.head {
-  font-family: Arapey_Italic;
-  margin:0 0 6px 0;
-  }
-
-.lilmar {
-  margin: 0 0 5px 0;
-  }  
-
-.div-head {
-  margin-top:20px;
-  text-align:center;
-  }
-	
-.head-links {
-  text-decoration:none;
-	color: blue;
-	font-family:Arapey_Italic;
-  }	
-  
-.legal-links {
-	text-decoration:none;
-	font-size:12px;
-	color: blue;
   font-family: Trebuchet_MS;
-  }
- 
-.div-table {
-  border:0px solid red;
-  width:90%;
-  margin: auto;
-  text-align: center;
-  }
-
-.row {
-	background-color:#fefefe;
-  }
-  
-.subtext {
-	width:85%;
-	margin:auto;
-  font-size:90%;
-  }
-	
-.subtable {
-  border:0px solid black;
-	font-size: 18px;
-	width: 90%;
-	border-spacing: 10px;
-  }
-	
-.table {
-	width:99%;
-	border:0px solid black;
-	margin: auto;
-  border-spacing: 0;
-  border-collapse: collapse;
-  }
-  
-.table-all {
-  width:80%;
-	border:0px solid red;
-	margin: auto;
-  border-spacing: 0;
-  border-collapse: collapse;
-  }
-  
-.tablefoot{
-	width:85%;
-	border:0px solid black;
-	margin: auto;
-	font-family: Existence-Light;
-	font-size: 13px;
-  bottom:5%;
-  left:8%;
-  }	
-
-.tbody {
-	border:0px solid black;
-  height:285px;
-  overflow-y: auto;
-	padding-right:5px;
-  -webkit-overflow-scrolling: touch;
-  }
+  font-size: 80%;
+  width:220px;
+}
 
 .thead {
+  border:0px solid black;
   display:block;
-	width:98%;
 	text-align: center;
-  }
+  width:100%;
+}
 
-.ldbd-tbody {
-  display:block;
-	width:98%;
-  text-align: center;
-  }	
-
-.lnk {
-	margin: 5px;
-	margin-top:20px;
-	font-size:140%;
-	color: blue;
-	text-align:center;
-  }
-
-.menu {
-	text-decoration: none;
-	color:blue;
-  }
-
-.right {
-	text-align:right;
-  padding: 0 2px;
-	}
-
-.center {
-  text-align:center;
-  }  
-  
-.subright {
-	text-align:right;
-  padding: 0 4px;
-  height: 60px;
-}  
-	
-.gentext {
-  border:0px solid pink;
-	width:65%;
-	margin-left:auto;
-  margin-right:auto;
-  margin-top:0;
-  font-size:95%; 
-  }
-
-input {
-  font-family: Trebuchet_MS;
-  }
-
-input::-webkit-input-placeholder {
-  font-family: Arapey_Italic;
-	color: blue;
-  }
-  
-input:-moz-placeholder {
-  font-family: Arapey_Italic;
-	color: blue;
-  }
-
-input::-moz-placeholder {
-  font-family: Arapey_Italic;
-	color: blue;
-  }
-  
-input:-ms-input-placeholder {
-  font-family: Arapey_Italic;
-	color: blue;
-  }
-
-.input{
-  border: 1px solid black;
-	font-size: 18px;
-	border-radius: 4px;
-	padding: 4px;
-  }
-
-.grpSelect {
-  width: 90%;
-  height: 296px;
-  margin: auto;
-  overflow-y: auto;
-  }
-	
-ul li {
-  margin-top: 10px;
-  }  
-
-#grpTable {
-  width: 98%;
-  border: 0px solid black;
-  }
-
-.grptd {
-   border: 0px solid black;
-   width: 37%;
-  }
-
-#edx {
-  background-image:url('../img/front-hero-bg-s.jpg');
-  background-color: white;
-  width:301px; height:94px;
-  }
-
-#edxgrp {
-  border:0; 
-  background: transparent;
-  width: 100%; height: 100%;  
-  }
-
-#edximg {
-  width: 33%; height: 33%;
-  }
+/*  ids  */
 
 #cs50img {
-  width: 60%; height: 60%;
-  }
-
-#lcode {
-  background-color: black;
-  width:301px; height:94px;
-  }
-
-#lcodeimg {
-  width: 55%; height: 55%;
-  }
-
-#lcodegrp {
-  border:0; 
-  color: white;
-  font-size: 1em;
-  background: transparent;
-  width: 100%; height: 100%;
-  }
+  height: 60%;
+  width: 60%;
+}
 
 #coderg {
   background-color: black;
-  width:301px; height:94px;
-  }
-
-#coderggrp {
-  border:0; 
-  color: white;
-  font-size: 1em;
-  background: transparent;
-  width: 100%; height: 100%;  
-  }
-
-#codergimg {
-  width: 65%; height: 65%;
-  }
-
-#edx button:hover {
-  border: 2px solid white;
-  }
-
-#lcode button:hover {
-  border: 2px solid white;
-  }
+  height:94px;
+  width:301px; 
+}
 
 #coderg button:hover {
   border: 2px solid white;
-  }
+}
+
+#coderggrp {
+  background: transparent;
+  border:0; 
+  color: white;
+  font-size: 1em;
+  height: 100%;
+  width: 100%;   
+}
+
+#codergimg {
+  height: 65%;
+  width: 65%; 
+}
+
+#edx {
+  background-color: white;
+  background-image:url(../img/front-hero-bg-s.jpg);
+  height:94px;
+  width:301px; 
+}
+
+#edx button:hover {
+  border: 2px solid white;
+}
+
+#edxgrp { 
+  background: transparent;
+  border:0;
+  width: 100%; height: 100%;  
+}
+
+#edximg {
+  height: 33%;
+  width: 33%;
+}  
+
+#grpTable {
+  border: 0px solid black;
+  width: 98%;
+}
+
+#lcode {
+  background-color: black;
+  height:94px;
+  width:301px; 
+}
+
+#lcode button:hover {
+  border: 2px solid white;
+}
+
+#lcodegrp {
+  background: transparent;
+  border:0; 
+  color: white;
+  font-size: 1em;
+  height: 100%;
+  width: 100%; 
+}
+
+#lcodeimg {
+  height: 55%;
+  width: 55%; 
+}
