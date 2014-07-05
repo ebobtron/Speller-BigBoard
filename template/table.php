@@ -1,7 +1,8 @@
+
 <!-- 
-***
+**
 *
-*   tabel.php  Display table of submissions and links
+*   table.php  Display table of submissions and links
 * 
 *   Robert Clark, aka ebobtron et al.
 *
@@ -14,18 +15,18 @@
 <h3 style="margin:0px">all times in seconds</h3>
 
 <table class="table">
- <thead class="thead">
+ <tbody class="tbody ldbd-tbody" style='height:28px;'>
   <tr>
-	 <th class="th" style='width:8em'>&nbsp;&nbsp;id</th>
-	 <th class="th">name</th>
-	 <th class="th">total time</th>
-	 <th class="th">load time</th>
-	 <th class="th">check time</th>
-	 <th class="th">size time</th>
-	 <th class="th">unload time</th>
-	 <th class="th">heap used</th> 
+	 <td class="td" style='width:6%'>id</td>
+	 <td class="td left"  style='width:13%'>name</td>
+	 <td class="td" style='width:8%'>total time</td>
+	 <td class="td" style='width:8%'>load time</td>
+	 <td class="td" style='width:8%'>check time</td>
+	 <td class="td" style='width:8%'>size time</td>
+	 <td class="td" style='width:8%'>unload time</td>
+	 <td class="td" style='width:8%'>heap used</td> 
   </tr>
-</thead>
+</tbody>
 <tbody class="tbody ldbd-tbody">
 
 <?php
@@ -44,16 +45,24 @@
 		$sz = sprintf("%0.4f", $row['size']);
 		$ul = sprintf("%0.4f", $row['unload']);
 		$mm = sprintf("%0.4f MB", $row['mem']);
-		echo"
-    <td class='td' style='width:8em'>",$id,"</td>
-		<td class='td'>",$row['name'],"</td>
-		<td class='td'>",$to,"</td>
-		<td class='td'>",$ld,"</td>
-		<td class='td'>",$ck,"</td>
-		<td class='td'>",$sz,"</td>
-		<td class='td'>",$ul,"</td>
-		<td class='td right'>",$mm,"</td>
-		</tr>";
+		
+    echo
+       "<td class='td' style='width:6%'>",$id,"</td>\n" .
+		   
+       "<td class='td left' style='width:13%'>" .
+       
+       "<a href='http://www.reddit.com/user/",$row['name'],"' class='name' ".
+       "title='click me for more info'>" . $row['name']. "</a>" .
+       
+       "</td>" .
+		
+    "<td class='td' style='width:8%'>",$to,"</td>" .
+    "<td class='td' style='width:8%'>",$ld,"</td>" .
+		"<td class='td' style='width:8%'>",$ck,"</td>" .
+		"<td class='td' style='width:8%'>",$sz,"</td>" .
+		"<td class='td' style='width:8%'>",$ul,"</td>" .
+		"<td class='td right' style='width:8%'>",$mm,"</td>" .
+		"</tr>";
 
 		$loop++;
 	}
@@ -63,3 +72,5 @@
 	  </table>
   </div>
 <br />
+
+<a href='http://www.reddit.com/user/'></a>

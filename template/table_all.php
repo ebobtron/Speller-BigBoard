@@ -18,7 +18,7 @@
     <thead class="thead">
       <tr>
         
-        <th class="th">name</th>
+        <th class="th left">name</th>
         <th class="th">total time</th>
         <th class="th" style='width:50%'>group</th>
       </tr>
@@ -41,14 +41,18 @@
         $keyNum = $row['grp'];  	
         $groupName = $titleString[$keys[$keyNum]];
 
-        $grp = sprintf("%8s", $groupName);
+        $grp = sprintf("%s", $groupName);
 
-        echo"
-            <td class='td-all'>", $row['name'], "</td>
-            <td class='td-all'>", $total, "</td>
-            <td class='td td-allgrp'>", $grp, "</td>
-            </tr>
-            ";
+        echo
+           "<td class='td-all left'>" .
+           
+           "<a href='http://www.reddit.com/user/",$row['name'],"' class='name' ".
+           "title='click me for more info'>" . $row['name']. "</a>" .
+           
+           "</td>" .
+           "<td class='td-all'>", $total, "</td>" .
+           "<td class='td td-allgrp'>", $grp, "</td>" .
+           "</tr>";
 
         $loop++;
     }
