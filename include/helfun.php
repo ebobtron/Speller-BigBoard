@@ -261,7 +261,7 @@ function updateData() {
                     $return['nextId'], $data[0], $data[1], $data[2]);
             
             $oldFileName = $data[1] . $data[0] . "speller.x";
-            $newFileName = $return['nextId'] . $oldFileName;
+            $newFileName = $oldFileName . $return['nextId'];
             
             dumpSubmissions($oldFileName, $newFileName);
                     
