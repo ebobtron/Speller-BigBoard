@@ -55,6 +55,10 @@ input::-webkit-input-placeholder {
   font-family: Arapey_Italic;
 }
 
+td {
+  border:0px solid black;
+}
+
 /* TODO: correct use li */	
 ul li {
   margin-top: 10px;
@@ -182,6 +186,7 @@ ul li {
   height: 60px;
   padding: 0 4px;
   text-align:right;
+  width:70%;
 }
 
 .subtable {
