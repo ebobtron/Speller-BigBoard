@@ -1,6 +1,6 @@
 <!--  
 /**
- *   getspeller.php  user interfaces to upload file
+ *   getspeller.php  form  to upload file
  * 
  *   Robert Clark, aka ebobtron et al
  *   
@@ -9,64 +9,72 @@
  *
  ****************************************************************/  -->
 
-<div class='subtext'>
+<div class="subtext">
 
+  <?php if($title): ?>
+    <h2>file submission for group: <?= $title ?></h2>
+  <?php else: ?>
+    <h2>file submission</h2>
+  <?php endif ?>
 
-<h2> file submission <? echo $title; ?> </h2>
-  &nbsp; &nbsp; if you need to change you group return to:
-  <a href="grpsel.php?chg=yes" class="head-links" style='font-size:19px' >
-     Group Selection</a>&nbsp; If your not sure about submitting your speller
+  If you need to change you group return to:
+  <a href="grpsel.php?chg=yes" class="head-links" style="font-size:1.3em">
+     Group Selection.</a>&nbsp; If your not sure about submitting your speller
      file contact the
-    <a href="mailto:ebobtron@aol.com" class="head-links" style='font-size:16px'>
+  <a href="mailto:ebobtron@aol.com" class="head-links" style="font-size:1.3em">
        Leader Board Administrator.</a>
  
   
-  <form action='../public/getspeller.php' method='post'>
+  <form action="../public/getspeller.php" method="post">
 
   <table class="table subtable">
-  <tbody>
-  <tr>
-    <td class="subright">
-      Please provide the magic word:
-    </td>
-    <td>
-      <input class="input" autofocus placeholder="magic word" type='text' name='magword'>
-    </td>
-  </tr>
-  <tr>
-    <td class="subright">      
-      Please use your Reddit User Id or your name in one word.&nbsp; Examples
-      "TerryLF" or "DonJones2010", no spaces.&nbsp; You must use the same name for any
-      additional submissions.&nbsp; You may submit to the board ten times.&nbsp; Thank you.
-    </td>
-    <td> 
-      <input class="input" placeholder="reddit id or your name" type='text' name='name' />
-    </td>
-  </tr>
-  <tr>
-    <td class="subright">
-      Email address for problems with submission:
-    </td>
-    <td> 
-      <input class="input" placeholder="email address" type='text' name='email' />
-    </td>
-  </tr>
-  <tr>
-    <td>
-    </td>
-    <td>
-      <br />
-      <input type="hidden" name="director" value="<?=$director?>" />
-      <input type="hidden" name="submit" value="true" />
-      <input class="input" type='submit' value='continue' />
-    </td>
-  </tr>
-  </tbody>	
+    <tbody>
+      <tr>
+        <td class="subright">
+          Please provide the magic word:<br />
+          If you don't have the magic word you can try this
+          <a href="../public/img/img.jpg" class="head-links" style="font-size:1.1em">link</a>
+          or contact us.<br />
+          <br />
+        </td>
+        <td>
+          <input class="input" autofocus placeholder="magic word" type="text" name="magword" />
+        </td>
+      </tr>
+      <tr>
+        <td class="subright">      
+          Please use your Reddit User Id or your name in one word.&nbsp; Examples
+          "TerryLF" or "DonJones2010", no spaces.&nbsp; You must use the same name for any
+          additional submissions.&nbsp; You may submit to the board ten times.&nbsp; Thank
+          you.
+        </td>
+        <td> 
+          <input class="input" placeholder="reddit id or your name" type="text" name="name" />
+        </td>
+      </tr>
+      <tr>
+        <td class="subright">
+          Email address for problems with submission:
+        </td>
+        <td> 
+          <input class="input" placeholder="email address" type="text" name="email" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+        </td>
+        <td>
+        <br />
+          <input type="hidden" name="director" value="<?= $director ?>" />
+          <input type="hidden" name="submit" value="true" />
+          <input class="input" type="submit" value="continue" />
+        </td>
+      </tr>
+    </tbody>	
   </table>
 
   </form>
 
-<br />
+  <br />
 
 </div>
-
