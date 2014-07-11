@@ -1,4 +1,4 @@
-/******
+/**
  *
  *  asbb.c 
  *  Robert Clark, ebobtron
@@ -7,7 +7,7 @@
  *  
  *  automate the testing and posting of submissions to the Leader Board
  *
- ******/
+ ***********************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -18,24 +18,33 @@
 
 int main(void) {
 
+    // define some strings or character buffers
     char stringBuf[550];
     char lowBuf[550];
     char id[255];
     char oldname[255];
-    oldname[0] = '\0';
     char name[255];
     char ttime[255];
     char oldttime[255];
     
+    // initialize a string to null
+    oldname[0] = '\0';
+    
+    // open benchmark results
     FILE* infile = fopen("submis.txt","r");
     
+    // if benchmark file open for reading 
     if(infile) {
            
+        // open the output file
         FILE* outfile = fopen("newsubdata.txt", "w");
         
         while(true) {
             
+            // buffer a line a data from the benchmark file
             fgets(stringBuf,sizeof(stringBuf),infile);
+            
+            // colect the first three strings from the CSV file
             sscanf(stringBuf,"%[^,],%[^,],%[^,],", id, name, ttime);
             
             if(!strcmp(name,oldname)) {
@@ -45,7 +54,6 @@ int main(void) {
                     strcpy(lowBuf, stringBuf);
                     strcpy(oldttime, ttime);
                 }
-                
             }
             else {
                 
@@ -62,14 +70,11 @@ int main(void) {
             if(feof(infile)) {
                 break;
             }
-            
         }
         
         fprintf(outfile,  "%s", lowBuf);
 
-        if(infile) {
-            fclose(infile);
-        }
+        // close files
         if(outfile) {
             fclose(outfile);
         }
@@ -83,12 +88,17 @@ int main(void) {
         printf("\n....    nothing to crunch; sending notifications");
     }
     
+    if(infile) {    
+        fclose(infile);
+    }
+    
     sleep(2);
     
     printf("\n....    sending new submission info to server\n");
     
     sprintf(name,"./ftp.sh %i", PWRD);
     system(name);
+    
     sleep(2);
 
     printf("\n....    invoking webpage update.php\n");

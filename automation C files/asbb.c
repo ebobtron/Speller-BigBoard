@@ -7,7 +7,8 @@
  *  
  *  automate the testing and posting of submissions to the Leader Board
  *
- ******/
+ **********************************************************************/
+ 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -50,7 +51,7 @@ int main(int argc, char* argv[])
     sleep(1);
     
     // cause new submisson files to be redirected during testing
-    system("curl http://speller-leaderboard.freehostia.com/public/redirectSubs.php");
+    system("curl http://speller-leaderboard.freehostia.com/public/redirectSubs.php");         
     
     // we need a download folder 
     while(glob("downloaded", 0, NULL, &SUBDATA)) {
@@ -213,27 +214,30 @@ int main(int argc, char* argv[])
             printf("%s", stringBuf);
             fwrite(stringBuf, strlen(stringBuf), 1, outfile);
             canSpell[i] = true;
-            // move file
-            if(valid[i] && canSpell[i]) {
-                
-                sprintf(stringBuf,"mv downloaded/%s pass", file[i]);
-                system(stringBuf);
-            }
+
               
-            }
-            else {
+        }
+        else {
             
-                sprintf(stringBuf, "  |-    %s -> %s\n", name[i], spellerResults);
-                printf("%s", stringBuf);
-                fwrite(stringBuf, strlen(stringBuf), 1, outfile);
-                canSpell[i] = false;
-                // move file
-                if(!valid[i] || !canSpell[i]) {
+            sprintf(stringBuf, "  |-    %s -> %s\n", name[i], spellerResults);
+            printf("%s", stringBuf);
+            fwrite(stringBuf, strlen(stringBuf), 1, outfile);
+            canSpell[i] = false;
+        }
+        
+        // move file
+        if(valid[i] && canSpell[i]) {
                 
-                    sprintf(stringBuf,"mv downloaded/%s failed", file[i]);
-                    system(stringBuf);
-                }
-            }
+            sprintf(stringBuf,"mv downloaded/%s pass", file[i]);
+            system(stringBuf);
+        }
+        
+        // move file
+        if(!valid[i] || !canSpell[i]) {
+                
+               sprintf(stringBuf,"mv downloaded/%s failed", file[i]);
+               system(stringBuf);
+        }
             
         // create email notifacations
         if(valid[i] && canSpell[i]) {
