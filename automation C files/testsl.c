@@ -116,7 +116,7 @@ int main(int argc, char* argv[])
         FILE* infile = fopen(com, "r");
         if (infile)
         {
-            fseek(infile,-140, SEEK_END);
+            fseek(infile,-150, SEEK_END);
             
             fgets(linebuf, sizeof(linebuf),infile);
             for(int j =  0; j < 6; j++)

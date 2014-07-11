@@ -21,7 +21,7 @@ int main(int argc, char* argv[])
 {
     if (argc < 4 || argc > 6)
     {
-       printf("Usage: ./test ./speller id submission_name [memory]\n");
+       printf("Usage: ./test ./speller id submission_name memory [verbose]\n");
        return 1;
     }
     
@@ -113,7 +113,7 @@ int main(int argc, char* argv[])
         FILE* infile = fopen(com, "r");
         if (infile)
         {
-            fseek(infile,-140, SEEK_END);
+            fseek(infile,-150, SEEK_END);
             
             fgets(linebuf, sizeof(linebuf),infile);
             for(int j =  0; j < 6; j++)
