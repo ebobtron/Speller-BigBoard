@@ -1,12 +1,27 @@
 
 <div class="gentext">
 
-    <h3>About us</h3>
+    <h3 class="lilmar">About us</h3>
     
-    We are students of CS50x offered by edX.org. You did click the link.
-    
-    <br />
-    <br />
-    <br />
+    We are students of CS50x offered by edX.org.&nbsp; This, is an expanded version of my
+    CS50 final project.&nbsp; The project uses elements of the following.
+    <div class="grpSelect" style="width:100%">
+    <ul>
+        <li>Hypertext Markup Language (HTML)
+        <li>Cascading Style Sheets (CSS)
+        <li>PHP: Hypertext Preprocessor and Java Script Languages
+        <li>PHP Data Objects (PDO) for connection to a MySQL data base
+        <li>MySQL data base
+        <li>JavaScript Object Notation (JSON) file by Chris Hinds
+    </ul>    
+    for automation of submission possessing
+    <ul>
+        <li>C
+        <li>CURL
+        <li>FTP
+        <li>BASH Scripting
+        
+    </div>     
+
 
 </div>
