@@ -4,7 +4,7 @@
  *  alert.php  leader board writen by Robert Clark et al. 2014
  *************************************************************/
  
-    error_reporting(0); // E_ALL
+    error_reporting(E_ALL); // E_ALL
     
     require("../include/helfun.php");
     
@@ -14,6 +14,7 @@
     // continue target
     $contarget = "getspeller.php?con=yes";
     
+    // check for valid cookie
     if(isset($_COOKIE['leaderboard_cookie'])) {
         
         $group = $_COOKIE['leaderboard_cookie'];

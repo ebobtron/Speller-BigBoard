@@ -35,6 +35,7 @@
         else {
             
             header("Location:"."alert.php?gsnc=yes");
+            //exit;
         }
     }
         

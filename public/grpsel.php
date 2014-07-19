@@ -19,17 +19,27 @@
     $cookie_name = 'leaderboard_cookie';
     $cookie_time = time() + (24 * 60 * 60 * 365); // about a year
     
+
+    
+    // if request croup change
     if(!isset($_GET['chg'])) {
 
+        // check for cookie
         if(isset($_COOKIE[$cookie_name])) {
             
+            // this checks if the cookie is valid by seeing id cookie value is 
+            // in $titleString
             if(array_key_exists($_COOKIE[$cookie_name], $titleString)) {    
                 
+                // good cookie get speller
                 header("Location:"."getspeller.php");
+                //exit;
             }
             else {
                 
+                // invalid cookie alert user
                 header("Location:"."alert.php");
+                //exit;
             }    
         }
     }
@@ -42,8 +52,8 @@
     }
 
     if(isset($_POST['group'])) {
-
-        $cookie_value = saniTize($_POST['group']);  // $_POST['group']
+        
+        $cookie_value = saniTize($_POST['group']);
         setcookie($cookie_name, $cookie_value, $cookie_time, '/');
         header("Location:".
         "http://".$_SERVER["HTTP_HOST"].dirname($_SERVER["PHP_SELF"])."/getspeller.php");
@@ -54,6 +64,7 @@
         if(saniTize($_POST['target']) === "chggrp") {
             
             header("Location:"."show.php");
+            //exit;
         }
     }
     
