@@ -59,7 +59,7 @@ td {
   border:0px solid black;
 }
 
-/* classes */
+/* classes */  
 
 .admin {
   border:0px solid white;
@@ -129,7 +129,6 @@ td {
 .ldbd-tbody {
   display:block;
   text-align: center;
-  width:98%;
 }
 
 .left {
@@ -206,8 +205,7 @@ td {
   border-collapse: collapse;
   border-spacing: 0;
   margin: auto;
-  table-layout:fixed;
-  width:99%;
+  width:100%;
 }
   
 .table-all {
@@ -239,7 +237,7 @@ td {
 .td {
   border:0px solid blue;
   font-family: Trebuchet_MS;
-  width:10em;
+  padding:0%;
 }
 
 .td-all {
