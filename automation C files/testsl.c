@@ -28,13 +28,13 @@ int main(int argc, char* argv[])
     }
     
     
-    float totalloadtime = 0;
-    float totalchecktime = 0;
-    float totalsizetime = 0;
-    float totalunloadtime = 0;
-    float totaltime = 0;    
+    double totalloadtime = 0;
+    double totalchecktime = 0;
+    double totalsizetime = 0;
+    double totalunloadtime = 0;
+    double totaltime = 0;    
 
-    float vals[8];
+    double vals[8];
     char linebuf[30];
 
     char* path = "/home/cs50/pset6/texts/";
