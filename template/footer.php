@@ -23,7 +23,7 @@
     </td>
     <td>
       <a class="legal-links"
-         href="http;//trademark.harvard.edu/pages/trademark-notice">
+         href="http://trademark.harvard.edu/pages/trademark-notice">
         "Harvard" is &copy; 2014 The President and Fellows of Harvard College
       </a>
       <br />
