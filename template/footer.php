@@ -23,15 +23,15 @@
     </td>
     <td>
       <a class="legal-links"
-         href="trademark.harvard.edu/pages/trademark-notice">
+         href="http://trademark.harvard.edu/pages/trademark-notice">
         "Harvard" is &copy; 2014 The President and Fellows of Harvard College
       </a>
       <br />
       <a class="legal-links"
-         href="edx.org">"edX.org" is &copy; 2014 edX.org
+         href="http://edx.org">"edX.org" is &copy; 2014 edX.org
       </a>&nbsp;&nbsp;
       <a class="legal-links"
-         href="launchcodestl.com">"LaunchCodeSTL" is LaunchCode
+         href="http://launchcodestl.com">"LaunchCodeSTL" is LaunchCode
       </a>
     </td>
   </tr>
