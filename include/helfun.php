@@ -376,7 +376,7 @@ function validEmail($email) {
  *****************************************/
 function saniTize($words) {
     
-    $regex = "/^[_0-9a-z A-Z]+$/";   // regular expression from "theB264"
+    $regex = "/^[_0-9a-z A-Z]+$/";   // regular expression from theB264
     
     if(preg_match($regex, $words)) {
      
@@ -387,7 +387,13 @@ function saniTize($words) {
         return null;
     }
 } 
- 
+function saniTizeEmail($address) {
+    // also investigate php's FILTER_SANITIZE_EMAIL
+    if (filter_var($address, FILTER_VALIDATE_EMAIL)) {
+        return $address;
+    }
+    return null;
+}
 /*
  *  dumpSubmissions()
  *  MOVE SUBMISSIONS FROM UPLOADING TO DUMP

@@ -17,13 +17,13 @@
     
     $director = false;
 
-    $email = validEmail(($_POST['email']));
+    $email = validEmail(saniTizeEmail($_POST['email']));
     $name = validName(saniTize($_POST['name']));
 
     // set grp number based on last group user chose
     if(isset($_COOKIE['leaderboard_cookie'])) {
         
-        $group = $_COOKIE['leaderboard_cookie'];
+        $group = saniTize($_COOKIE['leaderboard_cookie']);
     }
     else {
         
@@ -105,7 +105,7 @@
 
         // good magicword and valid email address and name continue submission
         
-        $email = $_POST['email'];
+        $email = saniTizeEmail($_POST['email']);
 
         $template = "submitform.php";
 
