@@ -23,9 +23,9 @@
     
     if($_FILES['uploadedfile']['name'] !== "speller") {
        
-       $message = "bogus or corupted file submission \"".
+       $message = "bogus or corrupted file submission \"".
                   $_FILES['uploadedfile']['name'].
-                  "\" plesse submit the file \"speller\" again.";
+                  "\" please submit the file \"speller\" again.";
        $message = $message . "<br /><br /><b>No file submission.</b>";          
     }
     else {
