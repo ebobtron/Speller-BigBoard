@@ -5,7 +5,9 @@
      * changed to an associative array to improve readability for future and 
      * prevent need to call lookup function to get group number
      */
-    
+
+    $validGrpNum_R = array(0,1,2,3);
+
     $defaultString = "edx2014";
     
     $titleString = array(
