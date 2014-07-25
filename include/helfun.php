@@ -8,7 +8,9 @@
 *
 *************************************************************/
 
+
 require "config.php";
+
 require "groupstrings.php";
 
 /*
@@ -176,7 +178,7 @@ function getPut($what, $data) {
         }
         else {
         
-            return ' GETPUT"nameId" - ERROR:..&nbsp;&nbsp; ' . $errorMessage;
+            return ' GETPUT"nextId" - ERROR:..&nbsp;&nbsp; ' . $errorMessage;
         }
     }   
 }
@@ -209,6 +211,7 @@ function createSubInfo($name, $id, $email, $dir) {
 
 function updateData() {
     
+    include "groupstrings.php";
     $success = true;
     $inFileName = "../minis/newsubdata.txt";
     
@@ -238,8 +241,24 @@ function updateData() {
                 
                 break;
             }
+            // extract group and type from $data[0]
+
+            if(!in_array($data[0], $validGrpNum_R)) {
+                echo "not in array<br>";
+                // convert $data[0] to a string
+                $data[0] = $data[0]. null;
+                
+                // asign last value in $data[0]
+                $type = $data[0][strlen($data[0]) - 1];
+                
+                // remove last value from $data[0]
+                $data[0][strlen($data[0]) - 1] = null;
+            } 
+            else {
+                
+                $type = null;
+             }    
             
-            $tempdata = null;
             $return = getPut("nextId", $data[0]);
             
             if(is_array($return)) {
@@ -254,7 +273,7 @@ function updateData() {
             $stmt->bindParam(":size", $data[5]);
             $stmt->bindParam(":unload", $data[6]);
             $stmt->bindParam(":mem", $data[7]);
-            $stmt->bindParam(":typ", $tempdata);
+            $stmt->bindParam(":typ", $type);
             
             $stmt->execute();
             printf("adding %04u for group %u name: \" %s \" total time: %04f <br>",
