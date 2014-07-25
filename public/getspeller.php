@@ -33,7 +33,7 @@
         }
         else {
             
-            header("Location:"."alert.php?gsnc=yes");
+            header("Location: "."alert.php?gsnc=yes");
             //exit;
         }
     }

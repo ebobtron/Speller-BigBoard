@@ -1,4 +1,3 @@
-
 <?php
 /*
  *
@@ -49,7 +48,7 @@
         
         if(file_exists($target_path)){
             
-            header("Location:"."alert.php?dupSub=yes");
+            header("Location: "."alert.php?dupSub=yes");
             exit;
         }
         
