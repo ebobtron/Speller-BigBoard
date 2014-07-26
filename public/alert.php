@@ -61,6 +61,20 @@
         $contarget = null;            
     }
     
+    if(isset($_GET["type"])) {
+        
+    $mesString = <<<'EDO'
+          <br /><br />
+          please select the data type you used, if yours is not shown please
+          select other.<br /><br />
+          <a href="javascript:history.go(-1);" class="head-links"
+          style="font-size:20px">go back
+          and select data type</a><br /><br /><br />
+EDO;
+                     
+        $contarget = null;
+    }
+    
     
     // render the page
     
@@ -73,3 +87,4 @@
 
 
 ?>
+
