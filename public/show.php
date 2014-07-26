@@ -2,7 +2,7 @@
 <?php
 /***
 *
-*   show.php  leader board table view controler 
+*   show.php  leader board table view controller 
 * 
 *   Robert Clark, aka ebobtron et al.
 *   
@@ -76,17 +76,17 @@
     // get table rows from display
     $rows = getPut("rows", getGroupNumber($group));
 
-            // render header
-            require("../template/header.php");
-            
-            // render links
-            require("../template/links.php");
+    // render header
+    require("../template/header.php");
+    
+    // render links
+    require("../template/links.php");
 
-            // render template
-            require("../template/$template");
+    // render template
+    require("../template/$template");
 
-            // render footer
-            require("../template/footer.php");
+    // render footer
+    require("../template/footer.php");
 
 
 ?>

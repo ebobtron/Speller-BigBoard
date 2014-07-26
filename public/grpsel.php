@@ -1,8 +1,7 @@
-
 <?php
 /*
  *
- *  grpsel.php  group selection controler
+ *  grpsel.php  group selection controller
  *
  *  Robert Clark, aka ebobtron et al
  *
@@ -32,14 +31,14 @@
             if(array_key_exists($_COOKIE[$cookie_name], $titleString)) {    
                 
                 // good cookie get speller
-                header("Location:"."getspeller.php");
-                //exit;
+                header("Location: "."getspeller.php");
+                exit;
             }
             else {
                 
                 // invalid cookie alert user
-                header("Location:"."alert.php");
-                //exit;
+                header("Location: "."alert.php");
+                exit;
             }    
         }
     }
@@ -55,28 +54,29 @@
         
         $cookie_value = saniTize($_POST['group']);
         setcookie($cookie_name, $cookie_value, $cookie_time, '/');
-        header("Location:".
+        header("Location: ".
         "http://".$_SERVER["HTTP_HOST"].dirname($_SERVER["PHP_SELF"])."/getspeller.php");
+        exit;
     }
     
     if(isset($_POST['target'])) {
         
         if(saniTize($_POST['target']) === "chggrp") {
             
-            header("Location:"."show.php");
-            //exit;
+            header("Location: "."show.php");
+            exit;
         }
     }
     
     $template = "grpselform.php";
     
-        // render header
-        require("../template/header.php");
+    // render header
+    require("../template/header.php");
 
-        // render template
-        require("../template/$template");
+    // render template
+    require("../template/$template");
 
-        // render footer
-        require("../template/footer.php"); 
+    // render footer
+    require("../template/footer.php"); 
 
 ?>
