@@ -13,29 +13,24 @@
     
     if($_POST['type'] == 0){
         
-        header("Location:"."alert.php?type=no");
+        header('Location: alert.php?type=no');
         exit;   
     }
     
-    require "../include/helfun.php";
+    require '../include/helfun.php';
 
-    $dirString = "../uploading/";
+    $dirString = '../uploading/';
 
-    if(file_exists("../minis/alt_load.txt")) {
+    if(file_exists('../minis/alt_load.txt')) {
 
-        $dirString = "../uploading_alt/";
+        $dirString = '../uploading_alt/';
     }
 
     if($_FILES['uploadedfile']['name'] !== "speller") {
-<<<<<<< HEAD
 
        $message = "bogus or corupted file submission \"".
-=======
-       
-       $message = "bogus or corrupted file submission \"".
->>>>>>> a01014579b7a0459d91d7f97a913e7e47ea4a52b
                   $_FILES['uploadedfile']['name'].
-                  "\" please submit the file \"speller\" again.";
+                  "\" plesse submit the file \"speller\" again.";
        $message = $message . "<br /><br /><b>No file submission.</b>";          
     }
     else {
@@ -58,7 +53,7 @@
         
         if(file_exists($target_path)){
             
-            header("Location: "."alert.php?dupSub=yes");
+            header("Location:"."alert.php?dupSub=yes");
             exit;
         }
 
