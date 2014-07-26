@@ -1,4 +1,3 @@
-
 <?php
 /**
  *
@@ -16,7 +15,7 @@
     $error = false;
     
     $director = false;
-    
+
     $email = null;
     $name = null;
     
@@ -30,7 +29,7 @@
     // set grp number based on last group user chose
     if(isset($_COOKIE['leaderboard_cookie'])) {
         
-        $group = $_COOKIE['leaderboard_cookie'];
+        $group = saniTize($_COOKIE['leaderboard_cookie']);
     }
     else {
         
@@ -41,7 +40,7 @@
         }
         else {
             
-            header("Location:"."alert.php?gsnc=yes");
+            header("Location: "."alert.php?gsnc=yes");
             //exit;
         }
     }
@@ -114,7 +113,7 @@
 
         // good magicword and valid email address and name continue submission
         
-        $email = $_POST['email'];
+        $email = saniTizeEmail($_POST['email']);
 
         $template = "submitform.php";
 
