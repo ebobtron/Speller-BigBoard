@@ -16,8 +16,15 @@
     
     $director = false;
 
-    $email = validEmail(saniTizeEmail($_POST['email']));
-    $name = validName(saniTize($_POST['name']));
+    $email = null;
+    $name = null;
+    
+    if(isset($_POST['email'])) {
+        $email = validEmail(($_POST['email']));
+    }
+    if(isset($_POST['name'])) {
+        $name = validName(saniTize($_POST['name']));
+    }
 
     // set grp number based on last group user chose
     if(isset($_COOKIE['leaderboard_cookie'])) {
@@ -48,6 +55,8 @@
     $link = $linkString[$group]; 
      
     $validSubMsg = null;
+    $magWrd = null;
+    $submit = null;
     
     if(!array_key_exists('magword', $_POST)) {
         
