@@ -12,7 +12,6 @@
 require "config.php"; 
 
 require "groupstrings.php";
-require_once('../include/jpgraph-3.5.0b1/src/jpgraph.php');
 
 /*
  *   Pear Mail    http://pear.php.net/package/Mail
