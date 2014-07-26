@@ -241,23 +241,19 @@ function updateData() {
                 
                 break;
             }
+            
+            $type = null;
+            
             // extract group and type from $data[0]
-
-            if(!in_array($data[0], $validGrpNum_R)) {
-                echo "not in array<br>";
-                // convert $data[0] to a string
-                $data[0] = $data[0]. null;
-                
+            if(!in_array($data[0], $validGrpNum_R, true)) {
+                               
                 // asign last value in $data[0]
                 $type = $data[0][strlen($data[0]) - 1];
                 
-                // remove last value from $data[0]
+                // remove -type value from $data[0]
+                $data[0][strlen($data[0]) - 1] = null;
                 $data[0][strlen($data[0]) - 1] = null;
             } 
-            else {
-                
-                $type = null;
-             }    
             
             $return = getPut("nextId", $data[0]);
             
