@@ -32,13 +32,13 @@
                 
                 // good cookie get speller
                 header("Location: "."getspeller.php");
-                exit;
+                #exit;
             }
             else {
                 
                 // invalid cookie alert user
                 header("Location: "."alert.php");
-                exit;
+                #exit;
             }    
         }
     }
@@ -56,7 +56,7 @@
         setcookie($cookie_name, $cookie_value, $cookie_time, '/');
         header("Location: ".
         "http://".$_SERVER["HTTP_HOST"].dirname($_SERVER["PHP_SELF"])."/getspeller.php");
-        exit;
+        #exit;
     }
     
     if(isset($_POST['target'])) {
@@ -64,7 +64,7 @@
         if(saniTize($_POST['target']) === "chggrp") {
             
             header("Location: "."show.php");
-            exit;
+            #exit;
         }
     }
     
