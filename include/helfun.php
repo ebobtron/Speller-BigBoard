@@ -13,6 +13,8 @@ require "config.php";
 
 require "groupstrings.php";
 
+#require_once('../include/jpgraph-3.5.0b1/src/jpgraph.php');
+
 /*
  *   Pear Mail    http://pear.php.net/package/Mail
  *
@@ -250,9 +252,9 @@ function updateData() {
                 // asign last value in $data[0]
                 $type = $data[0][strlen($data[0]) - 1];
                 
-                // remove -type value from $data[0]
-                $data[0][strlen($data[0]) - 1] = null;
-                $data[0][strlen($data[0]) - 1] = null;
+                // get group substring
+                $data[0] = substr($data[0], 0, strlen($data[0] - 2));
+                
             } 
             
             $return = getPut("nextId", $data[0]);
@@ -272,10 +274,11 @@ function updateData() {
             $stmt->bindParam(":typ", $type);
             
             $stmt->execute();
+            
             printf("adding %04u for group %u name: \" %s \" total time: %04f <br>",
                     $return['nextId'], $data[0], $data[1], $data[2]);
             
-            $oldFileName = $data[1] . $data[0] . "speller.x";
+            $oldFileName = $data[1] . $data[0] . '-' . $type . 'speller.x';
             $newFileName = $oldFileName . $return['nextId'];
             
             dumpSubmissions($oldFileName, $newFileName);
@@ -303,6 +306,8 @@ function updateData() {
  *   SEND NOTIFICATIONS FRM AN UPLOADED FILE
  ****************************************************/   
 function sendemailNotifications($mode) {
+
+    // $mode not currently in use
     
     include("groupstrings.php");
      
@@ -339,8 +344,11 @@ function sendemailNotifications($mode) {
         if(feof($inFileHandle))
             break;
         
+        // extract gropu number from group-Type string
+        $grp = substr($lineTwo[1], 0, strlen($lineTwo[1] -2));
+         
         // get group string for email notification
-        $group = $titleString[ $keys[$lineTwo[1]]];
+        $group = $titleString[$keys[$grp]];
         
         // insert group title string into email body
         $body =  $lineTwo[0] . " of " . $group . ", " . $lineTwo[2];
@@ -354,7 +362,7 @@ function sendemailNotifications($mode) {
     
     }
 
-    unlink($inFileName);
+    //unlink($inFileName);
     return;
 }
 
@@ -401,7 +409,8 @@ function saniTize($words) {
         
         return null;
     }
-} 
+}
+
 function saniTizeEmail($address) {
     // also investigate php's FILTER_SANITIZE_EMAIL
     if (filter_var($address, FILTER_VALIDATE_EMAIL)) {
@@ -409,6 +418,7 @@ function saniTizeEmail($address) {
     }
     return null;
 }
+
 /*
  *  dumpSubmissions()
  *  MOVE SUBMISSIONS FROM UPLOADING TO DUMP
