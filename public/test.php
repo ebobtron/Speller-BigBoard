@@ -124,6 +124,6 @@ $lplot->SetColor('navy');
 // Add the plots to the graph and stroke
 $g->Add($lplot);
 //$g->Add($splot);
-$g->Stroke()
+$g->Stroke();
 
 ?>

@@ -26,7 +26,7 @@
         $dirString = '../uploading_alt/';
     }
 
-    if($_FILES['uploadedfile']['name'] !== "speller") {
+    if($_FILES['uploadedfile']['name'] !== 'speller') {
 
        $message = "bogus or corupted file submission \"".
                   $_FILES['uploadedfile']['name'].

@@ -3,12 +3,13 @@
 /*
  *  update.php  leader board writen by Robert Clark et al. 2014
  *************************************************************/
+ 
  // this is an administration file not seen buy the public.
  
-    error_reporting(0); // E_ALL
+    error_reporting(E_ALL); // E_ALL
     
     require_once "../include/helfun.php";
-		
+
     // render header
     require("../template/header.php");
     
@@ -38,10 +39,10 @@
             
             echo "No Data!";
         }
-        
+
         echo"</div>";
-    
-  	// render footer
+
+    // render footer
     require("../template/footer.php");
 
 ?>
