@@ -20,7 +20,7 @@
     $name = null;
     
     if(isset($_POST['email'])) {
-        $email = validEmail(($_POST['email']));
+        $email = saniTizeEmail(($_POST['email']));
     }
     if(isset($_POST['name'])) {
         $name = validName(saniTize($_POST['name']));
