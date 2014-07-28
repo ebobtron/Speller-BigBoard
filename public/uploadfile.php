@@ -11,8 +11,8 @@
 
     error_reporting(0); // E_ALL
     
-    if($_POST['type'] == 0){
-        
+    if($_POST['type'] == 0)
+    {    
         header('Location: alert.php?type=no');
         exit;   
     }
@@ -21,20 +21,20 @@
 
     $dirString = '../uploading/';
 
-    if(file_exists('../minis/alt_load.txt')) {
-
+    if(file_exists('../minis/alt_load.txt'))
+    {
         $dirString = '../uploading_alt/';
     }
 
-    if($_FILES['uploadedfile']['name'] !== 'speller') {
-
-       $message = "bogus or corupted file submission \"".
-                  $_FILES['uploadedfile']['name'].
-                  "\" plesse submit the file \"speller\" again.";
-       $message = $message . "<br /><br /><b>No file submission.</b>";          
+    if($_FILES['uploadedfile']['name'] !== 'speller')
+    {
+        $message = 'missing, bogus or corupted file submission " ' 
+                  . $_FILES['uploadedfile']['name']
+                  .' " please submit the file " speller " again.'
+                  .'<br /><br /><b>No file submission.</b>';
     }
-    else {
-
+    else
+    {
         $group = saniTize($_POST['group']);
 
         $title = $titleString[$group];
