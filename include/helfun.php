@@ -362,7 +362,7 @@ function sendemailNotifications($mode) {
     
     }
 
-    //unlink($inFileName);
+    unlink($inFileName);
     return;
 }
 
