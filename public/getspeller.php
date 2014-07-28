@@ -19,34 +19,38 @@
     $email = null;
     $name = null;
     
-    if(isset($_POST['email'])) {
-        $email = validEmail(($_POST['email']));
+    if(isset($_POST['email']))
+    {
+        $email = saniTizeEmail($_POST['email']);
+        $email = validEmail($email);
     }
-    if(isset($_POST['name'])) {
+    
+    if(isset($_POST['name']))
+    {
         $name = validName(saniTize($_POST['name']));
     }
 
     // set grp number based on last group user chose
-    if(isset($_COOKIE['leaderboard_cookie'])) {
-        
+    if(isset($_COOKIE['leaderboard_cookie']))
+    {    
         $group = saniTize($_COOKIE['leaderboard_cookie']);
     }
-    else {
-        
+    else
+    {    
         // skip the alert the second time though
-        if(isset($_GET['con']) || saniTize($_POST['director']) == true ) {
-            
+        if(isset($_GET['con']) || saniTize($_POST['director']) == true )
+        {    
             $director = true;
         }
-        else {
-            
+        else
+        {    
             header("Location: alert.php?gsnc=yes");
             //exit;
         }
     }
         
-    if($group === null) {
-        
+    if($group === null)
+    {    
         $group = $defaultString;
     }
     
@@ -58,73 +62,70 @@
     $magWrd = null;
     $submit = null;
     
-    if(!array_key_exists('magword', $_POST)) {
-        
+    if(!array_key_exists('magword', $_POST))
+    {    
         $_POST = array('magword' => null, 'submit' => null);
     }
-    else {
-        
+    else
+    {    
         $magWrd = saniTize($_POST['magword']);
         $submit = saniTize($_POST['submit']);
     }
 
     // now this is a little nutty  
-    if($magWrd === $magicword_2) {
-        
+    if($magWrd === $magicword_2)
+    {    
         $magWrd = $magicword;
     }
 
-    if($magWrd !== $magicword || !$name || !$email) {
-
-        if(!$email && $submit) {
-            
-            $validSubMsg = "alert('Submission needs an email address: ');" .
+    if($magWrd !== $magicword || !$name || !$email)
+    {
+        if(!$email && $submit)
+        {       
+            $validSubMsg = "alert('Submission needs a valid email address');" .
                            "javascript:history.go(-1);";
         }        
 
-        if(!$name && $submit) {
-        
-            $validSubMsg = "alert('Submission needs a name: ');" .
+        if(!$name && $submit)
+        {
+            $validSubMsg = "alert('Submission needs a name');" .
                            "javascript:history.go(-1);";
         }
                 
-        if($magWrd != "launchcode" && $submit) {
-        
+        if($magWrd != "launchcode" && $submit)
+        {
             $validSubMsg = "alert('You must use a Magic Word. Check the referring web" .
                            "page for the correct Magic Word.');" .
                            "javascript:history.go(-1);";
         }
 
-        // if no magicword stay on the getspeller form
-        $template = "getspellerform.html";
+        // something missing stay on the getspeller form but pop a b box
 
-            // render header
-            require("../template/header.php");
-        
-            echo "<script type='text/javascript'>",$validSubMsg,"</script>";
+        // render header
+        require('../template/header.php');
     
-            // render template
-            require("../template/$template");
+        // render template
+        require('../template/getspellerform.html');
 
-            // render footer
-            require("../template/footer.php");
+        // render footer
+        require('../template/footer.php');
+        
+        echo '<script type="text/javascript">'.$validSubMsg.'</script>';
     }
-    else {
-
-        // good magicword and valid email address and name continue submission
+    else
+    {
+        // good magicword, valid email address and name continue submission
         
         $email = saniTizeEmail($_POST['email']);
 
-        $template = "submitform.php";
-
         // render header
-        require("../template/header.php");
+        require('../template/header.php');
              
         // render template
-        require("../template/$template");
+        require('../template/submitform.php');
 
         // render footer
-        require("../template/footer.php");	
+        require('../template/footer.php');	
     }
 
 ?>
