@@ -116,7 +116,7 @@
             // built submission faile message using single quotes
             $message =
             'There was an error uploading the file, please try again, later.<br />'.
-            'for questions contact the'.
+            'for questions contact the '.
             '<a href="mailto:ebobtron@aol.com" class="head-links" style="font-size:1.3em">'.
             'Leader Board Administrator</a><br />';
 
