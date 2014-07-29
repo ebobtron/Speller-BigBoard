@@ -9,17 +9,19 @@
     require('../include/helfun.php');
     require('../include/alert_strings.php');
     
-    // message string
+    // default message string
     $mesString = 'no data';
     
-    // continue target
+    // default continue target
     $conTarget = 'getspeller.php?con=yes';
     
-    // check for valid cookie
+    // check for our cookie 
     if(isset($_COOKIE['leaderboard_cookie']))
     {
+        // get group from cookie
         $group = $_COOKIE['leaderboard_cookie'];
-
+        
+        // check in cookie value is a valid group name
         if(!array_key_exists($group, $titleString))
         {    
             $mesString = $badCookie;
@@ -27,24 +29,27 @@
         }          
     }
     
+    // alert is no browser cookie support
     if(isset($_GET['gsnc']))
     {    
         $mesString = $noCookieSupport;
     }
     
+    // alert is duplicate local submission found
     if(isset($_GET['dupSub']))
     {
         $mesString = $dupSubmission;
         $conTarget = null;            
     }
     
+    // alert is no data structure type selected
     if(isset($_GET['type']))
     {
         $mesString = $typeString;
         $conTarget = null;
     }
    
-    // render the page
+    // render the alert page
     
     include('../template/header.php');
         
