@@ -1,63 +1,62 @@
 <!-- 
-***
-*
-*   tabel_all.php  Display table of submissions and links
-* 
-*   Robert Clark, aka ebobtron et al.
-*
-*   extension of my CS50x final project   winter/spring 2014  with Launch Code
-*
-*************************************************************   -->
-
+**
+ *
+ *  tabel_all.php  Display table of submissions and links
+ * 
+ *  Robert Clark, aka ebobtron et al.
+ *
+ *  extension of my CS50x final project
+ *  winter/spring 2014  with Launch Code
+ *
+ *************************************************************   -->
 
 <div class="div-table">
 
   <h3 style="margin:0px">all times in seconds</h3>
 
   <table class='table-all'>
-    <thead class="thead">
+    <tbody class="tbody ldbd-tbody" style="height:28px;">
       <tr>
-        
-        <th class="th left">name</th>
-        <th class="th">total time</th>
-        <th class="th" style='width:50%'>group</th>
+        <td class="td left" style="min-width:9em">&nbsp;name</td>
+        <td class="td" style="min-width:5em">total time</td>
+        <td class="td" style="min-width:2em"></td>
+        <td class="td left" style="min-width:10em">structure type</td>
+        <td class="td left" style="min-width:17em">group</td>
       </tr>
-    </thead>
+    </tbody>
+    
     <tbody class="tbody ldbd-tbody">
+      <? $loop = 0; ?> 
+      <? foreach($rows as $row): ?>
 
-<?php
+      <? if($loop % 2 == 0): ?>
+        <tr class="row"> 
+      <? else: ?>
+        <tr>	
+      <? endif; ?>
 
-    $loop = 0;
+      <? 
+         $to = sprintf("%0.4f", $row['total']);
+         $keyNum = $row['grp'];
+         $groupName = $titleString[$keys[$keyNum]];
+         $grp = sprintf("%s", $groupName);
+         $loop++; ?>
+         
+          <td class="td left" style="min-width:9em">
 
-    foreach($rows as $row){
+            <a href="http://www.reddit.com/user/<?=$row['name']?>/" class="name"
+               title="click me for more info">&nbsp;<?=$row['name']?></a>
 
-        if($loop % 2 == 0)
-            echo " <tr class='row'> ";
-        else
-            echo " <tr> ";
+          </td>
+          
+          <td class="td" style="min-width:5em"><?=$to?></td>
+          <td class="td" style="min-width:2em"></td>
+          <td class="td left" style="min-width:10em">&nbsp;&nbsp;<?=$row['typ']?></td>
+          <td class="td left" style="min-width:17em"><?=$grp?></td>
+        </tr>
 
-        $total = sprintf("%0.4f", $row['total']);
-        
-        $keyNum = $row['grp'];  	
-        $groupName = $titleString[$keys[$keyNum]];
-
-        $grp = sprintf("%s", $groupName);
-
-        echo
-           "<td class='td-all left'>" .
-           
-           "<a href='http://www.reddit.com/user/",$row['name'],"' class='name' ".
-           "title='click me for more info'>" . $row['name']. "</a>" .
-           
-           "</td>" .
-           "<td class='td-all'>", $total, "</td>" .
-           "<td class='td td-allgrp'>", $grp, "</td>" .
-           "</tr>";
-
-        $loop++;
-    }
-  
-?>
+      <? endforeach; ?>
     </tbody>
   </table>
-</div><br />
+</div>
+<br />
