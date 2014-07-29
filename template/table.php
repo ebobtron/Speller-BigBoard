@@ -1,21 +1,21 @@
-
 <!--
 **
-*
-*   table.php  Display table of submissions and links
-*
-*   Robert Clark, aka ebobtron et al.
-*
-*   extension of my CS50x final project   winter/spring 2014  with Launch Code
-*
-*************************************************************   -->
+ *
+ *  table.php  Display table of submissions and links
+ *
+ *  Robert Clark, aka ebobtron et al.
+ *
+ *  extension of my CS50x final project   
+ *  winter/spring 2014  with Launch Code
+ *
+ *************************************************************   -->
 
 <div class="div-table">
 
   <h3 style="margin:0px">all times in seconds</h3>
 
   <table class="table">
-    <tbody class="tbody ldbd-tbody" style='height:28px;'>
+    <tbody class="tbody ldbd-tbody" style="height:28px;">
       <tr>
         <td class="td" style="width:6em">id</td>
         <td class="td left" style="width:13em">name</td>
@@ -51,7 +51,7 @@
 
           <td class="td left" style="width:13em">
 
-            <a href="http://www.reddit.com/user/<?=$row["name"]?>" class="name"
+            <a href="http://www.reddit.com/user/<?=$row["name"]?>/" class="name"
                title="click me for more info"><?=$row["name"]?></a>
 
           </td>
