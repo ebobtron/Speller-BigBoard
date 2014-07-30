@@ -74,7 +74,7 @@ function sendMail($to, $cc, $subject, $body) {
 /*
  *  PDOconnect()
  *
- *  returns a handle to our connection to the MySql database table
+ *  returns a handle to our connection to the MySQL database table
  *****************************************************************/
 
 function PDOconnect() {
@@ -211,45 +211,61 @@ function createSubInfo($name, $id, $email, $dir) {
  *   LOAD SUBMISSION DATA INTO DATABASE  
  *********************************************************/
 
-function updateData() {
-    
+function updateData()
+{    
+    // get the group names and data identifiers
     include "groupstrings.php";
+    
+    // default success - thing positive
     $success = true;
+    
+    // data structure descriptors
+    $dsType = array('none','Hash Table','Trie','Other');
+    
+    // submission data file name
     $inFileName = "../minis/newsubdata.txt";
     
-    if(!file_exists($inFileName)) {
-        
-        $dbhandle = null;
+    // in no submission data then clean up the files
+    // and alert the admin
+    if(!file_exists($inFileName))
+    {    
         dumpSubmissions(0,0);
         moveSubmissions();
-        return "&nbsp;...no submission data: file \"" . $inFileName . "\" not found<br />";        
+        return "&nbsp;...no submission data: file \" $inFileName \" not found<br />";        
     } 
         
+    // connect to the data base get handle
     $dbhandle = PDOconnect();
 
+    // define the MySQL statement 
     $sql = "REPLACE INTO `leader_board` VALUES(:id, :grp2, :name, :total, :dload,";
     $sql = $sql . " :tcheck, :size, :unload, :mem, :typ)";    
     
+    // open submission data file
     $inFileHandle = fopen($inFileName, 'r') or die("can't open file");
     
-    try {
-
+    // begin adding data to database
+    try
+    {
+        // prepare or create sql statement object
         $stmt = $dbhandle->prepare($sql);
-        $tempGroup = 1;
         
-        while(($data = fgetcsv($inFileHandle, 1000, ",")) !== FALSE) {
-
-            if(!$data[0]) {
-                
+        // begin parsing data from submission file one line at a time
+        while(($data = fgetcsv($inFileHandle, 1000, ",")) !== FALSE)
+        {
+            // if no data exit loop
+            if(!$data[0])
+            {    
                 break;
             }
             
+            // default type value
             $type = null;
             
             // extract group and type from $data[0]
             if(!in_array($data[0], $validGrpNum_R, true)) {
                                
-                // asign last value in $data[0]
+                // assign last value in $data[0]
                 $type = $data[0][strlen($data[0]) - 1];
                 
                 // get group substring
@@ -257,12 +273,20 @@ function updateData() {
                 
             } 
             
+            // get the next id number for this group
             $return = getPut("nextId", $data[0]);
             
-            if(is_array($return)) {
-                
+            // if getput nextId result good bind data or throw error 
+            if(is_array($return))
+            {    
                 $stmt->bindParam(":id", $return['nextId']);
             }
+            else
+            {
+                $error = 'unable to get id number';
+                throw new Exception($error);
+            }
+            // bind data to object
             $stmt->bindParam(":grp2", $data[0]);
             $stmt->bindParam(":name", $data[1]);
             $stmt->bindParam(":total", $data[2]);
@@ -271,39 +295,47 @@ function updateData() {
             $stmt->bindParam(":size", $data[5]);
             $stmt->bindParam(":unload", $data[6]);
             $stmt->bindParam(":mem", $data[7]);
-            $stmt->bindParam(":typ", $type);
+            $stmt->bindParam(":typ", $dsType[$type]);
             
+            // execute the MySQL data addition
             $stmt->execute();
             
+            // output admin data
             printf("adding %04u for group %u name: \" %s \" total time: %04f <br>",
                     $return['nextId'], $data[0], $data[1], $data[2]);
             
+            // build some source and destination strings
             $oldFileName = $data[1] . $data[0] . '-' . $type . 'speller.x';
             $newFileName = $oldFileName . $return['nextId'];
             
+            // move submitter's files to the dump
             dumpSubmissions($oldFileName, $newFileName);
                     
         }
     }
-    catch(PDOException $e) {
-        
+    catch(PDOException $e)
+    {    
+        // success is not true / echo error message
         $success = false;
         echo 'Leader Board updateData ERROR: ' . $e->getMessage();
     }
-    // clean up files
+    
+    // clean up files and move to dump if no data was uploaded
     unlink($inFileName);
     dumpSubmissions(0,0);
     moveSubmissions();
     
+    // close database connection if open
     if($dbhandle)
         $dbhandle = null;
 
+    // return success true or false
     return $success;
 }
 
 /*
  *   sendemailNotifications()
- *   SEND NOTIFICATIONS FRM AN UPLOADED FILE
+ *   SEND NOTIFICATIONS FROM AN UPLOADED FILE
  ****************************************************/   
 function sendemailNotifications($mode) {
 
