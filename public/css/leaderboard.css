@@ -71,6 +71,10 @@ td {
   width: 90%;
 }
 
+.b {
+  font-weight:bold;
+}
+
 .center {
   text-align:center;
 }
@@ -228,7 +232,7 @@ td {
 
 .tbody {
   border:0px solid black;
-  height:285px;
+  height:300px;
   overflow-y: auto;
   padding-right:2px;
   -webkit-overflow-scrolling: touch;

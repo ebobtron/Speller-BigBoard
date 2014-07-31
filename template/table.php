@@ -15,20 +15,23 @@
   <h3 style="margin:0px">all times in seconds</h3>
 
   <table class="table">
-    <tbody class="tbody ldbd-tbody" style="height:28px;">
+    <tbody class="tbody ldbd-tbody" style="height:28px" >
       <tr>
-        <td class="td" style="width:6em">id</td>
-        <td class="td left" style="width:13em">name</td>
-        <td class="td" style="width:8em">total time</td>
-        <td class="td" style="width:8em">load time</td>
-        <td class="td" style="width:8em">check time</td>
-        <td class="td" style="width:8em">size time</td>
-        <td class="td" style="width:8em">unload time</td>
-        <td class="td" style="width:8em">heap used</td> 
+        <td class="td b" style="min-width:4em">id</td>
+        <td class="td b left" style="min-width:10em">name</td>
+        <td class="td b" style="min-width:5em">total</td>
+        <td class="td b" style="min-width:5em">load</td>
+        <td class="td b" style="min-width:5em">check</td>
+        <td class="td b" style="min-width:5em">size</td>
+        <td class="td b" style="min-width:5em">unload</td>
+        <td class="td b" style="min-width:6em">heap</td>
+        <td class="td b left" style="min-width:6em">&nbsp;&nbsptype</td> 
       </tr>
+
     </tbody>
 
     <tbody class="tbody ldbd-tbody">
+    
       <? $loop = 0; ?> 
       <? foreach($rows as $row): ?>
 
@@ -47,20 +50,21 @@
          $mm = sprintf("%0.4f MB", $row["mem"]);
          $loop++; ?>
     
-          <td class="td" style="width:6em"><?=$id?></td>
+          <td class="td" style="min-width:4em"><?=$id?></td>
 
-          <td class="td left" style="width:13em">
+          <td class="td left" style="min-width:10em">
 
-            <a href="http://www.reddit.com/user/<?=$row["name"]?>/" class="name"
-               title="click me for more info"><?=$row["name"]?></a>
+            <a href="http://www.reddit.com/user/<?=$row['name']?>/" class="name"
+               title="click me for more info"><?=$row['name']?></a>
 
           </td>
-          <td class="td" style="width:8em"><?=$to?></td>
-          <td class="td" style="width:8em"><?=$ld?></td>
-          <td class="td" style="width:8em"><?=$ck?></td>
-          <td class="td" style="width:8em"><?=$sz?></td>
-          <td class="td" style="width:8em"><?=$ul?></td>
-          <td class="td right" style="width:8em"><?=$mm?></td>
+          <td class="td" style="min-width:5em"><?=$to?></td>
+          <td class="td" style="min-width:5em"><?=$ld?></td>
+          <td class="td" style="min-width:5em"><?=$ck?></td>
+          <td class="td" style="min-width:5em"><?=$sz?></td>
+          <td class="td" style="min-width:5em"><?=$ul?></td>
+          <td class="td right" style="min-width:6em"><?=$mm?></td>
+          <td class="td left" style="min-width:6em">&nbsp;&nbsp;<?=$row['typ']?></td>
 
         </tr>
 
