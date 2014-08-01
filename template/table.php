@@ -1,6 +1,5 @@
 <!--
 **
- *
  *  table.php  Display table of submissions and links
  *
  *  Robert Clark, aka ebobtron et al.
@@ -8,69 +7,70 @@
  *  extension of my CS50x final project   
  *  winter/spring 2014  with Launch Code
  *
- *************************************************************   -->
+ ************************************************************   -->
 
 <div class="div-table">
 
-  <h3 style="margin:0px">all times in seconds</h3>
+  <h4 style="margin:0px">all times in seconds</h4>
+  <div class="div-col b" style="width:8%">id</div>
+  <div class="div-col left b" style="width:19.5%">name</div>
+  <div class="div-col b" style="width:9%">total</div>
+  <div class="div-col b" style="width:9%">load</div>
+  <div class="div-col b" style="width:9%">check</div>
+  <div class="div-col b" style="width:9%">size</div>
+  <div class="div-col b" style="width:9%">unload</div>
+  <div class="div-col b" style="width:12%">heap</div>
+  <div class="div-col b left" style="width:13%">&nbsp;type</div> 
 
-  <table class="table">
-    <tbody class="tbody ldbd-tbody" style="height:28px" >
-      <tr>
-        <td class="td b" style="min-width:4em">id</td>
-        <td class="td b left" style="min-width:10em">name</td>
-        <td class="td b" style="min-width:5em">total</td>
-        <td class="td b" style="min-width:5em">load</td>
-        <td class="td b" style="min-width:5em">check</td>
-        <td class="td b" style="min-width:5em">size</td>
-        <td class="td b" style="min-width:5em">unload</td>
-        <td class="td b" style="min-width:6em">heap</td>
-        <td class="td b left" style="min-width:6em">&nbsp;&nbsptype</td> 
-      </tr>
+  <!-- the clear:both stops the following elements from wrapping around
+       the last div above the efect is a new line   -->
+  <div style="clear:both;margin:0"></div>
+</div>
 
-    </tbody>
+<div class="d-sub">
 
-    <tbody class="tbody ldbd-tbody">
-    
-      <? $loop = 0; ?> 
-      <? foreach($rows as $row): ?>
+    <? $loop = 0; ?>
+    <? $class = 'row';?>     
+    <? foreach($rows as $row): ?>
+    <? if($loop % 2 == 0): ?>
+      <? $class = ' row';?> 
+    <? else: ?>
+      <? $class = null;?>
+    <? endif; ?>
 
-      <? if($loop % 2 == 0): ?>
-        <tr class="row"> 
-      <? else: ?>
-        <tr>	
-      <? endif; ?>
+    <div class="div-col<?=$class?>" style="width:8%">
+        <?  printf('%04d', $row['id'])?></div>
 
-      <? $id = sprintf("%04d", $row["id"]);
-         $to = sprintf("%0.4f", $row["total"]);
-         $ld = sprintf("%0.4f", $row["dload"]);
-         $ck = sprintf("%0.4f", $row["tcheck"]);
-         $sz = sprintf("%0.4f", $row["size"]);
-         $ul = sprintf("%0.4f", $row["unload"]);
-         $mm = sprintf("%0.4f MB", $row["mem"]);
-         $loop++; ?>
-    
-          <td class="td" style="min-width:4em"><?=$id?></td>
+    <div class="div-col<?=$class?> left" style="width:20%">
+      <a href="http://www.reddit.com/user/<?=$row['name']?>/" class="name"
+         title="click me for more info"><?=$row['name']?></a></div>
 
-          <td class="td left" style="min-width:10em">
+    <div class="div-col<?=$class?>" style="width:9%">
+        <? printf('%0.4f', $row['total']) ?></div>
 
-            <a href="http://www.reddit.com/user/<?=$row['name']?>/" class="name"
-               title="click me for more info"><?=$row['name']?></a>
+    <div class="div-col<?=$class?>" style="width:9%">
+        <? printf('%0.4f', $row['dload']) ?></div>
 
-          </td>
-          <td class="td" style="min-width:5em"><?=$to?></td>
-          <td class="td" style="min-width:5em"><?=$ld?></td>
-          <td class="td" style="min-width:5em"><?=$ck?></td>
-          <td class="td" style="min-width:5em"><?=$sz?></td>
-          <td class="td" style="min-width:5em"><?=$ul?></td>
-          <td class="td right" style="min-width:6em"><?=$mm?></td>
-          <td class="td left" style="min-width:6em">&nbsp;&nbsp;<?=$row['typ']?></td>
+    <div class="div-col<?=$class?>" style="width:9%">
+        <? printf('%0.4f', $row['tcheck']) ?></div>
 
-        </tr>
+    <div class="div-col<?=$class?>" style="width:9%">
+        <? printf('%0.4f', $row['size']) ?></div>
 
-      <? endforeach; ?>
+    <div class="div-col<?=$class?>" style="width:9%">
+        <? printf('%0.4f', $row['unload']) ?></div>
 
-    </tbody>
-  </table>
+    <div class="div-col<?=$class?> right" style="width:12%">
+        <? printf('%0.4f MB', $row['mem']) ?></div>
+
+    <div class="div-col<?=$class?> left" style="width:13%">&nbsp;
+        <?=$row['typ']?></div>
+
+    <div style="clear:both"></div>
+
+    <?  $loop++;
+        endforeach; ?>
+
 </div>
 <br />
+

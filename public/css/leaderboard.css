@@ -79,6 +79,23 @@ td {
   text-align:center;
 }
 
+.div-col { 
+  border:0px solid blue;
+  float:left;
+  height:22px;
+  margin-top:1px;
+  padding:0;
+}
+
+.d-sub {
+  border:0px solid Green;
+  height: 295px;
+  margin: auto;
+  overflow-y: auto;
+  text-align: center;
+  width:90%;
+} 
+
 .div-head {
   margin-top:20px;
   text-align:center;
