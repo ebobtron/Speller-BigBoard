@@ -1,6 +1,5 @@
 <?php
 /**
- *
  *   getspeller.php  submission controller for uploading file
  * 
  *   Robert Clark, aka ebobtron et al.
@@ -10,7 +9,7 @@
  *
  ***************************************************************/
 
-    require "../include/helfun.php";
+    require '../include/helfun.php';
 
     $error = false;
     
@@ -44,7 +43,7 @@
         }
         else
         {    
-            header("Location: alert.php?gsnc=yes");
+            header("Location: alert?gsnc=yes");
             //exit;
         }
     }

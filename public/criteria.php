@@ -1,23 +1,13 @@
 
-
 <?php
+     
+	// render header
+  require('../template/header.php');
 
-	require_once "../include/helfun.php";
-	
-	// comment time
- 
+  // render template
+  require('../template/criteria.html');
 
-	$template = "criteria.html";
-	     
-		        // render header
-            require("../template/header.php");
+  // render footer
+  require('../template/footer.php');					
 
-            // render template
-            require("../template/$template");
-
-            // render footer
-            require("../template/footer.php");
-						
-						
 ?>
-

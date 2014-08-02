@@ -13,7 +13,7 @@
     $mesString = 'no data';
     
     // default continue target
-    $conTarget = 'getspeller.php?con=yes';
+    $conTarget = 'getspeller?con=yes';
     
     // check for our cookie 
     if(isset($_COOKIE['leaderboard_cookie']))
@@ -25,7 +25,7 @@
         if(!array_key_exists($group, $titleString))
         {    
             $mesString = $badCookie;
-            $conTarget = 'grpsel.php?chg=yes';
+            $conTarget = 'grpsel?chg=yes';
         }          
     }
     

@@ -10,73 +10,77 @@
  *
  **************************************************************/
 
-    error_reporting(0); // E_ALL
-    
-    require("../include/helfun.php");
-    
-    $target = "sub";
+    error_reporting(E_ALL); // E_ALL
+
+    require('../include/helfun.php');
+
+    // default target value
+    $target = 'sub';
+
+    // cookie data name and experation time
     $cookie_name = 'leaderboard_cookie';
     $cookie_time = time() + (24 * 60 * 60 * 365); // about a year
-    
 
-    
-    // if request croup change
-    if(!isset($_GET['chg'])) {
-
+    // if request group change
+    if(!isset($_GET['chg']))
+    {
         // check for cookie
-        if(isset($_COOKIE[$cookie_name])) {
-            
+        if(isset($_COOKIE['$cookie_name']))
+        {    
             // this checks if the cookie is valid by seeing id cookie value is 
             // in $titleString
-            if(array_key_exists($_COOKIE[$cookie_name], $titleString)) {    
-                
+            if(array_key_exists($_COOKIE['$cookie_name'], $titleString))
+            {        
                 // good cookie get speller
-                header("Location: "."getspeller.php");
+                header('Location: getspeller');
                 #exit;
             }
-            else {
-                
+            else
+            {    
                 // invalid cookie alert user
-                header("Location: "."alert.php");
+                header('Location: alert.php');
                 #exit;
             }    
         }
     }
-    else {
-        
-        if(saniTize($_GET['chg']) === "default") {
-
+    else
+    {    
+        // if not change submission group change our default group
+        if(saniTize($_GET['chg']) === "default")
+        {
+            // target changed from sub to change group
             $target = "chggrp";
         }
     }
 
-    if(isset($_POST['group'])) {
-        
+    // if post has group key set cookie for the group selected
+    if(isset($_POST['group']))
+    {    
         $cookie_value = saniTize($_POST['group']);
         setcookie($cookie_name, $cookie_value, $cookie_time, '/');
-        header("Location: ".
-        "http://".$_SERVER["HTTP_HOST"].dirname($_SERVER["PHP_SELF"])."/getspeller.php");
+        header('Location: '.
+        'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'/getspeller');
         #exit;
     }
-    
-    if(isset($_POST['target'])) {
-        
-        if(saniTize($_POST['target']) === "chggrp") {
-            
-            header("Location: "."show.php");
+
+    // if post has target key test and then redirect to show
+    if(isset($_POST['target']))
+    {
+        //sanitize post data before use
+        if(saniTize($_POST['target']) === "chggrp")
+        {  
+            header('Location: show');
             #exit;
         }
     }
-    
-    $template = "grpselform.php";
-    
+
     // render header
-    require("../template/header.php");
+    require('../template/header.php');
 
     // render template
-    require("../template/$template");
+    require('../template/grpselform.php');
 
     // render footer
-    require("../template/footer.php"); 
+    require('../template/footer.php'); 
 
 ?>

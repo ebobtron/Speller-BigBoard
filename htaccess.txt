@@ -1,0 +1,8 @@
+#remove php file extensions
+<IfModule mod_rewrite.c>
+   Options +FollowSymLinks
+   Options +Indexes
+   RewriteEngine On
+   RewriteCond %{SCRIPT_FILENAME} !-d
+   RewriteRule ^([^\.]+)$ $1.php [NC,L]
+</IfModule>

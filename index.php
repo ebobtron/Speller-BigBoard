@@ -1,7 +1,3 @@
-<?php 
-   
-	 
-	 header('Location: public/show.php');
-
-
- ?>
+<?php
+header('Location: public/show');
+?>
