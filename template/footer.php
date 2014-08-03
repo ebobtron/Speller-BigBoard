@@ -15,7 +15,7 @@
             src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="Valid CSS!"></a>
     </td>
     <td>
-      <a href="aboutus.php" title="click to learn about us"
+      <a href="aboutus" title="click to learn about us"
          style="text-decoration: none;"> 
         &copy; 2014 ebobtron, et al.<br />
         brought to you by me.

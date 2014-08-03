@@ -10,26 +10,26 @@
     Select a link below to view individual group results on the leader board.<br />
     <ul>
       <li class="lispaced">
-        <a href="show.php?grp=1" class="head-links" style='font-size:19px'>
+        <a href="show?grp=1" class="head-links" style='font-size:19px'>
            LaunchCode Saint Louis winter 2014</a></li>
         
       <li class="lispaced">
-        <a href="show.php?grp=2" class="head-links" style='font-size:19px'>
+        <a href="show?grp=2" class="head-links" style='font-size:19px'>
            Coder Girl Saint Louis 2014</a></li>
         
       <li class="lispaced">
-        <a href="show.php?grp=3" class="head-links" style='font-size:19px'>
+        <a href="show?grp=3" class="head-links" style='font-size:19px'>
            edX.org 2014</a></li>
            
       <li class="lispaced">  
-        <a href="show.php?grp=0" class="head-links" style='font-size:19px'>
+        <a href="show?grp=0" class="head-links" style='font-size:19px'>
            All Submissions to Board in One Table</a></li>
               
     </ul>
     More...
     <ul>
       <li class="lispaced">  
-        <a href="grpsel.php?chg=default" class="head-links" style='font-size:19px'>
+        <a href="grpsel?chg=default" class="head-links" style='font-size:19px'>
            Change your default group</a></li>
               
     </ul>

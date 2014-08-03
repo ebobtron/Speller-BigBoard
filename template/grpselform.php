@@ -11,7 +11,7 @@
 
 <div class="grpSelect">  
 
-<form action="grpsel.php" method="post">
+<form action="grpsel" method="post">
 
   <table id="grpTable">
   <tr>

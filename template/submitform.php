@@ -18,7 +18,7 @@
     submitters email: <?=$_POST['email']?><br />
     <br />
 
-    <form enctype='multipart/form-data' action='uploadfile.php' method='POST'>
+    <form enctype='multipart/form-data' action='uploadfile' method='POST'>
         <input type='hidden' name='MAX_FILE_SIZE' value='48000' />
 
         Please upload <big><big> "speller"</big></big> not speller.c, thank you.<br />
