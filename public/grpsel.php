@@ -21,15 +21,15 @@
     $cookie_name = 'leaderboard_cookie';
     $cookie_time = time() + (24 * 60 * 60 * 365); // about a year
 
-    // if request group change
+    // if no request for group change
     if(!isset($_GET['chg']))
     {
         // check for cookie
-        if(isset($_COOKIE['$cookie_name']))
+        if(isset($_COOKIE[$cookie_name]))
         {    
-            // this checks if the cookie is valid by seeing id cookie value is 
+            // this checks if the cookie is valid by seeing if cookie value is 
             // in $titleString
-            if(array_key_exists($_COOKIE['$cookie_name'], $titleString))
+            if(array_key_exists($_COOKIE[$cookie_name], $titleString))
             {        
                 // good cookie get speller
                 header('Location: getspeller');
