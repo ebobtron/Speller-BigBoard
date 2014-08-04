@@ -1,8 +1,13 @@
 #remove php file extensions
 <IfModule mod_rewrite.c>
-   Options +FollowSymLinks
-   Options +Indexes
+   #Options +FollowSymLinks
+   #Options +Indexes
    RewriteEngine On
    RewriteCond %{SCRIPT_FILENAME} !-d
    RewriteRule ^([^\.]+)$ $1.php [NC,L]
+   
+#Hotlinking Protection
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^http://(www\.)?speller-leaderboard.freehostia.com/.*$ [NC]
+RewriteRule \.(js|css|jpg|gif|png|bmp|mp4|3gp|m4a|m4r|aac|mp3|ogg|wave)$ - [F]
 </IfModule>
