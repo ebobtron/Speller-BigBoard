@@ -9,5 +9,7 @@
 #Hotlinking Protection
 RewriteCond %{HTTP_REFERER} !^$
 RewriteCond %{HTTP_REFERER} !^http://(www\.)?speller-leaderboard.freehostia.com/.*$ [NC]
-RewriteRule \.(js|css|jpg|gif|png|bmp|mp4|3gp|m4a|m4r|aac|mp3|ogg|wave)$ - [F]
+RewriteRule \.(js|css|ttf|ico|jpg|gif|png|bmp|mp4|3gp|m4a|m4r|aac|mp3|ogg|wave)$ - [F]
+#redirect to public show
+Redirect /index.php /public/show
 </IfModule>
