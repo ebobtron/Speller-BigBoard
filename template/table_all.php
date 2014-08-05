@@ -44,7 +44,7 @@
          
           <td class="td left" style="min-width:9em">
 
-            <a href="http://www.reddit.com/user/<?=$row['name']?>/" class="name"
+            <a href="reddit?usr=<?=$row['name']?>" class="name"
                title="click me for more info">&nbsp;<?=$row['name']?></a>
 
           </td>

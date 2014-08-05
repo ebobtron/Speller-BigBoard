@@ -42,7 +42,7 @@
         <?  printf('%04d', $row['id'])?></div>
 
     <div class="div-col<?=$class?> left" style="width:20%">
-      <a href="http://www.reddit.com/user/<?=$row['name']?>/" class="name"
+      <a href="reddit?usr=<?=$row['name']?>" class="name"
          title="click me for more info"><?=$row['name']?></a></div>
 
     <div class="div-col<?=$class?>" style="width:9%">
