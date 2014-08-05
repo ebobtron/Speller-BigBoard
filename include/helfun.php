@@ -13,7 +13,11 @@ require "config.php";
 
 require "groupstrings.php";
 
+
 #require_once('../include/jpgraph-3.5.0b1/src/jpgraph.php');
+
+    // set default timezone, dah!
+    date_default_timezone_set('America/Chicago');
 
 /*
  *   Pear Mail    http://pear.php.net/package/Mail
