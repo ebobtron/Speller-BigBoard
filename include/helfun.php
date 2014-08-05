@@ -91,7 +91,9 @@ function PDOconnect() {
     }
     catch(PDOException $e) {
         
-        echo 'LeaderBoard PDOConnect ERROR: ' . $e->getMessage();
+        #echo 'LeaderBoard PDOConnect ERROR: ' . $e->getMessage();
+        header('location: alert?connect=no');
+        //exit;
     }
     
     return $dbhan;
@@ -161,12 +163,12 @@ function getPut($what, $data) {
     //--  return data "rows"
     if($what == "rows"){
     
-        if($errorMessage === null) {
-        
+        if($errorMessage === null)
+        {
             return $results;
         }
-        else {
-        
+        else
+        {
             return ' GETPUT"rows" - ERROR:..&nbsp;&nbsp; ' . $errorMessage;
         }    
     }
