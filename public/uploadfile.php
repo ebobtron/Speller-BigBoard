@@ -9,7 +9,7 @@
  *
  ***************************************************************/
 
-    error_reporting(E_ALL); // E_ALL | 0
+    error_reporting(0); // E_ALL | 0
     
     // require common helper functions
     require '../include/helfun.php';
@@ -84,6 +84,8 @@
         // if file is up move to defined folder
         $success = move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path);
         
+        $dateTimeString = date("l F j, Y @ g:i:s a T");
+        
         // if successful and if not
         if($success)
         {    
@@ -108,8 +110,21 @@
             // build email message string note double quotes to parse the variables
             // into the string.
             $emailBody = 
-            "Received a submission from: $name  Group: $title  Contact: $email \r\n";             
-
+            "Received a submission from: $name  Group: $title  Contact: $email on: ".
+            "$dateTimeString \r\n";
+            
+            // open log file for appending
+            $outFileHandle = fopen('../logs/submission.log', 'a');
+        
+            // write message to file
+            fwrite($outFileHandle, $emailBody);
+        
+            // if outFileHandle good close the file
+            if($outFileHandle)
+            { 
+                fclose($outFileHandle);
+            }
+                         
         }
         else
         {
@@ -122,7 +137,7 @@
 
             // build the email message using double quotes to parse the variables
             $emailBody =
-            "a submission failed to upload from: $name  @  $email";
+            "a submission failed to upload from: $name  @  $email - $dateTimeString";
         }
         
         // send email message
