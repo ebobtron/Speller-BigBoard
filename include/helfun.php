@@ -84,16 +84,37 @@ function PDOconnect() {
     $dsn = 'mysql:host='.$dbpath.';dbname='.$dbuser;
     $options = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'); 
 
-    try {
-        
+    try
+    {    
         $dbhan = new PDO($dsn, $dbuser, $dbpass, $options);
         $dbhan->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
-    catch(PDOException $e) {
+    catch(PDOException $error)
+    {
+        // set time zone to match the server logs 
+        date_default_timezone_set('UTC'); //America/Chicago
+
+        // build log message
+        $logmes = 'LeaderBoard PDOConnect ERROR: ' . $error->getMessage() .
+        date("D M j G:i:s T Y") . "\r\n";
         
-        #echo 'LeaderBoard PDOConnect ERROR: ' . $e->getMessage();
+        // open log file for appending
+        $outFileHandle = fopen('../logs/pdoconnect_error.log', 'a');
+        
+        // write message to file
+        fwrite($outFileHandle, $logmes);
+        
+        // if outFileHandle good close the file
+        if($outFileHandle)
+        { 
+            fclose($outFileHandle);
+        }
+        
+        // alert user 
         header('location: alert?connect=no');
-        //exit;
+        
+        // stop script here upon return
+        exit;
     }
     
     return $dbhan;
