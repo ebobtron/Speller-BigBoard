@@ -48,6 +48,20 @@
         $mesString = $typeString;
         $conTarget = null;
     }
+    
+    // alert is no database connection chech error message in helfun.php
+    if(isset($_GET['connect']))
+    {
+        $mesString = $mysqlConnectionFailed;
+        $conTarget = null;
+    }
+    
+    // alert is the submitter clicked has not reddit profile
+    if(isset($_GET['reddit']))
+    {
+        $mesString = $noRedditProfile;
+        $conTarget = null;
+    }
    
     // render the alert page
     

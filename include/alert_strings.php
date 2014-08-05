@@ -2,9 +2,10 @@
 /**
  *  alert_strings.php
  *
- *  speller-leaderboard.freehostia.com
- *  see aboutus.php   2014  Robert Clark et al.
+ *  2014 Robert Clark, aka ebobtron  et al.
  *
+ *  speller-leaderboard.freehostia.com
+ *  see aboutus.php  
  *********************************************************/
   
 $typeString = <<< EOD
@@ -41,6 +42,14 @@ $dupSubmission = <<< EOD
     <br />Thanks<br /><br />Please direct any questions to the
     <a href="mailto:ebobtron@aol.com" class="head-links" style="font-size:1.3em">
     administrator.</a><br />
+EOD;
+
+$mysqlConnectionFailed = <<< EOD
+    <br><br>It appears the MySQL database server is busy.&nbsp; Sorry please try again.
+EOD;
+
+$noRedditProfile = <<< EOD
+    <br><br>The Submitter clicked doesn't seem to have a Reddit id / profile.
 EOD;
 
 ?>
