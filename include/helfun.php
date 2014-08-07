@@ -374,8 +374,8 @@ function sendemailNotifications($mode) {
     $inFileName = "../minis/emailNot.txt";
     
     // in no email notification file complain and then return
-    if(!file_exists($inFileName)) {
-        
+    if(!file_exists($inFileName))
+    {    
         echo "<br>&nbsp;&nbsp;&nbsp;no email notification, no file \" emailNot.txt \"";
         return;        
     }
@@ -384,8 +384,8 @@ function sendemailNotifications($mode) {
     $inFileHandle = fopen($inFileName, 'r') or die("can't open file");
     
     // on error complain and return
-    if($inFileHandle == 0) {
-        
+    if($inFileHandle == 0)
+    {    
         echo "No email notification file emailNot.txt";
         return;
     }
@@ -394,23 +394,38 @@ function sendemailNotifications($mode) {
     $keys = array_keys($titleString);
     
     // loop through submisson notification file until end
-    while(true) {
-        
+    while(true)
+    {
+        // get first and second line of message
         $lineOne = fgetcsv($inFileHandle, 500, ",");
         $lineTwo = fgetcsv($inFileHandle, 500, ",");
         
         // if end of file break from loop
         if(feof($inFileHandle))
+        {
             break;
+        }
         
         // extract gropu number from group-Type string
-        $grp = substr($lineTwo[1], 0, strlen($lineTwo[1] -2));
+        $grp = substr($lineTwo[1], 0, strlen($lineTwo[1] - 2));
          
         // get group string for email notification
         $group = $titleString[$keys[$grp]];
         
+        // join linetwo's seperated values back together as error string
+        $index = 0;
+        $errorStr = null;
+        foreach($lineTwo as $value)
+        {
+           if($index > 1)
+           {
+              $errorStr = $errorStr . $value;
+           }
+           $index = $index + 1;
+        }
+        
         // insert group title string into email body
-        $body =  $lineTwo[0] . " of " . $group . ", " . $lineTwo[2];
+        $body =  $lineTwo[0] . " of " . $group . ", " . $errorStr;
      
         
         // email "to, cc, subject, body"
