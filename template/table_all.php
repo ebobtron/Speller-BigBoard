@@ -45,7 +45,7 @@
           <td class="td left" style="min-width:9em">
 
             <a href="reddit?usr=<?=$row['name']?>" class="name"
-               title="click me for more info">&nbsp;<?=$row['name']?></a>
+               title="click: reddit overview">&nbsp;<?=$row['name']?></a>
 
           </td>
           
