@@ -9,12 +9,12 @@
   font-family: Existence-Light;
   src: url(font/Existence-Light.ttf);
 }
-
+/*
 @font-face {
   font-family: Trebuchet_MS;
   src: url(font/trebuc.ttf);
 }
-
+*/
 @font-face {
   font-family: Arapey_Italic;
   src: url(font/Arapey-Italic.ttf);
@@ -28,7 +28,7 @@ a:hover {
 
 body {
   background-color:#ebebf5;
-  font-family:Trebuchet_MS;
+  font-family:sans-serif;
 }
 
 input {
@@ -159,7 +159,7 @@ td {
   
 .legal-links {
   color: blue;
-  font-family: Trebuchet_MS;
+  font-family: sans-serif;
   font-size:12px;
   text-decoration:none;
 }
@@ -209,10 +209,7 @@ td {
 }
 
 .subtable {
-  border:0px solid black;
-  border-spacing: 10px;
-  font-size: 18px;
-  width: 90%;
+  font-size: 1.1em;
 }
 
 .subtext {
@@ -224,8 +221,7 @@ td {
 .table {
   border:0px solid red;
   border-collapse: collapse;
-  border-spacing: 0;
-  margin: auto;
+  margin: 10px 0 0 0;
   width:100%;
 }
   
