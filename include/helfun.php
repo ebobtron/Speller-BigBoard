@@ -335,9 +335,12 @@ function updateData()
             $oldFileName = $data[1] . $data[0] . '-' . $type . 'speller.x';
             $newFileName = $oldFileName . $return['nextId'];
             
-            // move submitter's files to the dump
-            dumpSubmissions($oldFileName, $newFileName);
-                    
+            // move submitter's files to the dump if it exists
+            // under certain automation testing methods the file may not exist
+            if(file_exists($oldFileName))
+            {
+                dumpSubmissions($oldFileName, $newFileName);
+            }       
         }
     }
     catch(PDOException $e)
