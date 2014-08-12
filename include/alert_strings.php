@@ -49,7 +49,7 @@ $mysqlConnectionFailed = <<< EOD
 EOD;
 
 $noRedditProfile = <<< EOD
-    <br><br>The Submitter clicked doesn't seem to have a Reddit id / profile.
+    <br><br>The Submitter clicked doesn't seem to have a reddit.com id / profile.
 EOD;
 
 ?>
