@@ -42,8 +42,9 @@
         <?  printf('%04d', $row['id'])?></div>
 
     <div class="div-col<?=$class?> left" style="width:20%">
-      <a href="reddit?usr=<?=$row['name']?>" class="name"
-         title="click: reddit overview"><?=$row['name']?></a></div>
+      <a href="comment?comment=<?=$row['name']?>" class="name"
+         title="click for user comments or reddit overview">&nbsp;
+         <?=$row['name']?></a></div>
 
     <div class="div-col<?=$class?>" style="width:9%">
         <? printf('%0.4f', $row['total']) ?></div>

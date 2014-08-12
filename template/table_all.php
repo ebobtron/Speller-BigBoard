@@ -43,19 +43,17 @@
          $loop++; ?>
          
           <td class="td left" style="min-width:9em">
-
-            <a href="reddit?usr=<?=$row['name']?>" class="name"
-               title="click: reddit overview">&nbsp;<?=$row['name']?></a>
-
+            <a href="comment?comment=<?=$row['name']?>" class="name"
+               title="click for user comments or reddit overview">&nbsp;
+               <?=$row['name']?></a>
           </td>
-          
           <td class="td" style="min-width:5em"><?=$to?></td>
           <td class="td" style="min-width:2em"></td>
           <td class="td left" style="min-width:10em">&nbsp;&nbsp;<?=$row['typ']?></td>
           <td class="td left" style="min-width:17em"><?=$grp?></td>
         </tr>
 
-      <? endforeach; ?>
+      <? endforeach; ?>  
     </tbody>
   </table>
 </div>
