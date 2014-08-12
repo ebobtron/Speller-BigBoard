@@ -282,7 +282,7 @@ function updateData()
         {
             // if no data exit loop
             if(!$data[0])
-            {    
+            {
                 break;
             }
             
@@ -334,10 +334,10 @@ function updateData()
             // build some source and destination strings
             $oldFileName = $data[1] . $data[0] . '-' . $type . 'speller.x';
             $newFileName = $oldFileName . $return['nextId'];
-            
+
             // move submitter's files to the dump if it exists
             // under certain automation testing methods the file may not exist
-            if(file_exists($oldFileName))
+            if(file_exists('../uploading/' . $oldFileName))
             {
                 dumpSubmissions($oldFileName, $newFileName);
             }       
@@ -511,7 +511,7 @@ function dumpSubmissions($old, $new) {
         unlink($old);
         return;
     }
-    
+
     $files = glob("../uploading/*");
     $newfileName = null;
     
