@@ -5,6 +5,6 @@
      *
      ******************************************/
          
-    $comList_R = array( 'aymenmir' );
+    $comList_R = array( 'aymenmir', 'kgl1995' );
 
 ?>

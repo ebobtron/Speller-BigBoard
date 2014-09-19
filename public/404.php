@@ -1,9 +1,9 @@
 
-    <!-- this is forbidden  403.php -->
+    <!-- this is not found  404.php -->
     <?php require("../template/header.php"); ?>
 
     <div class="gentext">
-    <h2> Sorry this is forbidden</h2>
+    <h2> Sorry your request could not be found.</h2>
     </div> 
 
     <?php require("../template/footer.php"); ?>

@@ -9,5 +9,6 @@
 
   // render footer
   require('../template/footer.php');
-
+						
+						
 ?>

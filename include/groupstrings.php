@@ -4,7 +4,9 @@
     /*** 
      * changed to an associative array to improve readability for future and 
      * prevent need to call lookup function to get group number
-     */
+     * 
+     * Chris
+     */  
 
     $validGrpNum_R = array(0,1,2,3);
 
@@ -12,11 +14,10 @@
     
     $titleString = array(
            "cs50staff" => "CS50 Staff Solution",
-           "lcstlw2014" => "LaunchCodeSTL winter 2014",
+           "lcstlw2014" => "LaunchCode STL winter 2014",
            "codergirlstl2014" => "Coder Girl STL 2014",
            "edx2014" => "edX.org 2014"
            );
-    
     
     
     $headString = array(
@@ -30,18 +31,16 @@
            );
     
     
-    
     $linkString = array(
            "cs50staff" => "",
            "lcstlw2014" => "winter 2014 with ".
-               "<a href='http://launchcodestl.com' class='head-links'>". 
-               "LaunchCodeSTL.com</a>",
+               "<a href='http://launchcode.org' class='head-links'>". 
+               "LaunchCode.org</a>",
            "codergirlstl2014" => "2014 with ".
-               "<a href='http://launchcodestl.com' class='head-links'>". 
-               "LaunchCodeSTL.com</a>",
+               "<a href='http://launchcode.org' class='head-links'>". 
+               "LaunchCode.org</a>",
            "edx2014" => ""
            );
-                      
-    //echo $linkString[1];                  
+                                        
                                         
 ?>

@@ -20,15 +20,15 @@
     {
         // get group from cookie
         $group = $_COOKIE['leaderboard_cookie'];
-        
+
         // check in cookie value is a valid group name
         if(!array_key_exists($group, $titleString))
         {    
             $mesString = $badCookie;
             $conTarget = 'grpsel?chg=yes';
-        }          
+        }
     }
-    
+
     // alert is no browser cookie support
     if(isset($_GET['gsnc']))
     {    

@@ -18,7 +18,7 @@
     <td class='grptd'>
       <div id="coderg">
         <button id="coderggrp" name='group' value="codergirlstl2014" title="click for Coder Girl STL 2014">
-         <img alt="click for this group" id='codergimg' src="../public/img/coder-g.jpg">
+         <img alt="CoderGirlSTL 2014 group" id="codergimg" src="../public/img/coder-g.jpg">
            &nbsp;STL&nbsp;&nbsp; 2014
         </button>
       </div>

@@ -25,8 +25,7 @@
             // include the user comment file
             include('../include/text/' . $_GET['comment'] . '.php');
             
-            // assign varibles for use in html comvew
-            $comment = $aymenmir;
+            // assign variable for use in html comview
             $usr = $_GET['comment'];
             
             // render page

@@ -2,18 +2,18 @@
 	
 	// configuration file for leaader board
 	
-	// important data for email funtion
+	// important data for email function
 	$host = "xxxx.freehostia.com";
   $port = "xxxx";
-	$pwd = "cs50x";
-	$username = "leaderboard@avsfilmcutter.com";
-  $bcc = "xxxxxxxxx";
+	$pwd = "xxxxx";
+	$username = "leaderboardxxxxxxxx";
+  $bcc = "robclarkxxxxxx";
 	
-	$dbpath = "localhost";
-	$dbuser = "xxxxxxxxxxxxxx";
-	$dbpass = "xxxx";
+	$dbpath = "XXXX";
+	$dbuser = "XXXXXX";
+	$dbpass = "XXXX";
   
-  $magicword = "xxxx";
-  $magicword_2 = "xxxxxx";
+  $magicword = "launchcode";
+  $magicword_2 = "Mispellings";
 
 ?>
