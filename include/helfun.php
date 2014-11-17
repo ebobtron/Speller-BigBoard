@@ -410,7 +410,7 @@ function sendemailNotifications($mode) {
         }
         
         // extract gropu number from group-Type string
-        $grp = substr($lineTwo[1], 0, strlen($lineTwo[1] - 2));
+        $grp = substr($lineTwo[1], 0, strlen($lineTwo[1]) - 2);
          
         // get group string for email notification
         $group = $titleString[$keys[$grp]];
