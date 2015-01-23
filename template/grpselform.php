@@ -14,6 +14,8 @@
 <form action="grpsel" method="post">
 
   <table id="grpTable">
+  
+  <!--          removing codergirl and lauchcode from the groups 
   <tr>
     <td class='grptd'>
       <div id="coderg">
@@ -35,7 +37,8 @@
       </div>
     </td>
     <td>LaunchCode STL winter 2014</td>
-  </tr> 
+  </tr>
+  -->
   <tr>
     <td class="grptd">
       <div id="edx">      
@@ -45,14 +48,14 @@
         </button>
       </div>
     </td>
-    <td>If your studying CS50x on your own with edX.org 
+    <td>If you are studying CS50x with edX.org.
     </td>
   </tr>
   <tr>
    <td>your group here</td>
-   <td>contact 
+   <td>contact the
      <a href="mailto:ebobtron@aol.com" class="head-links" style='font-size:19px'>
-        Leader Board Administrator.</a>&nbsp; We can add your group.
+        leader board administrator.</a>&nbsp; We can add your group.
    </td>
   </tr>
 </table>
@@ -60,4 +63,6 @@
 </form>
 
 </div><br />
+
+<? /* last edit: 01/22/2015  ebt */ ?>
 
