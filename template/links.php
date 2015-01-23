@@ -3,8 +3,12 @@
 
     <p style="display: inline;">
     <!-- $_GET  ? r = gt means a group table -->
+    <!--
         <a class="menu" href="../public/grpsel" title="click to submit your speller">
            Submit Your Program&nbsp;</a>
+           -->
+           <a class="menu" href="../public/suspend" title="submissions suspended for 2014">
+           <strike>Submit Your Program</strike>&nbsp;</a>
     </p>
 
     &middot;
@@ -26,3 +30,4 @@
     </p>
 
 </div>
+<? /*   last edit: 01/21/2015  ebt   */ ?>
