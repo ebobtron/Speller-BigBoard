@@ -9,34 +9,46 @@
     <br />
     Select a link below to view individual group results on the leader board.<br />
     <ul>
+      <!--
       <li class="lispaced">
         <a href="show?grp=1" class="head-links" style='font-size:19px'>
            LaunchCode Saint Louis winter 2014</a></li>
-        
+                                                   -->
+      <!--  
       <li class="lispaced">
         <a href="show?grp=2" class="head-links" style='font-size:19px'>
            Coder Girl Saint Louis 2014</a></li>
-        
+                                            -->  
       <li class="lispaced">
         <a href="show?grp=3" class="head-links" style='font-size:19px'>
-           edX.org 2014</a></li>
-           
+           edX.org 2015</a></li>
+      
+      <li class="lispaced"><b>
+           no additional groups set up</b></li>     
+      <!--
       <li class="lispaced">  
         <a href="show?grp=0" class="head-links" style='font-size:19px'>
            All Submissions to Board in One Table</a></li>
-              
+                                                      -->    
     </ul>
     More...
     <ul>
+      <!--
       <li class="lispaced">  
         <a href="grpsel?chg=default" class="head-links" style='font-size:19px'>
            Change your default group</a></li>
+                                          -->
+                                           
+      <li class="lispaced">     
+        <a href='archive' class='head-links' style='font-size:19px'>
+           view prior years results</a></li>   
               
     </ul>
     
     If you have a group not shown here please contact the
     <a href="mailto:ebobtron@aol.com" class="head-links" style='font-size:19px'>
-    Leader Board Administrator.</a>&nbsp;
-    We can add your group.
+    Leader Board Administrator</a>, we can add your group.
 </div>
 <br />
+
+<? last edit: 01/22/2015 ebt ?>
