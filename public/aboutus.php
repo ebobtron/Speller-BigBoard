@@ -1,5 +1,14 @@
-<?php 
-    
+<?php
+/**
+  * aboutus.php   -- about us controler  --
+  *
+  * copyright 2015 Robert Clark(aka ebobtron) et al.
+  *
+  * an expansion of my edX.org 
+  * CS50x final project winter/spring 2014  with Launch Code
+  *
+  ***************************************************************/
+
     require '../include/helfun.php';
     
     // get group keys from tileString array
@@ -18,5 +27,6 @@
 
     // render footer
     require('../template/footer.php');
-
+    
+    // last edit: 01/24/2015  ebt
 ?>

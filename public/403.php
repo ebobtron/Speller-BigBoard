@@ -10,9 +10,8 @@
   ***************************************************************/
   
     $body = "<div class='gentext'>".
-            "<h2> Sorry this is forbidden. &nbsp;Shame on you.</h2>".
+            "<h2>Sorry this is forbidden. &nbsp;Shame on you.</h2>".
             "</div>";     
-
 
     require("../template/header.php");
     
@@ -20,5 +19,5 @@
     
     require("../template/footer.php");
  
-    // last edit: 
+    // last edit: 01/22/2015  ebt
 ?>
