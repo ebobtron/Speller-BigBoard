@@ -1,11 +1,11 @@
 <!--
 **
- *  table.php  Display table of submissions and links
+ *  table.php  -- Display table of submissions and links --
  *
- *  Robert Clark, aka ebobtron et al.
+ *  copyright 2015 Robert Clark(aka ebobtron), et al.
  *
- *  extension of my CS50x final project   
- *  winter/spring 2014  with Launch Code
+ *  an expansion of my edX.org 
+ *  CS50x final project winter/spring 2014  with Launch Code
  *
  ************************************************************   -->
 
@@ -13,14 +13,14 @@
 
   <h4 style="margin:0px">all times in seconds</h4>
   <div class="div-col b" style="width:8%">id</div>
-  <div class="div-col left b" style="width:19.5%">name</div>
+  <div class="div-col left b" style="width:20%">name</div>
   <div class="div-col b" style="width:9%">total</div>
   <div class="div-col b" style="width:9%">load</div>
   <div class="div-col b" style="width:9%">check</div>
   <div class="div-col b" style="width:9%">size</div>
   <div class="div-col b" style="width:9%">unload</div>
   <div class="div-col b" style="width:12%">heap</div>
-  <div class="div-col b left" style="width:13%">&nbsp;type</div> 
+  <div class="div-col b left" style="width:13%">&nbsp;&nbsp;&nbsp;type</div> 
 
   <!-- the clear:both stops the following elements from wrapping around
        the last div above the efect is a new line   -->
@@ -74,4 +74,4 @@
 
 </div>
 <br />
-
+<!--    // last edit: 01/30/2015  ebt        -->

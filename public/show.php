@@ -1,15 +1,14 @@
 
 <?php
-/***
+/*
 *
-*   show.php  leader board table view controller 
+*  show.php   -- leader board table view controller -- 
 * 
-*   Robert Clark, aka ebobtron et al.
-*   
-*   The expansion of my 
-*   CS50x final project   winter/spring 2014 with Launch Code
+*  copyright 2015 Robert Clark(aka ebobtron), et al.
 *
-***************************************************************/
+*  an expansion of my edX.org CS50x final project
+*  winter/spring 2014  with Launch Code
+******************************************************/
 
     error_reporting(0);  // E_ALL | E_STRICT
     
@@ -23,50 +22,51 @@
     $keys = array_keys($titleString);
     
     // check if group to display is pasted in the url
-    if(isset($_GET['grp'])) {
-        
+    if(isset($_GET['grp']))
+    {    
         // assign get to $grpNumber for clarity
         $grpNumber = saniTize($_GET['grp']);
         
-        if($grpNumber == 0) {
-            
+        if($grpNumber == 0)
+        {    
             $group = null;
         }
-        else {
-
+        else
+        {
             // prevent bogus grpNumber
-            if(isset($keys[$grpNumber])) {
-                
+            if(isset($keys[$grpNumber]))
+            {    
                 $group = $keys[$grpNumber];
             }
-            else {
-                
+            else
+            {    
                 $group = null;
             }
         }
     }
-    else {
+    else
+    {
         // if group not pasted in url check cookie 
         // if cookie exist, set group based on cookie data
-        if(isset($_COOKIE['leaderboard_cookie'])) {
-            
+        if(isset($_COOKIE['leaderboard_cookie']))
+        {    
             $group = $_COOKIE['leaderboard_cookie'];
 
-            if(!array_key_exists($group, $titleString)) {
+            if(!array_key_exists($group, $titleString))
+            {
                 $group = null;
             } 
-            
         }
         // else, redirect to table showing all groups times
-        else {
-           
+        else
+        {   
             $group = null;
         }
     }
     
     // tell the user which group they are looking at
-    if($group !== null) {
-        
+    if($group !== null)
+    {    
         $title = $titleString[$group];
         $head = $headString[$group];
         $link = $linkString[$group];
@@ -88,6 +88,6 @@
     // render footer
     require("../template/footer.php");
 
-
+    // last edit: 01/30/2015 ebt
 ?>
 

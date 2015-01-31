@@ -1,16 +1,15 @@
 <?php
 /*
- *
- *  grpsel.php  group selection controller
- *
- *  Robert Clark, aka ebobtron et al
- *
- *  An expansion of my
- *  CS50x final project   winter/spring 2014 with Launch Code
- *
- **************************************************************/
+*
+*  grpsel.php  -- group selection controller --
+*
+*  copyright 2015 Robert Clark(aka ebobtron), et al.
+*
+*  An expansion of my CS50x final project
+*  winter/spring 2014 with Launch Code
+*******************************************************/
 
-    error_reporting(E_ALL); // E_ALL
+    error_reporting(0); // E_ALL | 0
 
     require('../include/helfun.php');
 
@@ -19,14 +18,15 @@
 
     // cookie data name and experation time
     $cookie_name = 'leaderboard_cookie';
-    $cookie_time = time() + (24 * 60 * 60 * 365); // about a year
-
-    // if no request for group change
+    $cookie_time = time() + 300; //(24 * 60 * 60 * 365);  // about a year
+    
+    // if no request for group change test the cookie
     if(!isset($_GET['chg']))
     {
         // check for cookie
         if(isset($_COOKIE[$cookie_name]))
         {    
+            
             // this checks if the cookie is valid by seeing if cookie value is 
             // in $titleString
             if(array_key_exists($_COOKIE[$cookie_name], $titleString))
@@ -38,14 +38,14 @@
             else
             {    
                 // invalid cookie alert user
-                header('Location: alert.php');
+                header('Location: alert');
                 #exit;
             }    
         }
     }
     else
     {    
-        // if not change submission group change our default group
+        // if $_GET set change submission group change our default group
         if(saniTize($_GET['chg']) === "default")
         {
             // target changed from sub to change group
@@ -82,5 +82,7 @@
 
     // render footer
     require('../template/footer.php'); 
+    
+    //  last edit:  01/30/2015  ebt
 
 ?>

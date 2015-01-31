@@ -1,18 +1,16 @@
 <?php
-/**
+/*
+*   helfun.php    -- helper functions for leader board -- 
 *
-*   helfun.php  or helper functions for leader board 
-*   Robert Clark, aka ebobtron et al.
-*   
-*   extension of my CS50x final project   winter/spring 2014  with Launch Code
+*   copyright 2015 Robert Clark(aka ebobtron), et al.
 *
+*   an expansion of my edX.org CS50x final project
+*   winter/spring 2014  with Launch Code
 *************************************************************/
-
 
 require "config.php"; 
 
 require "groupstrings.php";
-
 
 #require_once('../include/jpgraph-3.5.0b1/src/jpgraph.php');
 
@@ -166,6 +164,15 @@ function getPut($what, $data) {
         $stmt->bindParam(":grp1", $data);
     }
     
+    //--   GET SUBMISSION NAMES
+    if($what == "subNames") {
+    
+        $sql = "SELECT name FROM leader_board WHERE grp = :grp1 GROUP BY name";        
+        $stmt = $dbhandle->prepare($sql);
+        $stmt->bindParam(":grp1", $data);
+    }
+    
+    
     if($stmt === null) {
     
         return " GETPUT parameter 1 invalid";
@@ -208,6 +215,19 @@ function getPut($what, $data) {
         else {
         
             return ' GETPUT"nextId" - ERROR:..&nbsp;&nbsp; ' . $errorMessage;
+        }
+    }
+    
+    //--  return data "subNames"
+    if($what == "subNames") {
+    
+        if($errorMessage === null) {
+            
+            return $results;
+        }
+        else {
+        
+            return ' GETPUT"subNames" - ERROR:..&nbsp;&nbsp; ' . $errorMessage;
         }
     }   
 }
@@ -600,6 +620,6 @@ function getGroupNumber($grpName){
 
     return $grpNum;
 }
-
+    // last edit: 01/30/2015  ebt
 ?>
 

@@ -1,22 +1,18 @@
 <?php
 /*
- *  groupstrings.php
- *   
- *  group definitions for titles and links
- *
- *  an expansion of my 
- *  CS50x final project winter/spring 2014  with Launch Code
- *
- *  copyright 2015 Robert Clark  et al.
- *
- **************************************************************************/
+*   groupstrings.php  -- group definitions for titles and links --
+*
+*   copyright 2015 Robert Clark(aka ebobtron), et al.
+*
+*   an expansion of my edX.org CS50x final project
+*   winter/spring 2014  with Launch Code
+*******************************************************************/
 
    /** 
      * changed to an associative array to improve readability for future and 
      * prevent need to call lookup function to get group number
      * 
      * Chris
-     *
      ***************/
 
     $validGrpNum_R = array(0,1,2,3);
@@ -54,7 +50,7 @@
                "edX.org</a>"
            );
 
-/*   last edit: 01/21/2015  ebt   */                            
+    //   last edit: 01/30/2015  ebt                               
 ?>
 
 

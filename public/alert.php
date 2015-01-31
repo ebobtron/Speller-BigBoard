@@ -1,13 +1,12 @@
 <?php
-/**
-  * alert.php  -- user alert controller --
-  *
-  * copyright 2015 Robert Clark(aka ebobtron), et al.
-  *
-  * an expansion of my edX.org 
-  * CS50x final project winter/spring 2014  with Launch Code
-  *
-  ***************************************************************/
+/*
+*   alert.php  -- user alert controller --
+*
+*   copyright 2015 Robert Clark(aka ebobtron), et al.
+*
+*   an expansion of my edX.org CS50x final project
+*   winter/spring 2014  with Launch Code
+***************************************************************/
 
     error_reporting(0); // E_ALL | 0
     
@@ -67,7 +66,7 @@
         $mesString = $noRedditProfile;
         $conTarget = null;
     }
-   
+      
     // render the alert page
     
     include('../template/header.php');
@@ -76,5 +75,5 @@
         
     include('../template/footer.php');
     
-    // last edit:  01/24/2015  ebt 
+    // last edit:  01/30/2015  ebt 
 ?>

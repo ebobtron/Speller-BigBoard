@@ -1,12 +1,12 @@
 <?php
 /**
- *  alert_strings.php
- *
- *  2014 Robert Clark, aka ebobtron  et al.
- *
- *  speller-leaderboard.freehostia.com
- *  see aboutus.php  
- *********************************************************/
+*   alert_strings.php  -- alert string variable definitions --
+*
+*   copyright 2015 Robert Clark(aka ebobtron), et al.
+*
+*   an expansion of my edX.org 
+*   CS50x final project winter/spring 2014  with Launch Code
+*************************************************************/
   
 $typeString = <<< EOD
     <br /><br />please select the data type you used, if yours is not shown please
@@ -17,7 +17,8 @@ EOD;
 
 $badCookie = <<< EOD
     <br /><br />It appears the cookie has been corrupted, the reason is unclear.
-    &nbsp; Please continue to choose your group.<br /><br />
+    &nbsp; Your cookie may be from last year.&nbsp; Please continue and choose a
+    group.<br /><br /><br />
     Please direct any questions to the
     <a href="mailto:ebobtron@aol.com" class="head-links" style="font-size:1.3em">
     administrator.</a><br />
@@ -52,4 +53,5 @@ $noRedditProfile = <<< EOD
     <br><br>The Submitter clicked doesn't seem to have a reddit.com id / profile.
 EOD;
 
+    // last edit: 01/30/2015  ebt
 ?>

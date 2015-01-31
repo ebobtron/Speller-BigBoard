@@ -1,3 +1,12 @@
+<!--
+*
+*   grpselform.php  -- goup selection template --
+*
+*   copyright 2015 Robert Clark(aka ebobtron), et al.
+*
+*   an expansion of my edX.org CS50x final project
+*   winter/spring 2014  with Launch Code
+*************************************************************** -->
 
 <div class="gentext lilmar" style='width:80%'>
 
@@ -42,7 +51,7 @@
   <tr>
     <td class="grptd">
       <div id="edx">      
-        <button id="edxgrp" name='group' value="edx2014" title="click for edX.org 2014">
+        <button id="edxgrp" name='group' value="edx2015" title="click for edX.org 2015">
           <img alt="click for this group" id='edximg' src="../public/img/hero-logo-edx.png">
           <img alt="click for this group" id='cs50img' src="../public/img/cs50_299x188.jpg">
         </button>
@@ -64,5 +73,5 @@
 
 </div><br />
 
-<? /* last edit: 01/22/2015  ebt */ ?>
+<!-- last edit: 01/30/2015  ebt -->
 
