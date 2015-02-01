@@ -18,8 +18,8 @@
     </td>
     <td>
       <a href="aboutus" title="click to learn about us"
-         style="text-decoration: none;"> 
-        &copy; 2014 ebobtron, et al.<br />
+         style="text-decoration: none;">
+        &copy; 2015 ebobtron, et al.<br />
         brought to you by me.
       </a>
     </td>
