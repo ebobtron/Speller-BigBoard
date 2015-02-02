@@ -1,14 +1,23 @@
+<!-- 
+*   links.php  -- link list menu for navigation --  
+*   
+*   copyright 2015 Robert Clark(aka ebobtron), et al.
+*
+*   an expansion of my edX.org CS50x final project
+*   winter/spring 2014  with Launch Code    see public/aboutus.php
+******************************************************************* -->
 
 <div class="lnk">
 
     <p style="display: inline;">
-    <!-- $_GET  ? r = gt means a group table -->
-    <!--
+    
         <a class="menu" href="../public/grpsel" title="click to submit your speller">
            Submit Your Program&nbsp;</a>
-           -->
-           <a class="menu" href="../public/suspend" title="submissions suspended for 2014">
+           
+    <!--    
+        <a class="menu" href="../public/suspend" title="submissions suspended for 2014">
            <strike>Submit Your Program</strike>&nbsp;</a>
+           -->
     </p>
 
     &middot;
@@ -30,4 +39,4 @@
     </p>
 
 </div>
-<? /*   last edit: 01/21/2015  ebt   */ ?>
+<? /*   last edit: 02/02/2015  ebt   */ ?>
