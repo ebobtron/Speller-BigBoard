@@ -18,7 +18,7 @@
 
     // cookie data name and experation time
     $cookie_name = 'leaderboard_cookie';
-    $cookie_time = time() + 300; //(24 * 60 * 60 * 365);  // about a year
+    $cookie_time = time() + (24 * 60 * 60 * 365);  // about a year
     
     // if no request for group change test the cookie
     if(!isset($_GET['chg']))
@@ -83,6 +83,6 @@
     // render footer
     require('../template/footer.php'); 
     
-    //  last edit:  01/30/2015  ebt
+    //  last edit:  02/02/2015  ebt
 
 ?>
