@@ -224,7 +224,7 @@ td {
 .subright {
   height: 60px;
   padding: 0 4px;
-  text-align:right;
+  /*text-align:right;*/
   width:70%;
 }
 
@@ -338,8 +338,8 @@ td {
 #edx {
   background-color: white;
   background-image:url(../img/front-hero-bg-s.jpg);
-  height:94px;
-  width:301px; 
+  height:90px;
+  width:297px; 
 }
 
 #edx button:hover {
@@ -348,7 +348,7 @@ td {
 
 #edxgrp { 
   background: transparent;
-  border:0;
+  border:2;
   width: 100%; height: 100%;  
 }
 
@@ -384,6 +384,14 @@ td {
 #lcodeimg {
   height: 55%;
   width: 55%; 
+}
+
+#yrgrp { 
+  
+  border:8;
+
+  height:94px;
+  width:301px;  
 }
 
 /*  
