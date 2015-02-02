@@ -1,13 +1,12 @@
 <!--
-**
- *  table.php  -- Display table of submissions and links --
- *
- *  copyright 2015 Robert Clark(aka ebobtron), et al.
- *
- *  an expansion of my edX.org 
- *  CS50x final project winter/spring 2014  with Launch Code
- *
- ************************************************************   -->
+*
+*   table.php  -- Display table of submissions and links --
+*
+*   copyright 2015 Robert Clark(aka ebobtron), et al.
+*
+*   an expansion of my edX.org CS50x final project
+*   winter/spring 2014  with Launch Code
+************************************************************   -->
 
 <div class="div-table">
 
@@ -30,41 +29,41 @@
 <div class="d-sub">
 
     <? $loop = 0; ?>
-    <? $class = 'row';?>     
+    <? $class = null; ?>     
     <? foreach($rows as $row): ?>
     <? if($loop % 2 == 0): ?>
-      <? $class = ' row';?> 
+      <? $class = 'row'; ?> 
     <? else: ?>
-      <? $class = null;?>
+      <? $class = null; ?>
     <? endif; ?>
 
-    <div class="div-col<?=$class?>" style="width:8%">
+    <div class="div-col <?=$class?>" style="width:8%">
         <?  printf('%04d', $row['id'])?></div>
 
-    <div class="div-col<?=$class?> left" style="width:20%">
+    <div class="div-col <?=$class?> left" style="width:20%">
       <a href="comment?comment=<?=$row['name']?>" class="name"
          title="click for user comments or reddit overview">&nbsp;
          <?=$row['name']?></a></div>
 
-    <div class="div-col<?=$class?>" style="width:9%">
+    <div class="div-col <?=$class?>" style="width:9%">
         <? printf('%0.4f', $row['total']) ?></div>
 
-    <div class="div-col<?=$class?>" style="width:9%">
+    <div class="div-col <?=$class?>" style="width:9%">
         <? printf('%0.4f', $row['dload']) ?></div>
 
-    <div class="div-col<?=$class?>" style="width:9%">
+    <div class="div-col <?=$class?>" style="width:9%">
         <? printf('%0.4f', $row['tcheck']) ?></div>
 
-    <div class="div-col<?=$class?>" style="width:9%">
+    <div class="div-col <?=$class?>" style="width:9%">
         <? printf('%0.4f', $row['size']) ?></div>
 
-    <div class="div-col<?=$class?>" style="width:9%">
+    <div class="div-col <?=$class?>" style="width:9%">
         <? printf('%0.4f', $row['unload']) ?></div>
 
-    <div class="div-col<?=$class?> right" style="width:12%">
+    <div class="div-col <?=$class?> right" style="width:12%">
         <? printf('%0.4f MB', $row['mem']) ?></div>
 
-    <div class="div-col<?=$class?> left" style="width:13%">&nbsp;
+    <div class="div-col <?=$class?> left" style="width:13%">&nbsp;
         <?=$row['typ']?></div>
 
     <div style="clear:both"></div>
@@ -74,4 +73,4 @@
 
 </div>
 <br />
-<!--    // last edit: 01/30/2015  ebt        -->
+<!--    // last edit: 02/01/2015  ebt        -->
