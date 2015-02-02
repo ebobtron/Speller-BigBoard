@@ -10,7 +10,7 @@ a CS50x Problem set 5 speller.c performance leader board for 2015
 
 An expansion of my 2014 final project.
 
-written by Robert Clark aka ebobtron copyright 2015
+copyright 2015 Robert Clark (aka ebobtron) et al. 
 
 nod to Pablo for suggesting the automation
 
