@@ -1,13 +1,12 @@
 <!--
- **
- *
- *   submitform.php  user interfaces to upload file
- *
- *   Robert Clark, aka ebobtron el al.
- *
- *   CS50x final project   winter/spring 2014  with Launch Code
- *
- *************************************************************    -->
+*
+*   submitform.php    -- user interfaces to upload file --
+*
+*   copyright 2015 Robert Clark(aka ebobtron), et al.
+*
+*   an expansion of my edX.org CS50x final project
+*   winter/spring 2014  with Launch Code
+*************************************************************    -->
 
 <div class="gentext">
   
@@ -19,7 +18,7 @@
     <br />
 
     <form enctype='multipart/form-data' action='uploadfile' method='POST'>
-        <input type='hidden' name='MAX_FILE_SIZE' value='48000' />
+        <input type='hidden' name='MAX_FILE_SIZE' value='49152' />
 
         Please upload <big><big> "speller"</big></big> not speller.c, thank you.<br />
         <br />
@@ -46,3 +45,5 @@
     <br />
 
 </div>
+
+<!-- last edited: 02/02/2015  ebt  -->

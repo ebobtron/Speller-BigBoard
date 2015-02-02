@@ -10,21 +10,25 @@
 
 <div class="gentext lilmar" style='width:80%'>
 
-  <h3 class="head lilmar"> Group Selection </h3>
-    Please click the image below that best describes your circumstances, thank you.<br />
-    <ul><li>
+  <h3 class="head lilmar">Group Selection</h3>
+    &nbsp; Please click the image below that best describes your circumstances,
+    thank you.<br />
+    
+  <!--
+    <ul><li> 
     If you have a group not shown here please contact the
     <a href="mailto:ebobtron@aol.com" class="head-links" style='font-size:19px'>
        Leader Board Administrator.</a>&nbsp; We can add your group.</ul>
+       -->
 </div>
-
+<br />
 <div class="grpSelect">  
 
 <form action="grpsel" method="post">
 
   <table id="grpTable">
   
-  <!--          removing codergirl and lauchcode from the groups 
+  <!--    removing codergirl and lauchcode from the groups 
   <tr>
     <td class='grptd'>
       <div id="coderg">
@@ -61,7 +65,7 @@
     </td>
   </tr>
   <tr>
-   <td>your group here</td>
+   <td><button id="yrgrp" disabled="yes">your group here</button></td>
    <td>contact the
      <a href="mailto:ebobtron@aol.com" class="head-links" style='font-size:19px'>
         leader board administrator.</a>&nbsp; We can add your group.
@@ -73,5 +77,5 @@
 
 </div><br />
 
-<!-- last edit: 01/30/2015  ebt -->
+<!-- last edit: 02/02/2015  ebt -->
 
