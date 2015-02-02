@@ -1,3 +1,12 @@
+/*
+*   leaderboard.css    -- CSS file for the HTML --
+*
+*   copyright 2015 Robert Clark(aka ebobtron), et al.
+*
+*   an expansion of my edX.org CS50x final project
+*   winter/spring 2014  with Launch Code
+**********************************************************/
+
 /*  fonts   */
 
 @font-face {
@@ -97,7 +106,7 @@ td {
 } 
 
 .div-head {
-  margin-top:20px;
+  margin-top:16px;
   text-align:center;
 }
  
@@ -161,11 +170,17 @@ td {
   color: blue;
   font-family: sans-serif;
   font-size:12px;
-  text-decoration:none;
+  
 }
 
 .lilmar {
   margin-bottom:5px;
+}
+
+.link {
+  color: blue;
+  font-size:110%;
+  text-decoration:none;
 }
 	
 .lispaced {
@@ -190,6 +205,11 @@ td {
   font-family:Arapey_Italic;
   font-size: 14pt;
   text-decoration:none;      
+}
+
+.normar {
+  margin: auto;
+  width: 90%;
 }
 
 .right {
@@ -365,3 +385,7 @@ td {
   height: 55%;
   width: 55%; 
 }
+
+/*  
+    last edit: 02/01/2014  ebt   
+                                 */
