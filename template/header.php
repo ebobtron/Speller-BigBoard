@@ -1,12 +1,14 @@
 <!DOCTYPE HTML>
-<!-- written by Robert Clark, et al. see public/aboutus.php -->
+<!-- copyright 2015 Robert Clark(aka ebobtron), et al. 
+     see public/aboutus.php           -->
+
 <html lang="en">
 
   <head>
 
     <meta http-equiv="Content-type" content="text/html;charset=utf-8" />
-    <meta name="description" content="Pset6, Mispellings, leader board for students
-    of CS50  CS50x. Supported by students of CS50x" />
+    <meta name="description" content="Pset6, Pset5, Mispellings, leader board for
+     students of CS50x. Supported by students of CS50x" />
     
     <link href="../public/css/leaderboard.css" rel="stylesheet" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
@@ -60,3 +62,4 @@
 
       </h3>
     </div>
+<!-- last edited: 02/03/2015  ebt -->    
