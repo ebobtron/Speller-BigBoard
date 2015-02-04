@@ -1,5 +1,5 @@
 <!-- 
-*   links.php  -- link list menu for navigation --  
+*   links.php  - link list menu for navigation -  
 *   
 *   copyright 2015 Robert Clark(aka ebobtron), et al.
 *
@@ -39,4 +39,4 @@
     </p>
 
 </div>
-<? /*   last edit: 02/02/2015  ebt   */ ?>
+<!--   last edit: 02/03/2015  ebt   -->

@@ -1,5 +1,9 @@
-
-<!-- leader board footer -->
+<!-- 
+*   footer.php   - leader board footer - 
+*
+*   copyright 2015 Robert Clark(aka ebobtron), et al.
+*   see aboutus.php
+********************************************************* -->
 
 <table class="table-foot">
   <tr>
@@ -30,14 +34,14 @@
     <td>
       <a class="legal-links"
          href="http://trademark.harvard.edu/pages/trademark-notice/">
-        "Harvard" is &copy; 2014 The President and Fellows of Harvard College
+        "Harvard" is &copy; 2015 The President and Fellows of Harvard College
       </a>
       <br />
       <a class="legal-links"
-         href="http://edx.org">"edX.org" is &copy; 2014 edX.org
+         href="http://edx.org">"edX.org" is &copy; 2015 edX.org
       </a>&nbsp;&nbsp;
       <a class="legal-links"
-         href="http://launchcode.org">"LaunchCode" is &copy; 2014 LaunchCode
+         href="http://launchcode.org">"LaunchCode" is &copy; 2015 LaunchCode
       </a>
     </td>
   </tr>
@@ -45,3 +49,4 @@
 
 </body>
 </html>
+<!-- last edited: 02/03/2015  ebt  -->
