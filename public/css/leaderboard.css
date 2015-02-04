@@ -348,7 +348,7 @@ td {
 
 #edxgrp { 
   background: transparent;
-  border:2;
+  border:0px;
   width: 100%; height: 100%;  
 }
 
@@ -387,13 +387,11 @@ td {
 }
 
 #yrgrp { 
-  
-  border:8;
-
+  border:0px;
   height:94px;
   width:301px;  
 }
 
 /*  
-    last edit: 02/01/2014  ebt   
+    last edit: 02/03/2014  ebt   
                                  */
