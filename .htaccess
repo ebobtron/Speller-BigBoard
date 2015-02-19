@@ -1,0 +1,18 @@
+#remove php file extensions
+<IfModule mod_rewrite.c>
+  #Options +FollowSymLinks
+  #Options +Indexes
+  RewriteEngine On
+  RewriteCond %{SCRIPT_FILENAME} !-d
+  RewriteRule ^([^\.]+)$ $1.php [NC,L]
+   
+  #Hotlinking Protection
+  RewriteCond %{HTTP_REFERER} !^$
+  RewriteCond %{HTTP_REFERER} !^http://(www\.)?speller-leaderboard.freehostia.com/.*$ [NC]
+  RewriteRule \.(js|css|ttf|ico|jpg|gif|png|bmp|mp4|3gp|m4a|m4r|aac|mp3|ogg|wave)$ - [F]
+  #redirect to public show
+  Redirect /index.php /public/show
+</IfModule>
+
+# switch to php 5.4
+# AddHandler application/x-httpd-php54 .php
