@@ -1,6 +1,6 @@
 <?php
 /*
-*   helfun.php    -- helper functions for leader board -- 
+*   helfun.php    ** helper functions for leader board ** 
 *
 *   copyright 2015 Robert Clark(aka ebobtron), et al.
 *
@@ -357,6 +357,9 @@ function updateData()
 
             // move submitter's files to the dump if it exists
             // under certain automation testing methods the file may not exist
+            // if submitter is not on the board or the lastest submission fails the
+            // file well move to the dump and replace any file already there.  The
+            // dump contains file on the board or last failure. 
             if(file_exists('../uploading/' . $oldFileName))
             {
                 dumpSubmissions($oldFileName, $newFileName);
@@ -620,6 +623,6 @@ function getGroupNumber($grpName){
 
     return $grpNum;
 }
-    // last edit: 01/30/2015  ebt
+    // last edit: 02/14/2015  ebt
 ?>
 
