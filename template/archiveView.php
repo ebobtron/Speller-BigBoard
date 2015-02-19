@@ -1,17 +1,18 @@
 <!--
 *
-*   archiveView.php   -- archive View --
+*   archiveView.php   ** archive View **
 *
 *   copyright 2015 Robert Clark(aka ebobtron), et al.
 *
 *   an expansion of my edX.org CS50x final project
 *   winter/spring 2014  with Launch Code
 *************************************************************** -->
+
 <div class="div-table lilmar">
     The tables below are the lists of submissions from last years CS50x offered by
-    edX.org. &nbsp;There are three lists: all submissons, those from a study group
-    sposered in Saint Louis, Missouri U.S. by Lauch Code and a general list of
-    submissions from others taking the CS50x course online world wide. 
+    edX.org. &nbsp;There are three lists: all submissions, those from a study group
+    sponsored in Saint Louis, Missouri U.S. by Launch Code and a general list of
+    submissions from others taking the CS50x course online world wide.  
 </div>
 
 <div class="normar">
@@ -85,4 +86,4 @@
 <br />
 
 
-<!-- last edit: 02/01/2015  ebt -->
+<!-- last edit: 02/19/2015  ebt -->
