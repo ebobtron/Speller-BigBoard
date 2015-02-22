@@ -15,4 +15,4 @@
 </IfModule>
 
 # switch to php 5.4
-# AddHandler application/x-httpd-php54 .php
+  SetENV PHP_VERSION 54
