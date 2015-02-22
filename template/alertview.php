@@ -1,6 +1,6 @@
 <!--
 *
-*   alertview.php  -- alert template to display alerts --
+*   alertview.php  ** alert template to display alerts **
 *
 *   copyright 2015 Robert Clark(aka ebobtron), et al.
 *
@@ -34,4 +34,4 @@
     <br />
 </div>
 
-<!--  last edit: 01/30/2015  ebt    -->
+<!--  last edit: 02/20/2015  ebt    -->
