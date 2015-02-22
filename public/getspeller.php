@@ -1,13 +1,12 @@
 <?php
-/**
- *   getspeller.php  submission controller for uploading file
- * 
- *   Robert Clark, aka ebobtron et al.
- *
- *  an expension of my 
- *  CS50x final project   winter/spring 2014  with Launch Code
- *
- ***************************************************************/
+/*
+*   getspeller.php  ** submission controller for uploading file **
+* 
+*   Robert Clark, aka ebobtron et al.
+*
+*   an expansion of my CS50x final project
+*   winter/spring 2014  with Launch Code
+***********************************************************************/
 
     require '../include/helfun.php';
 
@@ -109,7 +108,13 @@
         // render footer
         require('../template/footer.php');
         
-        echo '<script type="text/javascript">'.$validSubMsg.'</script>';
+        
+        // pop the b box only when $validSubMsg contains a Message
+        // else the empty script is an HTML 5 error
+        if($validSubMsg)
+        {
+            echo '<script type="text/javascript">'.$validSubMsg.'</script>';
+        }
     }
     else
     {
@@ -126,6 +131,7 @@
         // render footer
         require('../template/footer.php');	
     }
-
+    
+    // last edited:  02/20/2015  ebt
 ?>
 
