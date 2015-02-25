@@ -28,6 +28,8 @@ require "groupstrings.php";
  ****************************************/
 function sendMail($to, $cc, $subject, $body) {
 
+    error_reporting(E_ALL & ~E_STRICT);
+    
     require_once "Mail.php";
     require "config.php";
 
@@ -623,6 +625,6 @@ function getGroupNumber($grpName){
 
     return $grpNum;
 }
-    // last edit: 02/14/2015  ebt
+    // last edit: 02/25/2015  ebt
 ?>
 
