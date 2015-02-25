@@ -42,7 +42,10 @@
       <li class="lispaced">     
         <a href='archive' class='head-links' style='font-size:19px'>
            view prior years results</a></li>   
-              
+      
+      <li class="lispaced">     
+        <a href='prior_results' class='head-links' style='font-size:19px'>
+           See charts of last years submission times</a></li>        
     </ul>
     
     If you have a group not shown here please contact the
@@ -51,4 +54,4 @@
 </div>
 <br />
 
-<? /* last edit: 01/22/2015 ebt */ ?>
+<? /* last edit: 01/25/2015 ebt */ ?>
