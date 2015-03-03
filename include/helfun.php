@@ -26,7 +26,8 @@ require "groupstrings.php";
  *   the sending client authenticate the sender, i.e. user id and password
  *           
  ****************************************/
-function sendMail($to, $cc, $subject, $body) {
+function sendMail($to, $cc, $subject, $body)
+{
 
     error_reporting(E_ALL & ~E_STRICT);
     
@@ -54,24 +55,23 @@ function sendMail($to, $cc, $subject, $body) {
                     'auth' => true,
                     'username' => $username,
                     'password' => $pwd);
-
-    $smtp = Mail::factory('smtp', $params);
+    
+    $mailobj = new Mail;
+    
+    $smtp = $mailobj->factory('smtp', $params);
 
     $mail = $smtp->send($recipients, $headers, $body);
-
-    if(PEAR::isError($mail)) {
     
-    // TODO: fix this error mess
-    
-        $mes = "<br><br>Nothing to worry about, someone is not going to get an email";
-        $mes = $mes . "<br>" . $mail->getMessage();
-        
-        return $mes;
+    $pearobj = new PEAR; 
+    if($pearobj->isError($mail))
+    {
+        $mes = "<br><br>An email server / script error has occured.&nbsp; Errormessage is: ";
+        return $mes . "<br>" . $mail->getMessage();
     }
-    else {
-        
-        return "<br>A message was successfully sent to the leader board administrator".
-               " about this submission!";
+    else
+    {   
+        return "<br>A message was successfully sent to the leader board administrator ".
+               "about this submission!";
     }
 }
 
@@ -483,7 +483,7 @@ function validName($name) {
  **********************************/
 function validEmail($email) {
     
-    $regex = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/"; 
+    $regex = "/^[_A-Za-z0-9-]+(\.[_A-Za-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/"; 
 
     if(preg_match($regex, $email)) {
      
@@ -625,6 +625,6 @@ function getGroupNumber($grpName){
 
     return $grpNum;
 }
-    // last edit: 02/25/2015  ebt
+    // last edit: 03/02/2015  ebt
 ?>
 
