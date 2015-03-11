@@ -1,12 +1,12 @@
 <?php
 /*
-*   groupstrings.php  -- group definitions for titles and links --
-*
-*   copyright 2015 Robert Clark(aka ebobtron), et al.
-*
-*   an expansion of my edX.org CS50x final project
-*   winter/spring 2014  with Launch Code
-*******************************************************************/
+   groupstrings.php  -- group definitions for titles and links --
+
+   copyright 2015 Robert Clark(aka ebobtron), et al.
+
+   an expansion of my edX.org CS50x final project
+   winter/spring 2014  with Launch Code
+   ******************************************************************/
 
    /** 
      * changed to an associative array to improve readability for future and 
@@ -46,11 +46,11 @@
            "codergirlstl2015" => "2015 with ".
                "<a href='http://launchcode.org' class='head-links'>". 
                "LaunchCode.org</a>",
-           "edx2015" => "2015 with <a href='http://edx.org' class='head-links'>".
+           "edx2015" => "2015 from <a href='http://edx.org' class='head-links'>".
                "edX.org</a>"
            );
 
-    //   last edit: 01/30/2015  ebt                               
+    //   last edit: 3/11/2015  ebt                               
 ?>
 
 

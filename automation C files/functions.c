@@ -1,14 +1,14 @@
 /******
  *
  *  functions.c 
- *  Robert Clark, aka ebobtron
+ *  Robert Clark, aka ebobtron  et al.
  *  
  *  CS50x  winter/spring 2014 with launchcode
  *  
- *  functions to help asbb.c  et al.
+ *  functions to help asbb.c  
  *  automate the testing and posting of submissions to the Leader Board
  *
- ******/
+ *************************************************************************/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -27,7 +27,7 @@ int splash(void) {
     printf("\033[2J\033[1;0H");
     char* a = "\n\n....    asbb \" auto speller big board \" version: 1.00\n";
     char* b = "        automatic leader board submission management\n";
-    char* c = "        by Robert Clark, aka ebobtron  final project CS50x\n";
+    char* c = "        by Robert Clark(aka ebobtron), et al.  final project CS50x\n";
     char* d = "        winter / spring 2014 with Launch Code\n";
     printf("%s%s%s%s", a, b, c,d);
     

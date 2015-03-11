@@ -1,13 +1,12 @@
 /******
  *
- *  asbb.c 
- *  Robert Clark, aka ebobtron et al.
+ *  asbb.c   ** primary automation for speller-leaderboard.freehostia.com **
  *  
- *  CS50x  winter/spring 2014 with launchcode
+ *  copyright 2015 Robert Clark(aka ebobtron), et al.
  *  
- *  automate the testing and posting of submissions to the Leader Board
+ *  CS50x  winter/spring 2014 with launchcode  
  *
- **********************************************************************/
+ ***************************************************************************/
  
 #include <stdio.h>
 #include <stdlib.h>
@@ -26,7 +25,8 @@ int main(int argc, char* argv[])
 {
     // options:    argv one = number of test runs
     // or if
-    // options:     arg one = -sl  no local test runs.
+    // options:     arg one = -sl  no local test, download and valgrind only.
+    //              testsl run on linux system              
     
     char testVersion[8];
     strcpy(testVersion, "test");

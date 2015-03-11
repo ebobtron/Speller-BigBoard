@@ -1,11 +1,10 @@
-
-<!-- leader board groupInfo.php -->
+<!-- leader board template groupInfo.php -->
 <br />
 
 <div class="gentext lilmar" style="width:80%">
 
-  <h3 class="head lilmar">Study Group Info for CS50x Problem Set 6: Mispellings or
-       Misspellings</h3>
+  <h3 class="head lilmar">Study Group Info for CS50x Problem Set 6 2014, Problem
+    Set 5 2015: Mispellings or Misspellings?</h3>
     <br />
     Select a link below to view individual group results on the leader board.<br />
     <ul>
@@ -24,7 +23,7 @@
            edX.org 2015</a></li>
       
       <li class="lispaced"><b>
-           no additional groups set up</b></li>     
+           no additional groups set up during 2015</b></li>     
       <!--
       <li class="lispaced">  
         <a href="show?grp=0" class="head-links" style='font-size:19px'>
@@ -54,4 +53,4 @@
 </div>
 <br />
 
-<? /* last edit: 01/25/2015 ebt */ ?>
+<? /* last edit: 03/11/2015 ebt */ ?>
