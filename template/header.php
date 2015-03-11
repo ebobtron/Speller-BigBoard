@@ -18,7 +18,7 @@
     <style type="text/css"></style>
 
     <?php if(isset($title)): ?>
-      <title>LeaderBoard: <?=htmlspecialchars($title)?></title>
+      <title>LeaderBoard: <?= htmlspecialchars($title) ?></title>
     <?php else: ?>
       <title>LeaderBoard</title>
     <?php endif ?>
@@ -44,22 +44,21 @@
           speller Leader Board</a>
 
           <?php if(isset($head)): ?>
-            <? echo $head; ?>
+            <?= $head ?>
           <?php else: ?>    
             <br />
           <?php endif ?>
       </h2>
       <h3 class="head">
-          for students of Harvard College's CS50x from
-
-          <a class="head-links" href="http://edx.org">edX.org</a>
+          for students of Harvard College's CS50x 
 
           <?php if(isset($link)): ?>
-            <? echo $link; ?>
+            <?= $link ?>
           <?php else: ?>
 
           <?php endif ?>
 
       </h3>
     </div>
-<!-- last edited: 02/03/2015  ebt -->    
+    
+<!-- last edited: 03/11/2015  ebt -->    
