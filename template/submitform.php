@@ -1,6 +1,6 @@
 <!--
 *
-*   submitform.php    -- user interfaces to upload file --
+*   submitform.php    ** user interfaces to upload file **
 *
 *   copyright 2015 Robert Clark(aka ebobtron), et al.
 *
@@ -12,9 +12,10 @@
   
   <h2> file submission continued </h2>
     
-    group: <?=$title?><br />
-    submitters name: <?=$name?><br />
-    submitters email: <?=$_POST['email']?><br />
+    group: <?= $title ?><br />
+    submitters name: <?= $name ?><br />
+    number of submissions: <?= $subcount ?> of 10 max<br />
+    submitters email: <?= $_POST['email'] ?><br />
     <br />
 
     <form enctype='multipart/form-data' action='uploadfile' method='POST'>
@@ -46,4 +47,4 @@
 
 </div>
 
-<!-- last edited: 02/02/2015  ebt  -->
+<!-- last edited: 03/11/2015  ebt  -->

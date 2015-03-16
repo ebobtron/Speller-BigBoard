@@ -65,7 +65,7 @@ function sendMail($to, $cc, $subject, $body)
     $pearobj = new PEAR; 
     if($pearobj->isError($mail))
     {
-        $mes = "<br><br>An email server / script error has occured.&nbsp; Errormessage is: ";
+        $mes = "<br><br>An email server / script error has occurred.&nbsp; Error message is: ";
         return $mes . "<br>" . $mail->getMessage();
     }
     else
@@ -124,11 +124,55 @@ function PDOconnect() {
     return $dbhan;
 }
 
+/*
+ *  subCount($name, $group)
+ *
+ *  get submission count for a user name and group number
+ *************************************************************/
+
+function subCount($name, $group){
+    
+    // connect to database server and return handle
+    $dbhandle = PDOconnect();
+    
+    // set some common variables
+    $stmt = null;
+    $results = null;
+    
+    // MySQL statement
+    $sql = "SELECT count(*) FROM leader_board WHERE grp = :grp1 AND " .
+           "name = :name";        
+    
+    // prepare the statement and get statement object
+    $stmt = $dbhandle->prepare($sql);
+    
+    // bind parameter to variable name for a statement object
+    $stmt->bindParam(":grp1", $group);
+    $stmt->bindParam(":name", $name);
+    
+    // execute or catch the error
+    try {     
+        // if execute successful fetch results as associative array
+        if($stmt->execute() !== false) {
+        
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+    }
+    catch(PDOException $error) {
+
+        // return the error message
+        return $error->getMessage();
+    }
+    // return contents of two dimensional array
+    return $results[0]['count(*)'];
+}
+  
+
 /*  
  *  GETPUT()
  *
  *  DATABASE FUNCTIONS  NO ON THE FLY SQL STATEMENTS        
- *********************************************************/
+ ****************************************************/
 
 function getPut($what, $data) {
  
@@ -359,7 +403,7 @@ function updateData()
 
             // move submitter's files to the dump if it exists
             // under certain automation testing methods the file may not exist
-            // if submitter is not on the board or the lastest submission fails the
+            // if submitter is not on the board or the latest submission fails the
             // file well move to the dump and replace any file already there.  The
             // dump contains file on the board or last failure. 
             if(file_exists('../uploading/' . $oldFileName))
@@ -408,7 +452,7 @@ function sendemailNotifications($mode) {
         return;        
     }
     
-    // open submisson notification file or die
+    // open submission notification file or die
     $inFileHandle = fopen($inFileName, 'r') or die("can't open file");
     
     // on error complain and return
@@ -421,7 +465,7 @@ function sendemailNotifications($mode) {
     // get array keys by position number
     $keys = array_keys($titleString);
     
-    // loop through submisson notification file until end
+    // loop through submission notification file until end
     while(true)
     {
         // get first and second line of message
@@ -434,13 +478,13 @@ function sendemailNotifications($mode) {
             break;
         }
         
-        // extract gropu number from group-Type string
+        // extract group number from group-Type string
         $grp = substr($lineTwo[1], 0, strlen($lineTwo[1]) - 2);
          
         // get group string for email notification
         $group = $titleString[$keys[$grp]];
         
-        // join linetwo's seperated values back together as error string
+        // join line two's separated values back together as error string
         $index = 0;
         $errorStr = null;
         foreach($lineTwo as $value)
@@ -470,7 +514,7 @@ function sendemailNotifications($mode) {
 
 /*
  *  validName()
- *  replace white spaces from names D Doug becomes D_Doug
+ *  replace white spaces in names i.e. "D Doug" becomes "D_Doug"
  *****************************************************************/
 function validName($name) {
    
@@ -482,7 +526,8 @@ function validName($name) {
  *  validate email address
  **********************************/
 function validEmail($email) {
-    
+
+    // regular expression from theB264
     $regex = "/^[_A-Za-z0-9-]+(\.[_A-Za-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/"; 
 
     if(preg_match($regex, $email)) {
@@ -570,7 +615,7 @@ function moveSubmissions() {
         if(is_file($file)) {
             
             copy($file, $newfileName);
-            echo "found new submissin file: ".$newfileName . "<br>";
+            echo "found new submission file: ".$newfileName . "<br>";
             unlink($file);
         }
     }
@@ -625,6 +670,6 @@ function getGroupNumber($grpName){
 
     return $grpNum;
 }
-    // last edit: 03/02/2015  ebt
+    // last edit: 03/15/2015  ebt
 ?>
 

@@ -54,7 +54,9 @@
     
     $title = $titleString[$group];
     $head = $headString[$group];
-    $link = $linkString[$group]; 
+    $link = $linkString[$group];
+    
+    $subcount = subCount($name, getGroupNumber($group)); 
      
     $validSubMsg = null;
     $magWrd = null;
@@ -132,6 +134,6 @@
         require('../template/footer.php');	
     }
     
-    // last edited:  02/20/2015  ebt
+    // last edited:  03/11/2015  ebt
 ?>
 
