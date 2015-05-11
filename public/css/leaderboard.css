@@ -34,6 +34,9 @@
 a:hover {
   background-color: white;
 }
+input[type="submit"]:hover {
+  background-color: white;
+}
 
 body {
   background-color:#ebebf5;
@@ -68,6 +71,8 @@ td {
   border:0px solid black;
 }
 
+html, body { height: 100%; overflow: hidden } /* Alex Rsranger65 */
+
 /* classes */  
 
 .admin {
@@ -99,6 +104,7 @@ td {
 .d-sub {
   border:0px solid Green;
   height: 295px;
+  height: calc(100% - 260px);  /* calc heitht fix Alex Rsranger65 */
   margin: auto;
   overflow-y: auto;
   text-align: center;
@@ -149,6 +155,14 @@ td {
   text-decoration:none;
 }
 
+.headset {
+  background:none;
+  border:0;
+  padding:0;
+  font-family:sans-serif;
+  font-size:1em;
+}
+
 .input{
   border: 1px solid black;
   border-radius: 4px;
@@ -170,7 +184,7 @@ td {
   color: blue;
   font-family: sans-serif;
   font-size:12px;
-  
+  text-decoration:none;
 }
 
 .lilmar {
@@ -210,6 +224,11 @@ td {
 .normar {
   margin: auto;
   width: 90%;
+}
+
+/* class contributions by Toby / wolf99 */
+.no-underline {
+  text-decoration:none;
 }
 
 .right {
@@ -393,5 +412,5 @@ td {
 }
 
 /*  
-    last edit: 02/03/2014  ebt   
+    last edit: 05/11/2015  ebt   
                                  */

@@ -10,22 +10,19 @@
     <td style="width:5%">
     </td>
     <td>
-      <a href="http://validator.w3.org/check/referer">
+      <a href="http://validator.w3.org/check/referer" class="no-underline">
         <img src="../public/img/HTML5.png" alt="HTML 5"
             style="border:0;width:24px">
       </a>
 
-      <a href="http://jigsaw.w3.org/css-validator/check/referer">
+      <a href="http://jigsaw.w3.org/css-validator/check/referer" class="no-underline">
         <img style="border:0;width:66px;height:24px"
          src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="Valid CSS!">
       </a>
     </td>
     <td>
-      <a href="aboutus" title="click to learn about us"
-         style="text-decoration: none;">
-        &copy; 2015 ebobtron, et al.<br />
-        brought to you by me.
-      </a>
+      <a href="aboutus" title="click to learn about us" class="no-underline">
+         &copy; 2015 ebobtron, et al.<br />brought to you by me.</a>
     </td>
     <td>
     <div class="fb-share-button" data-href="http://speller-leaderboard.freehostia.com"
@@ -49,4 +46,4 @@
 
 </body>
 </html>
-<!-- last edited: 02/03/2015  ebt  -->
+<!-- last edited: 05/11/2015  ebt  -->

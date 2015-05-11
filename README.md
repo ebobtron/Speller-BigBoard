@@ -16,6 +16,10 @@ nod to Pablo for suggesting the automation
 
 expansion contributors: Brian theB264, Chris h-chris, Josh joshfischer1108, Pablo
 
+in 2015 thanks to:
+
+Toby wolf99, Alex Rsranger65
+
 
 
 
