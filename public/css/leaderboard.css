@@ -212,6 +212,10 @@ td {
   width: 90%;
 }
 
+.no-underline {
+  text-decoration:none;
+}
+
 .right {
   padding: 0 2px;
   text-align:right;

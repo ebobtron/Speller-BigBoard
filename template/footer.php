@@ -10,12 +10,12 @@
     <td style="width:5%">
     </td>
     <td>
-      <a href="http://validator.w3.org/check/referer">
+      <a href="http://validator.w3.org/check/referer" class="no-underline">
         <img src="../public/img/HTML5.png" alt="HTML 5"
             style="border:0;width:24px">
       </a>
 
-      <a href="http://jigsaw.w3.org/css-validator/check/referer">
+      <a href="http://jigsaw.w3.org/css-validator/check/referer" class="no-underline">
         <img style="border:0;width:66px;height:24px"
          src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="Valid CSS!">
       </a>
