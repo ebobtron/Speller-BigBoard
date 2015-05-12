@@ -12,6 +12,8 @@ require "config.php";
 
 require "groupstrings.php";
 
+error_reporting(E_ALL & ~E_STRICT);
+
 #require_once('../include/jpgraph-3.5.0b1/src/jpgraph.php');
 
     // set default timezone, dah!
@@ -65,7 +67,8 @@ function sendMail($to, $cc, $subject, $body)
     $pearobj = new PEAR; 
     if($pearobj->isError($mail))
     {
-        $mes = "<br><br>An email server / script error has occurred.&nbsp; Error message is: ";
+        $mes = "<br><br>An email server / script error has occurred.&nbsp; " .
+               "Error message is: ";
         return $mes . "<br>" . $mail->getMessage();
     }
     else
@@ -183,21 +186,44 @@ function getPut($what, $data) {
     $stmt = null;
     $results = null;
     $errorMessage = null;
+    $sort = "total ASC";
     
     //--  GET ROWS   
     //--  if $data = group number, returns group number and group zero("0") Staff
     //--  if $data = null, returns all groups
-    //--  confine $data to "null" or numeric symbols 0, 1, 2 etc.
-    if($what == "rows") {
+    //--  confine $data to "null" or numeric symbols 0, 1, 2 etc.   
+    if($what[0] === "rows") {
+        
+        if($what[1] === "tsortu")
+            $sort = "total ASC";
+        if($what[1] === "tsortd")
+            $sort = "total DESC";
+        if($what[1] === "nsortu")
+            $sort = "LOWER(name) ASC, total ASC";
+        if($what[1] === "nsortd")
+            $sort = "LOWER(name) DESC, total ASC";
+            
+        if($what[1] === "lsortu")
+            $sort = "dload ASC";
+        if($what[1] === "lsortd")
+            $sort = "dload DESC";
+            
+        if($what[1] === "csortu")
+            $sort = "tcheck ASC";
+        if($what[1] === "csortd")
+            $sort = "tcheck DESC";
+              
         
         $sql = "SELECT * FROM leader_board WHERE total IS NOT NULL ";
         
         if($data !== null) {
-            $sql = $sql . "AND grp = :grp0 OR grp = 0 ORDER BY total ASC";
+            $sql = $sql . "AND grp = :grp0 OR grp = 0 ORDER BY " . $sort;
         }
         else {   
-            $sql = $sql . "ORDER BY total ASC";
+            $sql = $sql . "ORDER BY " . $sort;
         }
+        
+        
         $stmt = $dbhandle->prepare($sql);
         $stmt->bindParam(":grp0", $data);
     }
@@ -239,7 +265,7 @@ function getPut($what, $data) {
     }
         
     //--  return data "rows"
-    if($what == "rows"){
+    if($what[0] == "rows"){
     
         if($errorMessage === null)
         {
@@ -304,13 +330,19 @@ function createSubInfo($name, $id, $email, $dir) {
  *   LOAD SUBMISSION DATA INTO DATABASE  
  *********************************************************/
 
-function updateData()
+function updateData($text)
 {    
     // get the group names and data identifiers
     include "groupstrings.php";
     
-    // default success - thing positive
+    // define a database result
+    $result = false;
+    
+    // default success - thinK positive
     $success = true;
+    
+    // resultString to return;
+    $resultString = null;
     
     // data structure descriptors
     $dsType = array('none','Hash Table','Trie','Other');
@@ -391,13 +423,24 @@ function updateData()
             $stmt->bindParam(":typ", $dsType[$type]);
             
             // execute the MySQL data addition
-            $stmt->execute();
+            $result = $stmt->execute();
             
             // output admin data
-            printf("adding %04u for group %u name: \" %s \" total time: %04f <br>",
-                    $return['nextId'], $data[0], $data[1], $data[2]);
+            if(!$text)
+            {
+                $resultString = $resultString .
+                sprintf("adding %04u for group %u name: \" %s \" total time: %04f <br>",
+                         $return['nextId'], $data[0], $data[1], $data[2]);
+            }
+            else
+            {
+                $resultString = $resultString .
+                sprintf("adding %04u for group %u name: \" %s \" total time: %04f \n",
+                         $return['nextId'], $data[0], $data[1], $data[2]);
+            }
             
-            // build some source and destination strings
+            // build some source and destination strings for moving submission files
+            // to a final resting place
             $oldFileName = $data[1] . $data[0] . '-' . $type . 'speller.x';
             $newFileName = $oldFileName . $return['nextId'];
 
@@ -405,18 +448,18 @@ function updateData()
             // under certain automation testing methods the file may not exist
             // if submitter is not on the board or the latest submission fails the
             // file well move to the dump and replace any file already there.  The
-            // dump contains file on the board or last failure. 
+            // dump contains files on the board or last failure. 
             if(file_exists('../uploading/' . $oldFileName))
             {
                 dumpSubmissions($oldFileName, $newFileName);
             }       
         }
     }
-    catch(PDOException $e)
+    catch(PDOException $error)
     {    
         // success is not true / echo error message
         $success = false;
-        echo 'Leader Board updateData ERROR: ' . $e->getMessage();
+        echo 'Leader Board updateData ERROR: ' . $error->getMessage();
     }
     
     // clean up files and move to dump if no data was uploaded
@@ -428,19 +471,34 @@ function updateData()
     if($dbhandle)
         $dbhandle = null;
 
-    // return success true or false
-    return $success;
+    // return $resultString on success or false 
+    if($success)
+    {
+        return $resultString;
+    }
+    else
+    {
+        return false;
+    }
 }
+
 
 /*
  *   sendemailNotifications()
- *   SEND NOTIFICATIONS FROM AN UPLOADED FILE
- ****************************************************/   
+ *   SEND SUBMISSION NOTIFICATIONS FROM DATA IN AN UPLOADED FILE
+ ****************************************************************/   
 function sendemailNotifications($mode) {
 
-    // $mode not currently in use
+    $endofline = '<br>';
+    if($mode)
+    {
+        $endofline = "\n";
+    }
     
     include("groupstrings.php");
+    
+    // string for return
+    $success_string = null;
      
     // submission data uploaded from submission testing
     $inFileName = "../minis/emailNot.txt";
@@ -448,18 +506,16 @@ function sendemailNotifications($mode) {
     // in no email notification file complain and then return
     if(!file_exists($inFileName))
     {    
-        echo "<br>&nbsp;&nbsp;&nbsp;no email notification, no file \" emailNot.txt \"";
-        return;        
+        return "...no email notifications sent, no file \" emailNot.txt \"";       
     }
     
     // open submission notification file or die
     $inFileHandle = fopen($inFileName, 'r') or die("can't open file");
     
-    // on error complain and return
-    if($inFileHandle == 0)
+    // on error return complain
+    if(!$inFileHandle)
     {    
-        echo "No email notification file emailNot.txt";
-        return;
+        return "...Can not open file emailNot.txt";
     }
     
     // get array keys by position number
@@ -487,6 +543,7 @@ function sendemailNotifications($mode) {
         // join line two's separated values back together as error string
         $index = 0;
         $errorStr = null;
+        
         foreach($lineTwo as $value)
         {
            if($index > 1)
@@ -499,17 +556,19 @@ function sendemailNotifications($mode) {
         // insert group title string into email body
         $body =  $lineTwo[0] . " of " . $group . ", " . $errorStr;
      
-        
         // email "to, cc, subject, body"
         $result = sendMail($lineOne[0], "ebobtron@aol.com", $lineOne[2], $body);
         
         // display part of message
-        echo substr($result, 0, 35).".";
+        $success_string = $success_string . substr($result, 5, 35) . "." . $endofline;
     
     }
 
+    // delete the file
     unlink($inFileName);
-    return;
+    
+    // pretty much self explainatory don't you think
+    return $success_string;
 }
 
 /*
@@ -670,6 +729,10 @@ function getGroupNumber($grpName){
 
     return $grpNum;
 }
-    // last edit: 03/15/2015  ebt
-?>
 
+/*   some up arrow charactors   */
+$upmark = '&#x25B2;';
+$downmark = '&#x25BC;';
+
+    // last edit: 05/10/2015  ebt
+?>
