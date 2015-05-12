@@ -10,6 +10,8 @@
 
     error_reporting(0); // E_ALL | 0
     
+    // require('../include/helfun.php');
+    
     /*  getCSVTextRows() 
      *  helper function to crate arrays from text files
      ***************************************************/
