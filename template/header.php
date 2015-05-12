@@ -5,7 +5,13 @@
 <html lang="en">
 
   <head>
-
+    <?php if(isset($title)): ?>
+      <title>LeaderBoard: <?= htmlspecialchars($title) ?></title>
+    <?php else: ?>
+      <title>LeaderBoard</title>
+    <?php endif ?>
+    
+    <link href="http://speller-leaderboard.freehostia.com" />
     <meta http-equiv="Content-type" content="text/html;charset=utf-8" />
     <meta name="description" content="Pset6, Pset5, Mispellings, leader board for
      students of CS50x. Supported by students of CS50x" />
@@ -17,11 +23,7 @@
     
     <style type="text/css"></style>
 
-    <?php if(isset($title)): ?>
-      <title>LeaderBoard: <?= htmlspecialchars($title) ?></title>
-    <?php else: ?>
-      <title>LeaderBoard</title>
-    <?php endif ?>
+
 
   </head>
 
