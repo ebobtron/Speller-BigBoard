@@ -1,3 +1,3 @@
 <?php
-header('Location: public/show');
+    // header('Location: public/show');
 ?>
