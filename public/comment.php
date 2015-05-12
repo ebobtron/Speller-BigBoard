@@ -8,7 +8,7 @@
  *
  ***************************************************************/
  
-    error_reporting(E_ALL); // E_ALL
+    error_reporting(0); // E_ALL | 0
     
     include '../include/commentlist.php';
     

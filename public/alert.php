@@ -8,7 +8,7 @@
 *   winter/spring 2014  with Launch Code
 ***************************************************************/
 
-    error_reporting(0); // E_ALL | 0
+    error_reporting(E_ALL); // E_ALL | 0
     
     require('../include/helfun.php');
     require('../include/alert_strings.php');
@@ -33,7 +33,7 @@
         }
     }
 
-    // alert is no browser cookie support
+    // alert if no browser cookie support
     if(isset($_GET['gsnc']))
     {    
         $mesString = $noCookieSupport;
@@ -75,5 +75,5 @@
         
     include('../template/footer.php');
     
-    // last edit:  01/30/2015  ebt 
+    // last edit:  03/21/2015  ebt 
 ?>

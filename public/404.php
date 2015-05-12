@@ -1,6 +1,8 @@
 <?php 
 /**
+  *
   * 404.php   -- not found --
+  *
   *
   * copyright 2015 Robert Clark aka ebobtron, et al.
   *
@@ -20,4 +22,4 @@
     require("../template/footer.php"); 
     
     // last edit: 01/24/2015 ebt  
-?>
+ ?>
