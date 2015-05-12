@@ -1,6 +1,0 @@
-SAMPLE PDOCONNECT ERROR LOG
-
-LeaderBoard PDOConnect ERROR: SQLSTATE[28000] [1045] Access denied for user 'robcla18_sail'@'localhost' (using password: YES)Tue Aug 5 4:14:54 UTC 2014
-
-LeaderBoard PDOConnect ERROR: SQLSTATE[28000] [1045] Access denied for user 'robcla18_sail'@'localhost' (using password: YES)Tue Aug 5 4:14:57 UTC 2014
-
