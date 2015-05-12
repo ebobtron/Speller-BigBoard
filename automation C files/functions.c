@@ -5,7 +5,7 @@
  *  
  *  CS50x  winter/spring 2014 with launchcode
  *  
- *  functions to help asbb.c  
+ *  functions for asbb.c  
  *  automate the testing and posting of submissions to the Leader Board
  *
  *************************************************************************/
@@ -64,8 +64,8 @@ int checkDownloaded(void) {
     return 0;
 }    
 
-/**
- *    parseVal() - parse the valgring output string
+/*
+ *    parseVal() - parse the valgrind output string
  *
  ******************************************************/
 bool parseVal(void)
@@ -77,11 +77,13 @@ bool parseVal(void)
     
     for(int i = 0; i < 15; i++) {    
         word[i][0] = '\0';
-    } 
-   
-    FILE* infile =  fopen("vdump.txt","r");
-    // load file to bufferq
+    }
     
+    // load file to for reading
+    FILE* infile =  fopen("vdump.txt","r");
+    
+    // if valgrind log-file vdump.txt does not exist
+    // load result string and return false
     if(!infile) {
         
         sprintf(valResults, "Valgrind failed to run");
@@ -95,37 +97,52 @@ bool parseVal(void)
         sscanf(valResults,"%s%s%s%s%s%s%s%s%s",
                   word[0],word[1],word[2],word[3],word[4],word[5],word[6],word[7],word[8]);
         
-        
         if(word[8][0]) {           
+            
             // get leak
             if(!strcmp(word[7],"in")) {            
+                
                 if(strcmp(word[8],"0")) {
+                    
                     valResults[strlen(valResults) - 1] = '\0';
                     return false;
                 } 
             }
             // get the memory used on heap
             if(!strcmp(word[7],"frees,")) {
+                
                 memory = (float) stringToInt(word[8]) / 1048576;
             }
         }
         fgets(valResults,sizeof(valResults),infile);
     }
-    
+    // check for a valid file handle then close the file
     if(infile)
         fclose(infile);
-        
-    system("rm -f vdump.txt");
     
+    // rename the valgrind log file "vdump.txt" file
+    system("mv -f vdump.txt last_vdump.txt");
+    
+    // if submission passes valgrind load the result strings
     if(word[3][0] == '0') {
         sprintf(valMemory,"%f",memory);
         sprintf(valResults, "memory = %f", memory);
         return true;
     }
+    
+    // valgrind has reported errors or memory leaks
+    // terminate result string
     valResults[strlen(valResults) - 1] = '\0';
+    
+    // valgrind test failed return false
     return false;
 }
 
+/*
+ *    stringToInt is a badly named function that strips
+ *    the commas from a string  1,256,256   becomes 1256256
+ *
+ **********************************************************/
 int stringToInt(char* string)
 {
     char tWord[strlen(string)];
@@ -179,7 +196,7 @@ bool spelling(void){
     }
         
     if(wordcount && dictionary && spell) {
-        sprintf(spellerResults, "can spell");
+        sprintf(spellerResults, ": Congratulations, your speller can. :");
         return true;
     }
     else {

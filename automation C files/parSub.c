@@ -26,6 +26,7 @@ int main(void) {
     char name[255];
     char ttime[255];
     char oldttime[255];
+    char comline[256];
     
     // initialize a string to null
     oldname[0] = '\0';
@@ -85,7 +86,7 @@ int main(void) {
     else
     {
         // infile==NULL; for notifications without valid submissions.
-        printf("\n....    nothing to crunch; sending notifications");
+        printf("\n....    nothing to crunch; sending notifications\n");
     }
     
     if(infile) {    
@@ -96,17 +97,34 @@ int main(void) {
     
     printf("\n....    sending new submission info to server\n");
     
-    sprintf(name,"./ftp.sh %i", PWRD);
-    system(name);
+    sprintf(comline,"./ftp.sh %i", PWRD);
+    system(comline);
+    
+    printf("\n\n");
+    
+    // rename newsubdata.txt to prevent curl below from finding 
+    // newsubdata.txt
+    sprintf(comline,"mv newsubdata.txt sent_newsubdata.txt");
+    if(!system(comline)){
+        printf("\n\n   ... newsubdata.txt renamed to sent_newsubdata.txt\n\n");
+    }
+    
+    // rename emailNot.txt to prevent curl below from finding 
+    // emailNot.txt
+    sprintf(comline,"mv emailNot.txt sent_emailNot.txt");
+    if(!system(comline)){
+        printf("\n\n   ... emailNot.txt renamed to sent_emailNot.txt\n\n");
+    }
     
     sleep(2);
-
+    
+    // cause new uploaded submisson data to be processed
     printf("\n....    invoking webpage update.php\n");
+    system("curl http://speller-leaderboard.freehostia.com/public/update.php?data=yes\\&parsub_c=yes");
     
-    system("xdg-open http://speller-leaderboard.freehostia.com/public/update.php?data=yes");
     sleep(2);
     
-    printf("\n....    invoking webpage \n");
+    printf("\n\n\n....    invoking webpage \n");
     
     system("xdg-open http://speller-leaderboard.freehostia.com");
     sleep(2);
