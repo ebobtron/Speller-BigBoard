@@ -74,63 +74,62 @@
         $template = "table.php"; 
     }
     
+    // default command array for the MySQL call getPut() 
     $what = array("rows", "sort");
     
+    // start all sort direction marks as null
     $nmark = null;
     $tmark = null;
     $lmark = null;
     $cmark = null;
     
+    // start all sort status varibles as null
     $nsort = 0;
     $tsort = 1;
     $lsort = 0;
     $csort = 0;
     
+    // if a heading title clicked 
     if(isset($_POST['form']))
     {
-        $nmark = ($_POST['nsort'] > 0) ? $upmark : $downmark;
-        $nmark = ($_POST['nsort'] == 0) ? null : $nmark;
-        $nsort = $_POST['nsort'];
+        // relate sort status with mark
+        $nmark = ($_POST['nsort'] == 0) ? null : $nmark;  // set mark to 0 or leave it
+        $nsort = $_POST['nsort'];  // update sort value from table form
         
-        $tmark = ($_POST['tsort'] > 0) ? $upmark : $downmark;
         $tmark = ($_POST['tsort'] == 0) ? null : $tmark;
         $tsort = $_POST['tsort'];
         
-        $lmark = ($_POST['lsort'] > 0) ? $upmark : $downmark;
         $lmark = ($_POST['lsort'] == 0) ? null : $tmark;
         $lsort = $_POST['lsort'];
         
-        $cmark = ($_POST['csort'] > 0) ? $upmark : $downmark;
         $cmark = ($_POST['csort'] == 0) ? null : $tmark;
         $csort = $_POST['csort'];
-        
-        //$lmark = $_POST['lmark'];
-        //$cmark = $_POST['cmark'];
     }
     
-
+    // if a heading title clicked 
     if(isset($_POST['head']))
     {       
         if($_POST['head'] === "name")
         {
+            // if name clicked check name sort status  valid is -1, 0, 1
             if($nsort > 0)
             {          
-                $nmark = $downmark;
-                $nsort = -1;
-                $what[1] = "nsortd";
+                $nmark = $downmark;  // toggle mark
+                $nsort = -1;  // toggle sort status         
+                $what[1] = "nsortd";  // set getPut() argument string
             }
             else
             {
-                $nmark = $upmark;
+                $nmark = $upmark; 
                 $nsort = 1;
                 $what[1] = "nsortu";
             }
-            $tsort = 0;
+            $tsort = 0;  // zero other marks
             $lsort = 0;
             $csort = 0;
         }
         else
-            $nmark = null;
+            $nmark = null;  // if name heading not click set mark to null;
         
         if($_POST['head'] === "total")
         {   
@@ -152,7 +151,7 @@
             
         }
         else
-            $tmark = null;
+            $tmark = null;  
         
         if($_POST['head'] === "load")
         {   
@@ -199,15 +198,6 @@
             $cmark = null;
 
     }
-    else
-    {
-        $tmark = $upmark; 
-    }
-    
-
-   
-/*
-*/    
  
     // get table rows from display
     $rows = getPut($what, getGroupNumber($group));
@@ -224,6 +214,6 @@
     // render footer
     require("../template/footer.php");
 
-    // last edit: 05/11/2015 ebt
+    // last edit: 05/14/2015 ebt
 ?>
 

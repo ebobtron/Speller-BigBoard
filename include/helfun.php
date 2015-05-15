@@ -560,7 +560,8 @@ function sendemailNotifications($mode) {
         $result = sendMail($lineOne[0], "ebobtron@aol.com", $lineOne[2], $body);
         
         // display part of message
-        $success_string = $success_string . substr($result, 5, 35) . "." . $endofline;
+        $success_string = $success_string . '...    ' . substr($result, 5, 55) . "." .
+        $endofline;
     
     }
 
