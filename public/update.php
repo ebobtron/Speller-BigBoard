@@ -17,7 +17,7 @@
         $error = $message;
         require '400.php';
         exit;
-        }
+    }
     /***********     *************/
    
     error_reporting(E_ALL); // E_ALL
@@ -28,6 +28,7 @@
         report_Error('access violation');    
     }
     
+    // default value is no return text
     $returnText = false;
     
     // test for valid array keys and values
@@ -83,7 +84,7 @@
 
     if($returnText)
     {
-        echo "update.php reports\n\n";
+        echo "...     update.php reports\n\n";
         echo $results;
         echo "\n";
         echo $results_mail;
