@@ -18,7 +18,7 @@ expansion contributors: Brian theB264, Chris h-chris, Josh joshfischer1108, Pabl
 
 in 2015 thanks to:
 
-Toby wolf99, Alex Rsranger65
+Toby wolf99, Alex Rsranger65, AlexG Kyzcreig
 
 
 
