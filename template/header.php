@@ -11,12 +11,13 @@
       <title>LeaderBoard</title>
     <?php endif ?>
     
-    <link href="http://speller-leaderboard.freehostia.com" />
+    <link rel="canonical" href="http://speller-leaderboard.freehostia.com" type="text/html" />
     <meta http-equiv="Content-type" content="text/html;charset=utf-8" />
     <meta name="description" content="Pset6, Pset5, Mispellings, leader board for
      students of CS50x. Supported by students of CS50x" />
     
-    <link href="../public/css/leaderboard.css" rel="stylesheet" />
+    <link href="../public/css/leaderboard.css" rel="stylesheet" type="text/css" />
+    <link href="../public/css/table-general.css" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
