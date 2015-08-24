@@ -15,7 +15,7 @@
      * Chris
      ***************/
 
-    $validGrpNum_R = array(0,1,2,3);
+    $validGrpNum_R = array(0,1,2,3,9);
 
     $defaultString = "edx2015";
     
@@ -50,7 +50,7 @@
                "edX.org</a>"
            );
 
-    //   last edit: 3/11/2015  ebt                               
+    //   last edit: 05/28/2015  ebt                               
 ?>
 
 
