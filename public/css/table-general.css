@@ -1,0 +1,187 @@
+/* general table style */
+/* from the link http://www.htmlandcssbook.com/extras/table-styles/ */
+/* from the download table_styles.zip */
+/* modified by ebobtron as noted */
+
+table.general {
+	border-spacing: 0px;
+  margin: auto;             /* added  */
+}
+.general th, .general td {
+	padding: 5px 30px 5px 10px;
+	border-spacing: 0px;
+	font-size: 90%;
+	margin: 0px;
+}
+.general th, .general td {
+	text-align: left;
+	background-color: #e0e9f0;
+	border-top: 1px solid #f1f8fe;
+	border-bottom: 1px solid #cbd2d8;
+	border-right: 1px solid #cbd2d8;
+}
+.general tr.head th {
+	color: #fff;
+	background-color: #90b4d6;
+	border-bottom: 2px solid #547ca0;
+	border-right: 1px solid #749abe;
+	border-top: 1px solid #90b4d6;
+	text-align: center;
+	text-shadow: -1px -1px 1px #666666;
+	letter-spacing: 0.15em;
+}
+.general td {
+	text-shadow: 1px 1px 1px #ffffff;
+}
+.general tr.even td, .general tr.even th {
+	background-color: #e8eff5;
+}
+.general tr.head th:first-child {
+	-webkit-border-top-left-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	border-top-left-radius: 5px;
+}
+.general tr.head th:last-child {
+	-webkit-border-top-right-radius: 5px;
+	-moz-border-radius-topright: 5px;
+	border-top-right-radius: 5px;
+}
+
+/* new css for multitable view */
+
+table.multi{
+  border: 0; 
+  cellpadding: 0;
+  cellspacing: 0;
+  height: 65%;
+  margin: auto;
+  width: 325:
+} 
+
+.multi div{
+  height: 300px;
+  overflow:auto;
+  width:320px;  
+}
+
+.multi table{
+  border: 1;
+  cellpadding: 1;
+  cellspacing: 0;
+  width: 300;
+}
+/******************************/
+  /*  TABLE OF <DIV<S CSS  */
+
+div.todheader {
+  background-color: #90b4d6;
+  
+  border-left: 1px solid #749abe;
+  border-bottom: 1px solid #547ca0;
+  /*border: 0px solid yellow;*/
+  margin: auto;
+  padding: 0;
+  text-align: center;
+  width: 90%;
+  
+  -webkit-border-top-left-radius: 8px;
+	-moz-border-radius-topleft: 8px;
+	border-top-left-radius: 8px;
+  
+  -webkit-border-top-right-radius: 8px;
+	-moz-border-radius-topright: 8px;
+	border-top-right-radius: 8px;
+}
+
+.todheader div{
+	background-color: #90b4d6;
+	border-bottom: 1px solid #547ca0;
+	border-right: 1px solid #749abe;
+	border-top: 1px solid #90b4d6;
+  color: #fff;
+  font-size: 1em;
+  height: 2.0em;
+  letter-spacing: 0.15em;
+  margin: auto;
+  padding-top: 7px;
+	text-align: center;
+	text-shadow: -1px -1px 1px #666666;
+
+}
+
+.todheader input {
+	background-color: #90b4d6;
+  border: 0;
+  color: #fff;
+  
+  padding-top: 0;
+  font-size: 1.05em;
+	text-align: center;
+	text-shadow: -1px -1px 1px #666666;
+
+}
+
+.todheader div.clear{
+  border: 0;
+  clear: both;
+  height: 0;
+  margin: 0;
+  padding-top: 0px
+}
+
+.todheader div.flt{
+  float:left;
+}
+
+.todheader div:first-child { 
+	-webkit-border-top-left-radius: 8px;
+	-moz-border-radius-topleft: 8px;
+	border-top-left-radius: 8px;
+}
+
+.todheader div.lst {
+  border-right: 0;
+	-webkit-border-top-right-radius: 8px;
+	-moz-border-radius-topright: 8px;
+	border-top-right-radius: 8px;
+}
+
+.tc {
+  text-align: center;
+}
+
+div.todbody {
+  border-top: 1px solid #cbd2d8;
+  border-left: 1px solid #cbd2d8;
+  border-bottom: 1px solid #cbd2d8;
+  height: 295px;
+  height: calc(100% - 270px);  /* calc heitht fix Alex Rsranger65 */
+  margin: auto;
+  padding-top: 2px;
+  overflow-y: auto;
+  text-align: center;
+  width:90%; 
+}
+
+.todbody div {
+  background-color: #dde7ed;
+  border-right: 1px solid #e0e9f0;
+  float: left;
+  height: 22px;
+  margin-top: 0px;
+  padding:0;
+}
+
+.todbody div.even{
+  background-color: #e8eff5;
+  border-right: 1px solid #e8eff5;
+}
+
+.todbody div.clear{
+  border: 0;
+  clear: both;
+  margin: 0;
+  padding: 0;
+  width: 0;
+  
+}

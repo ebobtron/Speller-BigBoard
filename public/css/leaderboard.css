@@ -120,7 +120,7 @@ html, body { height: 100%; overflow: hidden } /* Alex Rsranger65 */
   border:0px solid Green;
   margin: auto;
   text-align: center;
-  width:90%;
+  width:92%;
 }
 
 .gentext {
@@ -135,7 +135,7 @@ html, body { height: 100%; overflow: hidden } /* Alex Rsranger65 */
 .grpSelect {
   height: 296px;
   margin: auto;
-  overflow-y: auto;
+/*  overflow-y: auto; */
   width: 90%;
 }
 
@@ -163,7 +163,7 @@ html, body { height: 100%; overflow: hidden } /* Alex Rsranger65 */
   font-size:1.1em;
 }
 
-.input{
+.input {
   border: 1px solid black;
   border-radius: 4px;
   font-size: 18px;
@@ -268,12 +268,8 @@ html, body { height: 100%; overflow: hidden } /* Alex Rsranger65 */
   width:100%;
 }
   
-.table-all {
-  border:0px solid red;
-  border-collapse: collapse;
-  border-spacing: 0;
-  margin: auto;
-  width:80%;
+:root {
+  --talbe-body-height: 20em;
 }
   
 .table-foot {
@@ -288,9 +284,10 @@ html, body { height: 100%; overflow: hidden } /* Alex Rsranger65 */
 
 .tbody {
   border:0px solid black;
-  height:300px;
-  overflow-y: auto;
+  height:330px;
+  height: var(--talbe-body-height);
   padding-right:2px;
+  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -324,8 +321,8 @@ html, body { height: 100%; overflow: hidden } /* Alex Rsranger65 */
   border:0px solid black;
   display:block;
 	text-align: center;
-  width:100%;
 }
+
 
 /*  ids  */
 

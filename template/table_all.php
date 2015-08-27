@@ -14,47 +14,61 @@
 
   <h3 style="margin:0px">all times in seconds</h3>
 
-  <table class='table-all'>
-    <tbody class="tbody ldbd-tbody" style="height:28px;">
-      <tr>
+  <table class="table-all general">
+  
+    <thead class="thead">
+    
+    <tr class="head">
+      <th>name</th>
+      <th>total time</th>
+      <th>load time</th>
+      <th>data structure type</th>
+      <th>group</th>
+      </thead>
+    </tr>   
+   <!--      
         <td class="td left" style="min-width:9em">&nbsp;name</td>
         <td class="td" style="min-width:5em">total time</td>
         <td class="td" style="min-width:2em"></td>
         <td class="td left" style="min-width:10em">structure type</td>
         <td class="td left" style="min-width:17em">group</td>
-      </tr>
-    </tbody>
-    
+      -->
+        
+      
+
     <tbody class="tbody ldbd-tbody">
-      <? $loop = 0; ?> 
-      <? foreach($rows as $row): ?>
+    
+    <? $loop = 0; ?> 
+    <? foreach($rows as $row): ?>
 
-      <? if($loop % 2 == 0): ?>
-        <tr class="row"> 
-      <? else: ?>
+    <? if($loop % 2 == 0): ?>
+        <tr class="even"> 
+    <? else: ?>
         <tr>	
-      <? endif; ?>
-
-      <? 
+    <? endif; ?>          
+    
+    <? 
          $to = sprintf("%0.4f", $row['total']);
          $keyNum = $row['grp'];
          $groupName = $titleString[$keys[$keyNum]];
          $grp = sprintf("%s", $groupName);
-         $loop++; ?>
+         $loop++;
+    ?>
          
-          <td class="td left" style="min-width:9em">
-            <a href="comment?comment=<?=$row['name']?>" class="name"
-               title="click for user comments or reddit overview">&nbsp;
-               <?=$row['name']?></a>
-          </td>
-          <td class="td" style="min-width:5em"><?=$to?></td>
-          <td class="td" style="min-width:2em"></td>
-          <td class="td left" style="min-width:10em">&nbsp;&nbsp;<?=$row['typ']?></td>
-          <td class="td left" style="min-width:17em"><?=$grp?></td>
+         <td>
+           <a href="comment?comment=<?=$row['name']?>" class="name"
+              title="click for user comments or reddit overview">&nbsp;
+           <?=$row['name']?></a>
+         </td>
+         <td><?=$to?></td>
+         <td></td>
+         <td><?=$row['typ']?></td>
+         <td><?=$grp?></td>
         </tr>
 
-      <? endforeach; ?>  
-    </tbody>
+    <? endforeach; ?>  
+  </tbody>  
   </table>
+
 </div>
 <br />

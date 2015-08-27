@@ -12,6 +12,12 @@
     error_reporting(0);  // E_ALL | E_STRICT
     
     require "../include/helfun.php";
+
+// temp table show code
+    $table = false;
+    if(isset($_GET['t'])){        
+        $table = true;
+    }
     
     // set default table
     // $template = "table_all.php";
@@ -22,7 +28,7 @@
     // keys to array elements are numeric
     $keys = array_keys($titleString);
     
-    // check if group to display is pasted in the url
+    // check if group to display is passed in the url
     if(isset($_GET['grp']))
     {    
         // assign get to $grpNumber for clarity
@@ -64,6 +70,7 @@
             $group = null;
         }
     }
+    
     
     // tell the user which group they are looking at
     if($group !== null)
@@ -198,9 +205,32 @@
             $cmark = null;
 
     }
+    
+    // 
+    if(isset($_GET['grp']))
+    {
+        if($_GET['grp'] == 9)
+        {
+            $group = 'test';
+        }
+    }    
  
     // get table rows from display
     $rows = getPut($what, getGroupNumber($group));
+    
+// temp code 
+    if($table){
+        
+        if($_GET['t'] == "table")
+            $template = "table.php";
+        
+        if($_GET['t'] == "tb")
+            $template = "table_b.php";
+        
+        if($_GET['t'] == "tdb")
+            $template =  "table_db.php";    
+    }
+        
 
     // render header
     require("../template/header.php");
