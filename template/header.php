@@ -24,8 +24,6 @@
     
     <style type="text/css"></style>
 
-
-
   </head>
 
   <body>
@@ -41,17 +39,17 @@
     </script>
     
     <div class="div-head">
-      <h2 class="head">
+      <h1 class="head">
 
         <a class="head-links" href="http://speller-leaderboard.freehostia.com">
-          speller Leader Board</a>
+          SPELLER LEADER BOARD</a>
 
           <?php if(isset($head)): ?>
             <?= $head ?>
           <?php else: ?>    
             <br />
           <?php endif ?>
-      </h2>
+      </h1>
       <h3 class="head">
           for students of Harvard College's CS50x 
 

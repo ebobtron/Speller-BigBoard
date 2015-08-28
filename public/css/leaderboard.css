@@ -18,12 +18,12 @@
   font-family: Existence-Light;
   src: url(font/Existence-Light.ttf);
 }
-/*
+
 @font-face {
-  font-family: Trebuchet_MS;
-  src: url(font/trebuc.ttf);
+  font-family: adam-cg;
+  src: url(font/ADAM.CG PRO.otf);
 }
-*/
+
 @font-face {
   font-family: Arapey_Italic;
   src: url(font/Arapey-Italic.ttf);
@@ -145,13 +145,15 @@ html, body { height: 100%; overflow: hidden } /* Alex Rsranger65 */
 }
   
 .head {
-  font-family: Arapey_Italic;
+  font-family: "Times New Roman", Times, serif;
+  /*font-family: Arapey_Italic;*/
   margin: 0 0 6px 0;
 }
 
 .head-links {
-  color: blue;
-  font-family:Arapey_Italic;
+  /*color: blue;*/
+  font-family: "Times New Roman", Times, serif;
+  /*font-family:Arapey_Italic;*/
   text-decoration:none;
 }
 
@@ -422,8 +424,9 @@ html, body { height: 100%; overflow: hidden } /* Alex Rsranger65 */
         padding: 0;
         list-style: none;
         /*background: #f2f2f2;*/
+        font-family: Trebuchet_MS;
         text-align: center;
-        font-size: 1.1em;
+        font-size: 1.3em;
     }
     .menu li{
         display: inline-block;
