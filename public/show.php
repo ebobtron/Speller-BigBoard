@@ -22,7 +22,8 @@
     // set default table
     // $template = "table_all.php";
     // changed default page the all groups thing is like not needed anymore
-    $template = "table.php";   
+    $template = "table.php";
+    $amark = '&#x2713;';
        
     // get array of keys for titleString array
     // keys to array elements are numeric
@@ -235,8 +236,8 @@
     // render header
     require("../template/header.php");
     
-    // render links
-    require("../template/links.php");
+    // render menu
+    require("../template/menu.php");
 
     // render template
     require("../template/$template");
@@ -244,6 +245,5 @@
     // render footer
     require("../template/footer.php");
 
-    // last edit: 05/14/2015 ebt
 ?>
 
