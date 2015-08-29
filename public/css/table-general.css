@@ -70,12 +70,12 @@ table.multi{
   cellspacing: 0;
   width: 300;
 }
+
 /******************************/
   /*  TABLE OF <DIV<S CSS  */
 
 div.todheader {
   background-color: #90b4d6;
-  
   border-left: 1px solid #749abe;
   border-bottom: 1px solid #547ca0;
   /*border: 0px solid yellow;*/
@@ -83,11 +83,9 @@ div.todheader {
   padding: 0;
   text-align: center;
   width: 90%;
-  
   -webkit-border-top-left-radius: 8px;
 	-moz-border-radius-topleft: 8px;
 	border-top-left-radius: 8px;
-  
   -webkit-border-top-right-radius: 8px;
 	-moz-border-radius-topright: 8px;
 	border-top-right-radius: 8px;
@@ -99,11 +97,11 @@ div.todheader {
 	border-right: 1px solid #749abe;
 	border-top: 1px solid #90b4d6;
   color: #fff;
-  font-size: 1em;
-  height: 2.0em;
+  font-size: .8em;
+  height: 2.2em;
   letter-spacing: 0.15em;
   margin: auto;
-  padding-top: 7px;
+  padding-top: 2px;
 	text-align: center;
 	text-shadow: -1px -1px 1px #666666;
 
@@ -113,9 +111,8 @@ div.todheader {
 	background-color: #90b4d6;
   border: 0;
   color: #fff;
-  
   padding-top: 0;
-  font-size: 1.05em;
+  font-size: 1.6em;
 	text-align: center;
 	text-shadow: -1px -1px 1px #666666;
 
@@ -151,11 +148,12 @@ div.todheader {
 }
 
 div.todbody {
+  background-color: #dde7ed;
   border-top: 1px solid #cbd2d8;
   border-left: 1px solid #cbd2d8;
   border-bottom: 1px solid #cbd2d8;
   height: 295px;
-  height: calc(100% - 270px);  /* calc heitht fix Alex Rsranger65 */
+  height: calc(100% - 260px);  /* calc heitht fix Alex Rsranger65 */
   margin: auto;
   padding-top: 2px;
   overflow-y: auto;

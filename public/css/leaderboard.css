@@ -39,21 +39,22 @@ input[type="submit"]:hover {
 }
 
 body {
-  background-color:#ebebf5;
+  background-color:#ededf7;
   font-family:sans-serif;
+  margin-top: 1px;
 }
 
 input {
   font-family: Trebuchet_MS;
-}
-  
-input:-moz-placeholder {
   color: blue;
   font-family: Arapey_Italic;
 }
   
 input:-ms-input-placeholder {
   color: blue;
+}
+  
+input:-moz-placeholder {
   font-family: Arapey_Italic;
 }
 
@@ -104,15 +105,20 @@ html, body { height: 100%; overflow: hidden } /* Alex Rsranger65 */
 .d-sub {
   border:0px solid Green;
   height: 295px;
-  height: calc(100% - 260px);  /* calc heitht fix Alex Rsranger65 */
+  height: calc(100% - 230px);  /* calc height fix Alex Rsranger65 */
   margin: auto;
   overflow-y: auto;
   text-align: center;
   width:90%;
 } 
 
+.disabled{
+    pointer-events: none;
+    cursor: default;
+}
+
 .div-head {
-  margin-top:16px;
+  margin-top:8px;
   text-align:center;
 }
  
@@ -129,13 +135,15 @@ html, body { height: 100%; overflow: hidden } /* Alex Rsranger65 */
   margin-left:auto;
   margin-right:auto;
   margin-top:0;
+  height: 200px;
+  height: calc(100% - 155px);
+  overflow-y: auto;
   width:65%; 
 }
 
 .grpSelect {
-  height: 296px;
+  border: 0px solid;
   margin: auto;
-/*  overflow-y: auto; */
   width: 90%;
 }
 
@@ -147,7 +155,7 @@ html, body { height: 100%; overflow: hidden } /* Alex Rsranger65 */
 .head {
   font-family: "Times New Roman", Times, serif;
   /*font-family: Arapey_Italic;*/
-  margin: 0 0 6px 0;
+  margin: 0 0 4px 0;
 }
 
 .head-links {
@@ -271,7 +279,7 @@ html, body { height: 100%; overflow: hidden } /* Alex Rsranger65 */
 }
   
 :root {
-  --talbe-body-height: 20em;
+  --table-body-height: 20em;
 }
   
 .table-foot {
@@ -464,4 +472,5 @@ html, body { height: 100%; overflow: hidden } /* Alex Rsranger65 */
         color: lightgray;
         cursor: default;
     }
-
+    
+    
