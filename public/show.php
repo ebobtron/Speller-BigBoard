@@ -1,13 +1,13 @@
 <?php
 /*
-    show.php   ** leader board table view controller ** 
-
-    copyright 2015 Robert Clark(aka ebobtron), et al.
+      show.php   leader board table view controller 
   
-    an expansion of my edX.org CS50x final project
-    winter/spring 2014  with Launch Code
+      copyright 2015 Robert Clark(aka ebobtron), et al.
+  
+      an expansion of my edX.org CS50x final project
+      winter/spring 2014  with Launch Code                          */
     
-    ******************************************************/
+    
 
     error_reporting(0);  // E_ALL | E_STRICT
     
@@ -22,7 +22,8 @@
     // set default table
     // $template = "table_all.php";
     // changed default page the all groups thing is like not needed anymore
-    $template = "table.php";
+    
+    $template = "table_db.php";  // new table design suggested by alexg
     $amark = '&#x2713;';
        
     // get array of keys for titleString array
@@ -79,7 +80,7 @@
         $title = $titleString[$group];
         $head = $headString[$group];
         $link = $linkString[$group];
-        $template = "table.php"; 
+        $template = "table_db.php"; 
     }
     
     // default command array for the MySQL call getPut() 
