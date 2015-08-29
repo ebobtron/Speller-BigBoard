@@ -1,12 +1,10 @@
 <!--
-*
-*   archiveView.php   ** archive View **
-*
-*   copyright 2015 Robert Clark(aka ebobtron), et al.
-*
-*   an expansion of my edX.org CS50x final project
-*   winter/spring 2014  with Launch Code
-*************************************************************** -->
+     archiveView.php    archive View 
+
+     copyright 2015 Robert Clark(aka ebobtron), et al.
+
+     an expansion of my edX.org CS50x final project
+     winter/spring 2014  with Launch Code                         -->
 
 <div class="div-table lilmar">
     The tables below are the lists of submissions from last years CS50x offered by
@@ -41,7 +39,7 @@
   <div style="clear:both;margin:0"></div>
 </div>
 
-<div class="d-sub">
+<div class="d-sub" style="height: calc(100% - 290px);">
 
     <? $loop = 0; ?>
     <? $class = null; ?>     
@@ -85,5 +83,3 @@
 </div>
 <br />
 
-
-<!-- last edit: 02/19/2015  ebt -->

@@ -10,7 +10,7 @@
 
 <div class="div-table">
   
-  <form action="" method="post">
+  <form action="/" method="post">
   <div style="width:98.6%"> 
   <h4 style="margin:0px">all times are fastest average seconds</h4>
   <div class="div-col b" style="width:6%">id</div>

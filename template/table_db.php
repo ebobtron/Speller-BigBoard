@@ -1,20 +1,19 @@
 <!--
-*
-*   table_db.php  ** Display table of submissions and links **
-*
-*   copyright 2015 Robert Clark(aka ebobtron), et al.
-*
-*   an expansion of my edX.org CS50x final project
-*   winter/spring 2014  with Launch Code
-************************************************************   -->
 
-<h4 class="tc" style="margin:auto;">all times are fastest average seconds</h4>
+     table_db.php   Display table of submissions and links 
+
+     copyright 2015 Robert Clark(aka ebobtron), et al.
+
+     an expansion of my edX.org CS50x final project
+     winter/spring 2014  with Launch Code                            -->
+
+<h4 class="tc" style="margin:auto;">
+      all times are fastest average seconds
+</h4>
 
 <div class="todheader">
   
-  <form action="" method="post">
-  
-    <!--<div style="width:98.6%">-->
+  <form action="show" method="post">
       
       <div class="flt" style="width:6%">
         <input type="button" name="head" value="id" 
@@ -26,7 +25,7 @@
   
       <div class="flt" style="width:9%">
         <input type="submit" name="head" value="total"
-               class="" title="click to sort by total time"/><?= $tmark ?></div>
+               class="" title="click to sort by total time" /><?= $tmark ?></div>
            
       <div class="flt" style="width:9%">
         <input type="submit" name="head" value="load"
@@ -59,11 +58,10 @@
       <input type="hidden" name="lsort" value="<?= $lsort ?>" />
       <input type="hidden" name="csort" value="<?= $csort ?>" />
     
-    <!--</div>-->
   </form>
     
-  <!--in the following div the clear:both stops the following elements from
-      wrapping around the last div above the efect is a new line   -->
+  <!-- the style for the following div "clear:both" stops the following elements from
+       wrapping around the last div above the efect is a new line   -->
   <div class="clear"></div>
   
 </div>
@@ -115,4 +113,4 @@
 
 </div>
 <br />
-<!--      // last edit: 05/12/2015  ebt        -->
+
