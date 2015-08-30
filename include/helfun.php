@@ -1,12 +1,12 @@
 <?php
 /*
-*   helfun.php    ** helper functions for leader board ** 
-*
-*   copyright 2015 Robert Clark(aka ebobtron), et al.
-*
-*   an expansion of my edX.org CS50x final project
-*   winter/spring 2014  with Launch Code
-*************************************************************/
+       helfun.php    helper functions for leader board  
+  
+       copyright 2015 Robert Clark(aka ebobtron), et al.
+
+       an expansion of my edX.org CS50x final project
+       winter/spring 2014  with Launch Code                        */
+       
 
 require "config.php"; 
 
@@ -14,69 +14,9 @@ require "groupstrings.php";
 
 error_reporting(E_ALL & ~E_STRICT);
 
-#require_once('../include/jpgraph-3.5.0b1/src/jpgraph.php');
+// set default timezone, dah!
+date_default_timezone_set('America/Chicago');
 
-    // set default timezone, dah!
-    date_default_timezone_set('America/Chicago');
-
-/*
- *   Pear Mail    http://pear.php.net/package/Mail
- *
- *   the regular PHP email functions don't allow for authentication
- *
- *   att.net and  some other incoming mail servers require that 
- *   the sending client authenticate the sender, i.e. user id and password
- *           
- ****************************************/
-function sendMail($to, $cc, $subject, $body)
-{
-
-    error_reporting(E_ALL & ~E_STRICT);
-    
-    require_once "Mail.php";
-    require "config.php";
-
-    $from = "leader board <".$username.">";
-
-    $recipients = $to.",".$cc.",".$bcc;
-
-    $headers = array ('From' => $from,
-                      'Cc' => $cc,
-                      'Return-Path' => $username,
-                      'To' => $to,
-                      'Subject' => $subject);
-
-
-        /*  FOR Blind Carbon Copy
-        /*  leave from $headers to make it blind
-        /*  'Bcc' => $bcc,
-        /***************************************/
-
-    $params = array('host' => $host,
-                    'port' => $port, 
-                    'auth' => true,
-                    'username' => $username,
-                    'password' => $pwd);
-    
-    $mailobj = new Mail;
-    
-    $smtp = $mailobj->factory('smtp', $params);
-
-    $mail = $smtp->send($recipients, $headers, $body);
-    
-    $pearobj = new PEAR; 
-    if($pearobj->isError($mail))
-    {
-        $mes = "<br><br>An email server / script error has occurred.&nbsp; " .
-               "Error message is: ";
-        return $mes . "<br>" . $mail->getMessage();
-    }
-    else
-    {   
-        return "<br>A message was successfully sent to the leader board administrator ".
-               "about this submission!";
-    }
-}
 
 /*
  *  PDOconnect()
@@ -127,55 +67,15 @@ function PDOconnect() {
     return $dbhan;
 }
 
-/*
- *  subCount($name, $group)
- *
- *  get submission count for a user name and group number
- *************************************************************/
 
-function subCount($name, $group){
-    
-    // connect to database server and return handle
-    $dbhandle = PDOconnect();
-    
-    // set some common variables
-    $stmt = null;
-    $results = null;
-    
-    // MySQL statement
-    $sql = "SELECT count(*) FROM leader_board WHERE grp = :grp1 AND " .
-           "name = :name";        
-    
-    // prepare the statement and get statement object
-    $stmt = $dbhandle->prepare($sql);
-    
-    // bind parameter to variable name for a statement object
-    $stmt->bindParam(":grp1", $group);
-    $stmt->bindParam(":name", $name);
-    
-    // execute or catch the error
-    try {     
-        // if execute successful fetch results as associative array
-        if($stmt->execute() !== false) {
-        
-            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        }
-    }
-    catch(PDOException $error) {
-
-        // return the error message
-        return $error->getMessage();
-    }
-    // return contents of two dimensional array
-    return $results[0]['count(*)'];
-}
   
 
 /*  
- *  GETPUT()
- *
- *  DATABASE FUNCTIONS  NO ON THE FLY SQL STATEMENTS        
- ****************************************************/
+/**  getput()
+  *
+  *  DATABASE FUNCTIONS  NO ON THE FLY SQL STATEMENTS        
+  *
+  *****************************************************************************/
 
 function getPut($what, $data) {
  
@@ -186,12 +86,13 @@ function getPut($what, $data) {
     $stmt = null;
     $results = null;
     $errorMessage = null;
-    $sort = "total ASC";
+    
     
     //--  GET ROWS   
     //--  if $data = group number, returns group number and group zero("0") Staff
     //--  if $data = null, returns all groups
-    //--  confine $data to "null" or numeric symbols 0, 1, 2 etc.   
+    //--  confine $data to "null" or numeric symbols 0, 1, 2 etc.
+    $sort = "total ASC";   
     if($what[0] === "rows") {
         
         if($what[1] === "tsortu")
@@ -228,6 +129,7 @@ function getPut($what, $data) {
         $stmt->bindParam(":grp0", $data);
     }
     
+    
     //--  GET NEXT ID
     if($what == "nextId") {
     
@@ -244,7 +146,18 @@ function getPut($what, $data) {
         $stmt->bindParam(":grp1", $data);
     }
     
+    //--   GET UNIQUE SUBMISSIONS BY NAME
+    if($what[0] == "unique") {
     
+        $sql = "SELECT id, grp, name, min(total) as total, dload, tcheck, size, ".
+               "unload, mem, typ FROM leader_board WHERE grp = :grp3 GROUP by ".
+               "name, typ ORDER BY total";
+        $stmt = $dbhandle->prepare($sql);
+        $stmt->bindParam(":grp3", $data);
+    
+    }
+    
+    //--   COMMON VALID DATA TEST
     if($stmt === null) {
     
         return " GETPUT parameter 1 invalid";
@@ -301,7 +214,20 @@ function getPut($what, $data) {
         
             return ' GETPUT"subNames" - ERROR:..&nbsp;&nbsp; ' . $errorMessage;
         }
-    }   
+    }
+    
+    //-- UNIQUE retrun data
+    if($what[0] == "unique") {
+        
+        if($errorMessage === null) {
+            
+            return $results;
+        }
+        else {
+        
+            return ' GETPUT "unique" - ERROR:..&nbsp;&nbsp; ' . $errorMessage;
+        }
+    }
 }
 
 /*
@@ -325,10 +251,12 @@ function createSubInfo($name, $id, $email, $dir) {
     }
 }
 
-/*
- *   updateData()
- *   LOAD SUBMISSION DATA INTO DATABASE  
- *********************************************************/
+
+/**   updateData()
+  *
+  *   LOAD SUBMISSION DATA INTO DATABASE  
+  *
+  ******************************************************************************/
 
 function updateData($text)
 {    
@@ -731,9 +659,115 @@ function getGroupNumber($grpName){
     return $grpNum;
 }
 
-/*   some up arrow charactors   */
+/**   sendMail()
+  *   
+  *   using Pear Mail    http://pear.php.net/package/Mail
+  * 
+  *   the regular PHP email functions don't allow for authentication
+  *
+  *   att.net and some other incoming mail servers require that 
+  *   the sending client authenticate the sender, i.e. user id and password
+  *           
+  *****************************************************************************/
+  
+function sendMail($to, $cc, $subject, $body)
+{
+
+    error_reporting(E_ALL & ~E_STRICT);
+    
+    require_once "Mail.php";
+    require "config.php";
+
+    $from = "leader board <".$username.">";
+
+    $recipients = $to.",".$cc.",".$bcc;
+
+    $headers = array ('From' => $from,
+                      'Cc' => $cc,
+                      'Return-Path' => $username,
+                      'To' => $to,
+                      'Subject' => $subject);
+
+
+        /*  FOR Blind Carbon Copy
+        /*  leave from $headers to make it blind
+        /*  'Bcc' => $bcc,
+        /***************************************/
+
+    $params = array('host' => $host,
+                    'port' => $port, 
+                    'auth' => true,
+                    'username' => $username,
+                    'password' => $pwd);
+    
+    $mailobj = new Mail;
+    
+    $smtp = $mailobj->factory('smtp', $params);
+
+    $mail = $smtp->send($recipients, $headers, $body);
+    
+    $pearobj = new PEAR; 
+    if($pearobj->isError($mail))
+    {
+        $mes = "<br><br>An email server / script error has occurred.&nbsp; " .
+               "Error message is: ";
+        return $mes . "<br>" . $mail->getMessage();
+    }
+    else
+    {   
+        return "<br>A message was successfully sent to the leader board administrator ".
+               "about this submission!";
+    }
+}
+
+
+/**   subCount($name, $group)
+  *
+  *   get submission count for a user name and group number
+  *
+  ******************************************************************************/
+
+function subCount($name, $group){
+    
+    // connect to database server and return handle
+    $dbhandle = PDOconnect();
+    
+    // set some common variables
+    $stmt = null;
+    $results = null;
+    
+    // MySQL statement
+    $sql = "SELECT count(*) FROM leader_board WHERE grp = :grp1 AND " .
+           "name = :name";        
+    
+    // prepare the statement and get statement object
+    $stmt = $dbhandle->prepare($sql);
+    
+    // bind parameter to variable name for a statement object
+    $stmt->bindParam(":grp1", $group);
+    $stmt->bindParam(":name", $name);
+    
+    // execute or catch the error
+    try {     
+        // if execute successful fetch results as associative array
+        if($stmt->execute() !== false) {
+        
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+    }
+    catch(PDOException $error) {
+
+        // return the error message
+        return $error->getMessage();
+    }
+    // return contents of two dimensional array
+    return $results[0]['count(*)'];
+}
+
+
+/*   some up / down arrow charactors   */
 $upmark = '&#x25B2;';
 $downmark = '&#x25BC;';
 
-    // last edit: 05/10/2015  ebt
+
 ?>
