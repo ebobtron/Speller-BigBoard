@@ -66,7 +66,7 @@
   
 </div>
 
-<div class="todbody">
+<div class="todbody" style="background-color:<?=$rowcolor?>">
 
     <? $loop = 0; ?>
     <? $class = null; ?>     
