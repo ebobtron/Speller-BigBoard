@@ -1,11 +1,12 @@
-/*
-*   leaderboard.css    -- CSS file for the HTML --
-*
-*   copyright 2015 Robert Clark(aka ebobtron), et al.
-*
-*   an expansion of my edX.org CS50x final project
-*   winter/spring 2014  with Launch Code
-**********************************************************/
+/**
+  *   leaderboard.css   CSS file for the HTML
+  *
+  *   copyright 2015 Robert Clark(aka ebobtron), et al.
+  *
+  *   an expansion of my edX.org CS50x final project
+  *   winter/spring 2014  with Launch Code
+  *
+  ******************************************************************************/
 
 /*  fonts   */
 
@@ -39,7 +40,7 @@ input[type="submit"]:hover {
 }
 
 body {
-  background-color:#ededf7;
+  background-color:#f0f0ff;
   font-family:sans-serif;
   margin-top: 1px;
 }
