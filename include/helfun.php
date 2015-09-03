@@ -67,38 +67,38 @@ function PDOconnect() {
     return $dbhan;
 }
 
-
   
-
-/*  
 /**  getput()
   *
   *  DATABASE FUNCTIONS  NO ON THE FLY SQL STATEMENTS        
   *
-  *****************************************************************************/
+  ******************************************************************************/
 
 function getPut($what, $data) {
  
-    //  connect to the database
+    //--  connect to the database
     $dbhandle = PDOconnect();
     
-    // set some common variables
+    //-- set some common variables default values
     $stmt = null;
     $results = null;
     $errorMessage = null;
+    $sql = null;
+    $sort = "total ASC";
     
-    
-    //--  GET ROWS   
+    //--  get unique or all   
     //--  if $data = group number, returns group number and group zero("0") Staff
-    //--  if $data = null, returns all groups
-    //--  confine $data to "null" or numeric symbols 0, 1, 2 etc.
-    $sort = "total ASC";   
-    if($what[0] === "rows") {
-        
+    //--  if $data = null(no grp selection at all), returns all groups
+    //--  confine $data to "null" or numeric symbols 0, 1, 2, 3 etc.
+    
+    //-- SORT COLUMN ORDER BY what[1] from viewer clicking table header 
+    if(isset($what[1])) {
+    
         if($what[1] === "tsortu")
             $sort = "total ASC";
         if($what[1] === "tsortd")
             $sort = "total DESC";
+            
         if($what[1] === "nsortu")
             $sort = "LOWER(name) ASC, total ASC";
         if($what[1] === "nsortd")
@@ -113,18 +113,49 @@ function getPut($what, $data) {
             $sort = "tcheck ASC";
         if($what[1] === "csortd")
             $sort = "tcheck DESC";
-              
         
-        $sql = "SELECT * FROM leader_board WHERE total IS NOT NULL ";
-        
+        if($what[1] === "usortu")
+            $sort = "unload ASC";
+        if($what[1] === "usortd")
+            $sort = "unload DESC";
+            
+        if($what[1] === "tysortu")
+            $sort = "typ ASC";
+        if($what[1] === "tysortd")
+            $sort = "typ DESC";
+            
+        $sort = "ORDER BY " . $sort;            
+    }
+    
+    //-- get all submissions or unique sumbissions
+    if($what[0] === 'unique' || $what[0] === 'all') {
+           
+        // either group plus group 0 or all submission on the table.
+        // default is mostly group 3 edX.org         
         if($data !== null) {
-            $sql = $sql . "AND grp = :grp0 OR grp = 0 ORDER BY " . $sort;
+            $sql_grp = "AND grp = :grp0 OR grp = 0 ";
         }
         else {   
-            $sql = $sql . "ORDER BY " . $sort;
+            $sql_grp = null; 
+        }
+        // the unique table requires a JOIN to keep a sumbission's data together
+        $uni_sel = "SELECT s.* FROM leader_board s JOIN (SELECT min(total) AS total ".
+                   "FROM leader_board WHERE total IS NOT NULL ";
+        
+        // the unigue GROUP BY
+        $uni_grp_by = "GROUP By name, typ) ";
+        
+        // build the 'unique' sql string or the 'all' sql string.
+        if($what[0] === 'unique'){
+            $sql = $uni_sel . $sql_grp . $uni_grp_by;
+            $sql = $sql . "min ON s.total = min.total " . $sort;
+        }    
+        else {
+            $sql = "SELECT * FROM leader_board WHERE total IS NOT NULL ";
+            $sql = $sql . $sql_grp . $sort;
         }
         
-        
+        // perpare data for execution
         $stmt = $dbhandle->prepare($sql);
         $stmt->bindParam(":grp0", $data);
     }
@@ -146,25 +177,12 @@ function getPut($what, $data) {
         $stmt->bindParam(":grp1", $data);
     }
     
-    //--   GET UNIQUE SUBMISSIONS BY NAME
-    if($what[0] == "unique") {
-    
-        $sql = "SELECT id, grp, name, min(total) as total, dload, tcheck, size, ".
-               "unload, mem, typ FROM leader_board WHERE grp = :grp3 GROUP by ".
-               "name, typ ORDER BY total";
-        $stmt = $dbhandle->prepare($sql);
-        $stmt->bindParam(":grp3", $data);
-    
-    }
-    
     //--   COMMON VALID DATA TEST
     if($stmt === null) {
-    
         return " GETPUT parameter 1 invalid";
-    
     }
        
-    //--  COMMON TRY CATCH  ----
+    //--  COMMON TRY EXECUTE CATCH  ----
     try {     
         
         if($stmt->execute() !== false) {
@@ -177,8 +195,8 @@ function getPut($what, $data) {
         $errorMessage = $error->getMessage();
     }
         
-    //--  return data "rows"
-    if($what[0] == "rows"){
+    //--  return results for 'all' and 'unique'
+    if($what[0] === 'all' || $what[0] === 'unique'){
     
         if($errorMessage === null)
         {
@@ -190,7 +208,7 @@ function getPut($what, $data) {
         }    
     }
     
-    //--  return data "nextId"
+    //--  return results for "nextId"
     if($what == "nextId") {
     
         if($errorMessage === null) {
@@ -203,7 +221,7 @@ function getPut($what, $data) {
         }
     }
     
-    //--  return data "subNames"
+    //--  return results for "subNames"
     if($what == "subNames") {
     
         if($errorMessage === null) {
@@ -215,20 +233,8 @@ function getPut($what, $data) {
             return ' GETPUT"subNames" - ERROR:..&nbsp;&nbsp; ' . $errorMessage;
         }
     }
-    
-    //-- UNIQUE retrun data
-    if($what[0] == "unique") {
-        
-        if($errorMessage === null) {
-            
-            return $results;
-        }
-        else {
-        
-            return ' GETPUT "unique" - ERROR:..&nbsp;&nbsp; ' . $errorMessage;
-        }
-    }
-}
+
+}   // end function getpout() //
 
 /*
  *  createSubInfo()
