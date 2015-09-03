@@ -13,18 +13,31 @@
     
     require "../include/helfun.php";
 
-// temp table show code
+    // default table values
     $table = false;
+    $tablelist = 'unique';
+    $umark = '&#x2713;';
+    $amark = null;
+    // set default table
+    $template = "table_db.php";  // new table design suggested by alexg
+    
+    // if different leader baord selected
     if(isset($_GET['t'])){        
-        $table = true;
+        
+        if($_GET['t'] === 'a'){
+            
+            $tablelist = 'all';
+            // a check mark for the menus
+            $amark = '&#x2713;';
+            $umark = null;
+        }
     }
     
-    // set default table
-    // $template = "table_all.php";
+    
+    
     // changed default page the all groups thing is like not needed anymore
     
-    $template = "table_db.php";  // new table design suggested by alexg
-    $amark = '&#x2713;';
+    
        
     // get array of keys for titleString array
     // keys to array elements are numeric
@@ -73,7 +86,6 @@
         }
     }
     
-    
     // tell the user which group they are looking at
     if($group !== null)
     {    
@@ -84,7 +96,7 @@
     }
     
     // default command array for the MySQL call getPut() 
-    $what = array("rows", "sort");
+    $what = array("$tablelist", "sort");
     
     // start all sort direction marks as null
     $nmark = null;
@@ -215,24 +227,19 @@
         {
             $group = 'test';
         }
-    }    
- 
-    // get table rows from display
-    $rows = getPut($what, getGroupNumber($group));
-    
-// temp code 
-    if($table){
-        
-        if($_GET['t'] == "table")
-            $template = "table.php";
-        
-        if($_GET['t'] == "tb")
-            $template = "table_b.php";
-        
-        if($_GET['t'] == "tdb")
-            $template =  "table_db.php";    
     }
-        
+    
+    // get table rows from display
+    $rows = getPut($what, getGroupNumber($group));    
+    
+    // determin odd or even number of rows
+    $oddrows = count($rows, 0) % 2;
+    
+    // background color of table body div should be oposite the last row color
+    if($oddrows)
+        $rowcolor = '#dde7ed';
+    else
+        $rowcolor = '#e8eff5';
 
     // render header
     require("../template/header.php");
