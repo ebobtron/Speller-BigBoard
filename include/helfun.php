@@ -5,7 +5,7 @@
        copyright 2015 Robert Clark(aka ebobtron), et al.
 
        an expansion of my edX.org CS50x final project
-       winter/spring 2014  with Launch Code                        */
+       winter/spring 2014  with Launch Code                               ******/
        
 
 require "config.php"; 
@@ -139,7 +139,8 @@ function getPut($what, $data) {
             $sql_grp = null; 
         }
         // the unique table requires a JOIN to keep a sumbission's data together
-        $uni_sel = "SELECT s.* FROM leader_board s JOIN (SELECT min(total) AS total ".
+        $uni_sel = "SELECT DISTINCT s.* FROM leader_board s ".
+                   "JOIN (SELECT min(total) AS total ".
                    "FROM leader_board WHERE total IS NOT NULL ";
         
         // the unigue GROUP BY
