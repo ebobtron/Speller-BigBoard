@@ -8,7 +8,7 @@
         <li>
             <a href="boardselect">Leader Boards &#9662;</a>
             <ul class="dropdown">
-                <li><a href="show">Unique &nbsp; <?= $umark?></a></li>
+                <li><a href="show?t=u">Unique &nbsp; <?= $umark?></a></li>
                 <li><a href="show?t=a">All &nbsp; <?= $amark?></a></li>
                 <li><a href="archive">Prior Year</a></li>
             </ul>
