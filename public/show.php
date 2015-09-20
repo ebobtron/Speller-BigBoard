@@ -14,31 +14,45 @@
     require "../include/helfun.php";
 
     // default table values
+    $postlist = null;
     $table = false;
     $tablelist = 'unique';
-    $umark = '&#x2713;';
-    $amark = null;
+    $caption = null;
+    
+    
     // set default table
     $template = "table_db.php";  // new table design suggested by alexg
     
-    // if different leader baord selected
+    if(isset($_POST['list'])){
+        $postlist = $_POST['list'];
+        $tablelist = $_POST['list'];
+    } 
+    
+    // if a different leader baord is selected or track the current
+    // leader board selected
     if(isset($_GET['t'])){        
         
-        if($_GET['t'] === 'a'){
-            
+        if($_GET['t'] === 'a'){            
             $tablelist = 'all';
-            // a check mark for the menus
-            $amark = '&#x2713;';
-            $umark = null;
+        }
+        
+        if($_GET['t'] === 'u'){
+            $tablelist = 'unique';
         }
     }
     
-    
-    
-    // changed default page the all groups thing is like not needed anymore
-    
-    
-       
+    if($tablelist === 'unique'){
+        $amark = null;
+        $umark = '&#x2713;';
+        $caption = 'fastest by type';
+    }
+    else{
+        $umark = null;
+        $amark = '&#x2713;';
+        $caption = 'all submissions';
+    }
+
+      
     // get array of keys for titleString array
     // keys to array elements are numeric
     $keys = array_keys($titleString);
