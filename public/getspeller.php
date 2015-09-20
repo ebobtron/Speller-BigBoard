@@ -1,12 +1,12 @@
 <?php
 /*
-*   getspeller.php  ** submission controller for uploading file **
-* 
-*   Robert Clark, aka ebobtron et al.
-*
-*   an expansion of my CS50x final project
-*   winter/spring 2014  with Launch Code
-***********************************************************************/
+        getspeller.php  submission controller for uploading file
+  
+        copyright 2015 Robert Clark(aka ebobtron), et al.
+ 
+        an expansion of my CS50x final project
+        winter/spring 2014  with Launch Code
+                                                                               */
 
     require '../include/helfun.php';
 
@@ -19,7 +19,10 @@
     
     if(isset($_POST['email']))
     {
+        // send though PHP internals
         $email = saniTizeEmail($_POST['email']);
+        
+        // send though a regular expression 
         $email = validEmail($email);
     }
     
