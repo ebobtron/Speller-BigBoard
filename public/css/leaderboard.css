@@ -133,11 +133,10 @@ html, body { height: 100%; overflow: hidden } /* Alex Rsranger65 */
 .gentext {
   border:0px solid pink;
   font-size:95%;
-  margin-left:auto;
-  margin-right:auto;
+  margin:auto;
   margin-top:0;
   height: 200px;
-  height: calc(100% - 155px);
+  height: calc(95% - 155px);
   overflow-y: auto;
   width:65%; 
 }
@@ -240,6 +239,12 @@ html, body { height: 100%; overflow: hidden } /* Alex Rsranger65 */
 /* class contributions by Toby / wolf99 */
 .no-underline {
   text-decoration:none;
+}
+
+.page_link{
+  color: blue;
+  text-decoration:none;
+  font-size: 1.2em;
 }
 
 .right {
