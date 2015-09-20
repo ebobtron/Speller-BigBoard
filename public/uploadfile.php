@@ -1,13 +1,12 @@
 <?php
 /*
- *   uploadfile.php  manage the uploaded file
- *
- *   Robert Clark, aka ebobtron et al.
- *
- *   An expansion of my 
- *   CS50x final project   winter/spring 2014  with Launch Code
- *
- ***************************************************************/
+        uploadfile.php  manage the uploaded file
+ 
+        copyright 2015 Robert Clark(aka ebobtron), et al.
+  
+        an expansion of my edX.org CS50x final project
+        winter/spring 2014  with Launch Cod
+                                                                            ****/
 
     error_reporting(0); // E_ALL | 0
     
@@ -83,6 +82,16 @@
 
         // if file is up move to defined folder
         $success = move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path);
+        
+        // check for 32-bit file
+        $result = isSub_32bit($target_path);
+        if($result !== true){
+
+            rename($target_path, '../dump/'.$submissionNameGrpTyp.$fileName.'.x');
+            header('Location: alert.php?32bit=no');
+            exit;   
+        }
+       
         
         $dateTimeString = date("l F j, Y @ g:i:s a T");
         
