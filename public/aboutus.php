@@ -1,12 +1,12 @@
 <?php
 /*
-*   aboutus.php   -- about us controler  --
-*
-*   copyright 2015 Robert Clark(aka ebobtron) et al.
-*
-*   an expansion of my edX.org CS50x final project
-*   winter/spring 2014  with Launch Code
-***************************************************************/
+     aboutus.php   about us controler
+
+     copyright 2015 Robert Clark(aka ebobtron) et al.
+  
+     an expansion of my edX.org CS50x final project
+     winter/spring 2014  with Launch Code
+                                                                          ******/
 
     require '../include/helfun.php';
     
@@ -27,5 +27,4 @@
     // render footer
     require('../template/footer.php');
     
-    // last edit: 02/03/2015  ebt
 ?>
