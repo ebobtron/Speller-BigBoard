@@ -51,11 +51,9 @@ table.general {
 
 table.multi{
   border: 0; 
-  cellpadding: 0;
-  cellspacing: 0;
   height: 65%;
   margin: auto;
-  width: 325:
+  width: 325px;
 } 
 
 .multi div{
@@ -65,10 +63,8 @@ table.multi{
 }
 
 .multi table{
-  border: 1;
-  cellpadding: 1;
-  cellspacing: 0;
-  width: 300;
+  border: 1px;
+  width: 300px;
 }
 
 /******************************/
@@ -108,14 +104,17 @@ div.todheader {
 }
 
 .todheader input {
+   -webkit-appearance: none;  /* some browsers need the defaults turned off */
+   -moz-appearance: none;
+  appearance: none;
 	background-color: #90b4d6;
   border: 0;
   color: #fff;
-  padding-top: 0;
+  padding: 0;
   font-size: 1.6em;
 	text-align: center;
 	text-shadow: -1px -1px 1px #666666;
-
+  width: 70%;
 }
 
 .todheader div.clear{
@@ -153,7 +152,7 @@ div.todbody {
   border-left: 1px solid #cbd2d8;
   border-bottom: 1px solid #cbd2d8;
   height: 295px;
-  height: calc(100% - 260px);  /* calc heitht fix Alex Rsranger65 */
+  height: calc(100% - 260px);  /* calc heigtht fix Alex Rsranger65 */
   margin: auto;
   padding-top: 2px;
   overflow-y: auto;
