@@ -5,7 +5,7 @@
        copyright 2015 Robert Clark(aka ebobtron), et al.
 
        an expansion of my edX.org CS50x final project
-       winter/spring 2014  with Launch Code                               ******/
+       winter/spring 2014  with Launch Code                                    */
        
 
 require "config.php"; 
@@ -22,7 +22,7 @@ date_default_timezone_set('America/Chicago');
  *  PDOconnect()
  *
  *  returns a handle to our connection to the MySQL database table
- *****************************************************************/
+ ************************************************************************/
 
 function PDOconnect() {
     
@@ -31,13 +31,11 @@ function PDOconnect() {
     $dsn = 'mysql:host='.$dbpath.';dbname='.$dbuser;
     $options = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'); 
 
-    try
-    {    
+    try{    
         $dbhan = new PDO($dsn, $dbuser, $dbpass, $options);
         $dbhan->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
-    catch(PDOException $error)
-    {
+    catch(PDOException $error){
         // set time zone to match the server logs 
         date_default_timezone_set('UTC'); //America/Chicago
 
@@ -52,8 +50,8 @@ function PDOconnect() {
         fwrite($outFileHandle, $logmes);
         
         // if outFileHandle good close the file
-        if($outFileHandle)
-        { 
+        if($outFileHandle){ 
+            
             fclose($outFileHandle);
         }
         
@@ -495,8 +493,8 @@ function sendemailNotifications($mode) {
         $result = sendMail($lineOne[0], "ebobtron@aol.com", $lineOne[2], $body);
         
         // display part of message
-        $success_string = $success_string . '...    ' . substr($result, 5, 55) . "." .
-        $endofline;
+        $success_string = $success_string . '...    ' . substr($result, 5, 55).
+                          "." . $endofline;
     
     }
 
@@ -507,23 +505,30 @@ function sendemailNotifications($mode) {
     return $success_string;
 }
 
-/*
- *  validName()
- *  replace white spaces in names i.e. "D Doug" becomes "D_Doug"
- *****************************************************************/
+
+/*      validName()
+ *      replace white spaces in names i.e. "D Doug" becomes "D_Doug"
+ *
+ ***************************************************************************/
 function validName($name) {
    
     return preg_replace("/\s+/", "_",$name);
 }
 
-/*
- *  validEmail()
- *  validate email address
- **********************************/
+
+/*      validEmail()   validate email address
+ *
+ ***************************************************************************/
 function validEmail($email) {
 
     // regular expression from theB264
-    $regex = "/^[_A-Za-z0-9-]+(\.[_A-Za-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/"; 
+    $regex = "/^[_A-Za-z0-9-]+(\.[_A-Za-z0-9-]+)*@[a-z0-9-]+".
+             "(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/";
+    
+    // new one suggested by theB264  see issue#50 github
+    $regex = "/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9]".
+             "(?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9]".
+             "(?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/";          
 
     if(preg_match($regex, $email)) {
      
@@ -535,10 +540,12 @@ function validEmail($email) {
     }
 }
 
+
 /*
  *  saniTize()                     theB264
  *  sanitize it before we use it
- *****************************************/
+ *
+ ***************************************************************************/
 function saniTize($words) {
     
     $regex = "/^[_0-9a-z A-Z]+$/";   // regular expression from theB264
@@ -553,7 +560,12 @@ function saniTize($words) {
     }
 }
 
+/*  saniTizeEmail() validate / sanitize email addresses using php internals
+ *
+ ******************************************************************************/
+
 function saniTizeEmail($address) {
+    
     // also investigate php's FILTER_SANITIZE_EMAIL
     if (filter_var($address, FILTER_VALIDATE_EMAIL)) {
         return $address;
@@ -561,10 +573,10 @@ function saniTizeEmail($address) {
     return null;
 }
 
-/*
- *  dumpSubmissions()
- *  MOVE SUBMISSIONS FROM UPLOADING TO DUMP
- ******************************************/
+/*      dumpSubmissions()
+ *      MOVE SUBMISSIONS FROM UPLOADING TO DUMP
+ *
+ ***************************************************************************/
 function dumpSubmissions($old, $new) {
     
     if($old && $new) {
@@ -595,10 +607,9 @@ function dumpSubmissions($old, $new) {
     return;
 }
 
-/*
- *  MOVE SUBMISSIONS FROM Alternate Directory
- *
- *********************************************/
+/*      MOVE SUBMISSIONS FROM Alternate Directory to uploading
+ *  
+ *********************************************************************/
 function moveSubmissions() {
 
     $files = glob("../uploading_alt/*");
@@ -769,6 +780,43 @@ function subCount($name, $group){
     }
     // return contents of two dimensional array
     return $results[0]['count(*)'];
+}
+
+/**   isSub_32bit(file)   is the submission file a 32 bit file.
+  *   
+  ****************************************************************************/
+
+function isSub_32bit($submission_file){
+    
+    $valid = false;
+    
+    system('file '.$submission_file.' > xresult.txt');
+        
+    
+        
+    $results = file('xresult.txt');
+        
+    $words = null;
+    $words = preg_split("/[\s,]+/",$results[0]);
+
+    $strings = count($words);
+        
+    for($i = 0; $i < $strings; $i++){
+        
+        if($words[$i] === '32-bit'){
+            $valid = true;
+            break;
+        }
+    }
+    
+    if($valid === true)
+        return true;
+    else
+        return $submission_file;
+   
+    
+    // delete the xresults.txt file
+    unlink('xresult.txt');
 }
 
 
