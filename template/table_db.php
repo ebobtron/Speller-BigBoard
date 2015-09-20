@@ -1,14 +1,13 @@
 <!--
+        table_db.php   Display table of submissions with links 
 
-     table_db.php   Display table of submissions and links 
+        copyright 2015 Robert Clark(aka ebobtron), et al.
 
-     copyright 2015 Robert Clark(aka ebobtron), et al.
-
-     an expansion of my edX.org CS50x final project
-     winter/spring 2014  with Launch Code                            -->
+        an expansion of my edX.org CS50x final project
+        winter/spring 2014  with Launch Code                            -->
 
 <h4 class="tc" style="margin:auto;">
-      all times are fastest average seconds
+    <?= $caption ?> &nbsp; &nbsp; &nbsp; &nbsp; all times are fastest average seconds
 </h4>
 
 <div class="todheader">
@@ -57,6 +56,8 @@
       <input type="hidden" name="tsort" value="<?= $tsort ?>" />
       <input type="hidden" name="lsort" value="<?= $lsort ?>" />
       <input type="hidden" name="csort" value="<?= $csort ?>" />
+      
+      <input type="hidden" name="list" value="<?= $tablelist ?>" />
     
   </form>
     
