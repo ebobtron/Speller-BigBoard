@@ -1,49 +1,55 @@
 /**
-  *   leaderboard.css   CSS file for the HTML
-  *
-  *   copyright 2015 Robert Clark(aka ebobtron), et al.
-  *
-  *   an expansion of my edX.org CS50x final project
-  *   winter/spring 2014  with Launch Code
-  *
-  ******************************************************************************/
+     leaderboard.css   CSS file for the HTML
+  
+     copyright 2015 Robert Clark(aka ebobtron), et al.
+  
+     an expansion of my edX.org CS50x final project
+     winter/spring 2014  with Launch Code
+                                                                               */
 
 /*  fonts   */
 
 @font-face {
   font-family: Geosanslight;
-  src: url(font/GeosansLight.ttf);
+  src: url('font/GeosansLight.ttf');
 }
 
 @font-face {
   font-family: Existence-Light;
-  src: url(font/Existence-Light.ttf);
+  src: url('font/Existence-Light.ttf');
 }
 
 @font-face {
   font-family: adam-cg;
-  src: url(font/ADAM.CG PRO.otf);
+  src: url('font/ADAM.CG_PRO.otf');
 }
 
 @font-face {
   font-family: Arapey_Italic;
-  src: url(font/Arapey-Italic.ttf);
+  src: url('font/Arapey-Italic.ttf');
 }
 
 /* all elements */
 
 a:hover {
-  background-color: white;
+  background-color: lightgray;
 }
+
 input[type="submit"]:hover {
   background-color: white;
 }
 
 body {
-  background-color:#f0f0ff;
+  background-color:#fff;
+  /*background-size: 300px;*/
+  /*background: -webkit-linear-gradient(#c8c8d8, white); /* For Safari 5.1 to 6.0 */
+  /*background: -o-linear-gradient(#c8c8d8, white); /* For Opera 11.1 to 12.0 */
+  /*background: -moz-linear-gradient(black, white); /* For Firefox 3.6 to 15 */
+  /*background: linear-gradient(black, white); /* Standard syntax */
   font-family:sans-serif;
   margin-top: 1px;
 }
+
 
 input {
   font-family: Trebuchet_MS;
@@ -77,16 +83,6 @@ html, body { height: 100%; overflow: hidden } /* Alex Rsranger65 */
 
 /* classes */  
 
-.admin {
-  border:0px solid white;
-  font-family: Trebuchet_MS;
-  font-size: 18px;
-  height:350px;
-  margin:auto;
-  overflow-y: auto;
-  width: 90%;
-}
-
 .b {
   font-weight:bold;
 }
@@ -119,7 +115,8 @@ html, body { height: 100%; overflow: hidden } /* Alex Rsranger65 */
 }
 
 .div-head {
-  margin-top:8px;
+  margin: 0;
+  margin-top: 4px;
   text-align:center;
 }
  
@@ -155,7 +152,7 @@ html, body { height: 100%; overflow: hidden } /* Alex Rsranger65 */
 .head {
   font-family: "Times New Roman", Times, serif;
   /*font-family: Arapey_Italic;*/
-  margin: 0 0 4px 0;
+  margin: 0;
 }
 
 .head-links {
@@ -163,6 +160,10 @@ html, body { height: 100%; overflow: hidden } /* Alex Rsranger65 */
   font-family: "Times New Roman", Times, serif;
   /*font-family:Arapey_Italic;*/
   text-decoration:none;
+}
+
+.head a:hover{
+  color: black;
 }
 
 .headset {
@@ -219,10 +220,10 @@ html, body { height: 100%; overflow: hidden } /* Alex Rsranger65 */
   text-align:center;
 }
 
-.menu {
+/*.menu {
   color:blue;
   text-decoration: none;
-}
+}*/
 
 .name {
   color: blue;
@@ -253,7 +254,7 @@ html, body { height: 100%; overflow: hidden } /* Alex Rsranger65 */
 }
 
 .row {
-  background-color:#fefefe;
+  background-color:#eeeefe;
 }
 
 .smaller {
@@ -284,9 +285,6 @@ html, body { height: 100%; overflow: hidden } /* Alex Rsranger65 */
   width:100%;
 }
   
-:root {
-  --table-body-height: 20em;
-}
   
 .table-foot {
   border:0px solid black;
@@ -432,7 +430,7 @@ html, body { height: 100%; overflow: hidden } /* Alex Rsranger65 */
  *
  *************************************************/
  
-    ul.menu{            /* menu class for unordered list  */             
+    ul.menu{      /* menu class for unordered list  */             
         border: 0px solid green;
         margin:0;
         padding: 0;
@@ -451,13 +449,15 @@ html, body { height: 100%; overflow: hidden } /* Alex Rsranger65 */
     .menu li a{
         display: block;
         padding: 8px 18px;
-        color: #333;
+        color: #000;
         text-decoration: none;
     }
+
     .menu li a:hover{
         color: #fff;
         background: #939393;
     }
+
     .menu li .dropdown{
         min-width: 100%; /* Set width of the dropdown */
         background: #f2f2f2;

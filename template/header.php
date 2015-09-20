@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <!-- copyright 2015 Robert Clark(aka ebobtron), et al. 
-     see public/aboutus.php           -->
+     see public/aboutus.php                                  -->
 
 <html lang="en">
 
@@ -22,7 +22,7 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     
-    <style type="text/css"></style>
+    <style type="text/css"> .b {border: 1px solid;} </style>
 
   </head>
 
@@ -41,8 +41,8 @@
     <div class="div-head">
       <h1 class="head">
 
-        <a class="head-links" href="http://speller-leaderboard.freehostia.com">
-          SPELLER LEADER BOARD</a>
+        <a class="head-links" href="/">
+          Speller Leader Board</a> for CS50 2015
 
           <?php if(isset($head)): ?>
             <?= $head ?>
@@ -50,16 +50,19 @@
             <br />
           <?php endif ?>
       </h1>
+      
+      <!--   
       <h3 class="head">
           for students of Harvard College's CS50x 
-
           <?php if(isset($link)): ?>
             <?= $link ?>
           <?php else: ?>
-
           <?php endif ?>
-
-      </h3>
+      </h3>                                  -->
+      
     </div>
-    
-<!-- last edited: 03/11/2015  ebt -->    
+    <!--
+    <?php if($showmenu === true) 
+              include('../template/menu');
+    ?>  -->      
+   

@@ -117,7 +117,7 @@ div.todheader {
   width: 70%;
 }
 
-.todheader div.clear{
+.todheader div.clear {
   border: 0;
   clear: both;
   height: 0;
@@ -152,7 +152,7 @@ div.todbody {
   border-left: 1px solid #cbd2d8;
   border-bottom: 1px solid #cbd2d8;
   height: 295px;
-  height: calc(100% - 260px);  /* calc heigtht fix Alex Rsranger65 */
+  height: calc(99% - 205px);  /* calc heigtht fix Alex Rsranger65 */
   margin: auto;
   padding-top: 2px;
   overflow-y: auto;
@@ -169,16 +169,15 @@ div.todbody {
   padding:0;
 }
 
-.todbody div.even{
+.todbody div.even {
   background-color: #e8eff5;
   border-right: 1px solid #e8eff5;
 }
 
-.todbody div.clear{
+.todbody div.clear {
   border: 0;
   clear: both;
   margin: 0;
   padding: 0;
   width: 0;
-  
 }
