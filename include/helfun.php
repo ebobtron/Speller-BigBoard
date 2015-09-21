@@ -1,12 +1,13 @@
 <?php
-/*
-       helfun.php    helper functions for leader board  
-  
-       copyright 2015 Robert Clark(aka ebobtron), et al.
-
-       an expansion of my edX.org CS50x final project
-       winter/spring 2014  with Launch Code                                    */
-       
+/**
+  *     helfun.php    helper functions for leader board  
+  * 
+  *     copyright 2015 Robert Clark(aka ebobtron), et al.
+  * 
+  *     an expansion of my edX.org CS50x final project
+  *     winter/spring 2014  with Launch Code                                    
+  *
+  **/       
 
 require "config.php"; 
 
@@ -18,11 +19,12 @@ error_reporting(E_ALL & ~E_STRICT);
 date_default_timezone_set('America/Chicago');
 
 
-/*
- *  PDOconnect()
- *
- *  returns a handle to our connection to the MySQL database table
- ************************************************************************/
+/**
+  *     PDOconnect()
+  *
+  *     returns a handle to our connection to the MySQL database server
+  *
+  **/
 
 function PDOconnect() {
     
@@ -66,11 +68,11 @@ function PDOconnect() {
 }
 
   
-/**  getput()
+/**     getput()  the main dbase query function
   *
-  *  DATABASE FUNCTIONS  NO ON THE FLY SQL STATEMENTS        
+  *     DATABASE FUNCTIONS  NO ON THE FLY SQL STATEMENTS        
   *
-  ******************************************************************************/
+  **/
 
 function getPut($what, $data) {
  
@@ -233,13 +235,15 @@ function getPut($what, $data) {
         }
     }
 
-}   // end function getpout() //
+}   // end function getput() //
 
-/*
- *  createSubInfo()
- *
- *  creates submission info file with data for testing the submissions  
- ***********************************************************************/
+
+/**
+  *     createSubInfo()
+  *
+  *     creates submission info file with data for testing the submissions  
+  *
+  **/
 
 function createSubInfo($name, $id, $email, $dir) {
     
@@ -257,11 +261,11 @@ function createSubInfo($name, $id, $email, $dir) {
 }
 
 
-/**   updateData()
+/**     updateData()
   *
-  *   LOAD SUBMISSION DATA INTO DATABASE  
+  *     load summission data into database  
   *
-  ******************************************************************************/
+  **/
 
 function updateData($text)
 {    
@@ -416,13 +420,22 @@ function updateData($text)
 }
 
 
-/*
- *   sendemailNotifications()
- *   SEND SUBMISSION NOTIFICATIONS FROM DATA IN AN UPLOADED FILE
- ****************************************************************/   
+/**
+  *     sendemailNotifications()
+  *   
+  *     send sumbission rusult notifications from data in an uploaded file
+  *
+  **/
+   
 function sendemailNotifications($mode) {
 
+    // html line break
     $endofline = '<br>';
+    
+    // change $endofline to match mode of use
+    // mode = called from either a slb-web .php file or 
+    // a call from crul in aslb automation
+    
     if($mode)
     {
         $endofline = "\n";
@@ -506,19 +519,21 @@ function sendemailNotifications($mode) {
 }
 
 
-/*      validName()
- *      replace white spaces in names i.e. "D Doug" becomes "D_Doug"
- *
- ***************************************************************************/
+/**     validName()
+  *     replace white spaces in names i.e. "D Doug" becomes "D_Doug"
+  *
+  **/
+  
 function validName($name) {
    
     return preg_replace("/\s+/", "_",$name);
 }
 
 
-/*      validEmail()   validate email address
- *
- ***************************************************************************/
+/**     validEmail()   validate email address
+  *
+  **/
+
 function validEmail($email) {
 
     // regular expression from theB264
@@ -541,14 +556,15 @@ function validEmail($email) {
 }
 
 
-/*
- *  saniTize()                     theB264
- *  sanitize it before we use it
- *
- ***************************************************************************/
+/**
+  *     saniTize()                     theB264
+  *     sanitize it before we use it
+  *
+  **/
+
 function saniTize($words) {
     
-    $regex = "/^[_0-9a-z A-Z]+$/";   // regular expression from theB264
+    $regex = "/^[_0-9a-z A-Z]+$/";   // a regular expression from theB264
     
     if(preg_match($regex, $words)) {
      
@@ -560,9 +576,11 @@ function saniTize($words) {
     }
 }
 
-/*  saniTizeEmail() validate / sanitize email addresses using php internals
- *
- ******************************************************************************/
+
+/**  
+  *     saniTizeEmail() validate / sanitize email addresses using php internals
+  *
+  **/
 
 function saniTizeEmail($address) {
     
@@ -573,10 +591,12 @@ function saniTizeEmail($address) {
     return null;
 }
 
-/*      dumpSubmissions()
- *      MOVE SUBMISSIONS FROM UPLOADING TO DUMP
- *
- ***************************************************************************/
+
+/**      
+  *     dumpSubmissions() move submissions from uploading to dump
+  *
+  **/
+  
 function dumpSubmissions($old, $new) {
     
     if($old && $new) {
@@ -607,9 +627,12 @@ function dumpSubmissions($old, $new) {
     return;
 }
 
-/*      MOVE SUBMISSIONS FROM Alternate Directory to uploading
- *  
- *********************************************************************/
+
+/**
+  *     move submissions from alternate to uploading
+  *  
+  **/
+  
 function moveSubmissions() {
 
     $files = glob("../uploading_alt/*");
@@ -635,10 +658,12 @@ function moveSubmissions() {
 
 }
 
-/*
- *  getGroupNumber()   by  h-chris
- *  GET GROUP NUMBER    
- ****************************/
+/**
+  *     getGroupNumber()   by  h-chris
+  *     get group number from json file
+  *    
+  **/
+  
 function getGroupNumber($grpName){
     
     $grpNum = null;
@@ -677,20 +702,20 @@ function getGroupNumber($grpName){
     return $grpNum;
 }
 
-/**   sendMail()
-  *   
-  *   using Pear Mail    http://pear.php.net/package/Mail
-  * 
-  *   the regular PHP email functions don't allow for authentication
-  *
-  *   att.net and some other incoming mail servers require that 
-  *   the sending client authenticate the sender, i.e. user id and password
-  *           
-  *****************************************************************************/
-  
-function sendMail($to, $cc, $subject, $body)
-{
 
+/**     
+  *     sendMail()  using Pear Mail    http://pear.php.net/package/Mail
+  * 
+  *     the regular PHP email functions don't allow for authentication of senders
+  *     email address att.net and some other POP3 or IMAP servers require that 
+  *     the sending client authenticate the sender, i.e. user id and password
+  *           
+  **/
+  
+function sendMail($to, $cc, $subject, $body) {
+
+    // E_STRICT is removed from error reporting because the pear mail
+    // class has issues.  need to use PHPMailer libs 
     error_reporting(E_ALL & ~E_STRICT);
     
     require_once "Mail.php";
@@ -739,11 +764,12 @@ function sendMail($to, $cc, $subject, $body)
 }
 
 
-/**   subCount($name, $group)
+/**   
+  *     subCount($name, $group)
   *
-  *   get submission count for a user name and group number
+  *     get submission count for a user name and group number
   *
-  ******************************************************************************/
+  **/
 
 function subCount($name, $group){
     
@@ -782,9 +808,11 @@ function subCount($name, $group){
     return $results[0]['count(*)'];
 }
 
-/**   isSub_32bit(file)   is the submission file a 32 bit file.
+
+/**   
+  *     isSub_32bit(file)   is the submission file a 32 bit file.
   *   
-  ****************************************************************************/
+  **/
 
 function isSub_32bit($submission_file){
     
@@ -820,9 +848,12 @@ function isSub_32bit($submission_file){
 }
 
 
-/*   some up / down arrow charactors   */
-$upmark = '&#x25B2;';
-$downmark = '&#x25BC;';
+/**
+  *     some up / down arrow charactors for header sort
+  *
+  **/
 
+    $upmark = '&#x25B2;';
+    $downmark = '&#x25BC;';
 
 ?>
